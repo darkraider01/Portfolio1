@@ -11,9 +11,9 @@ const About = () => {
           <p>
             I gravitate toward the parts of a system most people try to avoid:
             consensus, replication, and the exact moment two nodes disagree
-            about what's true. Most of what I build sits below the API layer —
+            about what's true. Most of what I build sits below the API layer:
             key-value stores, audit ledgers, inventory systems, video
-            pipelines — where the interesting problems are about ordering,
+            pipelines. The interesting problems there are about ordering,
             integrity, and what happens when the network doesn't cooperate.
           </p>
           <p>
@@ -30,13 +30,16 @@ const About = () => {
             explain it to me. <span className="text-bone">Capa</span> exists
             because I got curious about whether engineering ability leaves a
             detectable trace in how someone actually works, not in what they
-            claim on a resume. Everything else follows from the same
-            instinct: understand the primitive before reaching for the
-            abstraction built on top of it.
+            claim on a resume. The{' '}
+            <span className="text-bone">AI-driven QoS engine for 5G networks</span>{' '}
+            came from wanting to see the same ordering and orchestration
+            problems play out somewhere other than a storage system. Everything
+            else follows from the same instinct: understand the primitive
+            before reaching for the abstraction built on top of it.
           </p>
           <p>
-            Outside my own repos, I contribute upstream — mostly Go and Rust —
-            most recently a handful of compiler-tooling fixes merged into
+            Outside my own repos, I contribute upstream in Go and Rust, most
+            recently a handful of compiler-tooling fixes merged into
             OpenTelemetry's Go instrumentation project.
           </p>
         </div>
