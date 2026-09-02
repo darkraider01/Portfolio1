@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0a0b;
+  --color-ink-soft: #121214;
+  --color-ink-raised: #19191c;
+  --color-bone: #ededea;
+  --color-bone-dim: #b9b8b3;
+  --color-muted: #7c7b76;
+  --color-line: #29292c;
+  --color-amber: #f5a524;
+  --color-amber-dim: #a86f1c;
+
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-ink);
+  color: var(--color-bone-dim);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+/* thin, understated scrollbar so it doesn't fight the near-black canvas */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 999px;
+}

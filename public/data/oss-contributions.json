@@ -1,0 +1,1090 @@
+{
+  "last_updated": "2026-09-02T07:33:10.559Z",
+  "username": "darkraider01",
+  "summary": {
+    "mergedPRs": 24,
+    "issuesCreated": 19,
+    "issuesAssigned": 8,
+    "reviewsGiven": 13
+  },
+  "items": [
+    {
+      "id": "PR_kwDONpzSS88AAAABBvuGEA",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "refactor(tool): merge small single-purpose files into fewer files",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1300",
+      "state": "MERGED",
+      "createdAt": "2026-09-01T12:28:52Z",
+      "mergedAt": "2026-09-01T12:56:35Z",
+      "closedAt": "2026-09-01T12:56:35Z",
+      "body": "## Description\n\nMerges several small, single-purpose files into their natural neighbors:\n\n- `apply_call_helpers.go` merged into `apply_call.go`\n- `cmd/otelc/cmd_cleanup.go`, `cmd_go.go`, `cmd_pin.go`, `cmd_setup.go`, `cmd_toolexec.go`, and `cmd_version.go` merged into a single `cmd/otelc/command.go`",
+      "labels": [
+        "scope:refactor"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABPJgJuQ",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "otelc diff: preview instrumentation changes without building",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1298",
+      "state": "OPEN",
+      "createdAt": "2026-09-01T12:02:31Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Is your feature request related to a problem? Please describe.\n\nRight now the only way to see what `otelc` will inject into a file is to run a real build and dig through the toolexec temp/build output afterward. There's no way to check upfront whether a given file will be instrumented, or what wo",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBvQJJA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(instrumentation): adds zerolog hook injecting trace & span ids",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1296",
+      "state": "OPEN",
+      "createdAt": "2026-09-01T11:29:54Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "<!--\nThank you for contributing to OpenTelemetry Go Compile Instrumentation!\n\nINSTRUCTIONS:\n1. Fill in the description and motivation sections below\n2. Complete the checklist before submitting\n\n\nIf your PR adds a new user-facing instrumentation, please also submit a corresponding OpenTelemetry Regis",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBtWw3Q",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): drop redundant comments on rule struct fields",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1294",
+      "state": "MERGED",
+      "createdAt": "2026-09-01T07:12:28Z",
+      "mergedAt": "2026-09-01T07:54:55Z",
+      "closedAt": "2026-09-01T07:54:55Z",
+      "body": "Closes #1290\n\nrules.md already spells out what every rule field means, so the per-field comments on the InstXxxRule structs were just repeating it, plus some had gone stale (the has_directive comment claimed it wasn't executed yet, but it is).\n\nDropped those comments and the blank lines that were on",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBmiSzw",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "docs(schemas): backfill missing coverage rows for aws and linodego",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1291",
+      "state": "MERGED",
+      "createdAt": "2026-08-31T12:54:22Z",
+      "mergedAt": "2026-09-01T11:18:53Z",
+      "closedAt": "2026-09-01T11:18:53Z",
+      "body": "`schemas/otelc/README.md` says a missing row in the coverage table means an undeclared instrumentation. `aws.yaml` and `linodego.yaml` both existed with no row, and `linodego.yaml` was missing from the tree diagram too. This adds both, so the table actually matches what's in `schemas/otelc/groups/`.",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABO9YnlQ",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Remove comments on rule fields",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1290",
+      "state": "CLOSED",
+      "createdAt": "2026-08-31T09:57:08Z",
+      "mergedAt": null,
+      "closedAt": "2026-09-01T07:54:56Z",
+      "body": "This is a simple cleanup task.\n\nSince rules.md already precisely defines the usage and meaning of each rule field, repeating them in the code is redundant. We could consider removing them:\n```\ntype InstCallRule struct {\n    InstBaseRule `yaml:\",inline\"`\n    ImportPath string `json:\"import-path\" yaml",
+      "labels": [
+        "available",
+        "effort:low"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "I_kwDODS0WD88AAAABO4gE-g",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "[Feature]: Allow configuring all 5 ParentBased sampler branches per the trace spec",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3657",
+      "state": "OPEN",
+      "createdAt": "2026-08-30T18:40:09Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "### Related Problems?\n\nThe OpenTelemetry trace spec defines `ParentBased` as a composite sampler with 5\nindependently configurable delegate samplers:\nhttps://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#parentbased\n\n  1. root                       — no p",
+      "labels": [
+        "enhancement",
+        "question",
+        "A-trace",
+        "priority:p3",
+        "triage:accepted",
+        "M-sdk"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDODS0WD88AAAABO4daeA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "[Bug]: Explicit bucket histogram `sum` permanently corrupted by NaN/Infinity measurements",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3656",
+      "state": "OPEN",
+      "createdAt": "2026-08-30T18:30:26Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "### What happened?\n\nRecording a NaN (or +/-Infinity) value into a `Histogram` instrument permanently corrupts\nthat data point's `sum`. Because `x + NaN == NaN` for any `x`, once `Buckets::total`\nbecomes NaN it stays NaN on every subsequent update. With Cumulative temporality (the\nSDK default), the m",
+      "labels": [
+        "bug",
+        "A-metrics",
+        "priority:p2",
+        "triage:accepted",
+        "M-sdk"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBflppw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(runtime): restore default OS signal disposition in handleShutdownSignal",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1283",
+      "state": "OPEN",
+      "createdAt": "2026-08-30T09:14:52Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Description\n\nIn `pkg/runtime/setup.go`, `handleShutdownSignal` flushes OpenTelemetry telemetry upon receiving `SIGINT` or `SIGTERM`. However, after calling `signal.Stop(sigCh)`, `signal.Reset(...)` was omitted. This left the signal handler trapped in Go runtime, swallowing the initial `SIGINT`/`S",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABO2HleA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): ctx.GetParam/GetReturnVal panics when the target function is generic",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1281",
+      "state": "CLOSED",
+      "createdAt": "2026-08-30T08:58:58Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-30T08:59:37Z",
+      "body": "### Describe the bug\n\nIf you write a rule that hooks a generic function (one with a type parameter, like `func Query[T any](...)`), calling `ctx.GetParam()`, `ctx.SetParam()`, `ctx.GetReturnVal()`, or `ctx.SetReturnVal()` inside your hook panics at runtime, no matter what index you pass. These four ",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABO2HTPA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): ctx.GetParam/GetReturnVal panics when the target function is generic",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1280",
+      "state": "OPEN",
+      "createdAt": "2026-08-30T08:57:40Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "### Describe the bug\n\nIf you write a rule that hooks a generic function (one with a type parameter, like `func Query[T any](...)`), calling `ctx.GetParam()`, `ctx.SetParam()`, `ctx.GetReturnVal()`, or `ctx.SetReturnVal()` inside your hook panics at runtime, no matter what index you pass. These four ",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBfV0Hg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(tool/internal/setup): recognize quoted -mod tokens in GOFLAGS",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1279",
+      "state": "OPEN",
+      "createdAt": "2026-08-30T07:39:21Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Description\n\n`forceModMod` in `tool/internal/setup/vendor.go` split `GOFLAGS` with `strings.Fields` and matched the raw tokens. The go command accepts quoted `GOFLAGS` tokens such as `'-mod=readonly'`, and the surrounding quotes stayed attached to the token, so `isModToken` did not recognize it a",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBYH-KA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(tool/ast): handle import alias collisions and enforce strict import matching (#1271)",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1274",
+      "state": "OPEN",
+      "createdAt": "2026-08-28T19:07:09Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Description\n\nFixes #1271.\n\nThis PR addresses two edge-case issues in `tool/internal/ast/typename.go`:\n\n1. **Import Alias Collisions:** `ImportAliasMap` previously mapped default package aliases to import paths without checking for collisions. When a source file contained multiple unaliased import",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 5
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBSnixw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(tool): support minimum otelc version in rule files",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1270",
+      "state": "OPEN",
+      "createdAt": "2026-08-28T03:49:45Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Description\n\nAdds support for declaring the minimum required `otelc` version in each rule file using a reserved top-level key:\n\n```yaml\nversion: \"v1.0.0\"\n```\n\nThis PR:\n\n* Adds a shared parser for separating file-level version metadata from rule entries.\n* Validates that minimum versions are relea",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 5
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBIEw0w",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "chore(test): add multi-process e2e for HTTP→OpenAI streaming GenAI client",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1259",
+      "state": "OPEN",
+      "createdAt": "2026-08-26T20:31:03Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Description\n\nAdds multi-process e2e coverage for HTTP→OpenAI **streaming** GenAI client spans. Extends `httpserveropenaiclient` with a `-stream` flag and adds an e2e test that asserts one distributed trace (HTTP client → HTTP server → GenAI client) with `gen_ai.request.is_stream=true`.\n\n## Motiva",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBE35tQ",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool/internal/instrument): resolve TODO on HookContextImpl meth…",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1252",
+      "state": "MERGED",
+      "createdAt": "2026-08-26T12:50:45Z",
+      "mergedAt": "2026-08-27T09:33:29Z",
+      "closedAt": "2026-08-27T09:33:29Z",
+      "body": "This closes out the TODO from [#1173](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1173): it looked like the four panicking HookContextImpl methods (GetParam/SetParam/GetReturnVal/SetReturnVal) should get removed once a generic target has no After hook. Turns out",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABBDj2EQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(instrumentation): add compile-time instrumentation for gofiber/fiber/v2 (#1248)",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1250",
+      "state": "OPEN",
+      "createdAt": "2026-08-26T09:41:51Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Description\n\nAdds compile-time zero-code instrumentation for the GoFiber web framework (`github.com/gofiber/fiber/v2`).\n\n- Adds AST rule definition `otelc.yaml` targeting `(*Ctx).Next()` in `github.com/gofiber/fiber/v2`.\n- Implements `BeforeNext` and `AfterNext` context hooks for `*fiber.Ctx` to ",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABOL7Y1w",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "Compile-time performance: several redundant subprocess spawns and re-parsing in the setup/toolexec pipeline",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1242",
+      "state": "OPEN",
+      "createdAt": "2026-08-25T14:25:36Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "\nI went through the `otelc` setup and toolexec pipeline (`tool/internal/{setup,instrument,pkgload,ast}`) looking for compile-time performance issues, and found a handful of spots where we're doing more subprocess spawning and re-parsing than we need to. None of these are correctness bugs, the tool w",
+      "labels": [],
+      "commentCount": 8
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABA7QYiQ",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "feat(sdk): publicly export OTEL_* env var and default constants",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3647",
+      "state": "MERGED",
+      "createdAt": "2026-08-25T11:08:22Z",
+      "mergedAt": "2026-08-28T20:56:21Z",
+      "closedAt": "2026-08-28T20:56:21Z",
+      "body": "Constants like `OTEL_BSP_SCHEDULE_DELAY_DEFAULT`, `OTEL_BLRP_MAX_QUEUE_SIZE_DEFAULT`, etc. were `pub(crate)`, so there was no way to read the SDK's own defaults from outside the crate. Arti (Tor) hit this directly - their config system needs to fall back to OTel's defaults when a user leaves a value",
+      "labels": [],
+      "commentCount": 5
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABA7CYDg",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore: clean up the repository root",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1240",
+      "state": "MERGED",
+      "createdAt": "2026-08-25T10:34:07Z",
+      "mergedAt": "2026-08-26T03:00:00Z",
+      "closedAt": "2026-08-26T03:00:00Z",
+      "body": "## Summary\n\n- Move `AI_POLICY.md`, `RELEASE.md`, and `SECURITY.md` into `docs/`, where the rest of the project's documentation lives (GitHub still recognizes `SECURITY.md` there for the Security tab).\n- Delete `CHANGELOG.md` — GitHub Releases already tracks notes per version, so keeping a second cop",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABOH3Ejg",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Clean up the repository root",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1234",
+      "state": "CLOSED",
+      "createdAt": "2026-08-25T06:23:06Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-26T03:00:01Z",
+      "body": "Our root directory keeps growing. Some of it clearly belongs elsewhere, and moving it would simplify the directory structure.\n- codecov.yml and .github/codeconv.yaml are duplicates. One of them should be eliminated and move to `.github`  eventually\n- AI_POLICY.md/RELEASE.md/SECURITY.md can be moved ",
+      "labels": [
+        "available",
+        "effort:low"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABA1hPyw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(ast): handle qualified pointer receivers in stripGenericTypes",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1230",
+      "state": "OPEN",
+      "createdAt": "2026-08-24T18:01:16Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Summary\n\nfix(ast): handle qualified pointer receivers in stripGenericTypes\n\n## Changes\n\n- SelectorExpr *pkg.Type aborted via Unimplemented.\n- Strip qualifier; unknown shapes are non-matches.\n\nFixes #766\n",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABA1Ln9w",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(tool): handle generic receiver type parameters",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1229",
+      "state": "OPEN",
+      "createdAt": "2026-08-24T17:13:59Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Motivation\n\nFixes #1218\n\nWhen instrumenting methods on generic types, the generated trampoline functions correctly include the receiver's type parameters, but the trampoline calls were not passing those type arguments.\n\nThis change resolves the generic type parameters from the method receiver and",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAyqTkA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "refactor(tool): reuse AstParser.ParseSnippet for snippet parsing in call_template",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1226",
+      "state": "OPEN",
+      "createdAt": "2026-08-24T11:45:33Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Description\n\n`parseSnippetFuncDecl` in `tool/internal/instrument/call_template.go` wrapped a source\nsnippet in `package _\\nfunc _() { ... }`, parsed it with `go/parser`, and decorated it into\na `dst.File` to get at the parsed statements. This duplicated `AstParser.ParseSnippet` in\n`tool/internal/",
+      "labels": [
+        "scope:refactor"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAyiEOg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "refactor(tool): remove unused HookContext methods",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1225",
+      "state": "OPEN",
+      "createdAt": "2026-08-24T11:25:46Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "<!--\nThank you for contributing to OpenTelemetry Go Compile Instrumentation!\n\nINSTRUCTIONS:\n1. Fill in the description and motivation sections below\n2. Complete the checklist before submitting\n3. Ensure PR title follows conventional commits format (enforced by CI)\n\nPR TITLE FORMAT (required):\n  type",
+      "labels": [
+        "scope:refactor"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAuE95w",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(tool/internal/ast): handle import alias collisions in ImportAliasMap",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1220",
+      "state": "OPEN",
+      "createdAt": "2026-08-23T18:36:15Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #1219\n\n### Description\nThis PR resolves issue #1219 in `ImportAliasMap` where distinct unaliased imports sharing a last path segment (e.g. `text/template` and `html/template`, both conventionally defaulting to `template`) would silently overwrite existing map entries.\n\n### Changes Made\n1. Upda",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDODS0WD88AAAABN6M_qw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "[Bug]: A panicking observable metric callback permanently disables collection (mutex poisoning + PeriodicReader thread death)",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3640",
+      "state": "OPEN",
+      "createdAt": "2026-08-23T18:26:23Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "### What happened?\n\n## What happened\n\nA panic inside a single `ObservableGauge`/`ObservableCounter`/`ObservableUpDownCounter`\ncallback permanently and silently disables metrics collection for the entire\n`MeterProvider` — not just the offending instrument — for the rest of the process's life.\n\n## Wha",
+      "labels": [
+        "enhancement",
+        "triage:todo"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNzWWUg",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/setup): -toolexec flag breaks when otelc's own executable path contains a space",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1207",
+      "state": "OPEN",
+      "createdAt": "2026-08-22T09:19:17Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "### Describe the bug\n\n`buildWithToolexec` builds the `-toolexec` flag by just string-concatenating otelc's own executable path with no quoting:\n\n```go\n// tool/internal/setup/setup.go:541-545\nexecPath, err := os.Executable()\ninsert := \"-toolexec=\" + execPath + \" toolexec\"\n```\n\nIf `execPath` has a spa",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAhsysA",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "docs(tool): document HookContext accessor panics for generic targets",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1191",
+      "state": "MERGED",
+      "createdAt": "2026-08-21T08:54:51Z",
+      "mergedAt": "2026-08-21T09:24:06Z",
+      "closedAt": "2026-08-21T09:24:06Z",
+      "body": "## Summary\n\nFixes #1174.\n\nThe Generic Functions limitation in the hook-authoring guide said we cannot use `HookContext` to *modify* parameters or return values, naming `SetParam` and `SetReturnVal`. Reading is equally unavailable: for a generic target `GetParam` and `GetReturnVal` are replaced with ",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAg7qJQ",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "feat(tool): enforce test file naming conventions in CI",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1190",
+      "state": "MERGED",
+      "createdAt": "2026-08-21T06:54:21Z",
+      "mergedAt": "2026-08-21T09:06:38Z",
+      "closedAt": "2026-08-21T09:06:38Z",
+      "body": "## Summary\n\n\n\n- Adds `tool/cmd/check-test-names`, a Go checker enforcing exact `foo_test.go` <-> `foo.go` pairing across `tool/`, `pkg/`, and `instrumentation/` unit packages (no prefix matching, per discussion on #1128 — that's what let segmented test files creep in).\n- Exempts dedicated scenario s",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAdFlNw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(pkg): preserve trace context in database/sql transactions",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1188",
+      "state": "OPEN",
+      "createdAt": "2026-08-20T18:15:18Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "## Description\nThis PR fixes an issue where database spans generated during a transaction (such as `START TRANSACTION`, `INSERT`, `COMMIT`, or `ROLLBACK`) were orphaned and disconnected from their parent HTTP server trace.\n\nThe root cause was that `tx.Commit()` and `tx.Rollback()` in `database/sql` ",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNb5M0Q",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "docs(tool): HookContextImpl.GetParam/SetParam/GetReturnVal/SetReturnVal panic for any generic target, undocumented and undiscoverable until runtime",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1176",
+      "state": "CLOSED",
+      "createdAt": "2026-08-19T20:00:29Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-19T20:02:06Z",
+      "body": "### Problem\n\nFor any generic function or generic-receiver method target, the generated `HookContextImpl{suffix}`'s `GetParam`, `SetParam`, `GetReturnVal`, and `SetReturnVal` methods are replaced with unconditional `panic(...)` bodies. A hook author who writes `ctx.GetParam(0)` (or any of the other t",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNb5KAw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "chore(tool/internal/instrument): leftover panicking HookContextImpl methods after After-hook removal in optimizeTJumps",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1175",
+      "state": "CLOSED",
+      "createdAt": "2026-08-19T20:00:23Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-19T20:02:42Z",
+      "body": "### Problem\n\nWhen a generic function or generic-receiver method is instrumented with only a Before hook (no After), `optimizeTJumps` deletes the generated After trampoline function — but leaves the four always-panicking `HookContextImpl{suffix}` methods (`GetParam`, `SetParam`, `GetReturnVal`, `SetR",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNb5Ccg",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "docs(tool): HookContextImpl.GetParam/SetParam/GetReturnVal/SetReturnVal panic for any generic target, undocumented and undiscoverable until runtime",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1174",
+      "state": "CLOSED",
+      "createdAt": "2026-08-19T20:00:09Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-21T09:24:07Z",
+      "body": "### Problem\n\nFor any generic function or generic-receiver method target, the generated `HookContextImpl{suffix}`'s `GetParam`, `SetParam`, `GetReturnVal`, and `SetReturnVal` methods are replaced with unconditional `panic(...)` bodies. A hook author who writes `ctx.GetParam(0)` (or any of the other t",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNb4iOg",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "chore(tool/internal/instrument): leftover panicking HookContextImpl methods after After-hook removal in optimizeTJumps",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1173",
+      "state": "OPEN",
+      "createdAt": "2026-08-19T19:59:04Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "### Problem\n\nWhen a generic function or generic-receiver method is instrumented with only a Before hook (no After), `optimizeTJumps` deletes the generated After trampoline function — but leaves the four always-panicking `HookContextImpl{suffix}` methods (`GetParam`, `SetParam`, `GetReturnVal`, `SetR",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNbJuBg",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): generic receiver constraint recovery doesn't search other files of the same package, falls back to `any`",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1171",
+      "state": "CLOSED",
+      "createdAt": "2026-08-19T18:23:30Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-26T05:48:20Z",
+      "body": "> **Note:** this is a known, self-flagged gap, not a new discovery. PR #1122 (fixes #1121) explicitly documented it in a \"Known limitation\" section and referenced \"the linked issue\" for the follow-up — but no such issue was ever filed, as far as I can find (searched `findGenericTypeDecl`, \"cross-fil",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 7
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNbJuBg",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): generic receiver constraint recovery doesn't search other files of the same package, falls back to `any`",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1171",
+      "state": "CLOSED",
+      "createdAt": "2026-08-19T18:23:30Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-26T05:48:20Z",
+      "body": "> **Note:** this is a known, self-flagged gap, not a new discovery. PR #1122 (fixes #1121) explicitly documented it in a \"Known limitation\" section and referenced \"the linked issue\" for the follow-up — but no such issue was ever filed, as far as I can find (searched `findGenericTypeDecl`, \"cross-fil",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 7
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAOqhKw",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): consolidate instrument package tests into per-source-file pairing",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1163",
+      "state": "MERGED",
+      "createdAt": "2026-08-19T03:30:14Z",
+      "mergedAt": "2026-08-20T01:55:29Z",
+      "closedAt": "2026-08-20T01:55:29Z",
+      "body": "## Description\n\nLast package in the test-consolidation pass for #1128. `tool/internal/instrument` had ten orphaned test files:\n\n- `api_sync_test.go` → `apply_func_test.go` (`templateAPI` is in `apply_func.go`)\n- `call_placeholder_test.go` → `call_template_test.go` (`replacePlaceholder`)\n- `call_temp",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAOqZhg",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): consolidate setup package tests into per-source-file pairing",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1162",
+      "state": "MERGED",
+      "createdAt": "2026-08-19T03:29:54Z",
+      "mergedAt": "2026-08-20T01:58:24Z",
+      "closedAt": "2026-08-20T01:58:24Z",
+      "body": "## Description\n\nFifth package in the test-consolidation pass for #1128. `tool/internal/setup` had five orphaned test files, each a grab-bag spanning multiple source files rather than a single-target merge:\n\n- `extra_helpers_test.go` splits two ways: `TestStateManagerDiscard`, `TestStateManagerDiscar",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAOqT5A",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): consolidate profile package tests into profile_test.go",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1161",
+      "state": "MERGED",
+      "createdAt": "2026-08-19T03:29:37Z",
+      "mergedAt": "2026-08-20T01:58:11Z",
+      "closedAt": "2026-08-20T01:58:11Z",
+      "body": "## Description\n\nFourth package in the test-consolidation pass for #1128.\n\n`profile_extra_test.go` had no matching source file. Every function it tested — `Start`, `Stop`, `writeHeapProfile`, `mergeType`, `Merge` — is declared in `profile.go`, whose existing `profile_test.go` already held the base co",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAOqPaA",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): consolidate util package tests into per-source-file pairing",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1160",
+      "state": "MERGED",
+      "createdAt": "2026-08-19T03:29:23Z",
+      "mergedAt": "2026-08-20T02:19:29Z",
+      "closedAt": "2026-08-20T02:19:29Z",
+      "body": "## Description\n\nThird package in the test-consolidation pass for #1128 (`tool/ex` and `tool/internal/ast` went first, in #1142 and #1159).\n\n`tool/util` had three files with no direct source-file pairing, and unlike the previous two packages, none of them was a single-target merge — each is a grab-ba",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAOg5bg",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): consolidate ast package tests into per-source-file pairing",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1159",
+      "state": "MERGED",
+      "createdAt": "2026-08-19T02:53:01Z",
+      "mergedAt": "2026-08-20T01:57:14Z",
+      "closedAt": "2026-08-20T01:57:14Z",
+      "body": "## Description\n\nSecond package in the test-consolidation pass for #1128 (`tool/ex` went first in #1142).\n\n`tool/internal/ast` had five files with no direct source-file pairing:\n\n- `ast_test.go` and `parser_extra_test.go` both tested `parser.go` (`ParseFile`,\n  `ParsePackageName`, `WriteFile`, `Parse",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAI82UQ",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): unexport rule schema identifiers with no cross-package use",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1151",
+      "state": "MERGED",
+      "createdAt": "2026-08-18T11:59:41Z",
+      "mergedAt": "2026-08-19T16:01:23Z",
+      "closedAt": "2026-08-19T16:01:23Z",
+      "body": "## Description\n\nFourth and last slice of #1143 (#1146, the `ast` PR, and the `setup` PR precede this one). This one covers `tool/internal/rule`.\n\nUnexported 49 identifiers with zero references outside the package: the selector-name constants (`SelKind`, `SelLastResult`, `SelParam`, `SelPattern`, `Se",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAI8zSQ",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): unexport setup package identifiers with no cross-package use",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1150",
+      "state": "MERGED",
+      "createdAt": "2026-08-18T11:59:34Z",
+      "mergedAt": "2026-08-20T09:08:29Z",
+      "closedAt": "2026-08-20T09:08:29Z",
+      "body": "## Description\n\nThird slice of #1143 (first was #1146, second is the `ast` PR). This one covers `tool/internal/setup` — the largest of the four in terms of blast radius, 27 identifiers touching 22 files.\n\nUnexported: the build-lock/state-manager funcs and types (`AcquireBuildLock`, `Build`, `BuildWi",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAI8v1w",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): unexport ast package identifiers with no cross-package use",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1149",
+      "state": "MERGED",
+      "createdAt": "2026-08-18T11:59:26Z",
+      "mergedAt": "2026-08-20T14:05:14Z",
+      "closedAt": "2026-08-20T14:05:14Z",
+      "body": "## Description\n\nSecond slice of #1143 (first was #1146, covering `util`/`imports`/`pkgload`/`manifest`/`instrument`/`profile`). This one covers `tool/internal/ast`.\n\nUnexported 13 identifiers with zero references outside the package: `IdentFalse`/`IdentNil`/`IdentTrue`, `BoolTrue`, `DefaultImportAli",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAIo-_g",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): unexport internal identifiers with no cross-package use",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1146",
+      "state": "MERGED",
+      "createdAt": "2026-08-18T11:11:59Z",
+      "mergedAt": "2026-08-20T09:09:22Z",
+      "closedAt": "2026-08-20T09:09:22Z",
+      "body": "## Description\n\nSupersedes #1145, which I closed after realizing the diff there only covered part of the\nintended scope — this PR folds in `instrument.InstrumentPhase`/`TJump` as well. Closing it\ntriggered this fork's auto-delete-branch setting, and GitHub does not allow reopening a PR\nonce its head",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNLUXVw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/setup): rule load order is nondeterministic, producing different instrumented output between identical builds",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1144",
+      "state": "CLOSED",
+      "createdAt": "2026-08-18T07:26:53Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-20T11:29:58Z",
+      "body": "### Describe the bug\n\n`parseRuleFromYaml` in `tool/internal/setup/match.go` iterates the unmarshalled YAML rule map directly and appends to the returned slice in that order:\n\n```go\nfunc parseRuleFromYaml(content []byte) ([]rule.InstRule, error) {\n\tvar h map[string]map[string]any\n\terr := yaml.Unmarsh",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNLUXVw",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "bug(tool/internal/setup): rule load order is nondeterministic, producing different instrumented output between identical builds",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1144",
+      "state": "CLOSED",
+      "createdAt": "2026-08-18T07:26:53Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-20T11:29:58Z",
+      "body": "### Describe the bug\n\n`parseRuleFromYaml` in `tool/internal/setup/match.go` iterates the unmarshalled YAML rule map directly and appends to the returned slice in that order:\n\n```go\nfunc parseRuleFromYaml(content []byte) ([]rule.InstRule, error) {\n\tvar h map[string]map[string]any\n\terr := yaml.Unmarsh",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNLTbkQ",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Reduce exported API surface in tool packages",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1143",
+      "state": "CLOSED",
+      "createdAt": "2026-08-18T07:25:00Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-21T02:15:56Z",
+      "body": "A lot of identifiers in the tool packages are exported but never used\noutside their own package. This mostly affects `tool/internal/*`, where\nexporting serves no purpose at all since `internal` packages can't be\nimported from outside the module.\n\nA rough count using a go/packages-based usage scan: ~",
+      "labels": [
+        "available",
+        "effort:low"
+      ],
+      "commentCount": 5
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABAGs19Q",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore(tool): consolidate ex package tests into error_test.go",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1142",
+      "state": "MERGED",
+      "createdAt": "2026-08-18T06:16:15Z",
+      "mergedAt": "2026-08-18T06:49:10Z",
+      "closedAt": "2026-08-18T06:49:10Z",
+      "body": "## Description\n\nFirst package in the test-consolidation pass for #1128, kept small so the approach can be\nsigned off before the larger packages follow.\n\n`tool/ex` had two test files against a single source file (`error.go`): `ex_test.go`\n(error construction, wrapping, joining) and `fatal_test.go` (`",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABNBgaVQ",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Consolidate tests into a single _test.go per source file",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1128",
+      "state": "CLOSED",
+      "createdAt": "2026-08-17T06:28:08Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-20T03:42:43Z",
+      "body": "Tests are currently tending to get split out into narrowly scoped files, for example trampoline_generic_test.go alongside trampoline_test.go, plus some odd ones like helpers_extra_test.go, shared_paths_test.go, and toolexec_dropin_test.go. I think we should only accept the {trampoline.go, trampoline",
+      "labels": [
+        "available",
+        "effort:low"
+      ],
+      "commentCount": 9
+    },
+    {
+      "id": "PR_kwDONpzSS87-tUUN",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "fix(tool/internal/instrument): strip build-ignore tag per line, not by substring",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1095",
+      "state": "MERGED",
+      "createdAt": "2026-08-13T17:11:41Z",
+      "mergedAt": "2026-08-19T14:28:05Z",
+      "closedAt": "2026-08-19T14:28:05Z",
+      "body": "## Description\n\n`stripBuildIgnoreTag` strips the `//go:build ignore` constraint from a file rule's source\nbefore it gets spliced into the target package, using a whole-file substring replace:\n\n```go\nfunc stripBuildIgnoreTag(content string) string {\n\treturn strings.ReplaceAll(content, \"//go:build ign",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS879-p6V",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "fix(tool/internal/instrument): sort file keys in instrument() for deterministic error reporting",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1072",
+      "state": "MERGED",
+      "createdAt": "2026-08-12T09:42:50Z",
+      "mergedAt": "2026-08-17T12:21:58Z",
+      "closedAt": "2026-08-17T12:21:58Z",
+      "body": "## Description\n\n`instrument()` iterates the file-to-rules map returned by `groupRules` directly with a bare\n`range`. Go randomizes map iteration order per range statement, and the loop returns on the\nfirst error it hits. When a package's rule set spans multiple files and more than one has a\nfailing ",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABMaydVw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): sort file keys in instrument() for deterministic error reporting",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1070",
+      "state": "CLOSED",
+      "createdAt": "2026-08-12T07:31:26Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-17T12:22:00Z",
+      "body": "### Describe the bug\n\n`instrument()` in `tool/internal/instrument/instrument.go` iterates the file-to-rules map returned by `groupRules` directly:\n\n```go\nfor file, rules := range groupRules(ip.workDir, rset) {\n\troot, err := ip.parseFile(file)\n\t...\n\tfor _, r := range rules {\n\t\tfuncRule, err1 := ip.ap",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABMaydVw",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): sort file keys in instrument() for deterministic error reporting",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1070",
+      "state": "CLOSED",
+      "createdAt": "2026-08-12T07:31:26Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-17T12:22:00Z",
+      "body": "### Describe the bug\n\n`instrument()` in `tool/internal/instrument/instrument.go` iterates the file-to-rules map returned by `groupRules` directly:\n\n```go\nfor file, rules := range groupRules(ip.workDir, rset) {\n\troot, err := ip.parseFile(file)\n\t...\n\tfor _, r := range rules {\n\t\tfuncRule, err1 := ip.ap",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABMatZ5w",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): stripBuildIgnoreTag corrupts //go:build ignore text appearing anywhere in a file rule's source",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1069",
+      "state": "CLOSED",
+      "createdAt": "2026-08-12T07:21:35Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-19T14:28:06Z",
+      "body": "### Describe the bug\n\n`stripBuildIgnoreTag` in `tool/internal/instrument/apply_file.go` strips the `//go:build ignore` constraint from a file rule's source before it is injected into the target package, using a whole-file substring replace:\n\n```go\nfunc stripBuildIgnoreTag(content string) string {\n\tr",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABMatZ5w",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): stripBuildIgnoreTag corrupts //go:build ignore text appearing anywhere in a file rule's source",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1069",
+      "state": "CLOSED",
+      "createdAt": "2026-08-12T07:21:35Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-19T14:28:06Z",
+      "body": "### Describe the bug\n\n`stripBuildIgnoreTag` in `tool/internal/instrument/apply_file.go` strips the `//go:build ignore` constraint from a file rule's source before it is injected into the target package, using a whole-file substring replace:\n\n```go\nfunc stripBuildIgnoreTag(content string) string {\n\tr",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDONpzSS879eLN2",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "fix(tool/internal/instrument): rewrite only the targeted name of a multi-name declaration",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1046",
+      "state": "MERGED",
+      "createdAt": "2026-08-11T11:01:57Z",
+      "mergedAt": "2026-08-20T15:32:51Z",
+      "closedAt": "2026-08-20T15:32:51Z",
+      "body": "## Description\n\n`ast.FindNamedDecl` returns the whole `*dst.ValueSpec` that contains a matched name and\ndiscards which name matched, so `applyDeclRule` rewrote every name in the spec: the replace\npath reassigned all of `spec.Values`, and `wrapDeclValues` wrapped all of them. A rule\ntargeting `alpha`",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 8
+    },
+    {
+      "id": "PR_kwDONpzSS879eLBC",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "fix(tool/internal/instrument): skip directive rule injection when no function matches",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1045",
+      "state": "MERGED",
+      "createdAt": "2026-08-11T11:01:49Z",
+      "mergedAt": "2026-08-19T15:14:37Z",
+      "closedAt": "2026-08-19T15:14:37Z",
+      "body": "## Description\n\n`applyDirectiveRule` added the rule's `imports:` to the target file before it computed\n`ast.FindFuncsByDirective`. When the directive comment exists in the file but is not a\nleading comment on a top-level func, the match set is empty and nothing is injected — but\nthe import is alread",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 4
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABMSQMlA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): decl rule replace/wrap rewrites every name in a multi-name var/const declaration",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1044",
+      "state": "CLOSED",
+      "createdAt": "2026-08-11T10:58:41Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-20T15:32:52Z",
+      "body": "### Describe the bug\n\nA decl rule targets one identifier, but `applyDeclRule` in\n`tool/internal/instrument/apply_decl.go` rewrites every name declared in the same\n`ValueSpec`.\n\n`ast.FindNamedDecl` / `findValueDecl` return the whole `*dst.ValueSpec` that contains the\nmatched name and discard which na",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABMSQInQ",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(tool/internal/instrument): directive rule injects its imports even when no function matches",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1043",
+      "state": "CLOSED",
+      "createdAt": "2026-08-11T10:58:34Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-19T15:14:39Z",
+      "body": "### Describe the bug\n\n`applyDirectiveRule` in `tool/internal/instrument/apply_directive.go` adds the rule's\n`imports:` to the target file *before* it looks for the functions the directive annotates:\n\n```go\nfunc (ip *InstrumentPhase) applyDirectiveRule(ctx context.Context, r *rule.InstDirectiveRule, ",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABLuOvwA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "stripCompleteFlag mutates caller's slice in place; WriteFile exits process on close error",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/989",
+      "state": "CLOSED",
+      "createdAt": "2026-08-06T13:29:41Z",
+      "mergedAt": null,
+      "closedAt": "2026-08-07T06:21:43Z",
+      "body": "While reading through tool/ ahead of an LFX application, I found two small correctness issues:\n\n1. **stripCompleteFlag** (tool/internal/instrument/toolexec.go, ~line 86-93)\nRemoves the -complete flag via append(args[:i], args[i+1:]...). This shifts the remaining elements left in the same backing arr",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDONpzSS877m5MJ",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "fix(toolexec): avoid in-place slice mutation in stripCompleteFlag",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/988",
+      "state": "MERGED",
+      "createdAt": "2026-08-06T13:28:33Z",
+      "mergedAt": "2026-08-07T06:21:42Z",
+      "closedAt": "2026-08-07T06:21:42Z",
+      "body": "Fixes #989\n\nRemoves the in-place slice mutation in stripCompleteFlag by cloning the input slice via slices.Clone and then deleting the -complete flag using slices.Delete, instead of using \u0007ppend(args[:i], args[i+1:]...) which mutates the shared backing array.\n\nAdded a test case asserting the origina",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOTd-p_c72VG0T",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "Add test coverage for typed error edge cases (channel_cap_reached, defaults, login()/top_up())",
+      "repo": "TryCaspian/caspian-sdk",
+      "url": "https://github.com/TryCaspian/caspian-sdk/pull/125",
+      "state": "MERGED",
+      "createdAt": "2026-07-25T14:51:36Z",
+      "mergedAt": "2026-07-29T11:12:39Z",
+      "closedAt": "2026-07-29T11:12:39Z",
+      "body": "Closes #3.\n\nAdds 10 tests to sdks/python/tests/test_sdk.py filling gaps in the existing typed authentication/billing error coverage:\n\n- `channel_cap_reached` as a 429 reason, alongside the already-tested `insufficient_credit` / `monthly_cap_reached`\n- Default-filling on `AccountRequiredError` / `Ins",
+      "labels": [],
+      "commentCount": 2
+    }
+  ]
+}
