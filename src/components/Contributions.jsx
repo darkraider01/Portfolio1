@@ -7,6 +7,7 @@ import { timeAgo } from '../utils/timeAgo';
 
 const CATEGORY_LABELS = {
   mergedPRs: 'Merged PRs',
+  openPRs: 'Open PRs',
   issuesCreated: 'Issues Raised',
   issuesAssigned: 'Issues Taken',
   reviewsGiven: 'Reviews Given'
@@ -71,7 +72,7 @@ const Contributions = () => {
 
       {data && (
         <div className="relative z-10">
-          <div className="mb-10 grid grid-cols-2 gap-6 md:grid-cols-4">
+          <div className="mb-10 grid grid-cols-2 gap-6 md:grid-cols-5">
             {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
               <div key={key}>
                 <p className="font-mono text-3xl text-bone">{data.summary[key] ?? 0}</p>
