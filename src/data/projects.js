@@ -20,6 +20,16 @@ export const projects = [
     featured: true
   },
   {
+    name: 'rust-compile-time-instrumentation',
+    slug: 'rust-compile-time-instrumentation',
+    description:
+      "Zero-code compile-time OpenTelemetry instrumentation for Rust, reaching third-party dependencies, on stable Rust: no nightly, no compiler forks, no eBPF. Intercepts rustc via RUSTC_WRAPPER and splices native OTel API calls at the byte level, with an extern \"C\" trampoline so dependency crates get instrumented without dragging OTel into every upstream crate's dependency tree. Architecture is frozen behind six ADRs and a normative correctness spec; the cargo-instrument pipeline itself is in active development. My current biggest project.",
+    languages: ['Rust'],
+    href: 'https://github.com/darkraider01/rust-compile-time-instrumentation-',
+    updatedAt: '2026-09-04T17:06:24Z',
+    featured: true
+  },
+  {
     name: 'mini-etcd',
     slug: 'mini-etcd',
     description:
