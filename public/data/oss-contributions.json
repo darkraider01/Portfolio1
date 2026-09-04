@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-03T09:15:32.210Z",
+  "last_updated": "2026-09-04T10:52:55.383Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 25,
@@ -20,7 +20,7 @@
       "createdAt": "2026-09-03T09:01:30Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #3657.\n\nParentBased only let you configure the root case (no parent), the other 4 branches from the spec (remote/local parent, sampled/not sampled) were hardcoded to AlwaysOn/AlwaysOff with no way to override them.\n\nAdded Sampler::parent_based(root), which returns a ParentBasedSampler you can ",
+      "body": "Fixes #3657.\nParentBased only let you configure the root case (no parent), the other 4 branches from the spec (remote/local parent, sampled/not sampled) were hardcoded to AlwaysOn/AlwaysOff with no way to override them.\nAdded Sampler::parent_based(root), which returns a ParentBasedSampler you can ch",
       "labels": [],
       "commentCount": 1
     },
@@ -35,9 +35,9 @@
       "createdAt": "2026-09-03T08:55:06Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "HTTP/1.x already falls back to the `Host:` header when the connection tuple can't be resolved, so client spans still get a peer. HTTP/2 has the same info sitting right there in the `:authority` pseudo-header, but nothing was reading it — so gRPC and HTTP/2 spans just went out with an empty peer when",
+      "body": "HTTP/1.x already falls back to the Host: header when the connection tuple can't be resolved, so client spans still get a peer. HTTP/2 has the same info sitting right there in the :authority pseudo-header, but nothing was reading it — so gRPC and HTTP/2 spans just went out with an empty peer whenever",
       "labels": [],
-      "commentCount": 0
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOOa4Yns8AAAABCBjSng",
@@ -50,9 +50,9 @@
       "createdAt": "2026-09-03T08:28:42Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Found this while going through the sk_msg path — `fill_msg_buffers()` just assumes the earlier `bpf_msg_pull_data()` pull actually worked, but nothing checks it. If it fails, `msg->data`/`data_end` stay narrow, and the function still blindly copies up to 8KB from `msg->data`, so it can pull in rando",
+      "body": "Found this while going through the sk_msg path , fill_msg_buffers() just assumes the earlier bpf_msg_pull_data() pull actually worked, but nothing checks it. If it fails, msg->data/data_end stay narrow, and the function still blindly copies up to 8KB from msg->data, so it can pull in random adjacent",
       "labels": [],
-      "commentCount": 1
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABCBZnlw",
@@ -65,7 +65,7 @@
       "createdAt": "2026-09-03T08:08:43Z",
       "mergedAt": "2026-09-03T08:39:10Z",
       "closedAt": "2026-09-03T08:39:10Z",
-      "body": "## Summary\n- `tool/internal/ast` and `tool/internal/imports` each independently declared a private `writeCloser` interface (`io.Writer` + `io.Closer`) that is identical to the standard library's `io.WriteCloser`\n- Replace both with `io.WriteCloser` and drop the duplicate type definitions\n\nAddresses ",
+      "body": "Summary\n\ntool/internal/ast and tool/internal/imports each independently declared a private writeCloser interface (io.Writer + io.Closer) that is identical to the standard library's io.WriteCloser\nReplace both with io.WriteCloser and drop the duplicate type definitions\n\nAddresses the \"writeCloser is ",
       "labels": [
         "scope:refactor"
       ],
@@ -82,7 +82,7 @@
       "createdAt": "2026-09-02T21:18:22Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #3656.\n\nTurns out the NaN/Infinity poisoning wasn't just a histogram sum problem. Once I checked the other aggregators (as discussed in the issue comments), they all had the same gap except ExponentialHistogram, which already guards for it.\n\nWhat was broken:\n- Histogram: total += value with no",
+      "body": "Fixes #3656.\nTurns out the NaN/Infinity poisoning wasn't just a histogram sum problem. Once I checked the other aggregators (as discussed in the issue comments), they all had the same gap except ExponentialHistogram, which already guards for it.\nWhat was broken:\n\nHistogram: total += value with no fi",
       "labels": [],
       "commentCount": 2
     },
@@ -97,7 +97,7 @@
       "createdAt": "2026-09-01T12:28:52Z",
       "mergedAt": "2026-09-01T12:56:35Z",
       "closedAt": "2026-09-01T12:56:35Z",
-      "body": "## Description\n\nMerges several small, single-purpose files into their natural neighbors:\n\n- `apply_call_helpers.go` merged into `apply_call.go`\n- `cmd/otelc/cmd_cleanup.go`, `cmd_go.go`, `cmd_pin.go`, `cmd_setup.go`, `cmd_toolexec.go`, and `cmd_version.go` merged into a single `cmd/otelc/command.go`",
+      "body": "Description\nMerges several small, single-purpose files into their natural neighbors:\n\napply_call_helpers.go merged into apply_call.go\ncmd/otelc/cmd_cleanup.go, cmd_go.go, cmd_pin.go, cmd_setup.go, cmd_toolexec.go, and cmd_version.go merged into a single cmd/otelc/command.go (each was just a cli.Comm",
       "labels": [
         "scope:refactor"
       ],
@@ -114,9 +114,9 @@
       "createdAt": "2026-09-01T12:02:31Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Is your feature request related to a problem? Please describe.\n\nRight now the only way to see what `otelc` will inject into a file is to run a real build and dig through the toolexec temp/build output afterward. There's no way to check upfront whether a given file will be instrumented, or what wo",
+      "body": "Is your feature request related to a problem? Please describe.\nRight now the only way to see what otelc will inject into a file is to run a real build and dig through the toolexec temp/build output afterward. There's no way to check upfront whether a given file will be instrumented, or what would ac",
       "labels": [],
-      "commentCount": 0
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABBvQJJA",
@@ -129,7 +129,7 @@
       "createdAt": "2026-09-01T11:29:54Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "<!--\nThank you for contributing to OpenTelemetry Go Compile Instrumentation!\n\nINSTRUCTIONS:\n1. Fill in the description and motivation sections below\n2. Complete the checklist before submitting\n\n\nIf your PR adds a new user-facing instrumentation, please also submit a corresponding OpenTelemetry Regis",
+      "body": "Description\nAdd compile-time instrumentation for zerolog package to automatically inject trace_id and span_id into log output when an active span exists in GLS.\nMotivation\nFixes #\n\nChecklist\n\n PR title follows conventional commits format\n Code formatted: make format\n Linters pass: make lint\n Tests p",
       "labels": [
         "scope:feat"
       ],
@@ -146,7 +146,7 @@
       "createdAt": "2026-09-01T07:12:28Z",
       "mergedAt": "2026-09-01T07:54:55Z",
       "closedAt": "2026-09-01T07:54:55Z",
-      "body": "Closes #1290\n\nrules.md already spells out what every rule field means, so the per-field comments on the InstXxxRule structs were just repeating it, plus some had gone stale (the has_directive comment claimed it wasn't executed yet, but it is).\n\nDropped those comments and the blank lines that were on",
+      "body": "Closes #1290\nrules.md already spells out what every rule field means, so the per-field comments on the InstXxxRule structs were just repeating it, plus some had gone stale (the has_directive comment claimed it wasn't executed yet, but it is).\nDropped those comments and the blank lines that were only",
       "labels": [
         "scope:chore"
       ],
@@ -163,7 +163,7 @@
       "createdAt": "2026-08-31T14:36:29Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Summary\n\nThis revives #3410 (originally by @paullegranddc, refined by @bryantbiggs). It was fully\nreviewed and approved, then got closed stale waiting on a release-batching window that's\nlong since passed. See #2726 for the original discussion.\n\n`SpanProcessor::on_end` currently takes `SpanData` ",
+      "body": "Summary\nThis revives #3410 (originally by @paullegranddc, refined by @bryantbiggs). It was fully\nreviewed and approved, then got closed stale waiting on a release-batching window that's\nlong since passed. See #2726 for the original discussion.\nSpanProcessor::on_end currently takes SpanData by value.",
       "labels": [
         "performance"
       ],
@@ -180,7 +180,7 @@
       "createdAt": "2026-08-31T12:54:22Z",
       "mergedAt": "2026-09-01T11:18:53Z",
       "closedAt": "2026-09-01T11:18:53Z",
-      "body": "`schemas/otelc/README.md` says a missing row in the coverage table means an undeclared instrumentation. `aws.yaml` and `linodego.yaml` both existed with no row, and `linodego.yaml` was missing from the tree diagram too. This adds both, so the table actually matches what's in `schemas/otelc/groups/`.",
+      "body": "schemas/otelc/README.md says a missing row in the coverage table means an undeclared instrumentation. aws.yaml and linodego.yaml both existed with no row, and linodego.yaml was missing from the tree diagram too. This adds both, so the table actually matches what's in schemas/otelc/groups/.",
       "labels": [
         "scope:chore"
       ],
@@ -197,7 +197,7 @@
       "createdAt": "2026-08-31T09:57:08Z",
       "mergedAt": null,
       "closedAt": "2026-09-01T07:54:56Z",
-      "body": "This is a simple cleanup task.\n\nSince rules.md already precisely defines the usage and meaning of each rule field, repeating them in the code is redundant. We could consider removing them:\n```\ntype InstCallRule struct {\n    InstBaseRule `yaml:\",inline\"`\n    ImportPath string `json:\"import-path\" yaml",
+      "body": "This is a simple cleanup task.\nSince rules.md already precisely defines the usage and meaning of each rule field, repeating them in the code is redundant. We could consider removing them:\ntype InstCallRule struct {\n    InstBaseRule `yaml:\",inline\"`\n    ImportPath string `json:\"import-path\" yaml:\"-\"`",
       "labels": [
         "available",
         "effort:low"
@@ -215,7 +215,7 @@
       "createdAt": "2026-08-31T09:21:50Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\n\n\nAdds compile-time OpenTelemetry instrumentation for `stripe/stripe-go`, covering the last two major versions (`v81` and `v82`) in accordance with ADR-0004.\n### Design & Implementation Details\n- **Single Hook Point**: Every `stripe-go` API call across all ~200 per-resource clients re",
+      "body": "Description\nAdds compile-time OpenTelemetry instrumentation for stripe/stripe-go, covering the last two major versions (v81 and v82) in accordance with ADR-0004.\nDesign & Implementation Details\n\nSingle Hook Point: Every stripe-go API call across all ~200 per-resource clients reaches the network thro",
       "labels": [
         "scope:feat"
       ],
@@ -232,7 +232,7 @@
       "createdAt": "2026-08-30T18:40:09Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "### Related Problems?\n\nThe OpenTelemetry trace spec defines `ParentBased` as a composite sampler with 5\nindependently configurable delegate samplers:\nhttps://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#parentbased\n\n  1. root                       — no p",
+      "body": "Related Problems?\nThe OpenTelemetry trace spec defines ParentBased as a composite sampler with 5\nindependently configurable delegate samplers:\nhttps://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#parentbased\n\nroot                       — no parent exists",
       "labels": [
         "enhancement",
         "question",
@@ -254,7 +254,7 @@
       "createdAt": "2026-08-30T18:30:26Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "### What happened?\n\nRecording a NaN (or +/-Infinity) value into a `Histogram` instrument permanently corrupts\nthat data point's `sum`. Because `x + NaN == NaN` for any `x`, once `Buckets::total`\nbecomes NaN it stays NaN on every subsequent update. With Cumulative temporality (the\nSDK default), the m",
+      "body": "What happened?\nRecording a NaN (or +/-Infinity) value into a Histogram instrument permanently corrupts\nthat data point's sum. Because x + NaN == NaN for any x, once Buckets::total\nbecomes NaN it stays NaN on every subsequent update. With Cumulative temporality (the\nSDK default), the metric stream re",
       "labels": [
         "bug",
         "A-metrics",
@@ -275,7 +275,7 @@
       "createdAt": "2026-08-30T10:35:52Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\n\nFixes #1280.\n\n`rewriteHookContextMethods` blanket-panicked all four `HookContextImpl` accessor methods (`GetParam`, `SetParam`, `GetReturnVal`, `SetReturnVal`) whenever the target function had a type parameter, even for parameters/return values whose own type has nothing to do with t",
+      "body": "Description\nFixes #1280.\nrewriteHookContextMethods blanket-panicked all four HookContextImpl accessor methods (GetParam, SetParam, GetReturnVal, SetReturnVal) whenever the target function had a type parameter, even for parameters/return values whose own type has nothing to do with the generic. For e",
       "labels": [
         "scope:fix"
       ],
@@ -292,7 +292,7 @@
       "createdAt": "2026-08-30T09:14:52Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\n\nIn `pkg/runtime/setup.go`, `handleShutdownSignal` flushes OpenTelemetry telemetry upon receiving `SIGINT` or `SIGTERM`. However, after calling `signal.Stop(sigCh)`, `signal.Reset(...)` was omitted. This left the signal handler trapped in Go runtime, swallowing the initial `SIGINT`/`S",
+      "body": "Description\nIn pkg/runtime/setup.go, handleShutdownSignal flushes OpenTelemetry telemetry upon receiving SIGINT or SIGTERM. However, after calling signal.Stop(sigCh), signal.Reset(...) was omitted. This left the signal handler trapped in Go runtime, swallowing the initial SIGINT/SIGTERM signal in st",
       "labels": [
         "scope:fix"
       ],
@@ -309,7 +309,7 @@
       "createdAt": "2026-08-30T08:58:58Z",
       "mergedAt": null,
       "closedAt": "2026-08-30T08:59:37Z",
-      "body": "### Describe the bug\n\nIf you write a rule that hooks a generic function (one with a type parameter, like `func Query[T any](...)`), calling `ctx.GetParam()`, `ctx.SetParam()`, `ctx.GetReturnVal()`, or `ctx.SetReturnVal()` inside your hook panics at runtime, no matter what index you pass. These four ",
+      "body": "Describe the bug\nIf you write a rule that hooks a generic function (one with a type parameter, like func Query[T any](...)), calling ctx.GetParam(), ctx.SetParam(), ctx.GetReturnVal(), or ctx.SetReturnVal() inside your hook panics at runtime, no matter what index you pass. These four methods seem to",
       "labels": [],
       "commentCount": 0
     },
@@ -324,7 +324,7 @@
       "createdAt": "2026-08-30T08:57:40Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "### Describe the bug\n\nIf you write a rule that hooks a generic function (one with a type parameter, like `func Query[T any](...)`), calling `ctx.GetParam()`, `ctx.SetParam()`, `ctx.GetReturnVal()`, or `ctx.SetReturnVal()` inside your hook panics at runtime, no matter what index you pass. These four ",
+      "body": "Describe the bug\nIf you write a rule that hooks a generic function (one with a type parameter, like func Query[T any](...)), calling ctx.GetParam(), ctx.SetParam(), ctx.GetReturnVal(), or ctx.SetReturnVal() inside your hook panics at runtime, no matter what index you pass. These four methods seem to",
       "labels": [
         "bug"
       ],
@@ -341,7 +341,7 @@
       "createdAt": "2026-08-30T07:39:21Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\n\n`forceModMod` in `tool/internal/setup/vendor.go` split `GOFLAGS` with `strings.Fields` and matched the raw tokens. The go command accepts quoted `GOFLAGS` tokens such as `'-mod=readonly'`, and the surrounding quotes stayed attached to the token, so `isModToken` did not recognize it a",
+      "body": "Description\nforceModMod in tool/internal/setup/vendor.go split GOFLAGS with strings.Fields and matched the raw tokens. The go command accepts quoted GOFLAGS tokens such as '-mod=readonly', and the surrounding quotes stayed attached to the token, so isModToken did not recognize it as a -mod flag.\nfor",
       "labels": [
         "scope:fix"
       ],
@@ -358,7 +358,7 @@
       "createdAt": "2026-08-28T19:07:09Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\n\nFixes #1271.\n\nThis PR addresses two edge-case issues in `tool/internal/ast/typename.go`:\n\n1. **Import Alias Collisions:** `ImportAliasMap` previously mapped default package aliases to import paths without checking for collisions. When a source file contained multiple unaliased import",
+      "body": "Description\nFixes #1271.\nThis PR addresses two edge-case issues in tool/internal/ast/typename.go:\n\nImport Alias Collisions: ImportAliasMap previously mapped default package aliases to import paths without checking for collisions. When a source file contained multiple unaliased imports sharing a defa",
       "labels": [
         "scope:fix"
       ],
@@ -371,11 +371,11 @@
       "title": "feat(tool): support minimum otelc version in rule files",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1270",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-28T03:49:45Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "## Description\n\nAdds support for declaring the minimum required `otelc` version in each rule file using a reserved top-level key:\n\n```yaml\nversion: \"v1.0.0\"\n```\n\nThis PR:\n\n* Adds a shared parser for separating file-level version metadata from rule entries.\n* Validates that minimum versions are relea",
+      "mergedAt": "2026-09-03T22:57:37Z",
+      "closedAt": "2026-09-03T22:57:37Z",
+      "body": "Description\nAdds support for declaring the minimum required otelc version in each rule file using a reserved top-level key:\nversion: \"v1.0.0\"\nThis PR:\n\nAdds a shared parser for separating file-level version metadata from rule entries.\nValidates that minimum versions are released semantic versions.\nR",
       "labels": [
         "scope:feat"
       ],
@@ -392,7 +392,7 @@
       "createdAt": "2026-08-27T12:57:11Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Item 3 from #1242.\n\nTwo things were getting re-parsed for no reason:\n\ngetHookFunc re-scanned and re-parsed the whole hook directory for every rule, with no caching at all. First pass at this cached by {resolved path, hook name}, but that only helped when the exact same rule got looked up twice (it's",
+      "body": "Item 3 from #1242.\nTwo things were getting re-parsed for no reason:\ngetHookFunc re-scanned and re-parsed the whole hook directory for every rule, with no caching at all. First pass at this cached by {resolved path, hook name}, but that only helped when the exact same rule got looked up twice (it's c",
       "labels": [
         "scope:refactor"
       ],
@@ -409,7 +409,7 @@
       "createdAt": "2026-08-27T12:57:04Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Item 6 from #1242.\n\nresolveRulePaths was calling packages.Load once per import path referenced by matched rules, in a loop. Now it collects all the unique paths up front and does one batched packages.Load call per module dir instead.\n\nBenchmarked with 15 distinct hook paths in one module dir: 3.08s ",
+      "body": "Item 6 from #1242.\nresolveRulePaths was calling packages.Load once per import path referenced by matched rules, in a loop. Now it collects all the unique paths up front and does one batched packages.Load call per module dir instead.\nBenchmarked with 15 distinct hook paths in one module dir: 3.08s be",
       "labels": [
         "scope:refactor"
       ],
@@ -426,7 +426,7 @@
       "createdAt": "2026-08-27T08:35:34Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Sets up the basic structure for this new repo, closes #4.\n\nWhat's in here:\n- README, CONTRIBUTING, AGENTS.md\n- docs/ with SECURITY, AI_POLICY, testing, and semantic-conventions notes\n- .gitignore, .editorconfig\n- issue/PR templates\n- a baseline Makefile + tool configs for format/lint/test (build and",
+      "body": "Sets up the basic structure for this new repo, closes #4.\nWhat's in here:\n\nREADME, CONTRIBUTING, AGENTS.md\ndocs/ with SECURITY, AI_POLICY, testing, and semantic-conventions notes\n.gitignore, .editorconfig\nissue/PR templates\na baseline Makefile + tool configs for format/lint/test (build and test no-o",
       "labels": [],
       "commentCount": 8
     },
@@ -441,7 +441,7 @@
       "createdAt": "2026-08-26T20:31:03Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\n\nAdds multi-process e2e coverage for HTTP→OpenAI **streaming** GenAI client spans. Extends `httpserveropenaiclient` with a `-stream` flag and adds an e2e test that asserts one distributed trace (HTTP client → HTTP server → GenAI client) with `gen_ai.request.is_stream=true`.\n\n## Motiva",
+      "body": "Description\nAdds multi-process e2e coverage for HTTP→OpenAI streaming GenAI client spans. Extends httpserveropenaiclient with a -stream flag and adds an e2e test that asserts one distributed trace (HTTP client → HTTP server → GenAI client) with gen_ai.request.is_stream=true.\nMotivation\nNon-streaming",
       "labels": [
         "scope:chore"
       ],
@@ -458,7 +458,7 @@
       "createdAt": "2026-08-26T12:50:45Z",
       "mergedAt": "2026-08-27T09:33:29Z",
       "closedAt": "2026-08-27T09:33:29Z",
-      "body": "This closes out the TODO from [#1173](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1173): it looked like the four panicking HookContextImpl methods (GetParam/SetParam/GetReturnVal/SetReturnVal) should get removed once a generic target has no After hook. Turns out",
+      "body": "This closes out the TODO from #1173: it looked like the four panicking HookContextImpl methods (GetParam/SetParam/GetReturnVal/SetReturnVal) should get removed once a generic target has no After hook. Turns out they can't, the Before hook takes its context as a hook.HookContext interface, so the con",
       "labels": [
         "scope:chore"
       ],
@@ -475,7 +475,7 @@
       "createdAt": "2026-08-26T09:41:51Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\n\nAdds compile-time zero-code instrumentation for the GoFiber web framework (`github.com/gofiber/fiber/v2`).\n\n- Adds AST rule definition `otelc.yaml` targeting `(*Ctx).Next()` in `github.com/gofiber/fiber/v2`.\n- Implements `BeforeNext` and `AfterNext` context hooks for `*fiber.Ctx` to ",
+      "body": "Description\nAdds compile-time zero-code instrumentation for the GoFiber web framework (github.com/gofiber/fiber/v2).\n\nAdds AST rule definition otelc.yaml targeting (*Ctx).Next() in github.com/gofiber/fiber/v2.\nImplements BeforeNext and AfterNext context hooks for *fiber.Ctx to enrich HTTP server spa",
       "labels": [
         "scope:feat"
       ],
@@ -492,7 +492,7 @@
       "createdAt": "2026-08-25T14:25:36Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "\nI went through the `otelc` setup and toolexec pipeline (`tool/internal/{setup,instrument,pkgload,ast}`) looking for compile-time performance issues, and found a handful of spots where we're doing more subprocess spawning and re-parsing than we need to. None of these are correctness bugs, the tool w",
+      "body": "I went through the otelc setup and toolexec pipeline (tool/internal/{setup,instrument,pkgload,ast}) looking for compile-time performance issues, and found a handful of spots where we're doing more subprocess spawning and re-parsing than we need to. None of these are correctness bugs, the tool works ",
       "labels": [],
       "commentCount": 8
     },
@@ -507,7 +507,7 @@
       "createdAt": "2026-08-25T11:08:22Z",
       "mergedAt": "2026-08-28T20:56:21Z",
       "closedAt": "2026-08-28T20:56:21Z",
-      "body": "Constants like `OTEL_BSP_SCHEDULE_DELAY_DEFAULT`, `OTEL_BLRP_MAX_QUEUE_SIZE_DEFAULT`, etc. were `pub(crate)`, so there was no way to read the SDK's own defaults from outside the crate. Arti (Tor) hit this directly - their config system needs to fall back to OTel's defaults when a user leaves a value",
+      "body": "Constants like OTEL_BSP_SCHEDULE_DELAY_DEFAULT, OTEL_BLRP_MAX_QUEUE_SIZE_DEFAULT, etc. were pub(crate), so there was no way to read the SDK's own defaults from outside the crate. Arti (Tor) hit this directly - their config system needs to fall back to OTel's defaults when a user leaves a value unset",
       "labels": [],
       "commentCount": 5
     },
@@ -522,7 +522,7 @@
       "createdAt": "2026-08-25T10:34:07Z",
       "mergedAt": "2026-08-26T03:00:00Z",
       "closedAt": "2026-08-26T03:00:00Z",
-      "body": "## Summary\n\n- Move `AI_POLICY.md`, `RELEASE.md`, and `SECURITY.md` into `docs/`, where the rest of the project's documentation lives (GitHub still recognizes `SECURITY.md` there for the Security tab).\n- Delete `CHANGELOG.md` — GitHub Releases already tracks notes per version, so keeping a second cop",
+      "body": "Summary\n\nMove AI_POLICY.md, RELEASE.md, and SECURITY.md into docs/, where the rest of the project's documentation lives (GitHub still recognizes SECURITY.md there for the Security tab).\nDelete CHANGELOG.md — GitHub Releases already tracks notes per version, so keeping a second copy in sync was dupli",
       "labels": [
         "scope:chore"
       ],
@@ -539,7 +539,7 @@
       "createdAt": "2026-08-25T06:23:06Z",
       "mergedAt": null,
       "closedAt": "2026-08-26T03:00:01Z",
-      "body": "Our root directory keeps growing. Some of it clearly belongs elsewhere, and moving it would simplify the directory structure.\n- codecov.yml and .github/codeconv.yaml are duplicates. One of them should be eliminated and move to `.github`  eventually\n- AI_POLICY.md/RELEASE.md/SECURITY.md can be moved ",
+      "body": "Our root directory keeps growing. Some of it clearly belongs elsewhere, and moving it would simplify the directory structure.\n\ncodecov.yml and .github/codeconv.yaml are duplicates. One of them should be eliminated and move to .github  eventually\nAI_POLICY.md/RELEASE.md/SECURITY.md can be moved to th",
       "labels": [
         "available",
         "effort:low"
@@ -557,7 +557,7 @@
       "createdAt": "2026-08-24T18:01:16Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Summary\n\nfix(ast): handle qualified pointer receivers in stripGenericTypes\n\n## Changes\n\n- SelectorExpr *pkg.Type aborted via Unimplemented.\n- Strip qualifier; unknown shapes are non-matches.\n\nFixes #766\n",
+      "body": "Summary\nfix(ast): handle qualified pointer receivers in stripGenericTypes\nChanges\n\nSelectorExpr *pkg.Type aborted via Unimplemented.\nStrip qualifier; unknown shapes are non-matches.\n\nFixes #766",
       "labels": [
         "scope:fix"
       ],
@@ -574,7 +574,7 @@
       "createdAt": "2026-08-24T17:13:59Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Motivation\n\nFixes #1218\n\nWhen instrumenting methods on generic types, the generated trampoline functions correctly include the receiver's type parameters, but the trampoline calls were not passing those type arguments.\n\nThis change resolves the generic type parameters from the method receiver and",
+      "body": "Motivation\nFixes #1218\nWhen instrumenting methods on generic types, the generated trampoline functions correctly include the receiver's type parameters, but the trampoline calls were not passing those type arguments.\nThis change resolves the generic type parameters from the method receiver and uses ",
       "labels": [
         "scope:fix"
       ],
@@ -587,15 +587,15 @@
       "title": "refactor(tool): reuse AstParser.ParseSnippet for snippet parsing in call_template",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1226",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-24T11:45:33Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "## Description\n\n`parseSnippetFuncDecl` in `tool/internal/instrument/call_template.go` wrapped a source\nsnippet in `package _\\nfunc _() { ... }`, parsed it with `go/parser`, and decorated it into\na `dst.File` to get at the parsed statements. This duplicated `AstParser.ParseSnippet` in\n`tool/internal/",
+      "mergedAt": "2026-09-04T09:14:38Z",
+      "closedAt": "2026-09-04T09:14:38Z",
+      "body": "Description\nparseSnippetFuncDecl in tool/internal/instrument/call_template.go wrapped a source\nsnippet in package _\\nfunc _() { ... }, parsed it with go/parser, and decorated it into\na dst.File to get at the parsed statements. This duplicated AstParser.ParseSnippet in\ntool/internal/ast/parser.go, wh",
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABAyiEOg",
@@ -608,7 +608,7 @@
       "createdAt": "2026-08-24T11:25:46Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "<!--\nThank you for contributing to OpenTelemetry Go Compile Instrumentation!\n\nINSTRUCTIONS:\n1. Fill in the description and motivation sections below\n2. Complete the checklist before submitting\n3. Ensure PR title follows conventional commits format (enforced by CI)\n\nPR TITLE FORMAT (required):\n  type",
+      "body": "Description\nThis PR refactors the AST manipulation inside tool/internal/instrument/optimize.go by adding a new removeUnusedHookContextMethods pass. When an After hook is not present, the GetReturnVal, SetReturnVal, and GetReturnValCount methods attached to HookContextImpl are now correctly pruned fr",
       "labels": [
         "scope:refactor"
       ],
@@ -625,7 +625,7 @@
       "createdAt": "2026-08-23T18:36:15Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #1219\n\n### Description\nThis PR resolves issue #1219 in `ImportAliasMap` where distinct unaliased imports sharing a last path segment (e.g. `text/template` and `html/template`, both conventionally defaulting to `template`) would silently overwrite existing map entries.\n\n### Changes Made\n1. Upda",
+      "body": "Fixes #1219\nDescription\nThis PR resolves issue #1219 in ImportAliasMap where distinct unaliased imports sharing a last path segment (e.g. text/template and html/template, both conventionally defaulting to template) would silently overwrite existing map entries.\nChanges Made\n\nUpdated ImportAliasMap i",
       "labels": [
         "scope:fix"
       ],
@@ -642,7 +642,7 @@
       "createdAt": "2026-08-23T18:26:23Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "### What happened?\n\n## What happened\n\nA panic inside a single `ObservableGauge`/`ObservableCounter`/`ObservableUpDownCounter`\ncallback permanently and silently disables metrics collection for the entire\n`MeterProvider` — not just the offending instrument — for the rest of the process's life.\n\n## Wha",
+      "body": "What happened?\nWhat happened\nA panic inside a single ObservableGauge/ObservableCounter/ObservableUpDownCounter\ncallback permanently and silently disables metrics collection for the entire\nMeterProvider — not just the offending instrument — for the rest of the process's life.\nWhat I expected\nA bug in",
       "labels": [
         "enhancement",
         "triage:todo"
@@ -660,11 +660,11 @@
       "createdAt": "2026-08-22T11:45:29Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\n\n`buildWithToolexec` built the `-toolexec` flag by concatenating otelc's own path in unquoted. `cmd/go` parses the `-toolexec` value with `cmd/internal/quoted.Split`, so an unquoted executable path containing a space was read as a path plus extra arguments. A build run from `C:\\Progra",
+      "body": "Description\nbuildWithToolexec built the -toolexec flag by concatenating otelc's own path in unquoted. cmd/go parses the -toolexec value with cmd/internal/quoted.Split, so an unquoted executable path containing a space was read as a path plus extra arguments. A build run from C:\\Program Files\\otelc\\o",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "I_kwDONpzSS88AAAABNzWWUg",
@@ -677,7 +677,7 @@
       "createdAt": "2026-08-22T09:19:17Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "### Describe the bug\n\n`buildWithToolexec` builds the `-toolexec` flag by just string-concatenating otelc's own executable path with no quoting:\n\n```go\n// tool/internal/setup/setup.go:541-545\nexecPath, err := os.Executable()\ninsert := \"-toolexec=\" + execPath + \" toolexec\"\n```\n\nIf `execPath` has a spa",
+      "body": "Describe the bug\nbuildWithToolexec builds the -toolexec flag by just string-concatenating otelc's own executable path with no quoting:\n// tool/internal/setup/setup.go:541-545\nexecPath, err := os.Executable()\ninsert := \"-toolexec=\" + execPath + \" toolexec\"\nIf execPath has a space in it, go's own -too",
       "labels": [
         "bug"
       ],
@@ -694,7 +694,7 @@
       "createdAt": "2026-08-21T08:54:51Z",
       "mergedAt": "2026-08-21T09:24:06Z",
       "closedAt": "2026-08-21T09:24:06Z",
-      "body": "## Summary\n\nFixes #1174.\n\nThe Generic Functions limitation in the hook-authoring guide said we cannot use `HookContext` to *modify* parameters or return values, naming `SetParam` and `SetReturnVal`. Reading is equally unavailable: for a generic target `GetParam` and `GetReturnVal` are replaced with ",
+      "body": "Summary\nFixes #1174.\nThe Generic Functions limitation in the hook-authoring guide said we cannot use HookContext to modify parameters or return values, naming SetParam and SetReturnVal. Reading is equally unavailable: for a generic target GetParam and GetReturnVal are replaced with panicking bodies ",
       "labels": [
         "scope:chore"
       ],
@@ -711,7 +711,7 @@
       "createdAt": "2026-08-21T06:54:21Z",
       "mergedAt": "2026-08-21T09:06:38Z",
       "closedAt": "2026-08-21T09:06:38Z",
-      "body": "## Summary\n\n\n\n- Adds `tool/cmd/check-test-names`, a Go checker enforcing exact `foo_test.go` <-> `foo.go` pairing across `tool/`, `pkg/`, and `instrumentation/` unit packages (no prefix matching, per discussion on #1128 — that's what let segmented test files creep in).\n- Exempts dedicated scenario s",
+      "body": "Summary\n\nAdds tool/cmd/check-test-names, a Go checker enforcing exact foo_test.go <-> foo.go pairing across tool/, pkg/, and instrumentation/ unit packages (no prefix matching, per discussion on #1128 — that's what let segmented test files creep in).\nExempts dedicated scenario suites (test/integrati",
       "labels": [
         "scope:feat"
       ],
@@ -728,7 +728,7 @@
       "createdAt": "2026-08-20T18:15:18Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "## Description\nThis PR fixes an issue where database spans generated during a transaction (such as `START TRANSACTION`, `INSERT`, `COMMIT`, or `ROLLBACK`) were orphaned and disconnected from their parent HTTP server trace.\n\nThe root cause was that `tx.Commit()` and `tx.Rollback()` in `database/sql` ",
+      "body": "Description\nThis PR fixes an issue where database spans generated during a transaction (such as START TRANSACTION, INSERT, COMMIT, or ROLLBACK) were orphaned and disconnected from their parent HTTP server trace.\nThe root cause was that tx.Commit() and tx.Rollback() in database/sql do not take a cont",
       "labels": [
         "scope:fix"
       ],
@@ -745,7 +745,7 @@
       "createdAt": "2026-08-19T20:00:29Z",
       "mergedAt": null,
       "closedAt": "2026-08-19T20:02:06Z",
-      "body": "### Problem\n\nFor any generic function or generic-receiver method target, the generated `HookContextImpl{suffix}`'s `GetParam`, `SetParam`, `GetReturnVal`, and `SetReturnVal` methods are replaced with unconditional `panic(...)` bodies. A hook author who writes `ctx.GetParam(0)` (or any of the other t",
+      "body": "Problem\nFor any generic function or generic-receiver method target, the generated HookContextImpl{suffix}'s GetParam, SetParam, GetReturnVal, and SetReturnVal methods are replaced with unconditional panic(...) bodies. A hook author who writes ctx.GetParam(0) (or any of the other three) inside their ",
       "labels": [],
       "commentCount": 0
     },
@@ -760,7 +760,7 @@
       "createdAt": "2026-08-19T20:00:23Z",
       "mergedAt": null,
       "closedAt": "2026-08-19T20:02:42Z",
-      "body": "### Problem\n\nWhen a generic function or generic-receiver method is instrumented with only a Before hook (no After), `optimizeTJumps` deletes the generated After trampoline function — but leaves the four always-panicking `HookContextImpl{suffix}` methods (`GetParam`, `SetParam`, `GetReturnVal`, `SetR",
+      "body": "Problem\nWhen a generic function or generic-receiver method is instrumented with only a Before hook (no After), optimizeTJumps deletes the generated After trampoline function — but leaves the four always-panicking HookContextImpl{suffix} methods (GetParam, SetParam, GetReturnVal, SetReturnVal, instal",
       "labels": [],
       "commentCount": 0
     },
@@ -775,7 +775,7 @@
       "createdAt": "2026-08-19T20:00:09Z",
       "mergedAt": null,
       "closedAt": "2026-08-21T09:24:07Z",
-      "body": "### Problem\n\nFor any generic function or generic-receiver method target, the generated `HookContextImpl{suffix}`'s `GetParam`, `SetParam`, `GetReturnVal`, and `SetReturnVal` methods are replaced with unconditional `panic(...)` bodies. A hook author who writes `ctx.GetParam(0)` (or any of the other t",
+      "body": "Problem\nFor any generic function or generic-receiver method target, the generated HookContextImpl{suffix}'s GetParam, SetParam, GetReturnVal, and SetReturnVal methods are replaced with unconditional panic(...) bodies. A hook author who writes ctx.GetParam(0) (or any of the other three) inside their ",
       "labels": [],
       "commentCount": 2
     },
@@ -790,7 +790,7 @@
       "createdAt": "2026-08-19T19:59:04Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "### Problem\n\nWhen a generic function or generic-receiver method is instrumented with only a Before hook (no After), `optimizeTJumps` deletes the generated After trampoline function — but leaves the four always-panicking `HookContextImpl{suffix}` methods (`GetParam`, `SetParam`, `GetReturnVal`, `SetR",
+      "body": "Problem\nWhen a generic function or generic-receiver method is instrumented with only a Before hook (no After), optimizeTJumps deletes the generated After trampoline function — but leaves the four always-panicking HookContextImpl{suffix} methods (GetParam, SetParam, GetReturnVal, SetReturnVal, instal",
       "labels": [],
       "commentCount": 2
     },
@@ -805,7 +805,7 @@
       "createdAt": "2026-08-19T18:23:30Z",
       "mergedAt": null,
       "closedAt": "2026-08-26T05:48:20Z",
-      "body": "> **Note:** this is a known, self-flagged gap, not a new discovery. PR #1122 (fixes #1121) explicitly documented it in a \"Known limitation\" section and referenced \"the linked issue\" for the follow-up — but no such issue was ever filed, as far as I can find (searched `findGenericTypeDecl`, \"cross-fil",
+      "body": "Note: this is a known, self-flagged gap, not a new discovery. PR #1122 (fixes #1121) explicitly documented it in a \"Known limitation\" section and referenced \"the linked issue\" for the follow-up — but no such issue was ever filed, as far as I can find (searched findGenericTypeDecl, \"cross-file\", \"dif",
       "labels": [
         "bug"
       ],
@@ -822,7 +822,7 @@
       "createdAt": "2026-08-19T18:23:30Z",
       "mergedAt": null,
       "closedAt": "2026-08-26T05:48:20Z",
-      "body": "> **Note:** this is a known, self-flagged gap, not a new discovery. PR #1122 (fixes #1121) explicitly documented it in a \"Known limitation\" section and referenced \"the linked issue\" for the follow-up — but no such issue was ever filed, as far as I can find (searched `findGenericTypeDecl`, \"cross-fil",
+      "body": "Note: this is a known, self-flagged gap, not a new discovery. PR #1122 (fixes #1121) explicitly documented it in a \"Known limitation\" section and referenced \"the linked issue\" for the follow-up — but no such issue was ever filed, as far as I can find (searched findGenericTypeDecl, \"cross-file\", \"dif",
       "labels": [
         "bug"
       ],
@@ -839,7 +839,7 @@
       "createdAt": "2026-08-19T03:30:14Z",
       "mergedAt": "2026-08-20T01:55:29Z",
       "closedAt": "2026-08-20T01:55:29Z",
-      "body": "## Description\n\nLast package in the test-consolidation pass for #1128. `tool/internal/instrument` had ten orphaned test files:\n\n- `api_sync_test.go` → `apply_func_test.go` (`templateAPI` is in `apply_func.go`)\n- `call_placeholder_test.go` → `call_template_test.go` (`replacePlaceholder`)\n- `call_temp",
+      "body": "Description\nLast package in the test-consolidation pass for #1128. tool/internal/instrument had ten orphaned test files:\n\napi_sync_test.go → apply_func_test.go (templateAPI is in apply_func.go)\ncall_placeholder_test.go → call_template_test.go (replacePlaceholder)\ncall_template_extra_test.go → call_t",
       "labels": [
         "scope:chore"
       ],
@@ -856,7 +856,7 @@
       "createdAt": "2026-08-19T03:29:54Z",
       "mergedAt": "2026-08-20T01:58:24Z",
       "closedAt": "2026-08-20T01:58:24Z",
-      "body": "## Description\n\nFifth package in the test-consolidation pass for #1128. `tool/internal/setup` had five orphaned test files, each a grab-bag spanning multiple source files rather than a single-target merge:\n\n- `extra_helpers_test.go` splits two ways: `TestStateManagerDiscard`, `TestStateManagerDiscar",
+      "body": "Description\nFifth package in the test-consolidation pass for #1128. tool/internal/setup had five orphaned test files, each a grab-bag spanning multiple source files rather than a single-target merge:\n\nextra_helpers_test.go splits two ways: TestStateManagerDiscard, TestStateManagerDiscardEmpty → stat",
       "labels": [
         "scope:chore"
       ],
@@ -873,7 +873,7 @@
       "createdAt": "2026-08-19T03:29:37Z",
       "mergedAt": "2026-08-20T01:58:11Z",
       "closedAt": "2026-08-20T01:58:11Z",
-      "body": "## Description\n\nFourth package in the test-consolidation pass for #1128.\n\n`profile_extra_test.go` had no matching source file. Every function it tested — `Start`, `Stop`, `writeHeapProfile`, `mergeType`, `Merge` — is declared in `profile.go`, whose existing `profile_test.go` already held the base co",
+      "body": "Description\nFourth package in the test-consolidation pass for #1128.\nprofile_extra_test.go had no matching source file. Every function it tested — Start, Stop, writeHeapProfile, mergeType, Merge — is declared in profile.go, whose existing profile_test.go already held the base coverage for those func",
       "labels": [
         "scope:chore"
       ],
@@ -890,7 +890,7 @@
       "createdAt": "2026-08-19T03:29:23Z",
       "mergedAt": "2026-08-20T02:19:29Z",
       "closedAt": "2026-08-20T02:19:29Z",
-      "body": "## Description\n\nThird package in the test-consolidation pass for #1128 (`tool/ex` and `tool/internal/ast` went first, in #1142 and #1159).\n\n`tool/util` had three files with no direct source-file pairing, and unlike the previous two packages, none of them was a single-target merge — each is a grab-ba",
+      "body": "Description\nThird package in the test-consolidation pass for #1128 (tool/ex and tool/internal/ast went first, in #1142 and #1159).\ntool/util had three files with no direct source-file pairing, and unlike the previous two packages, none of them was a single-target merge — each is a grab-bag spanning ",
       "labels": [
         "scope:chore"
       ],
@@ -907,7 +907,7 @@
       "createdAt": "2026-08-19T02:53:01Z",
       "mergedAt": "2026-08-20T01:57:14Z",
       "closedAt": "2026-08-20T01:57:14Z",
-      "body": "## Description\n\nSecond package in the test-consolidation pass for #1128 (`tool/ex` went first in #1142).\n\n`tool/internal/ast` had five files with no direct source-file pairing:\n\n- `ast_test.go` and `parser_extra_test.go` both tested `parser.go` (`ParseFile`,\n  `ParsePackageName`, `WriteFile`, `Parse",
+      "body": "Description\nSecond package in the test-consolidation pass for #1128 (tool/ex went first in #1142).\ntool/internal/ast had five files with no direct source-file pairing:\n\nast_test.go and parser_extra_test.go both tested parser.go (ParseFile,\nParsePackageName, WriteFile, ParseSnippet, FindPosition, Wri",
       "labels": [
         "scope:chore"
       ],
@@ -924,7 +924,7 @@
       "createdAt": "2026-08-18T11:59:41Z",
       "mergedAt": "2026-08-19T16:01:23Z",
       "closedAt": "2026-08-19T16:01:23Z",
-      "body": "## Description\n\nFourth and last slice of #1143 (#1146, the `ast` PR, and the `setup` PR precede this one). This one covers `tool/internal/rule`.\n\nUnexported 49 identifiers with zero references outside the package: the selector-name constants (`SelKind`, `SelLastResult`, `SelParam`, `SelPattern`, `Se",
+      "body": "Description\nFourth and last slice of #1143 (#1146, the ast PR, and the setup PR precede this one). This one covers tool/internal/rule.\nUnexported 49 identifiers with zero references outside the package: the selector-name constants (SelKind, SelLastResult, SelParam, SelPattern, SelPlacement, SelRecv,",
       "labels": [
         "scope:chore"
       ],
@@ -941,7 +941,7 @@
       "createdAt": "2026-08-18T11:59:34Z",
       "mergedAt": "2026-08-20T09:08:29Z",
       "closedAt": "2026-08-20T09:08:29Z",
-      "body": "## Description\n\nThird slice of #1143 (first was #1146, second is the `ast` PR). This one covers `tool/internal/setup` — the largest of the four in terms of blast radius, 27 identifiers touching 22 files.\n\nUnexported: the build-lock/state-manager funcs and types (`AcquireBuildLock`, `Build`, `BuildWi",
+      "body": "Description\nThird slice of #1143 (first was #1146, second is the ast PR). This one covers tool/internal/setup — the largest of the four in terms of blast radius, 27 identifiers touching 22 files.\nUnexported: the build-lock/state-manager funcs and types (AcquireBuildLock, Build, BuildWithToolexec, Au",
       "labels": [
         "scope:chore"
       ],
@@ -958,7 +958,7 @@
       "createdAt": "2026-08-18T11:59:26Z",
       "mergedAt": "2026-08-20T14:05:14Z",
       "closedAt": "2026-08-20T14:05:14Z",
-      "body": "## Description\n\nSecond slice of #1143 (first was #1146, covering `util`/`imports`/`pkgload`/`manifest`/`instrument`/`profile`). This one covers `tool/internal/ast`.\n\nUnexported 13 identifiers with zero references outside the package: `IdentFalse`/`IdentNil`/`IdentTrue`, `BoolTrue`, `DefaultImportAli",
+      "body": "Description\nSecond slice of #1143 (first was #1146, covering util/imports/pkgload/manifest/instrument/profile). This one covers tool/internal/ast.\nUnexported 13 identifiers with zero references outside the package: IdentFalse/IdentNil/IdentTrue, BoolTrue, DefaultImportAlias, FindConstDecl, FindTypeD",
       "labels": [
         "scope:chore"
       ],
@@ -975,7 +975,7 @@
       "createdAt": "2026-08-18T11:11:59Z",
       "mergedAt": "2026-08-20T09:09:22Z",
       "closedAt": "2026-08-20T09:09:22Z",
-      "body": "## Description\n\nSupersedes #1145, which I closed after realizing the diff there only covered part of the\nintended scope — this PR folds in `instrument.InstrumentPhase`/`TJump` as well. Closing it\ntriggered this fork's auto-delete-branch setting, and GitHub does not allow reopening a PR\nonce its head",
+      "body": "Description\nSupersedes #1145, which I closed after realizing the diff there only covered part of the\nintended scope — this PR folds in instrument.InstrumentPhase/TJump as well. Closing it\ntriggered this fork's auto-delete-branch setting, and GitHub does not allow reopening a PR\nonce its head branch ",
       "labels": [
         "scope:chore"
       ],
@@ -992,7 +992,7 @@
       "createdAt": "2026-08-18T07:26:53Z",
       "mergedAt": null,
       "closedAt": "2026-08-20T11:29:58Z",
-      "body": "### Describe the bug\n\n`parseRuleFromYaml` in `tool/internal/setup/match.go` iterates the unmarshalled YAML rule map directly and appends to the returned slice in that order:\n\n```go\nfunc parseRuleFromYaml(content []byte) ([]rule.InstRule, error) {\n\tvar h map[string]map[string]any\n\terr := yaml.Unmarsh",
+      "body": "Describe the bug\nparseRuleFromYaml in tool/internal/setup/match.go iterates the unmarshalled YAML rule map directly and appends to the returned slice in that order:\nfunc parseRuleFromYaml(content []byte) ([]rule.InstRule, error) {\n\tvar h map[string]map[string]any\n\terr := yaml.Unmarshal(content, &h)\n",
       "labels": [
         "bug"
       ],
@@ -1009,7 +1009,7 @@
       "createdAt": "2026-08-18T07:26:53Z",
       "mergedAt": null,
       "closedAt": "2026-08-20T11:29:58Z",
-      "body": "### Describe the bug\n\n`parseRuleFromYaml` in `tool/internal/setup/match.go` iterates the unmarshalled YAML rule map directly and appends to the returned slice in that order:\n\n```go\nfunc parseRuleFromYaml(content []byte) ([]rule.InstRule, error) {\n\tvar h map[string]map[string]any\n\terr := yaml.Unmarsh",
+      "body": "Describe the bug\nparseRuleFromYaml in tool/internal/setup/match.go iterates the unmarshalled YAML rule map directly and appends to the returned slice in that order:\nfunc parseRuleFromYaml(content []byte) ([]rule.InstRule, error) {\n\tvar h map[string]map[string]any\n\terr := yaml.Unmarshal(content, &h)\n",
       "labels": [
         "bug"
       ],
@@ -1026,7 +1026,7 @@
       "createdAt": "2026-08-18T07:25:00Z",
       "mergedAt": null,
       "closedAt": "2026-08-21T02:15:56Z",
-      "body": "A lot of identifiers in the tool packages are exported but never used\noutside their own package. This mostly affects `tool/internal/*`, where\nexporting serves no purpose at all since `internal` packages can't be\nimported from outside the module.\n\nA rough count using a go/packages-based usage scan: ~",
+      "body": "A lot of identifiers in the tool packages are exported but never used\noutside their own package. This mostly affects tool/internal/*, where\nexporting serves no purpose at all since internal packages can't be\nimported from outside the module.\nA rough count using a go/packages-based usage scan: ~100 s",
       "labels": [
         "available",
         "effort:low"
@@ -1044,7 +1044,7 @@
       "createdAt": "2026-08-18T06:16:15Z",
       "mergedAt": "2026-08-18T06:49:10Z",
       "closedAt": "2026-08-18T06:49:10Z",
-      "body": "## Description\n\nFirst package in the test-consolidation pass for #1128, kept small so the approach can be\nsigned off before the larger packages follow.\n\n`tool/ex` had two test files against a single source file (`error.go`): `ex_test.go`\n(error construction, wrapping, joining) and `fatal_test.go` (`",
+      "body": "Description\nFirst package in the test-consolidation pass for #1128, kept small so the approach can be\nsigned off before the larger packages follow.\ntool/ex had two test files against a single source file (error.go): ex_test.go\n(error construction, wrapping, joining) and fatal_test.go (printError, Fa",
       "labels": [
         "scope:chore"
       ],
@@ -1079,7 +1079,7 @@
       "createdAt": "2026-08-13T17:11:41Z",
       "mergedAt": "2026-08-19T14:28:05Z",
       "closedAt": "2026-08-19T14:28:05Z",
-      "body": "## Description\n\n`stripBuildIgnoreTag` strips the `//go:build ignore` constraint from a file rule's source\nbefore it gets spliced into the target package, using a whole-file substring replace:\n\n```go\nfunc stripBuildIgnoreTag(content string) string {\n\treturn strings.ReplaceAll(content, \"//go:build ign",
+      "body": "Description\nstripBuildIgnoreTag strips the //go:build ignore constraint from a file rule's source\nbefore it gets spliced into the target package, using a whole-file substring replace:\nfunc stripBuildIgnoreTag(content string) string {\n\treturn strings.ReplaceAll(content, \"//go:build ignore\", \"\")\n}\nstr",
       "labels": [
         "scope:fix"
       ],
@@ -1096,7 +1096,7 @@
       "createdAt": "2026-08-12T09:42:50Z",
       "mergedAt": "2026-08-17T12:21:58Z",
       "closedAt": "2026-08-17T12:21:58Z",
-      "body": "## Description\n\n`instrument()` iterates the file-to-rules map returned by `groupRules` directly with a bare\n`range`. Go randomizes map iteration order per range statement, and the loop returns on the\nfirst error it hits. When a package's rule set spans multiple files and more than one has a\nfailing ",
+      "body": "Description\ninstrument() iterates the file-to-rules map returned by groupRules directly with a bare\nrange. Go randomizes map iteration order per range statement, and the loop returns on the\nfirst error it hits. When a package's rule set spans multiple files and more than one has a\nfailing rule, whic",
       "labels": [
         "scope:fix"
       ],
@@ -1113,7 +1113,7 @@
       "createdAt": "2026-08-12T07:31:26Z",
       "mergedAt": null,
       "closedAt": "2026-08-17T12:22:00Z",
-      "body": "### Describe the bug\n\n`instrument()` in `tool/internal/instrument/instrument.go` iterates the file-to-rules map returned by `groupRules` directly:\n\n```go\nfor file, rules := range groupRules(ip.workDir, rset) {\n\troot, err := ip.parseFile(file)\n\t...\n\tfor _, r := range rules {\n\t\tfuncRule, err1 := ip.ap",
+      "body": "Describe the bug\ninstrument() in tool/internal/instrument/instrument.go iterates the file-to-rules map returned by groupRules directly:\nfor file, rules := range groupRules(ip.workDir, rset) {\n\troot, err := ip.parseFile(file)\n\t...\n\tfor _, r := range rules {\n\t\tfuncRule, err1 := ip.applyOneRule(ctx, r,",
       "labels": [
         "bug"
       ],
@@ -1130,7 +1130,7 @@
       "createdAt": "2026-08-12T07:31:26Z",
       "mergedAt": null,
       "closedAt": "2026-08-17T12:22:00Z",
-      "body": "### Describe the bug\n\n`instrument()` in `tool/internal/instrument/instrument.go` iterates the file-to-rules map returned by `groupRules` directly:\n\n```go\nfor file, rules := range groupRules(ip.workDir, rset) {\n\troot, err := ip.parseFile(file)\n\t...\n\tfor _, r := range rules {\n\t\tfuncRule, err1 := ip.ap",
+      "body": "Describe the bug\ninstrument() in tool/internal/instrument/instrument.go iterates the file-to-rules map returned by groupRules directly:\nfor file, rules := range groupRules(ip.workDir, rset) {\n\troot, err := ip.parseFile(file)\n\t...\n\tfor _, r := range rules {\n\t\tfuncRule, err1 := ip.applyOneRule(ctx, r,",
       "labels": [
         "bug"
       ],
@@ -1147,7 +1147,7 @@
       "createdAt": "2026-08-12T07:21:35Z",
       "mergedAt": null,
       "closedAt": "2026-08-19T14:28:06Z",
-      "body": "### Describe the bug\n\n`stripBuildIgnoreTag` in `tool/internal/instrument/apply_file.go` strips the `//go:build ignore` constraint from a file rule's source before it is injected into the target package, using a whole-file substring replace:\n\n```go\nfunc stripBuildIgnoreTag(content string) string {\n\tr",
+      "body": "Describe the bug\nstripBuildIgnoreTag in tool/internal/instrument/apply_file.go strips the //go:build ignore constraint from a file rule's source before it is injected into the target package, using a whole-file substring replace:\nfunc stripBuildIgnoreTag(content string) string {\n\treturn strings.Repl",
       "labels": [
         "bug"
       ],
@@ -1164,7 +1164,7 @@
       "createdAt": "2026-08-12T07:21:35Z",
       "mergedAt": null,
       "closedAt": "2026-08-19T14:28:06Z",
-      "body": "### Describe the bug\n\n`stripBuildIgnoreTag` in `tool/internal/instrument/apply_file.go` strips the `//go:build ignore` constraint from a file rule's source before it is injected into the target package, using a whole-file substring replace:\n\n```go\nfunc stripBuildIgnoreTag(content string) string {\n\tr",
+      "body": "Describe the bug\nstripBuildIgnoreTag in tool/internal/instrument/apply_file.go strips the //go:build ignore constraint from a file rule's source before it is injected into the target package, using a whole-file substring replace:\nfunc stripBuildIgnoreTag(content string) string {\n\treturn strings.Repl",
       "labels": [
         "bug"
       ],
@@ -1181,7 +1181,7 @@
       "createdAt": "2026-08-11T11:01:57Z",
       "mergedAt": "2026-08-20T15:32:51Z",
       "closedAt": "2026-08-20T15:32:51Z",
-      "body": "## Description\n\n`ast.FindNamedDecl` returns the whole `*dst.ValueSpec` that contains a matched name and\ndiscards which name matched, so `applyDeclRule` rewrote every name in the spec: the replace\npath reassigned all of `spec.Values`, and `wrapDeclValues` wrapped all of them. A rule\ntargeting `alpha`",
+      "body": "Description\nast.FindNamedDecl returns the whole *dst.ValueSpec that contains a matched name and\ndiscards which name matched, so applyDeclRule rewrote every name in the spec: the replace\npath reassigned all of spec.Values, and wrapDeclValues wrapped all of them. A rule\ntargeting alpha in var alpha, b",
       "labels": [
         "scope:fix"
       ],
@@ -1198,7 +1198,7 @@
       "createdAt": "2026-08-11T11:01:49Z",
       "mergedAt": "2026-08-19T15:14:37Z",
       "closedAt": "2026-08-19T15:14:37Z",
-      "body": "## Description\n\n`applyDirectiveRule` added the rule's `imports:` to the target file before it computed\n`ast.FindFuncsByDirective`. When the directive comment exists in the file but is not a\nleading comment on a top-level func, the match set is empty and nothing is injected — but\nthe import is alread",
+      "body": "Description\napplyDirectiveRule added the rule's imports: to the target file before it computed\nast.FindFuncsByDirective. When the directive comment exists in the file but is not a\nleading comment on a top-level func, the match set is empty and nothing is injected — but\nthe import is already in the A",
       "labels": [
         "scope:fix"
       ],
@@ -1215,7 +1215,7 @@
       "createdAt": "2026-08-11T10:58:41Z",
       "mergedAt": null,
       "closedAt": "2026-08-20T15:32:52Z",
-      "body": "### Describe the bug\n\nA decl rule targets one identifier, but `applyDeclRule` in\n`tool/internal/instrument/apply_decl.go` rewrites every name declared in the same\n`ValueSpec`.\n\n`ast.FindNamedDecl` / `findValueDecl` return the whole `*dst.ValueSpec` that contains the\nmatched name and discard which na",
+      "body": "Describe the bug\nA decl rule targets one identifier, but applyDeclRule in\ntool/internal/instrument/apply_decl.go rewrites every name declared in the same\nValueSpec.\nast.FindNamedDecl / findValueDecl return the whole *dst.ValueSpec that contains the\nmatched name and discard which name it was. applyDe",
       "labels": [],
       "commentCount": 0
     },
@@ -1230,7 +1230,7 @@
       "createdAt": "2026-08-11T10:58:34Z",
       "mergedAt": null,
       "closedAt": "2026-08-19T15:14:39Z",
-      "body": "### Describe the bug\n\n`applyDirectiveRule` in `tool/internal/instrument/apply_directive.go` adds the rule's\n`imports:` to the target file *before* it looks for the functions the directive annotates:\n\n```go\nfunc (ip *InstrumentPhase) applyDirectiveRule(ctx context.Context, r *rule.InstDirectiveRule, ",
+      "body": "Describe the bug\napplyDirectiveRule in tool/internal/instrument/apply_directive.go adds the rule's\nimports: to the target file before it looks for the functions the directive annotates:\nfunc (ip *InstrumentPhase) applyDirectiveRule(ctx context.Context, r *rule.InstDirectiveRule, root *dst.File) erro",
       "labels": [],
       "commentCount": 0
     },
@@ -1245,7 +1245,7 @@
       "createdAt": "2026-08-06T14:49:56Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "https://drive.google.com/file/d/1c2IB6NpMjOOncZx2QzTE4G8E7oJnb-E4/view?usp=sharing\n<img width=\"1917\" height=\"1078\" alt=\"Screenshot 2026-08-06 201159\" src=\"https://github.com/user-attachments/assets/7893a0a1-c955-4f9f-831f-cc4198603d61\" />\n# Expose Command Events in Socket Mode (Slack Adapter)\n\nResol",
+      "body": "https://drive.google.com/file/d/1c2IB6NpMjOOncZx2QzTE4G8E7oJnb-E4/view?usp=sharing\n\nExpose Command Events in Socket Mode (Slack Adapter)\nResolves #33\nContext & Rationale\nThis PR implements Slack slash-command support in Caspian's Slack adapter via Socket Mode, replacing the HTTP-based /commands endp",
       "labels": [],
       "commentCount": 1
     },
@@ -1260,7 +1260,7 @@
       "createdAt": "2026-08-06T13:29:41Z",
       "mergedAt": null,
       "closedAt": "2026-08-07T06:21:43Z",
-      "body": "While reading through tool/ ahead of an LFX application, I found two small correctness issues:\n\n1. **stripCompleteFlag** (tool/internal/instrument/toolexec.go, ~line 86-93)\nRemoves the -complete flag via append(args[:i], args[i+1:]...). This shifts the remaining elements left in the same backing arr",
+      "body": "While reading through tool/ ahead of an LFX application, I found two small correctness issues:\n\n\nstripCompleteFlag (tool/internal/instrument/toolexec.go, ~line 86-93)\nRemoves the -complete flag via append(args[:i], args[i+1:]...). This shifts the remaining elements left in the same backing array the",
       "labels": [],
       "commentCount": 0
     },
@@ -1275,7 +1275,7 @@
       "createdAt": "2026-08-06T13:28:33Z",
       "mergedAt": "2026-08-07T06:21:42Z",
       "closedAt": "2026-08-07T06:21:42Z",
-      "body": "Fixes #989\n\nRemoves the in-place slice mutation in stripCompleteFlag by cloning the input slice via slices.Clone and then deleting the -complete flag using slices.Delete, instead of using \u0007ppend(args[:i], args[i+1:]...) which mutates the shared backing array.\n\nAdded a test case asserting the origina",
+      "body": "Fixes #989\nRemoves the in-place slice mutation in stripCompleteFlag by cloning the input slice via slices.Clone and then deleting the -complete flag using slices.Delete, instead of using �ppend(args[:i], args[i+1:]...) which mutates the shared backing array.\nAdded a test case asserting the original ",
       "labels": [
         "scope:fix"
       ],
@@ -1292,7 +1292,7 @@
       "createdAt": "2026-08-04T14:55:04Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "# PR Description: Expose command and reaction events in the gateway event stream (#66)\n\nThis PR implements the backend gateway and provider changes required for GitHub issue #66.\n\n## Proposed Changes\n\n### 1. Gateway Routing & Processing\n- **`jobs.py`**: Added `_process_command` handler that emits `c",
+      "body": "PR Description: Expose command and reaction events in the gateway event stream (#66)\nThis PR implements the backend gateway and provider changes required for GitHub issue #66.\nProposed Changes\n1. Gateway Routing & Processing\n\njobs.py: Added _process_command handler that emits command.received events",
       "labels": [],
       "commentCount": 1
     },
@@ -1307,7 +1307,7 @@
       "createdAt": "2026-07-25T14:51:36Z",
       "mergedAt": "2026-07-29T11:12:39Z",
       "closedAt": "2026-07-29T11:12:39Z",
-      "body": "Closes #3.\n\nAdds 10 tests to sdks/python/tests/test_sdk.py filling gaps in the existing typed authentication/billing error coverage:\n\n- `channel_cap_reached` as a 429 reason, alongside the already-tested `insufficient_credit` / `monthly_cap_reached`\n- Default-filling on `AccountRequiredError` / `Ins",
+      "body": "Closes #3.\nAdds 10 tests to sdks/python/tests/test_sdk.py filling gaps in the existing typed authentication/billing error coverage:\n\nchannel_cap_reached as a 429 reason, alongside the already-tested insufficient_credit / monthly_cap_reached\nDefault-filling on AccountRequiredError / InsufficientCredi",
       "labels": [],
       "commentCount": 2
     }
