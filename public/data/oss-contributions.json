@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-03T10:53:32.064Z",
+  "last_updated": "2026-09-04T10:52:55.383Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 25,
@@ -37,7 +37,7 @@
       "closedAt": null,
       "body": "HTTP/1.x already falls back to the Host: header when the connection tuple can't be resolved, so client spans still get a peer. HTTP/2 has the same info sitting right there in the :authority pseudo-header, but nothing was reading it — so gRPC and HTTP/2 spans just went out with an empty peer whenever",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOOa4Yns8AAAABCBjSng",
@@ -50,9 +50,9 @@
       "createdAt": "2026-09-03T08:28:42Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Found this while going through the sk_msg path — fill_msg_buffers() just assumes the earlier bpf_msg_pull_data() pull actually worked, but nothing checks it. If it fails, msg->data/data_end stay narrow, and the function still blindly copies up to 8KB from msg->data, so it can pull in random adjacent",
+      "body": "Found this while going through the sk_msg path , fill_msg_buffers() just assumes the earlier bpf_msg_pull_data() pull actually worked, but nothing checks it. If it fails, msg->data/data_end stay narrow, and the function still blindly copies up to 8KB from msg->data, so it can pull in random adjacent",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABCBZnlw",
@@ -116,7 +116,7 @@
       "closedAt": null,
       "body": "Is your feature request related to a problem? Please describe.\nRight now the only way to see what otelc will inject into a file is to run a real build and dig through the toolexec temp/build output afterward. There's no way to check upfront whether a given file will be instrumented, or what would ac",
       "labels": [],
-      "commentCount": 0
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABBvQJJA",
@@ -371,10 +371,10 @@
       "title": "feat(tool): support minimum otelc version in rule files",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1270",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-28T03:49:45Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-03T22:57:37Z",
+      "closedAt": "2026-09-03T22:57:37Z",
       "body": "Description\nAdds support for declaring the minimum required otelc version in each rule file using a reserved top-level key:\nversion: \"v1.0.0\"\nThis PR:\n\nAdds a shared parser for separating file-level version metadata from rule entries.\nValidates that minimum versions are released semantic versions.\nR",
       "labels": [
         "scope:feat"
@@ -587,15 +587,15 @@
       "title": "refactor(tool): reuse AstParser.ParseSnippet for snippet parsing in call_template",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1226",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-24T11:45:33Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-04T09:14:38Z",
+      "closedAt": "2026-09-04T09:14:38Z",
       "body": "Description\nparseSnippetFuncDecl in tool/internal/instrument/call_template.go wrapped a source\nsnippet in package _\\nfunc _() { ... }, parsed it with go/parser, and decorated it into\na dst.File to get at the parsed statements. This duplicated AstParser.ParseSnippet in\ntool/internal/ast/parser.go, wh",
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABAyiEOg",
@@ -664,7 +664,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "I_kwDONpzSS88AAAABNzWWUg",
