@@ -25,6 +25,12 @@ const About = () => {
             in that world.
           </p>
           <p>
+            Right now most of my time goes into{' '}
+            <span className="text-bone">rust-compile-time-instrumentation</span>
+            : zero-code OpenTelemetry instrumentation for Rust that reaches
+            into third-party dependencies too, done by intercepting rustc
+            directly on stable Rust instead of asking every crate author to
+            hand-wire tracing calls.{' '}
             <span className="text-bone">mini-etcd</span> exists because I
             wanted to implement Raft myself instead of trusting a library to
             explain it to me. <span className="text-bone">Capa</span> exists

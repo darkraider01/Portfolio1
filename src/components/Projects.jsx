@@ -44,7 +44,7 @@ const Projects = () => {
         {featured.map((project, i) => (
           <Reveal
             key={project.slug}
-            className={featured.length % 2 === 1 && i === featured.length - 1 ? 'md:col-span-2' : ''}
+            className={featured.length % 2 === 1 && i === 0 ? 'md:col-span-2' : ''}
           >
             <SpotlightCard className="flex h-full flex-col p-8 md:p-10">
               <div className="mb-4 flex items-start justify-between gap-4">

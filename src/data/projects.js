@@ -1,5 +1,15 @@
 export const projects = [
   {
+    name: 'rust-compile-time-instrumentation',
+    slug: 'rust-compile-time-instrumentation',
+    description:
+      "Zero-code compile-time OpenTelemetry instrumentation for Rust, reaching third-party dependencies, on stable Rust: no nightly, no compiler forks, no eBPF. Intercepts rustc via RUSTC_WRAPPER and splices native OTel API calls at the byte level, with an extern \"C\" trampoline so dependency crates get instrumented without dragging OTel into every upstream crate's dependency tree. Architecture is frozen behind six ADRs and a normative correctness spec; the cargo-instrument pipeline itself is in active development. My current biggest project.",
+    languages: ['Rust'],
+    href: 'https://github.com/darkraider01/rust-compile-time-instrumentation-',
+    updatedAt: '2026-09-04T17:06:24Z',
+    featured: true
+  },
+  {
     name: 'Capa',
     slug: 'capa',
     description:
@@ -17,16 +27,6 @@ export const projects = [
     languages: ['Python'],
     href: 'https://github.com/darkraider01/ai-driven-qos-management-system-for-5g-networks',
     updatedAt: '2026-07-24T23:22:56Z',
-    featured: true
-  },
-  {
-    name: 'rust-compile-time-instrumentation',
-    slug: 'rust-compile-time-instrumentation',
-    description:
-      "Zero-code compile-time OpenTelemetry instrumentation for Rust, reaching third-party dependencies, on stable Rust: no nightly, no compiler forks, no eBPF. Intercepts rustc via RUSTC_WRAPPER and splices native OTel API calls at the byte level, with an extern \"C\" trampoline so dependency crates get instrumented without dragging OTel into every upstream crate's dependency tree. Architecture is frozen behind six ADRs and a normative correctness spec; the cargo-instrument pipeline itself is in active development. My current biggest project.",
-    languages: ['Rust'],
-    href: 'https://github.com/darkraider01/rust-compile-time-instrumentation-',
-    updatedAt: '2026-09-04T17:06:24Z',
     featured: true
   },
   {
