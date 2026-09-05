@@ -1,14 +1,80 @@
 {
-  "last_updated": "2026-09-04T10:52:55.383Z",
+  "last_updated": "2026-09-05T10:11:43.329Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 25,
-    "openPRs": 13,
-    "issuesCreated": 19,
+    "mergedPRs": 26,
+    "openPRs": 11,
+    "issuesCreated": 20,
     "issuesAssigned": 8,
-    "reviewsGiven": 13
+    "reviewsGiven": 15
   },
   "items": [
+    {
+      "id": "PR_kwDOOa4Yns8AAAABCRGg2A",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Fix pre-fork Python service name attribution falling back to python3.14",
+      "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/3323",
+      "state": "OPEN",
+      "createdAt": "2026-09-04T22:13:13Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "A gunicorn master and its workers all match the open port criterion, so which one discovery sees first is a race. When a worker is discovered before the master, only the worker's own service metadata gets resolved. The master never does, so it falls back to its executable name (python3.14) instead o",
+      "labels": [],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABCQFhQw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(database/sql): link Tx Commit/Rollback spans to the transaction's trace",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1324",
+      "state": "OPEN",
+      "createdAt": "2026-09-04T19:46:35Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nbeforeTxCommitInstrumentation and beforeTxRollbackInstrumentation in instrumentation/database/sql/client.go hardcoded context.Background() as the parent context when starting the COMMIT/ROLLBACK span, instead of using the context the transaction was started with. That orphans every commi",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABCPbyWA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(net/http): stop client instrumentation panicking on nil req, Header, or URL",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1323",
+      "state": "OPEN",
+      "createdAt": "2026-09-04T18:14:11Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nBeforeRoundTrip in instrumentation/net/http/client/client_hook.go assumed a fully populated *http.Request. It panicked in three cases that are legal input to (*http.Transport).RoundTrip:\n\nreq == nil\nreq.Header == nil (a manually built request, not via http.NewRequest, has a nil Header by",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "I_kwDOCwEWvM8AAAABPr0ZPg",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "REQUEST: New membership for darkraider01",
+      "repo": "open-telemetry/community",
+      "url": "https://github.com/open-telemetry/community/issues/3676",
+      "state": "OPEN",
+      "createdAt": "2026-09-04T11:30:57Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "GitHub Username\n@darkraider01\nRequirements\n\n I have reviewed the community membership guidelines (https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md)\n I have enabled 2FA on my GitHub account. See https://github.com/settings/security\n I have subscribed to the Slack",
+      "labels": [
+        "area/github-membership"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDODS0WD88AAAABCB0kUA",
       "category": "openPRs",
@@ -41,18 +107,18 @@
     },
     {
       "id": "PR_kwDOOa4Yns8AAAABCBjSng",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Fix out-of-bounds read in fill_msg_buffers when msg pull fails",
       "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/3298",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-03T08:28:42Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-04T11:33:56Z",
+      "closedAt": "2026-09-04T11:33:56Z",
       "body": "Found this while going through the sk_msg path , fill_msg_buffers() just assumes the earlier bpf_msg_pull_data() pull actually worked, but nothing checks it. If it fails, msg->data/data_end stay narrow, and the function still blindly copies up to 8KB from msg->data, so it can pull in random adjacent",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABCBZnlw",
@@ -116,7 +182,7 @@
       "closedAt": null,
       "body": "Is your feature request related to a problem? Please describe.\nRight now the only way to see what otelc will inject into a file is to run a real build and dig through the toolexec temp/build output afterward. There's no way to check upfront whether a given file will be instrumented, or what would ac",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABBvQJJA",
@@ -167,7 +233,7 @@
       "labels": [
         "performance"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "PR_kwDONpzSS88AAAABBmiSzw",
@@ -428,7 +494,7 @@
       "closedAt": null,
       "body": "Sets up the basic structure for this new repo, closes #4.\nWhat's in here:\n\nREADME, CONTRIBUTING, AGENTS.md\ndocs/ with SECURITY, AI_POLICY, testing, and semantic-conventions notes\n.gitignore, .editorconfig\nissue/PR templates\na baseline Makefile + tool configs for format/lint/test (build and test no-o",
       "labels": [],
-      "commentCount": 8
+      "commentCount": 9
     },
     {
       "id": "PR_kwDONpzSS88AAAABBIEw0w",
@@ -1235,21 +1301,6 @@
       "commentCount": 0
     },
     {
-      "id": "PR_kwDOTd-p_c77pdi4",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "feat(slack): add Socket Mode slash-command support (#33)",
-      "repo": "TryCaspian/caspian-sdk",
-      "url": "https://github.com/TryCaspian/caspian-sdk/pull/170",
-      "state": "OPEN",
-      "createdAt": "2026-08-06T14:49:56Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "https://drive.google.com/file/d/1c2IB6NpMjOOncZx2QzTE4G8E7oJnb-E4/view?usp=sharing\n\nExpose Command Events in Socket Mode (Slack Adapter)\nResolves #33\nContext & Rationale\nThis PR implements Slack slash-command support in Caspian's Slack adapter via Socket Mode, replacing the HTTP-based /commands endp",
-      "labels": [],
-      "commentCount": 1
-    },
-    {
       "id": "I_kwDONpzSS88AAAABLuOvwA",
       "category": "issuesCreated",
       "type": "issue",
@@ -1280,21 +1331,6 @@
         "scope:fix"
       ],
       "commentCount": 2
-    },
-    {
-      "id": "PR_kwDOTd-p_c76nD9_",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "feat: expose command and reaction events in gateway event stream (#66)",
-      "repo": "TryCaspian/caspian-sdk",
-      "url": "https://github.com/TryCaspian/caspian-sdk/pull/164",
-      "state": "OPEN",
-      "createdAt": "2026-08-04T14:55:04Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "PR Description: Expose command and reaction events in the gateway event stream (#66)\nThis PR implements the backend gateway and provider changes required for GitHub issue #66.\nProposed Changes\n1. Gateway Routing & Processing\n\njobs.py: Added _process_command handler that emits command.received events",
-      "labels": [],
-      "commentCount": 1
     },
     {
       "id": "PR_kwDOTd-p_c72VG0T",
