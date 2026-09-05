@@ -4,7 +4,7 @@ import SectionHeading from './SectionHeading';
 const groups = [
   {
     label: 'Languages',
-    items: ['Rust', 'Go', 'Java', 'Python', 'TypeScript']
+    items: ['Rust', 'Go', 'Java', 'Python']
   },
   {
     label: 'Systems & Distributed',
@@ -17,8 +17,17 @@ const groups = [
     ]
   },
   {
+    label: 'Compiler & Instrumentation',
+    items: [
+      'rustc / RUSTC_WRAPPER interception',
+      'syn AST & byte-span analysis',
+      'Go toolexec-based instrumentation',
+      'OpenTelemetry semantic conventions'
+    ]
+  },
+  {
     label: 'Infra & Tooling',
-    items: ['Linux', 'Docker', 'gRPC / HTTP APIs', 'Git', 'CI pipelines']
+    items: ['Linux', 'Docker', 'gRPC / HTTP APIs', 'Git', 'GitHub Actions']
   }
 ];
 
