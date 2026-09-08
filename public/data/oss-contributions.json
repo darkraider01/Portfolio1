@@ -1,14 +1,49 @@
 {
-  "last_updated": "2026-09-07T11:56:27.047Z",
+  "last_updated": "2026-09-08T10:51:52.929Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 26,
-    "openPRs": 11,
-    "issuesCreated": 20,
+    "openPRs": 12,
+    "issuesCreated": 21,
     "issuesAssigned": 8,
     "reviewsGiven": 15
   },
   "items": [
+    {
+      "id": "I_kwDODS0WD88AAAABQKfaGQ",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "[Bug]: PrecomputedSum in Delta temporality resets baseline on missed/rejected observations, double-counting values",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3714",
+      "state": "OPEN",
+      "createdAt": "2026-09-07T22:53:04Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What happened?\nIn PrecomputedSum::delta, collection drains and resets the value_map. Any attribute set that is not observed in the current cycle (e.g. an async callback temporarily misses an observation, errors, or an invalid measurement like NaN is dropped) is omitted from new_reported.\nWhen *repor",
+      "labels": [
+        "bug",
+        "triage:todo"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABCjMbrw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "chore: remove CHANGELOG.md re-introduced in #1012",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1329",
+      "state": "OPEN",
+      "createdAt": "2026-09-07T16:15:02Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #1234\nremoves CHANGELOG.md which got added back in #1012",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 3
+    },
     {
       "id": "PR_kwDOOa4Yns8AAAABCRGg2A",
       "category": "openPRs",
@@ -65,15 +100,15 @@
       "title": "REQUEST: New membership for darkraider01",
       "repo": "open-telemetry/community",
       "url": "https://github.com/open-telemetry/community/issues/3676",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-04T11:30:57Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-07T12:29:20Z",
       "body": "GitHub Username\n@darkraider01\nRequirements\n\n I have reviewed the community membership guidelines (https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md)\n I have enabled 2FA on my GitHub account. See https://github.com/settings/security\n I have subscribed to the Slack",
       "labels": [
         "area/github-membership"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDODS0WD88AAAABCB0kUA",
@@ -150,7 +185,7 @@
       "closedAt": null,
       "body": "Fixes #3656.\nTurns out the NaN/Infinity poisoning wasn't just a histogram sum problem. Once I checked the other aggregators (as discussed in the issue comments), they all had the same gap except ExponentialHistogram, which already guards for it.\nWhat was broken:\n\nHistogram: total += value with no fi",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABBvuGEA",
@@ -492,9 +527,9 @@
       "createdAt": "2026-08-27T08:35:34Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Sets up the basic structure for this new repo, closes #4.\nWhat's in here:\n\nREADME, CONTRIBUTING, AGENTS.md\ndocs/ with SECURITY, AI_POLICY, testing, and semantic-conventions notes\n.gitignore, .editorconfig\nissue/PR templates\na baseline Makefile + tool configs for format/lint/test (build and test no-o",
+      "body": "Sets up the basic structure for this new repo, closes #4.\nWhat's in here:\n\nREADME, CONTRIBUTING, AGENTS.md\ndocs/ with SECURITY, AI_POLICY, testing, and semantic-conventions notes\n.gitignore, .editorconfig\nissue/PR templates\na baseline Makefile + tool configs for format/lint/test (targets like format",
       "labels": [],
-      "commentCount": 10
+      "commentCount": 18
     },
     {
       "id": "PR_kwDONpzSS88AAAABBIEw0w",
@@ -560,7 +595,7 @@
       "closedAt": null,
       "body": "I went through the otelc setup and toolexec pipeline (tool/internal/{setup,instrument,pkgload,ast}) looking for compile-time performance issues, and found a handful of spots where we're doing more subprocess spawning and re-parsing than we need to. None of these are correctness bugs, the tool works ",
       "labels": [],
-      "commentCount": 8
+      "commentCount": 9
     },
     {
       "id": "PR_kwDODS0WD88AAAABA7QYiQ",
@@ -610,7 +645,7 @@
         "available",
         "effort:low"
       ],
-      "commentCount": 2
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABA1hPyw",
