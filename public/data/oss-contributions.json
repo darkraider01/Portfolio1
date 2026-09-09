@@ -1,14 +1,82 @@
 {
-  "last_updated": "2026-09-08T10:51:52.929Z",
+  "last_updated": "2026-09-09T10:57:10.644Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 26,
+    "mergedPRs": 28,
     "openPRs": 12,
-    "issuesCreated": 21,
+    "issuesCreated": 22,
     "issuesAssigned": 8,
-    "reviewsGiven": 15
+    "reviewsGiven": 16
   },
   "items": [
+    {
+      "id": "PR_kwDONpzSS88AAAABCyvIwg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(instrumentation/elastic): add olivere/elastic v7 client spans",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1340",
+      "state": "OPEN",
+      "createdAt": "2026-09-09T07:37:20Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nAdd compile-time client spans for github.com/olivere/elastic/v7.\nThe hook runs on (*Client).PerformRequest. That is the shared HTTP path for Search, Index, Bulk, Delete, and the rest of the API. Each call becomes one CLIENT span named {operation} {index} (for example search orders).\nThe ",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOOa4Yns8AAAABCxmmRQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "generictracer: backfill listening ports for processes discovered late",
+      "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/3371",
+      "state": "OPEN",
+      "createdAt": "2026-09-09T04:42:07Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Summary\nRe-runs the netns iterator backfill (runItersForPids) when a process is discovered after the tracer's initial scan, instead of only ever running it once at startup.\nWithout this, a process discovered late, or one that just restarted, never gets its listening ports into listening_ports, so an",
+      "labels": [],
+      "commentCount": 4
+    },
+    {
+      "id": "I_kwDOOa4Yns8AAAABQWrkMg",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "iter/tcp backfill doesn't populate filter_ports, leaving pre-existing listeners invisible to the socket filter",
+      "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/3367",
+      "state": "OPEN",
+      "createdAt": "2026-09-08T22:19:34Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Component\nOBI (eBPF instrumentation)\nWhat happened?\nFound while digging through #3297. accept4 writes a new listener's port to two maps: listening_ports (keyed by port + netns, used by is_listening() in protocol_tcp.h to classify a connection as server or client side) and filter_ports (port only, no",
+      "labels": [
+        "bug",
+        "component:obi",
+        "needs triage"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABCtGq2g",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "feat(tool): write instrumentation diff under --debug",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1333",
+      "state": "OPEN",
+      "createdAt": "2026-09-08T16:38:11Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nDiff-under---debug approach discussed in #1298, building it up incrementally.\nwriteInstrumented already has both the original and instrumented file in scope when it writes output, so this writes a report between them to .otelc-build/debug/<package>/<file>.diff, alongside the raw copies k",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 2
+    },
     {
       "id": "I_kwDODS0WD88AAAABQKfaGQ",
       "category": "issuesCreated",
@@ -42,19 +110,19 @@
       "labels": [
         "scope:chore"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOOa4Yns8AAAABCRGg2A",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Fix pre-fork Python service name attribution falling back to python3.14",
       "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/3323",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-04T22:13:13Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-08T13:27:53Z",
+      "closedAt": "2026-09-08T13:27:53Z",
       "body": "A gunicorn master and its workers all match the open port criterion, so which one discovery sees first is a race. When a worker is discovered before the master, only the worker's own service metadata gets resolved. The master never does, so it falls back to its executable name (python3.14) instead o",
       "labels": [],
       "commentCount": 3
@@ -127,15 +195,15 @@
     },
     {
       "id": "PR_kwDOOa4Yns8AAAABCBxHGw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Fix HTTP/2 and gRPC spans losing their peer by falling back to :authority",
       "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/3299",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-03T08:55:06Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-08T14:26:58Z",
+      "closedAt": "2026-09-08T14:26:58Z",
       "body": "HTTP/1.x already falls back to the Host: header when the connection tuple can't be resolved, so client spans still get a peer. HTTP/2 has the same info sitting right there in the :authority pseudo-header, but nothing was reading it — so gRPC and HTTP/2 spans just went out with an empty peer whenever",
       "labels": [],
       "commentCount": 3
