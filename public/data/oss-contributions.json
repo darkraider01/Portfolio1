@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-09T10:57:10.644Z",
+  "last_updated": "2026-09-10T10:54:03.518Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 28,
@@ -16,15 +16,15 @@
       "title": "feat(instrumentation/elastic): add olivere/elastic v7 client spans",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1340",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-09T07:37:20Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-10T07:29:58Z",
+      "closedAt": "2026-09-10T07:29:58Z",
       "body": "Description\nAdd compile-time client spans for github.com/olivere/elastic/v7.\nThe hook runs on (*Client).PerformRequest. That is the shared HTTP path for Search, Index, Bulk, Delete, and the rest of the API. Each call becomes one CLIENT span named {operation} {index} (for example search orders).\nThe ",
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 2
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOOa4Yns8AAAABCxmmRQ",
@@ -39,7 +39,7 @@
       "closedAt": null,
       "body": "Summary\nRe-runs the netns iterator backfill (runItersForPids) when a process is discovered after the tracer's initial scan, instead of only ever running it once at startup.\nWithout this, a process discovered late, or one that just restarted, never gets its listening ports into listening_ports, so an",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 8
     },
     {
       "id": "I_kwDOOa4Yns8AAAABQWrkMg",
@@ -58,7 +58,7 @@
         "component:obi",
         "needs triage"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDONpzSS88AAAABCtGq2g",
@@ -722,15 +722,15 @@
       "title": "fix(ast): handle qualified pointer receivers in stripGenericTypes",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1230",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-24T18:01:16Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-10T09:17:53Z",
       "body": "Summary\nfix(ast): handle qualified pointer receivers in stripGenericTypes\nChanges\n\nSelectorExpr *pkg.Type aborted via Unimplemented.\nStrip qualifier; unknown shapes are non-matches.\n\nFixes #766",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABA1Ln9w",
