@@ -1,14 +1,78 @@
 {
-  "last_updated": "2026-09-10T10:54:03.518Z",
+  "last_updated": "2026-09-11T10:51:23.466Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 28,
-    "openPRs": 12,
+    "mergedPRs": 30,
+    "openPRs": 13,
     "issuesCreated": 22,
-    "issuesAssigned": 8,
+    "issuesAssigned": 9,
     "reviewsGiven": 16
   },
   "items": [
+    {
+      "id": "PR_kwDODS0WD88AAAABDC06sg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(metrics): retain delta baseline across missed collection in PrecomputedSum",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3720",
+      "state": "OPEN",
+      "createdAt": "2026-09-10T19:25:47Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #3714\nChanges\n\nBaseline retention & eviction: Replaced the raw cached value in PrecomputedSum::reported with BaselineEntry<T> tracking last_value and consecutive missed_count.\n\nIncrements missed_count at the start of each collection cycle.\nResets missed_count to 0 whenever an attribute set has",
+      "labels": [],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABDCeq8Q",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "refactor(tool): use []string instead of map for module directories",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1351",
+      "state": "OPEN",
+      "createdAt": "2026-09-10T18:38:55Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nSwitches module directory handling from map[string]bool to []string across pkgload and setup. FindModuleDirs now returns sorted, deduplicated slices, and setup functions take []string directly to eliminate redundant map-to-slice conversions.\nMotivation\nFollow-up from PR #1262 review disc",
+      "labels": [
+        "scope:refactor"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABDCAcxw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(tool/internal/setup): handle test flags and delimiters for go test",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1350",
+      "state": "OPEN",
+      "createdAt": "2026-09-10T17:35:07Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\n\nUpdate target parsing (splitBuildTargets) in test mode to stop scanning targets upon encountering --, -args, or --args, while preserving target scanning across -- in go build.\nUpdate flag parsing to recognize supported -test.* flags in separated and joined forms without mistaking their ",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABQnh5rA",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "fix(tool/internal/setup): honor go test -test.* flags and -- delimiter",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1346",
+      "state": "OPEN",
+      "createdAt": "2026-09-10T09:03:58Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Problem\notelc go test does not follow all of cmd/go's argument-boundary rules during setup.\nsplitBuildTargets recognizes -run TestName, but not the equivalent\n-test.run TestName form. It therefore interprets TestName as a package\ntarget.\nIt also does not recognize the -- delimiter. For go test, Go p",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDONpzSS88AAAABCyvIwg",
       "category": "reviewsGiven",
@@ -39,7 +103,7 @@
       "closedAt": null,
       "body": "Summary\nRe-runs the netns iterator backfill (runItersForPids) when a process is discovered after the tracer's initial scan, instead of only ever running it once at startup.\nWithout this, a process discovered late, or one that just restarted, never gets its listening ports into listening_ports, so an",
       "labels": [],
-      "commentCount": 8
+      "commentCount": 10
     },
     {
       "id": "I_kwDOOa4Yns8AAAABQWrkMg",
@@ -110,7 +174,7 @@
       "labels": [
         "scope:chore"
       ],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOOa4Yns8AAAABCRGg2A",
@@ -151,15 +215,15 @@
       "title": "fix(net/http): stop client instrumentation panicking on nil req, Header, or URL",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1323",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-04T18:14:11Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-10T13:57:47Z",
       "body": "Description\nBeforeRoundTrip in instrumentation/net/http/client/client_hook.go assumed a fully populated *http.Request. It panicked in three cases that are legal input to (*http.Transport).RoundTrip:\n\nreq == nil\nreq.Header == nil (a manually built request, not via http.NewRequest, has a nil Header by",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 6
     },
     {
       "id": "I_kwDOCwEWvM8AAAABPr0ZPg",
@@ -506,10 +570,10 @@
       "title": "fix(tool/internal/setup): recognize quoted -mod tokens in GOFLAGS",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1279",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-30T07:39:21Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-10T12:41:16Z",
+      "closedAt": "2026-09-10T12:41:16Z",
       "body": "Description\nforceModMod in tool/internal/setup/vendor.go split GOFLAGS with strings.Fields and matched the raw tokens. The go command accepts quoted GOFLAGS tokens such as '-mod=readonly', and the surrounding quotes stayed attached to the token, so isModToken did not recognize it as a -mod flag.\nfor",
       "labels": [
         "scope:fix"
@@ -552,15 +616,15 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABBNQqVg",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "refactor(tool/internal/instrument): stop re-parsing hook files and the trampoline template",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1263",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-27T12:57:11Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-10T12:53:51Z",
+      "closedAt": "2026-09-10T12:53:51Z",
       "body": "Item 3 from #1242.\nTwo things were getting re-parsed for no reason:\ngetHookFunc re-scanned and re-parsed the whole hook directory for every rule, with no caching at all. First pass at this cached by {resolved path, hook name}, but that only helped when the exact same rule got looked up twice (it's c",
       "labels": [
         "scope:refactor"
@@ -569,15 +633,15 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABBNQm8g",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "refactor(tool/internal/setup): batch resolveRulePaths into one call per module dir",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1262",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-27T12:57:04Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-10T11:03:59Z",
+      "closedAt": "2026-09-10T11:03:59Z",
       "body": "Item 6 from #1242.\nresolveRulePaths was calling packages.Load once per import path referenced by matched rules, in a loop. Now it collects all the unique paths up front and does one batched packages.Load call per module dir instead.\nBenchmarked with 15 distinct hook paths in one module dir: 3.08s be",
       "labels": [
         "scope:refactor"
@@ -606,10 +670,10 @@
       "title": "chore(test): add multi-process e2e for HTTP→OpenAI streaming GenAI client",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1259",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-26T20:31:03Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-10T12:11:39Z",
+      "closedAt": "2026-09-10T12:11:39Z",
       "body": "Description\nAdds multi-process e2e coverage for HTTP→OpenAI streaming GenAI client spans. Extends httpserveropenaiclient with a -stream flag and adds an e2e test that asserts one distributed trace (HTTP client → HTTP server → GenAI client) with gen_ai.request.is_stream=true.\nMotivation\nNon-streaming",
       "labels": [
         "scope:chore"
@@ -833,7 +897,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "I_kwDONpzSS88AAAABNzWWUg",
