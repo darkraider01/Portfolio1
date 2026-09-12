@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-11T10:51:23.466Z",
+  "last_updated": "2026-09-12T10:22:55.871Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 30,
@@ -52,7 +52,7 @@
       "createdAt": "2026-09-10T17:35:07Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\n\nUpdate target parsing (splitBuildTargets) in test mode to stop scanning targets upon encountering --, -args, or --args, while preserving target scanning across -- in go build.\nUpdate flag parsing to recognize supported -test.* flags in separated and joined forms without mistaking their ",
+      "body": "Description\n\nUnify command-line argument parsing into a shared classifier (classifyArgs) across target discovery, build-flag extraction, and vendoring rewrites.\nAlign go test argument parsing with cmd/go:\n\nStop package discovery once flags begin, and treat subsequent positional arguments as test-bin",
       "labels": [
         "scope:fix"
       ],
@@ -71,7 +71,7 @@
       "closedAt": null,
       "body": "Problem\notelc go test does not follow all of cmd/go's argument-boundary rules during setup.\nsplitBuildTargets recognizes -run TestName, but not the equivalent\n-test.run TestName form. It therefore interprets TestName as a package\ntarget.\nIt also does not recognize the -- delimiter. For go test, Go p",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABCyvIwg",
@@ -135,7 +135,7 @@
       "createdAt": "2026-09-08T16:38:11Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\nDiff-under---debug approach discussed in #1298, building it up incrementally.\nwriteInstrumented already has both the original and instrumented file in scope when it writes output, so this writes a report between them to .otelc-build/debug/<package>/<file>.diff, alongside the raw copies k",
+      "body": "Description\nImplements instrumentation diff reporting under --debug (OTELC_DEBUG=1), allowing users to inspect the exact Go source modifications and additions introduced by otelc into the compiler.\nDiff Categories\nDiff reports cover four distinct categories of source transformations:\n\nModified targe",
       "labels": [
         "scope:feat"
       ],
