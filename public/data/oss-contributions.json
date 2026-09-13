@@ -1,14 +1,65 @@
 {
-  "last_updated": "2026-09-12T10:22:55.871Z",
+  "last_updated": "2026-09-13T11:19:38.775Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 30,
     "openPRs": 13,
     "issuesCreated": 22,
     "issuesAssigned": 9,
-    "reviewsGiven": 16
+    "reviewsGiven": 19
   },
   "items": [
+    {
+      "id": "PR_kwDONpzSS88AAAABDQTaLQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(tool/internal/instrument): only strip ignore build constraints in add_file rules",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1358",
+      "state": "OPEN",
+      "createdAt": "2026-09-12T13:11:25Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nUpdates stripBuildIgnoreTag in tool/internal/instrument/apply_file.go to use constraint.Parse and recursive AST expression tree walking to identify and remove only build constraint directives that contain an ignore tag.\nKey changes:\n\nEvaluates parsed expressions via constraint.Parse and ",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABDP2E9w",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(tool/internal/instrument): add_file emits an unparseable package clause in test builds",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1356",
+      "state": "OPEN",
+      "createdAt": "2026-09-12T10:55:37Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nTurns out an add_file rule targeting main also lands on the test main that go test\ngenerates. That compile unit shows up with no sources in the build-plan dry run, so setup\nnever calls SetPackageName and the rule set reaches us with PackageName empty.\napplyFileRule wrote that straight in",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABDPGpTg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(instrumentation/net/http): guard nil request and URL in client AfterRoundTrip",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1354",
+      "state": "OPEN",
+      "createdAt": "2026-09-12T07:05:48Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nGuards against nil pointer dereferences in instrumentation/net/http/client's AfterRoundTrip hook when logging debug messages.\nSpecifically:\n\nCheck if res.Request != nil before reading res.Request.Method and res.Request.URL.\nCheck if res.Request.URL != nil before calling res.Request.URL.S",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDODS0WD88AAAABDC06sg",
       "category": "openPRs",
@@ -22,7 +73,7 @@
       "closedAt": null,
       "body": "Fixes #3714\nChanges\n\nBaseline retention & eviction: Replaced the raw cached value in PrecomputedSum::reported with BaselineEntry<T> tracking last_value and consecutive missed_count.\n\nIncrements missed_count at the start of each collection cycle.\nResets missed_count to 0 whenever an attribute set has",
       "labels": [],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDONpzSS88AAAABDCeq8Q",
@@ -101,7 +152,7 @@
       "createdAt": "2026-09-09T04:42:07Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Summary\nRe-runs the netns iterator backfill (runItersForPids) when a process is discovered after the tracer's initial scan, instead of only ever running it once at startup.\nWithout this, a process discovered late, or one that just restarted, never gets its listening ports into listening_ports, so an",
+      "body": "Description\nFixes #3297.\ngenerictracer previously executed runItersForPids() only once during startup in Run(). Any process discovered after startup (e.g. secondary containers or late-starting services such as Kafka or Postgres) never had its listening sockets populated into the listening_ports BPF ",
       "labels": [],
       "commentCount": 10
     },
