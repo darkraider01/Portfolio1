@@ -1,14 +1,44 @@
 {
-  "last_updated": "2026-09-13T11:19:38.775Z",
+  "last_updated": "2026-09-14T12:11:33.434Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 30,
-    "openPRs": 13,
+    "mergedPRs": 31,
+    "openPRs": 14,
     "issuesCreated": 22,
     "issuesAssigned": 9,
     "reviewsGiven": 19
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABDcM_nw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "stream: implement FusedStream for Empty and Once",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8478",
+      "state": "OPEN",
+      "createdAt": "2026-09-14T11:32:37Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nEmpty and Once are foundational tokio-stream types but do not currently implement futures_core::FusedStream. Implementing it gives callers a reliable termination signal and brings their behavior in line with futures-util.\nSolution\nImplement FusedStream for both types:\n\nEmpty is always ter",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOOa4Yns8AAAABDWbOjA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "gotracer: support nested and reentrant Go gRPC client invocations ",
+      "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/3401",
+      "state": "OPEN",
+      "createdAt": "2026-09-13T17:01:12Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #3391\nSummary\nThis PR fixes nested and reentrant Go gRPC client tracing by:\n\nReplacing the single per-goroutine client invocation slot with a bounded LIFO stack, allowing nested and recursive RPCs on the same goroutine without overwriting outer calls.\nStoring transport identity on each invocat",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDONpzSS88AAAABDQTaLQ",
       "category": "reviewsGiven",
@@ -212,15 +242,15 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABCjMbrw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "chore: remove CHANGELOG.md re-introduced in #1012",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1329",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-07T16:15:02Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-14T02:05:11Z",
+      "closedAt": "2026-09-14T02:05:11Z",
       "body": "Fixes #1234\nremoves CHANGELOG.md which got added back in #1012",
       "labels": [
         "scope:chore"
@@ -712,7 +742,7 @@
       "closedAt": null,
       "body": "Sets up the basic structure for this new repo, closes #4.\nWhat's in here:\n\nREADME, CONTRIBUTING, AGENTS.md\ndocs/ with SECURITY, AI_POLICY, testing, and semantic-conventions notes\n.gitignore, .editorconfig\nissue/PR templates\na baseline Makefile + tool configs for format/lint/test (targets like format",
       "labels": [],
-      "commentCount": 18
+      "commentCount": 20
     },
     {
       "id": "PR_kwDONpzSS88AAAABBIEw0w",
