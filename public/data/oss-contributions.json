@@ -1,27 +1,70 @@
 {
-  "last_updated": "2026-09-14T12:11:33.434Z",
+  "last_updated": "2026-09-15T11:21:18.560Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 31,
-    "openPRs": 14,
+    "mergedPRs": 32,
+    "openPRs": 13,
     "issuesCreated": 22,
     "issuesAssigned": 9,
-    "reviewsGiven": 19
+    "reviewsGiven": 20
   },
   "items": [
     {
-      "id": "PR_kwDOBAsbdc8AAAABDcM_nw",
+      "id": "PR_kwDOBT6fwc8AAAABDef_Nw",
       "category": "openPRs",
+      "type": "pr",
+      "title": "civo: fix pool count mismatch validation and decrease error message",
+      "repo": "kubernetes/autoscaler",
+      "url": "https://github.com/kubernetes/autoscaler/pull/10290",
+      "state": "OPEN",
+      "createdAt": "2026-09-14T15:56:54Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What type of PR is this?\n/kind bug\nWhat this PR does / why we need it:\nFixes a validation and cache desynchronization bug in the Civo cloud provider:\n\n\nFix post-API validation in IncreaseSize:\n\nReplaced a redundant targetSize > n.MaxSize(...) check after the API call with updatedNodePool.Count != ta",
+      "labels": [
+        "cncf-cla: yes",
+        "area/cluster-autoscaler",
+        "size/M",
+        "needs-ok-to-test",
+        "release-note",
+        "kind/bug",
+        "needs-triage"
+      ],
+      "commentCount": 8
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABDcvsYA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(tool): avoid self-import in otelc.runtime.go for local hooks",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1362",
+      "state": "OPEN",
+      "createdAt": "2026-09-14T12:39:37Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\notelc writes a generated otelc.runtime.go into every package selected on the command line, and each of those files blank-imports the hook packages of all matched rules. The import list did not depend on which package received the file, so a hook package ended up with a generated file tha",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABDcM_nw",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "stream: implement FusedStream for Empty and Once",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8478",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-14T11:32:37Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-14T13:12:17Z",
+      "closedAt": "2026-09-14T13:12:17Z",
       "body": "Motivation\nEmpty and Once are foundational tokio-stream types but do not currently implement futures_core::FusedStream. Implementing it gives callers a reliable termination signal and brings their behavior in line with futures-util.\nSolution\nImplement FusedStream for both types:\n\nEmpty is always ter",
-      "labels": [],
+      "labels": [
+        "C-enhancement",
+        "A-tokio-stream"
+      ],
       "commentCount": 0
     },
     {
@@ -103,7 +146,7 @@
       "closedAt": null,
       "body": "Fixes #3714\nChanges\n\nBaseline retention & eviction: Replaced the raw cached value in PrecomputedSum::reported with BaselineEntry<T> tracking last_value and consecutive missed_count.\n\nIncrements missed_count at the start of each collection cycle.\nResets missed_count to 0 whenever an attribute set has",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABDCeq8Q",
@@ -172,21 +215,6 @@
       "commentCount": 4
     },
     {
-      "id": "PR_kwDOOa4Yns8AAAABCxmmRQ",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "generictracer: backfill listening ports for processes discovered late",
-      "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/3371",
-      "state": "OPEN",
-      "createdAt": "2026-09-09T04:42:07Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Description\nFixes #3297.\ngenerictracer previously executed runItersForPids() only once during startup in Run(). Any process discovered after startup (e.g. secondary containers or late-starting services such as Kafka or Postgres) never had its listening sockets populated into the listening_ports BPF ",
-      "labels": [],
-      "commentCount": 10
-    },
-    {
       "id": "I_kwDOOa4Yns8AAAABQWrkMg",
       "category": "issuesCreated",
       "type": "issue",
@@ -226,7 +254,7 @@
       "id": "I_kwDODS0WD88AAAABQKfaGQ",
       "category": "issuesCreated",
       "type": "issue",
-      "title": "[Bug]: PrecomputedSum in Delta temporality resets baseline on missed/rejected observations, double-counting values",
+      "title": " PrecomputedSum in Delta temporality resets baseline on missed/rejected observations, double-counting values",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3714",
       "state": "OPEN",
@@ -235,10 +263,10 @@
       "closedAt": null,
       "body": "What happened?\nIn PrecomputedSum::delta, collection drains and resets the value_map. Any attribute set that is not observed in the current cycle (e.g. an async callback temporarily misses an observation, errors, or an invalid measurement like NaN is dropped) is omitted from new_reported.\nWhen *repor",
       "labels": [
-        "bug",
-        "triage:todo"
+        "enhancement",
+        "S-blocked-spec"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDONpzSS88AAAABCjMbrw",
@@ -336,7 +364,7 @@
       "closedAt": null,
       "body": "Fixes #3657.\nParentBased only let you configure the root case (no parent), the other 4 branches from the spec (remote/local parent, sampled/not sampled) were hardcoded to AlwaysOn/AlwaysOff with no way to override them.\nAdded Sampler::parent_based(root), which returns a ParentBasedSampler you can ch",
       "labels": [],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOOa4Yns8AAAABCBxHGw",
@@ -398,7 +426,7 @@
       "closedAt": null,
       "body": "Fixes #3656.\nTurns out the NaN/Infinity poisoning wasn't just a histogram sum problem. Once I checked the other aggregators (as discussed in the issue comments), they all had the same gap except ExponentialHistogram, which already guards for it.\nWhat was broken:\n\nHistogram: total += value with no fi",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABBvuGEA",
@@ -481,7 +509,7 @@
       "labels": [
         "performance"
       ],
-      "commentCount": 7
+      "commentCount": 9
     },
     {
       "id": "PR_kwDONpzSS88AAAABBmiSzw",
