@@ -1,14 +1,50 @@
 {
-  "last_updated": "2026-09-15T11:21:18.560Z",
+  "last_updated": "2026-09-16T11:05:28.888Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 32,
-    "openPRs": 13,
+    "openPRs": 15,
     "issuesCreated": 22,
     "issuesAssigned": 9,
     "reviewsGiven": 20
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABDvgF4Q",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "tokio-util: add inspect adapter accessors",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8486",
+      "state": "OPEN",
+      "createdAt": "2026-09-16T09:37:32Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Adds get_ref, get_mut, and get_pin_mut to InspectReader and InspectWriter. Direct I/O through mutable accessors is documented to bypass inspection.\nTests: cargo test -p tokio-util --test io_inspect --all-features",
+      "labels": [
+        "R-loom-util"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABDvTKYw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "stream: implement FusedStream for Throttle",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8485",
+      "state": "OPEN",
+      "createdAt": "2026-09-16T09:10:58Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nThrottle slows down an underlying stream by enforcing a delay between items, but currently does not implement futures_core::FusedStream when the underlying stream is fused.\nSolution\nImplement FusedStream for Throttle<T> where T: FusedStream:\n\nThrottle reports terminated when the underlyin",
+      "labels": [
+        "C-enhancement",
+        "M-time",
+        "A-tokio-stream"
+      ],
+      "commentCount": 3
+    },
     {
       "id": "PR_kwDOBT6fwc8AAAABDef_Nw",
       "category": "openPRs",
@@ -509,7 +545,7 @@
       "labels": [
         "performance"
       ],
-      "commentCount": 9
+      "commentCount": 11
     },
     {
       "id": "PR_kwDONpzSS88AAAABBmiSzw",
