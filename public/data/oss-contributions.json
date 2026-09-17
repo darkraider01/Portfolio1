@@ -1,14 +1,61 @@
 {
-  "last_updated": "2026-09-16T11:05:28.888Z",
+  "last_updated": "2026-09-17T11:15:00.741Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 32,
     "openPRs": 15,
     "issuesCreated": 22,
     "issuesAssigned": 9,
-    "reviewsGiven": 20
+    "reviewsGiven": 23
   },
   "items": [
+    {
+      "id": "PR_kwDOCdoc188AAAABD1rHHA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "core: read the registered dispatch when rebuilding callsite interest",
+      "repo": "tokio-rs/tracing",
+      "url": "https://github.com/tokio-rs/tracing/pull/3614",
+      "state": "OPEN",
+      "createdAt": "2026-09-16T22:00:15Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nWhile exactly one Dispatch is registered, Dispatchers::rebuilder()\nreturns Rebuilder::JustOne, and Rebuilder::for_each resolves it with\ndispatcher::get_default: the current thread's default dispatcher, not\nthe registered one. Those are only the same thing when the one dispatch\nis installe",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABDz0anw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "feat(sdk): simplify finished span ownership",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3741",
+      "state": "OPEN",
+      "createdAt": "2026-09-16T17:57:28Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Supersedes #3659.\nRelated to #2726.\nChanges\nThis PR retains #3659's clone-avoidance goal while simplifying the completed-span ownership architecture.\n\nChanges SpanProcessor::on_end to receive FinishedSpan<'_> by value.\nReplaces the reusable mutable FinishedSpan state machine (consume, reset, and con",
+      "labels": [],
+      "commentCount": 6
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABDwXhiQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(instrumentation/redis): skip Conn hook after go-redis v9.9.0",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1369",
+      "state": "OPEN",
+      "createdAt": "2026-09-16T11:21:35Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nThe redis_client_hook rule now matches only v9.0.0,v9.9.0.\nFrom go-redis v9.9.0, Client.Conn() copies the parent hooks. A second afterClientConnV9 hook then added another hook. One command made two spans. That extra hook also set server.address from Conn.String(), which is not a host:por",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABDvgF4Q",
       "category": "openPRs",
@@ -22,6 +69,9 @@
       "closedAt": null,
       "body": "Adds get_ref, get_mut, and get_pin_mut to InspectReader and InspectWriter. Direct I/O through mutable accessors is documented to bypass inspection.\nTests: cargo test -p tokio-util --test io_inspect --all-features",
       "labels": [
+        "C-enhancement",
+        "A-tokio-util",
+        "M-io",
         "R-loom-util"
       ],
       "commentCount": 0
@@ -46,6 +96,23 @@
       "commentCount": 3
     },
     {
+      "id": "PR_kwDONpzSS88AAAABDtjJcw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(instrumentation/echo): add labstack/echo/v4 route enrichment",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1367",
+      "state": "OPEN",
+      "createdAt": "2026-09-16T04:47:22Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nThis PR adds compile-time instrumentation for github.com/labstack/echo/v4.\nThe hook does not start a span. It enriches the existing net/http SERVER span.\nAfter (*Router).Find, the hook sets http.route from Context.Path().\nThen the hook renames the span to METHOD {template}.\nThe hook reco",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 2
+    },
+    {
       "id": "PR_kwDOBT6fwc8AAAABDef_Nw",
       "category": "openPRs",
       "type": "pr",
@@ -66,7 +133,7 @@
         "kind/bug",
         "needs-triage"
       ],
-      "commentCount": 8
+      "commentCount": 9
     },
     {
       "id": "PR_kwDONpzSS88AAAABDcvsYA",
@@ -199,7 +266,7 @@
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDONpzSS88AAAABDCAcxw",
@@ -257,10 +324,10 @@
       "title": "iter/tcp backfill doesn't populate filter_ports, leaving pre-existing listeners invisible to the socket filter",
       "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/3367",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-08T22:19:34Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-16T14:27:05Z",
       "body": "Component\nOBI (eBPF instrumentation)\nWhat happened?\nFound while digging through #3297. accept4 writes a new listener's port to two maps: listening_ports (keyed by port + netns, used by is_listening() in protocol_tcp.h to classify a connection as server or client side) and filter_ports (port only, no",
       "labels": [
         "bug",
@@ -511,7 +578,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 2
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABBtWw3Q",
@@ -529,23 +596,6 @@
         "scope:chore"
       ],
       "commentCount": 2
-    },
-    {
-      "id": "PR_kwDODS0WD88AAAABBnXRfQ",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "refactor(sdk): SpanProcessor::on_end takes &mut FinishedSpan instead of owned SpanData",
-      "repo": "open-telemetry/opentelemetry-rust",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3659",
-      "state": "OPEN",
-      "createdAt": "2026-08-31T14:36:29Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Summary\nThis revives #3410 (originally by @paullegranddc, refined by @bryantbiggs). It was fully\nreviewed and approved, then got closed stale waiting on a release-batching window that's\nlong since passed. See #2726 for the original discussion.\nSpanProcessor::on_end currently takes SpanData by value.",
-      "labels": [
-        "performance"
-      ],
-      "commentCount": 11
     },
     {
       "id": "PR_kwDONpzSS88AAAABBmiSzw",
@@ -657,7 +707,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 8
     },
     {
       "id": "PR_kwDONpzSS88AAAABBflppw",
@@ -674,7 +724,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "I_kwDONpzSS88AAAABO2HleA",
@@ -740,7 +790,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "PR_kwDONpzSS88AAAABBSnixw",
@@ -956,7 +1006,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABAyqTkA",
@@ -990,7 +1040,7 @@
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABAuE95w",
@@ -1042,7 +1092,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 5
+      "commentCount": 8
     },
     {
       "id": "I_kwDONpzSS88AAAABNzWWUg",
