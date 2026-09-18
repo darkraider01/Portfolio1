@@ -1,14 +1,44 @@
 {
-  "last_updated": "2026-09-17T11:15:00.741Z",
+  "last_updated": "2026-09-18T10:47:49.156Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 32,
-    "openPRs": 15,
-    "issuesCreated": 22,
-    "issuesAssigned": 9,
+    "openPRs": 16,
+    "issuesCreated": 23,
+    "issuesAssigned": 10,
     "reviewsGiven": 23
   },
   "items": [
+    {
+      "id": "I_kwDODS0WD88AAAABR1PRFA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "perf(sdk): two owning span processors benchmark shows 7.5% slowdown vs baseline",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3746",
+      "state": "OPEN",
+      "createdAt": "2026-09-17T19:11:21Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nIn #3741, SpanProcessor::on_end was updated to take FinishedSpan<'_> by value to avoid eager SpanData cloning. Preceding processors receive a borrowed view and clone only on into_owned(), while the last registered processor receives an owned view and takes ownership zero-copy via Option:",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABD9IY4w",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "feat(sdk): add set_global_text_map_propagator_from_env helper",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3745",
+      "state": "OPEN",
+      "createdAt": "2026-09-17T15:49:26Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #3127\nChanges\nAdds an explicit helper function in opentelemetry-sdk to configure the process-global text map propagator from the OTEL_PROPAGATORS environment variable:\nopentelemetry_sdk::propagation::set_global_text_map_propagator_from_env()\nKey details:\n\nRespects the OpenTelemetry specifica",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDOCdoc188AAAABD1rHHA",
       "category": "reviewsGiven",
@@ -36,8 +66,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Supersedes #3659.\nRelated to #2726.\nChanges\nThis PR retains #3659's clone-avoidance goal while simplifying the completed-span ownership architecture.\n\nChanges SpanProcessor::on_end to receive FinishedSpan<'_> by value.\nReplaces the reusable mutable FinishedSpan state machine (consume, reset, and con",
-      "labels": [],
-      "commentCount": 6
+      "labels": [
+        "performance"
+      ],
+      "commentCount": 9
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -1708,6 +1740,27 @@
       "body": "Closes #3.\nAdds 10 tests to sdks/python/tests/test_sdk.py filling gaps in the existing typed authentication/billing error coverage:\n\nchannel_cap_reached as a 429 reason, alongside the already-tested insufficient_credit / monthly_cap_reached\nDefault-filling on AccountRequiredError / InsufficientCredi",
       "labels": [],
       "commentCount": 2
+    },
+    {
+      "id": "I_kwDODS0WD87GEHPF",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "[Feature]: add support for `OTEL_PROPAGATORS` environment variable",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3127",
+      "state": "OPEN",
+      "createdAt": "2025-08-14T17:13:03Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Related Problems?\nWe use this environment var via a provided configmap from the platform to have a consistent propagator in our Kubernetes cluster. I would be nice to also have the support for it in the rust ecosystem.\nDescribe the solution you'd like:\nAutomatically configuring the Propagator based ",
+      "labels": [
+        "enhancement",
+        "A-common",
+        "priority:p2",
+        "triage:accepted",
+        "M-sdk"
+      ],
+      "commentCount": 4
     }
   ]
 }
