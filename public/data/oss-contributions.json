@@ -1,14 +1,61 @@
 {
-  "last_updated": "2026-09-18T10:47:49.156Z",
+  "last_updated": "2026-09-19T10:31:52.490Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 32,
-    "openPRs": 16,
+    "openPRs": 18,
     "issuesCreated": 23,
     "issuesAssigned": 10,
-    "reviewsGiven": 23
+    "reviewsGiven": 24
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABEJTBCw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "wasm: restrict fs and io-std on emscripten to pthreads (#8411)",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8493",
+      "state": "OPEN",
+      "createdAt": "2026-09-18T21:02:23Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nResolves #8411\nOn wasm32-unknown-emscripten without pthreads support, Tokio previously used an inline shim for tokio::fs and tokio::io::stdin that executed blocking operations synchronously on the calling thread. In single-threaded Emscripten environments, this blocks the thread and can f",
+      "labels": [
+        "R-loom-blocking"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOGj8GuM8AAAABEHQIOA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "docs: propose OpenTelemetry runtime metrics integration",
+      "repo": "tokio-rs/tokio-metrics",
+      "url": "https://github.com/tokio-rs/tokio-metrics/pull/139",
+      "state": "OPEN",
+      "createdAt": "2026-09-18T16:57:59Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Related to #63.\nFollowing the discussion on Discord, I've put together a small design proposal before starting the implementation.\nThe proposed approach uses a caller-provided OpenTelemetry Meter and an interval-driven reporter, starting with stable runtime counters and gauges. SDK and exporter conf",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOGj8GuM8AAAABEHKYiA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix: fix dev builds and doc tests on Windows",
+      "repo": "tokio-rs/tokio-metrics",
+      "url": "https://github.com/tokio-rs/tokio-metrics/pull/138",
+      "state": "OPEN",
+      "createdAt": "2026-09-18T16:46:14Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Running cargo test --all-features currently fails on Windows because metrics-exporter-prometheus pulls in Unix domain socket dependencies that Tokio doesn't support on Windows, and 5 doc tests try to compile UDS code as well.\nThis PR:\n\nMoves metrics-exporter-prometheus under target.'cfg(unix)'.dev-d",
+      "labels": [],
+      "commentCount": 0
+    },
     {
       "id": "I_kwDODS0WD88AAAABR1PRFA",
       "category": "issuesCreated",
@@ -22,7 +69,7 @@
       "closedAt": null,
       "body": "Description\nIn #3741, SpanProcessor::on_end was updated to take FinishedSpan<'_> by value to avoid eager SpanData cloning. Preceding processors receive a borrowed view and clone only on into_owned(), while the last registered processor receives an owned view and takes ownership zero-copy via Option:",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 6
     },
     {
       "id": "PR_kwDODS0WD88AAAABD9IY4w",
@@ -69,7 +116,7 @@
       "labels": [
         "performance"
       ],
-      "commentCount": 9
+      "commentCount": 10
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -311,11 +358,11 @@
       "createdAt": "2026-09-10T17:35:07Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\n\nUnify command-line argument parsing into a shared classifier (classifyArgs) across target discovery, build-flag extraction, and vendoring rewrites.\nAlign go test argument parsing with cmd/go:\n\nStop package discovery once flags begin, and treat subsequent positional arguments as test-bin",
+      "body": "Description\n\n\nUnify command-line argument parsing into a shared classifier (classifyArgs) across target discovery, build-flag extraction, build-plan handling, and vendoring rewrites.\n\n\nAlign go test argument handling with cmd/go:\n\nKeep package discovery open across recognized Go/test flags, so packa",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDONpzSS88AAAABQnh5rA",
@@ -745,18 +792,18 @@
       "id": "PR_kwDONpzSS88AAAABBflppw",
       "category": "reviewsGiven",
       "type": "pr",
-      "title": "fix(runtime): restore default OS signal disposition in handleShutdownSignal",
+      "title": "fix(runtime): re-raise the shutdown signal after flushing telemetry",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1283",
       "state": "OPEN",
       "createdAt": "2026-08-30T09:14:52Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\nIn pkg/runtime/setup.go, handleShutdownSignal flushes OpenTelemetry telemetry upon receiving SIGINT or SIGTERM. However, after calling signal.Stop(sigCh), signal.Reset(...) was omitted. This left the signal handler trapped in Go runtime, swallowing the initial SIGINT/SIGTERM signal in st",
+      "body": "Description\nhandleShutdownSignal consumed the shutdown signal without re-raising it, so a process that registers no handler of its own needed a second Ctrl+C or SIGTERM to exit.\n\nsignal.Stop(sigCh) deregisters otelc's channel only, so a host application keeps its own handler. Once sigCh is the last ",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "I_kwDONpzSS88AAAABO2HleA",
@@ -888,7 +935,7 @@
       "closedAt": null,
       "body": "Sets up the basic structure for this new repo, closes #4.\nWhat's in here:\n\nREADME, CONTRIBUTING, AGENTS.md\ndocs/ with SECURITY, AI_POLICY, testing, and semantic-conventions notes\n.gitignore, .editorconfig\nissue/PR templates\na baseline Makefile + tool configs for format/lint/test (targets like format",
       "labels": [],
-      "commentCount": 20
+      "commentCount": 21
     },
     {
       "id": "PR_kwDONpzSS88AAAABBIEw0w",
@@ -1081,15 +1128,15 @@
       "title": "fix(tool/internal/ast): handle import alias collisions in ImportAliasMap",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1220",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-23T18:36:15Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-18T18:55:52Z",
       "body": "Fixes #1219\nDescription\nThis PR resolves issue #1219 in ImportAliasMap where distinct unaliased imports sharing a last path segment (e.g. text/template and html/template, both conventionally defaulting to template) would silently overwrite existing map entries.\nChanges Made\n\nUpdated ImportAliasMap i",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDODS0WD88AAAABN6M_qw",
