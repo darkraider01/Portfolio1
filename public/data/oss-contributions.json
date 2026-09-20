@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-19T10:31:52.490Z",
+  "last_updated": "2026-09-20T10:54:13.551Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 32,
@@ -24,7 +24,7 @@
       "labels": [
         "R-loom-blocking"
       ],
-      "commentCount": 1
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOGj8GuM8AAAABEHQIOA",
@@ -39,7 +39,7 @@
       "closedAt": null,
       "body": "Related to #63.\nFollowing the discussion on Discord, I've put together a small design proposal before starting the implementation.\nThe proposed approach uses a caller-provided OpenTelemetry Meter and an interval-driven reporter, starting with stable runtime counters and gauges. SDK and exporter conf",
       "labels": [],
-      "commentCount": 0
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOGj8GuM8AAAABEHKYiA",
