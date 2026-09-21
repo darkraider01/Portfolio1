@@ -1,14 +1,31 @@
 {
-  "last_updated": "2026-09-20T10:54:13.551Z",
+  "last_updated": "2026-09-21T12:19:46.780Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 32,
     "openPRs": 18,
     "issuesCreated": 23,
     "issuesAssigned": 10,
-    "reviewsGiven": 24
+    "reviewsGiven": 25
   },
   "items": [
+    {
+      "id": "PR_kwDONpzSS88AAAABETXJaw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(tool): keep published rules compatible with released otelc",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1381",
+      "state": "OPEN",
+      "createdAt": "2026-09-20T11:15:48Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #1368\nSummary\nPublished instrumentation rule files must remain readable by the currently\nsupported released otelc versions. #1270 added a top-level version: key to\nall 30 published rule files under instrumentation/, but released otelc\nv1.0.1/v1.1.0 parse rule files as map[string]map[string]any",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 4
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABEJTBCw",
       "category": "reviewsGiven",
@@ -16,15 +33,15 @@
       "title": "wasm: restrict fs and io-std on emscripten to pthreads (#8411)",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8493",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-18T21:02:23Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-20T10:54:37Z",
       "body": "Motivation\nResolves #8411\nOn wasm32-unknown-emscripten without pthreads support, Tokio previously used an inline shim for tokio::fs and tokio::io::stdin that executed blocking operations synchronously on the calling thread. In single-threaded Emscripten environments, this blocks the thread and can f",
       "labels": [
         "R-loom-blocking"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOGj8GuM8AAAABEHQIOA",
@@ -39,7 +56,7 @@
       "closedAt": null,
       "body": "Related to #63.\nFollowing the discussion on Discord, I've put together a small design proposal before starting the implementation.\nThe proposed approach uses a caller-provided OpenTelemetry Meter and an interval-driven reporter, starting with stable runtime counters and gauges. SDK and exporter conf",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOGj8GuM8AAAABEHKYiA",
@@ -125,10 +142,10 @@
       "title": "fix(instrumentation/redis): skip Conn hook after go-redis v9.9.0",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1369",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-16T11:21:35Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-21T08:29:47Z",
+      "closedAt": "2026-09-21T08:29:47Z",
       "body": "Description\nThe redis_client_hook rule now matches only v9.0.0,v9.9.0.\nFrom go-redis v9.9.0, Client.Conn() copies the parent hooks. A second afterClientConnV9 hook then added another hook. One command made two spans. That extra hook also set server.address from Conn.String(), which is not a host:por",
       "labels": [
         "scope:fix"
@@ -869,7 +886,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 7
+      "commentCount": 8
     },
     {
       "id": "PR_kwDONpzSS88AAAABBSnixw",
