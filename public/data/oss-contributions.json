@@ -1,14 +1,29 @@
 {
-  "last_updated": "2026-09-21T12:19:46.780Z",
+  "last_updated": "2026-09-22T11:11:34.676Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 32,
-    "openPRs": 18,
+    "openPRs": 19,
     "issuesCreated": 23,
     "issuesAssigned": 10,
     "reviewsGiven": 25
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABEjaCDg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "tests: assert exact call-site line for task spawn hooks",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8499",
+      "state": "OPEN",
+      "createdAt": "2026-09-22T09:33:52Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nThe existing spawn location tests in tests/task_hooks.rs verify that TaskMeta::spawned_at().file() matches file!(), but intentionally avoid checking line numbers. While asserting the file ensures the reported location does not point to internal Tokio files, it cannot catch regressions whe",
+      "labels": [],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDONpzSS88AAAABETXJaw",
       "category": "reviewsGiven",
@@ -131,7 +146,8 @@
       "closedAt": null,
       "body": "Supersedes #3659.\nRelated to #2726.\nChanges\nThis PR retains #3659's clone-avoidance goal while simplifying the completed-span ownership architecture.\n\nChanges SpanProcessor::on_end to receive FinishedSpan<'_> by value.\nReplaces the reusable mutable FinishedSpan state machine (consume, reset, and con",
       "labels": [
-        "performance"
+        "performance",
+        "ready to merge"
       ],
       "commentCount": 10
     },
@@ -202,7 +218,7 @@
       "createdAt": "2026-09-16T04:47:22Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\nThis PR adds compile-time instrumentation for github.com/labstack/echo/v4.\nThe hook does not start a span. It enriches the existing net/http SERVER span.\nAfter (*Router).Find, the hook sets http.route from Context.Path().\nThen the hook renames the span to METHOD {template}.\nThe hook reco",
+      "body": "Description\nThis PR adds compile-time instrumentation for github.com/labstack/echo/v4. The hook does not start a span. It enriches the existing net/http SERVER span.\nAfter (*Router).Find, the hook sets http.route from Context.Path(). Then the hook renames the span to METHOD {template}.\nThe hook reco",
       "labels": [
         "scope:feat"
       ],
@@ -1171,7 +1187,7 @@
         "enhancement",
         "triage:todo"
       ],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABApIVSQ",
@@ -1824,7 +1840,7 @@
         "triage:accepted",
         "M-sdk"
       ],
-      "commentCount": 4
+      "commentCount": 5
     }
   ]
 }
