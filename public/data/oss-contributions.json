@@ -1,14 +1,33 @@
 {
-  "last_updated": "2026-09-22T11:11:34.676Z",
+  "last_updated": "2026-09-23T11:02:33.698Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 32,
+    "mergedPRs": 33,
     "openPRs": 19,
     "issuesCreated": 23,
     "issuesAssigned": 10,
     "reviewsGiven": 25
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABEkNw9g",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "stream: implement FusedStream for MPSC receiver wrappers",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8500",
+      "state": "MERGED",
+      "createdAt": "2026-09-22T11:17:17Z",
+      "mergedAt": "2026-09-22T20:07:06Z",
+      "closedAt": "2026-09-22T20:07:06Z",
+      "body": "Motivation\nReceiverStream and UnboundedReceiverStream do not currently implement futures_core::FusedStream. Implementing it gives callers a reliable termination signal once the underlying MPSC receiver has permanently finished.\nFor bounded channels, closure and an empty queue are not sufficient to d",
+      "labels": [
+        "C-enhancement",
+        "M-sync",
+        "A-tokio-stream"
+      ],
+      "commentCount": 1
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABEjaCDg",
       "category": "openPRs",
@@ -21,7 +40,11 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Motivation\nThe existing spawn location tests in tests/task_hooks.rs verify that TaskMeta::spawned_at().file() matches file!(), but intentionally avoid checking line numbers. While asserting the file ensures the reported location does not point to internal Tokio files, it cannot catch regressions whe",
-      "labels": [],
+      "labels": [
+        "C-maintenance",
+        "A-tokio",
+        "M-task"
+      ],
       "commentCount": 0
     },
     {
@@ -95,13 +118,13 @@
       "title": "perf(sdk): two owning span processors benchmark shows 7.5% slowdown vs baseline",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3746",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-17T19:11:21Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-22T12:51:24Z",
       "body": "Description\nIn #3741, SpanProcessor::on_end was updated to take FinishedSpan<'_> by value to avoid eager SpanData cloning. Preceding processors receive a borrowed view and clone only on into_owned(), while the last registered processor receives an owned view and takes ownership zero-copy via Option:",
       "labels": [],
-      "commentCount": 6
+      "commentCount": 8
     },
     {
       "id": "PR_kwDODS0WD88AAAABD9IY4w",
@@ -149,7 +172,7 @@
         "performance",
         "ready to merge"
       ],
-      "commentCount": 10
+      "commentCount": 11
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -836,7 +859,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "I_kwDONpzSS88AAAABO2HleA",
@@ -1840,7 +1863,7 @@
         "triage:accepted",
         "M-sdk"
       ],
-      "commentCount": 5
+      "commentCount": 6
     }
   ]
 }
