@@ -1,14 +1,49 @@
 {
-  "last_updated": "2026-09-23T11:02:33.698Z",
+  "last_updated": "2026-09-24T11:20:53.373Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 33,
-    "openPRs": 19,
+    "mergedPRs": 35,
+    "openPRs": 18,
     "issuesCreated": 23,
-    "issuesAssigned": 10,
-    "reviewsGiven": 25
+    "issuesAssigned": 11,
+    "reviewsGiven": 26
   },
   "items": [
+    {
+      "id": "PR_kwDOAQnScc8AAAABE6e8hQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(package): preserve feature metadata in normalized manifests",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/pull/17509",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T10:34:41Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Summary\nPreserve feature metadata when generating the normalized Cargo.toml for cargo package and cargo publish.\nPackaging still removes feature references to dependencies that are excluded from the published package, but now filters the existing enables list in place instead of converting every fea",
+      "labels": [
+        "A-manifest",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABEw1-2Q",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(setup): match rules against packages otelc injects into the build",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1390",
+      "state": "OPEN",
+      "createdAt": "2026-09-23T14:12:09Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nA rule whose target only enters the build through otelc itself is never matched.\nThe build plan is computed from a dry run of the application as written, before otelc generates the file that blank-imports the matched rules' hook packages and pulls their dependencies into the build. Packa",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABEkNw9g",
       "category": "mergedPRs",
@@ -32,20 +67,20 @@
       "id": "PR_kwDOBAsbdc8AAAABEjaCDg",
       "category": "openPRs",
       "type": "pr",
-      "title": "tests: assert exact call-site line for task spawn hooks",
+      "title": "tests: cover task builder spawn locations",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8499",
       "state": "OPEN",
       "createdAt": "2026-09-22T09:33:52Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Motivation\nThe existing spawn location tests in tests/task_hooks.rs verify that TaskMeta::spawned_at().file() matches file!(), but intentionally avoid checking line numbers. While asserting the file ensures the reported location does not point to internal Tokio files, it cannot catch regressions whe",
+      "body": "Motivation\nThe existing spawn-location tests cover the core task spawning APIs, but not\ntask::Builder::spawn or task::Builder::spawn_on.\nA regression in caller-location propagation through these builder paths could\ntherefore go unnoticed.\nSolution\nAdd spawn-location coverage for:\n\ntask::Builder::spa",
       "labels": [
         "C-maintenance",
         "A-tokio",
         "M-task"
       ],
-      "commentCount": 0
+      "commentCount": 8
     },
     {
       "id": "PR_kwDONpzSS88AAAABETXJaw",
@@ -193,15 +228,15 @@
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABDvgF4Q",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "tokio-util: add inspect adapter accessors",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8486",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-16T09:37:32Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-24T09:14:48Z",
+      "closedAt": "2026-09-24T09:14:48Z",
       "body": "Adds get_ref, get_mut, and get_pin_mut to InspectReader and InspectWriter. Direct I/O through mutable accessors is documented to bypass inspection.\nTests: cargo test -p tokio-util --test io_inspect --all-features",
       "labels": [
         "C-enhancement",
@@ -213,15 +248,15 @@
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABDvTKYw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "stream: implement FusedStream for Throttle",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8485",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-16T09:10:58Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-24T09:13:00Z",
+      "closedAt": "2026-09-24T09:13:00Z",
       "body": "Motivation\nThrottle slows down an underlying stream by enforcing a delay between items, but currently does not implement futures_core::FusedStream when the underlying stream is fused.\nSolution\nImplement FusedStream for Throttle<T> where T: FusedStream:\n\nThrottle reports terminated when the underlyin",
       "labels": [
         "C-enhancement",
@@ -246,6 +281,26 @@
         "scope:feat"
       ],
       "commentCount": 2
+    },
+    {
+      "id": "I_kwDOAQnScc8AAAABRRsmAA",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Preserve feature metadata in packaged Cargo.toml",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/issues/17472",
+      "state": "OPEN",
+      "createdAt": "2026-09-14T20:39:33Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Problem\nThe implementation of feature metadata in #15056 currently normalizes the metadata table to an array of enabled features, which is a lossy normoralization.\n\ncargo info and cargo metadata cannot retrieve the information for registry dependencies.\npackage.rust-version may drift from registry d",
+      "labels": [
+        "C-bug",
+        "A-features",
+        "S-accepted",
+        "Z-feature-metadata"
+      ],
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOBT6fwc8AAAABDef_Nw",
@@ -281,7 +336,7 @@
       "createdAt": "2026-09-14T12:39:37Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\notelc writes a generated otelc.runtime.go into every package selected on the command line, and each of those files blank-imports the hook packages of all matched rules. The import list did not depend on which package received the file, so a hook package ended up with a generated file tha",
+      "body": "Description\notelc writes a generated otelc.runtime.go into every package selected on the command line, and each file blank-imports the hook packages of all matched rules. The import list did not depend on which package received the file, so a hook package got a file importing itself:\npackage example",
       "labels": [
         "scope:fix"
       ],
@@ -316,7 +371,7 @@
       "createdAt": "2026-09-13T17:01:12Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #3391\nSummary\nThis PR fixes nested and reentrant Go gRPC client tracing by:\n\nReplacing the single per-goroutine client invocation slot with a bounded LIFO stack, allowing nested and recursive RPCs on the same goroutine without overwriting outer calls.\nStoring transport identity on each invocat",
+      "body": "Fixes #3391\nSummary\n\nReplace the single per-goroutine gRPC client slot with a bounded LIFO stack so nested and recursive calls do not overwrite each other.\nCorrelate streaming calls by the raw client stream pointer, including finish-before-publication and duplicate-finish handling.\nPreserve and rest",
       "labels": [],
       "commentCount": 2
     },
@@ -369,7 +424,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDODS0WD88AAAABDC06sg",
@@ -664,7 +719,7 @@
       "closedAt": null,
       "body": "Fixes #3656.\nTurns out the NaN/Infinity poisoning wasn't just a histogram sum problem. Once I checked the other aggregators (as discussed in the issue comments), they all had the same gap except ExponentialHistogram, which already guards for it.\nWhat was broken:\n\nHistogram: total += value with no fi",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABBvuGEA",
@@ -782,7 +837,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 2
+      "commentCount": 4
     },
     {
       "id": "I_kwDODS0WD88AAAABO4gE-g",
@@ -1133,10 +1188,10 @@
       "title": "fix(tool): handle generic receiver type parameters",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1229",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-24T17:13:59Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-24T08:36:01Z",
+      "closedAt": "2026-09-24T08:36:01Z",
       "body": "Motivation\nFixes #1218\nWhen instrumenting methods on generic types, the generated trampoline functions correctly include the receiver's type parameters, but the trampoline calls were not passing those type arguments.\nThis change resolves the generic type parameters from the method receiver and uses ",
       "labels": [
         "scope:fix"
