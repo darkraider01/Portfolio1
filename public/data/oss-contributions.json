@@ -1,29 +1,195 @@
 {
-  "last_updated": "2026-09-24T11:20:53.373Z",
+  "last_updated": "2026-09-25T11:26:17.624Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 35,
-    "openPRs": 18,
-    "issuesCreated": 23,
-    "issuesAssigned": 11,
-    "reviewsGiven": 26
+    "mergedPRs": 41,
+    "openPRs": 16,
+    "issuesCreated": 26,
+    "issuesAssigned": 12,
+    "reviewsGiven": 29
   },
   "items": [
     {
-      "id": "PR_kwDOAQnScc8AAAABE6e8hQ",
+      "id": "PR_kwDOAAsO6M8AAAABFFv2GQ",
       "category": "openPRs",
+      "type": "pr",
+      "title": "move `#[macro_export]` on declarative macro check to `rustc_attr_parsing`",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/pull/163314",
+      "state": "OPEN",
+      "createdAt": "2026-09-25T09:44:08Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Move the check for #[macro_export] on declarative macro definitions from rustc_passes::check_attr into MacroExportParser in rustc_attr_parsing, preserving existing behavior and diagnostics.\nPart of #153101.\nMotivation & Design\nCurrently, check_attr inspects HIR item macro definition data (self.tcx.h",
+      "labels": [
+        "A-attributes",
+        "T-compiler",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABFAE3hg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(instrumentation/logrus): trace hook state leaks loggers and can attach twice",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1399",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T20:11:57Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What this fixes\nThe logrus instrumentation tracks which loggers already have the trace hook attached using two maps, hookInitMap and fieldInitMap, keyed by the *logrus.Logger pointer. Two problems come from that:\n\nThe map entry, and the logger it points to, never get removed. An app that creates sho",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOKrbwrc8AAAABE_8sNA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "feat(config): add declarative metrics configuration support",
+      "repo": "open-telemetry/opentelemetry-rust-contrib",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust-contrib/pull/811",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T19:58:39Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Summary\nImplements the initial Rust support for OpenTelemetry Declarative Configuration, tracked in opentelemetry-rust-contrib issue #809.\nThis adds support for the schema v1.2.0 subset needed to configure MeterProvider, periodic readers, exporters, and resource attributes from YAML. It includes the",
+      "labels": [],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABE-Zdfg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "io: add Loom coverage for deregistration and event delivery",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8505",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T17:10:50Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "This adds focused Loom tests for Tokio’s I/O registration lifetime when deregistration races with delivery of an event the poller has already returned.\nThe tests exercise the production registration set and event dispatch logic without constructing a Mio poller. A CI job runs them on pull requests.\n",
+      "labels": [
+        "C-maintenance",
+        "A-tokio",
+        "M-io"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDOKrbwrc8AAAABTBhXPg",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "Continue declarative configuration support in opentelemetry-config",
+      "repo": "open-telemetry/opentelemetry-rust-contrib",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust-contrib/issues/809",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T16:48:59Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "The initial opentelemetry-config crate provides YAML-based metrics configuration through registered factories. I’d like to help continue this work toward broader support for the OpenTelemetry declarative configuration model.\nThe current implementation uses a YAML shape that differs from the stable s",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDOKrbwrc8AAAABTBhXPg",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Continue declarative configuration support in opentelemetry-config",
+      "repo": "open-telemetry/opentelemetry-rust-contrib",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust-contrib/issues/809",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T16:48:59Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "The initial opentelemetry-config crate provides YAML-based metrics configuration through registered factories. I’d like to help continue this work toward broader support for the OpenTelemetry declarative configuration model.\nThe current implementation uses a YAML shape that differs from the stable s",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABTAaunw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(instrumentation/net/http): informational responses suppress the final status",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1398",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T15:13:46Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Describe the bug\nThe instrumented HTTP server wraps http.ResponseWriter. Its WriteHeader method treats the first status code as final and ignores later calls.\nGo allows handlers to send informational responses (1xx), such as 103 Early Hints, followed by a final response. With the wrapper, a handler ",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABTAZ31g",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "bug(instrumentation/grpc): DialContext installs duplicate client stats handlers Description",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1397",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T15:12:44Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Describe the bug\nWhen gRPC client instrumentation is enabled, calling grpc.DialContext installs two clientStatsHandlers. The instrumentation rules hook both DialContext and NewClient, and gRPC’s DialContext implementation calls NewClient internally. Each hook prepends another grpc.WithStatsHandler(.",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOUFGAQc8AAAABE8nEHA",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "chore: address initial repo setup gaps and follow-up items",
+      "repo": "open-telemetry/opentelemetry-go-compile-contrib",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/pull/12",
+      "state": "MERGED",
+      "createdAt": "2026-09-24T14:12:31Z",
+      "mergedAt": "2026-09-25T10:23:05Z",
+      "closedAt": "2026-09-25T10:23:05Z",
+      "body": "Description\nThis PR addresses follow-up scaffolding gaps and documentation items noted after the initial repository setup (#8):\n\nDoc placeholder banners: Added [!NOTE] banners to docs/testing.md and docs/semantic-conventions.md noting they describe the post-migration layout and linking to tracking i",
+      "labels": [],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABE8SIvw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(tool): accept a list of targets with not entries",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1394",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T13:42:04Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\ntarget now also accepts a list of patterns, in every rule type. Each entry is an import path, a glob, $root or main, and a not: entry removes the packages its pattern matches:\ntarget:\n  - $root\n  - main\n  - not: example.com/app/internal/generated/**\nA package is selected when it matches ",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOAQnScc8AAAABE6e8hQ",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(package): preserve feature metadata in normalized manifests",
       "repo": "rust-lang/cargo",
       "url": "https://github.com/rust-lang/cargo/pull/17509",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-24T10:34:41Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-25T02:26:59Z",
+      "closedAt": "2026-09-25T02:26:59Z",
       "body": "Summary\nPreserve feature metadata when generating the normalized Cargo.toml for cargo package and cargo publish.\nPackaging still removes feature references to dependencies that are excluded from the published package, but now filters the existing enables list in place instead of converting every fea",
       "labels": [
         "A-manifest",
-        "S-waiting-on-review"
+        "Z-feature-metadata"
       ],
       "commentCount": 1
     },
@@ -42,6 +208,21 @@
       "labels": [
         "scope:fix"
       ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABEsxINQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(b3): preserve debug sampling on single-header extraction",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3752",
+      "state": "OPEN",
+      "createdAt": "2026-09-23T06:08:30Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Changes\nQuick repro: extract b3: 4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-d with Propagator::new(). The remote context comes back invalid. With SingleHeader injection it extracts, but isn't sampled, so a parent-based sampler drops the child.\nHandle d in the single-header parser as debug plu",
+      "labels": [],
       "commentCount": 2
     },
     {
@@ -289,10 +470,10 @@
       "title": "Preserve feature metadata in packaged Cargo.toml",
       "repo": "rust-lang/cargo",
       "url": "https://github.com/rust-lang/cargo/issues/17472",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-14T20:39:33Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-25T02:27:00Z",
       "body": "Problem\nThe implementation of feature metadata in #15056 currently normalizes the metadata table to an array of enabled features, which is a lossy normoralization.\n\ncargo info and cargo metadata cannot retrieve the information for registry dependencies.\npackage.rust-version may drift from registry d",
       "labels": [
         "C-bug",
@@ -424,7 +605,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDODS0WD88AAAABDC06sg",
@@ -655,7 +836,7 @@
       "createdAt": "2026-09-03T09:01:30Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #3657.\nParentBased only let you configure the root case (no parent), the other 4 branches from the spec (remote/local parent, sampled/not sampled) were hardcoded to AlwaysOn/AlwaysOff with no way to override them.\nAdded Sampler::parent_based(root), which returns a ParentBasedSampler you can ch",
+      "body": "Fixes #3657.\nParentBased only let you configure the root case (no parent), the other 4 branches from the spec (remote/local parent, sampled/not sampled) were hardcoded to AlwaysOn/AlwaysOff with no way to override them.\nChanges\n\nAdded Sampler::parent_based(root) and ParentBasedSampler::new(root), re",
       "labels": [],
       "commentCount": 2
     },
@@ -708,15 +889,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABB9sUWQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(sdk): drop NaN/Infinity measurements in Histogram, Sum, LastValue, PrecomputedSum",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3679",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-02T21:18:22Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-24T21:51:55Z",
+      "closedAt": "2026-09-24T21:51:55Z",
       "body": "Fixes #3656.\nTurns out the NaN/Infinity poisoning wasn't just a histogram sum problem. Once I checked the other aggregators (as discussed in the issue comments), they all had the same gap except ExponentialHistogram, which already guards for it.\nWhat was broken:\n\nHistogram: total += value with no fi",
       "labels": [],
       "commentCount": 6
@@ -768,7 +949,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABBtWw3Q",
@@ -824,15 +1005,15 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABBlE5xA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "feat(pkg): add stripe-go compile-time instrumentation",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1289",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-31T09:21:50Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-25T08:40:49Z",
+      "closedAt": "2026-09-25T08:40:49Z",
       "body": "Description\nAdds compile-time OpenTelemetry instrumentation for stripe/stripe-go, covering the last two major versions (v81 and v82) in accordance with ADR-0004.\nDesign & Implementation Details\n\nSingle Hook Point: Every stripe-go API call across all ~200 per-resource clients reaches the network thro",
       "labels": [
         "scope:feat"
@@ -868,10 +1049,10 @@
       "title": "[Bug]: Explicit bucket histogram `sum` permanently corrupted by NaN/Infinity measurements",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3656",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-30T18:30:26Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-24T21:51:56Z",
       "body": "What happened?\nRecording a NaN (or +/-Infinity) value into a Histogram instrument permanently corrupts\nthat data point's sum. Because x + NaN == NaN for any x, once Buckets::total\nbecomes NaN it stays NaN on every subsequent update. With Cumulative temporality (the\nSDK default), the metric stream re",
       "labels": [
         "bug",
@@ -914,7 +1095,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 7
+      "commentCount": 8
     },
     {
       "id": "I_kwDONpzSS88AAAABO2HleA",
@@ -1035,15 +1216,15 @@
     },
     {
       "id": "PR_kwDOUFGAQc8AAAABBLftUQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "chore: initial repository setup",
       "repo": "open-telemetry/opentelemetry-go-compile-contrib",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/pull/8",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-27T08:35:34Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-24T13:35:42Z",
+      "closedAt": "2026-09-24T13:35:42Z",
       "body": "Sets up the basic structure for this new repo, closes #4.\nWhat's in here:\n\nREADME, CONTRIBUTING, AGENTS.md\ndocs/ with SECURITY, AI_POLICY, testing, and semantic-conventions notes\n.gitignore, .editorconfig\nissue/PR templates\na baseline Makefile + tool configs for format/lint/test (targets like format",
       "labels": [],
       "commentCount": 21
@@ -1097,7 +1278,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "I_kwDONpzSS88AAAABOL7Y1w",
@@ -1269,15 +1450,15 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABApIVSQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(tool): quote otelc path in -toolexec so spaced paths work",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1211",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-22T11:45:29Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-25T09:30:31Z",
+      "closedAt": "2026-09-25T09:30:31Z",
       "body": "Description\nbuildWithToolexec built the -toolexec flag by concatenating otelc's own path in unquoted. cmd/go parses the -toolexec value with cmd/internal/quoted.Split, so an unquoted executable path containing a space was read as a path plus extra arguments. A build run from C:\\Program Files\\otelc\\o",
       "labels": [
         "scope:fix"
@@ -1291,10 +1472,10 @@
       "title": "bug(tool/internal/setup): -toolexec flag breaks when otelc's own executable path contains a space",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1207",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-22T09:19:17Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-25T09:30:33Z",
       "body": "Describe the bug\nbuildWithToolexec builds the -toolexec flag by just string-concatenating otelc's own executable path with no quoting:\n// tool/internal/setup/setup.go:541-545\nexecPath, err := os.Executable()\ninsert := \"-toolexec=\" + execPath + \" toolexec\"\nIf execPath has a space in it, go's own -too",
       "labels": [
         "bug"
