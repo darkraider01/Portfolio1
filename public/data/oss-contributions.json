@@ -1,14 +1,76 @@
 {
-  "last_updated": "2026-09-25T11:26:17.624Z",
+  "last_updated": "2026-09-26T11:01:26.093Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 41,
-    "openPRs": 16,
-    "issuesCreated": 26,
-    "issuesAssigned": 12,
-    "reviewsGiven": 29
+    "openPRs": 17,
+    "issuesCreated": 27,
+    "issuesAssigned": 13,
+    "reviewsGiven": 30
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABFJXtIw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": " rt: add LLC- and NUMA-aware scheduling",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8513",
+      "state": "OPEN",
+      "createdAt": "2026-09-25T16:37:24Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Summary\nAdd LLC- and NUMA-aware scheduling to the multi-thread runtime. On Linux, Tokio\ndiscovers the process's allowed CPU topology and routes remotely scheduled\ntasks through per-LLC FIFO queues.\nThe scheduler implementation remains platform-independent. Other platforms use\nthe standard scheduler ",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-runtime",
+        "S-waiting-on-author",
+        "T-performance",
+        "A-benches",
+        "R-loom-current-thread",
+        "R-loom-multi-thread",
+        "R-loom-blocking"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOAQnScc8AAAABFIjOkA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "feat(metadata): mirror package features in features_v2",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/pull/17517",
+      "state": "OPEN",
+      "createdAt": "2026-09-25T15:04:05Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What does this PR try to resolve?\nCloses #17507.\nWith cargo-features = [\"feature-metadata\"], cargo metadata --format-version 1 now includes a features_v2 map alongside the existing features map. Each feature has an enables array and, when specified in the manifest, a doc string. The new field is omi",
+      "labels": [
+        "A-documenting-cargo-itself",
+        "S-waiting-on-review",
+        "A-cli-help"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDODS0WD88AAAABTNG7gA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "[Bug]: TraceState parser rejects valid whitespace after commas",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3757",
+      "state": "OPEN",
+      "createdAt": "2026-09-25T13:54:25Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What happened?\nTraceState::from_str rejects a valid tracestate value when optional whitespace follows a comma. For example, parsing rojo=1, congo=2 fails because the leading space remains part of the second key.\nWhat did you expect to happen?\nThe parser should accept optional whitespace around list ",
+      "labels": [
+        "bug",
+        "triage:todo"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOAAsO6M8AAAABFFv2GQ",
       "category": "openPRs",
@@ -20,13 +82,13 @@
       "createdAt": "2026-09-25T09:44:08Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Move the check for #[macro_export] on declarative macro definitions from rustc_passes::check_attr into MacroExportParser in rustc_attr_parsing, preserving existing behavior and diagnostics.\nPart of #153101.\nMotivation & Design\nCurrently, check_attr inspects HIR item macro definition data (self.tcx.h",
+      "body": "Summary:\nMoves the declarvative mactor #[macro_export] check to attribute parsing in rustc_attr_parsing, which makes target_item available in the SharedContext so that the parser can check for !macro_def.macro_rules. Also removes the old check from  rustc_passes::check_attr.\nTests:\n./x test tests/ui",
       "labels": [
         "A-attributes",
         "T-compiler",
-        "S-waiting-on-review"
+        "S-waiting-on-author"
       ],
-      "commentCount": 2
+      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABFAE3hg",
@@ -75,7 +137,8 @@
       "labels": [
         "C-maintenance",
         "A-tokio",
-        "M-io"
+        "M-io",
+        "S-waiting-on-review"
       ],
       "commentCount": 0
     },
@@ -141,7 +204,7 @@
       "labels": [
         "bug"
       ],
-      "commentCount": 2
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOUFGAQc8AAAABE8nEHA",
@@ -192,6 +255,26 @@
         "Z-feature-metadata"
       ],
       "commentCount": 1
+    },
+    {
+      "id": "I_kwDOAQnScc8AAAABS4JUlg",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "`cargo metadata` output for feature metadata",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/issues/17507",
+      "state": "OPEN",
+      "createdAt": "2026-09-24T01:44:24Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Problem\nRFC 3416 and RFC 3485  are both implemented in #15056 and #17447.\nA Cargo feature can now be a table with metadata including enables and doc. However, cargo metadata output still doesn't include any of those feature metadata at all. This makes external tools harder to consumer the informatio",
+      "labels": [
+        "Command-metadata",
+        "C-feature-request",
+        "S-accepted",
+        "Z-feature-metadata"
+      ],
+      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABEw1-2Q",
@@ -259,7 +342,8 @@
       "labels": [
         "C-maintenance",
         "A-tokio",
-        "M-task"
+        "M-task",
+        "S-waiting-on-review"
       ],
       "commentCount": 8
     },
@@ -837,7 +921,9 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Fixes #3657.\nParentBased only let you configure the root case (no parent), the other 4 branches from the spec (remote/local parent, sampled/not sampled) were hardcoded to AlwaysOn/AlwaysOff with no way to override them.\nChanges\n\nAdded Sampler::parent_based(root) and ParentBasedSampler::new(root), re",
-      "labels": [],
+      "labels": [
+        "ready to merge"
+      ],
       "commentCount": 2
     },
     {
@@ -949,7 +1035,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "PR_kwDONpzSS88AAAABBtWw3Q",
