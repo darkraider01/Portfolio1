@@ -1,14 +1,48 @@
 {
-  "last_updated": "2026-09-26T11:01:26.093Z",
+  "last_updated": "2026-09-27T11:41:02.025Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 41,
-    "openPRs": 17,
+    "openPRs": 18,
     "issuesCreated": 27,
     "issuesAssigned": 13,
-    "reviewsGiven": 30
+    "reviewsGiven": 31
   },
   "items": [
+    {
+      "id": "PR_kwDONpzSS88AAAABFR3zFw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(instrumentation/mux): add gorilla/mux route enrichment",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1408",
+      "state": "OPEN",
+      "createdAt": "2026-09-26T19:43:25Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nThe hook runs after (*mux.Router).Match. It sets the existing net/http server span name to METHOD /template and sets http.route. It does not create a span.\nIt does not set the route when MatchErr is set. A custom NotFoundHandler or MethodNotAllowedHandler still leaves MatchErr set. As a ",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(instrumentation/linodego): attach error.type attribute for non-HTTP failures",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1405",
+      "state": "OPEN",
+      "createdAt": "2026-09-26T16:38:08Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\n\nExport semconv.ErrorType in instrumentation/github.com/linode/linodego/v2/semconv delegating to OpenTelemetry semconv.\nAttach semconv.ErrorType(err) to spans in AfterDoRequest and finishSpanWithError when errors do not carry an HTTP status code (e.g., connection errors, timeouts, contex",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 3
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABFJXtIw",
       "category": "reviewsGiven",
@@ -25,14 +59,14 @@
         "C-enhancement",
         "A-tokio",
         "M-runtime",
-        "S-waiting-on-author",
+        "S-waiting-on-review",
         "T-performance",
         "A-benches",
         "R-loom-current-thread",
         "R-loom-multi-thread",
         "R-loom-blocking"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOAQnScc8AAAABFIjOkA",
@@ -155,7 +189,7 @@
       "closedAt": null,
       "body": "The initial opentelemetry-config crate provides YAML-based metrics configuration through registered factories. I’d like to help continue this work toward broader support for the OpenTelemetry declarative configuration model.\nThe current implementation uses a YAML shape that differs from the stable s",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDOKrbwrc8AAAABTBhXPg",
@@ -170,7 +204,7 @@
       "closedAt": null,
       "body": "The initial opentelemetry-config crate provides YAML-based metrics configuration through registered factories. I’d like to help continue this work toward broader support for the OpenTelemetry declarative configuration model.\nThe current implementation uses a YAML shape that differs from the stable s",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDONpzSS88AAAABTAaunw",
