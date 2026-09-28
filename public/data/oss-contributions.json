@@ -1,14 +1,74 @@
 {
-  "last_updated": "2026-09-27T11:41:02.025Z",
+  "last_updated": "2026-09-28T13:16:17.943Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 41,
-    "openPRs": 18,
+    "mergedPRs": 43,
+    "openPRs": 20,
     "issuesCreated": 27,
     "issuesAssigned": 13,
     "reviewsGiven": 31
   },
   "items": [
+    {
+      "id": "PR_kwDODS0WD88AAAABFffv0w",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix: accept optional whitespace in TraceState",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3761",
+      "state": "OPEN",
+      "createdAt": "2026-09-28T12:18:24Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "TraceState::from_str currently rejects valid tracestate members when optional spaces or tabs follow a comma. Trim optional whitespace around members and ignore empty members, preserving spaces inside values.\\n\\nAdds parser regression tests and a changelog entry. fixes #3757",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOCaYHzc8AAAABFcjeBQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Let Loom run one execution from fuzzer input",
+      "repo": "tokio-rs/loom",
+      "url": "https://github.com/tokio-rs/loom/pull/427",
+      "state": "OPEN",
+      "createdAt": "2026-09-28T07:12:40Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Loom currently explores executions itself, which makes it awkward to run a particular execution from fuzzer input. This adds Builder::check_with_input , which uses the input bytes to choose scheduling and atomic read outcomes, then runs the model once.\nIf the input runs out, Loom picks the first ava",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABFXcD8w",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "docs(trace): explain async context propagation",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3759",
+      "state": "OPEN",
+      "createdAt": "2026-09-27T16:11:07Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Issue #828 asks for clearer guidance on how spans and contexts work together in async Rust code.\nThe tracing API docs now explain parent selection, making contexts current while futures run, span lifetimes, and propagation to spawned tasks, with examples. The tracing guide links to the expanded API ",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABFXRBww",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "test(proto): add tracing OTLP contract coverage",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3758",
+      "state": "OPEN",
+      "createdAt": "2026-09-27T15:40:32Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Extends the existing trace transform tests with deterministic comparisons against expected OTLP protobuf structures. Coverage includes span fields, attributes, events, links, status, trace state and flags, resource and scope metadata, and grouping spans by instrumentation scope.\nRelated to #1322.",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDONpzSS88AAAABFR3zFw",
       "category": "reviewsGiven",
@@ -41,7 +101,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABFJXtIw",
@@ -70,19 +130,18 @@
     },
     {
       "id": "PR_kwDOAQnScc8AAAABFIjOkA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "feat(metadata): mirror package features in features_v2",
       "repo": "rust-lang/cargo",
       "url": "https://github.com/rust-lang/cargo/pull/17517",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-25T15:04:05Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-27T16:51:37Z",
+      "closedAt": "2026-09-27T16:51:37Z",
       "body": "What does this PR try to resolve?\nCloses #17507.\nWith cargo-features = [\"feature-metadata\"], cargo metadata --format-version 1 now includes a features_v2 map alongside the existing features map. Each feature has an enables array and, when specified in the manifest, a doc string. The new field is omi",
       "labels": [
         "A-documenting-cargo-itself",
-        "S-waiting-on-review",
         "A-cli-help"
       ],
       "commentCount": 2
@@ -101,9 +160,11 @@
       "body": "What happened?\nTraceState::from_str rejects a valid tracestate value when optional whitespace follows a comma. For example, parsing rojo=1, congo=2 fails because the leading space remains part of the second key.\nWhat did you expect to happen?\nThe parser should accept optional whitespace around list ",
       "labels": [
         "bug",
-        "triage:todo"
+        "priority:p2",
+        "triage:accepted",
+        "M-sdk"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOAAsO6M8AAAABFFv2GQ",
@@ -262,10 +323,10 @@
       "title": "feat(tool): accept a list of targets with not entries",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1394",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-24T13:42:04Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-28T13:01:20Z",
+      "closedAt": "2026-09-28T13:01:20Z",
       "body": "Description\ntarget now also accepts a list of patterns, in every rule type. Each entry is an import path, a glob, $root or main, and a not: entry removes the packages its pattern matches:\ntarget:\n  - $root\n  - main\n  - not: example.com/app/internal/generated/**\nA package is selected when it matches ",
       "labels": [
         "scope:feat"
@@ -297,10 +358,10 @@
       "title": "`cargo metadata` output for feature metadata",
       "repo": "rust-lang/cargo",
       "url": "https://github.com/rust-lang/cargo/issues/17507",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-24T01:44:24Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-27T16:51:38Z",
       "body": "Problem\nRFC 3416 and RFC 3485  are both implemented in #15056 and #17447.\nA Cargo feature can now be a table with metadata including enables and doc. However, cargo metadata output still doesn't include any of those feature metadata at all. This makes external tools harder to consumer the informatio",
       "labels": [
         "Command-metadata",
@@ -317,10 +378,10 @@
       "title": "fix(setup): match rules against packages otelc injects into the build",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1390",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-23T14:12:09Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-28T13:00:59Z",
+      "closedAt": "2026-09-28T13:00:59Z",
       "body": "Description\nA rule whose target only enters the build through otelc itself is never matched.\nThe build plan is computed from a dry run of the application as written, before otelc generates the file that blank-imports the matched rules' hook packages and pulls their dependencies into the build. Packa",
       "labels": [
         "scope:fix"
@@ -396,7 +457,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 4
+      "commentCount": 6
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEJTBCw",
@@ -945,15 +1006,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABCB0kUA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "feat(sdk): allow configuring all 5 ParentBased sampler branches",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3685",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-03T09:01:30Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-27T22:51:35Z",
+      "closedAt": "2026-09-27T22:51:35Z",
       "body": "Fixes #3657.\nParentBased only let you configure the root case (no parent), the other 4 branches from the spec (remote/local parent, sampled/not sampled) were hardcoded to AlwaysOn/AlwaysOff with no way to override them.\nChanges\n\nAdded Sampler::parent_based(root) and ParentBasedSampler::new(root), re",
       "labels": [
         "ready to merge"
@@ -1147,10 +1208,10 @@
       "title": "[Feature]: Allow configuring all 5 ParentBased sampler branches per the trace spec",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3657",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-30T18:40:09Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-27T22:51:37Z",
       "body": "Related Problems?\nThe OpenTelemetry trace spec defines ParentBased as a composite sampler with 5\nindependently configurable delegate samplers:\nhttps://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#parentbased\n\nroot                       — no parent exists",
       "labels": [
         "enhancement",
