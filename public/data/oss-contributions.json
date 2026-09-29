@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-09-28T13:16:17.943Z",
+  "last_updated": "2026-09-29T12:23:28.526Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 43,
-    "openPRs": 20,
+    "mergedPRs": 44,
+    "openPRs": 19,
     "issuesCreated": 27,
     "issuesAssigned": 13,
     "reviewsGiven": 31
@@ -183,7 +183,7 @@
         "T-compiler",
         "S-waiting-on-author"
       ],
-      "commentCount": 6
+      "commentCount": 8
     },
     {
       "id": "PR_kwDONpzSS88AAAABFAE3hg",
@@ -200,7 +200,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOKrbwrc8AAAABE_8sNA",
@@ -424,15 +424,15 @@
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEjaCDg",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
-      "title": "tests: cover task builder spawn locations",
+      "title": "task: test task builder spawn locations",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8499",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-22T09:33:52Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-29T10:44:08Z",
+      "closedAt": "2026-09-29T10:44:08Z",
       "body": "Motivation\nThe existing spawn-location tests cover the core task spawning APIs, but not\ntask::Builder::spawn or task::Builder::spawn_on.\nA regression in caller-location propagation through these builder paths could\ntherefore go unnoticed.\nSolution\nAdd spawn-location coverage for:\n\ntask::Builder::spa",
       "labels": [
         "C-maintenance",
@@ -692,10 +692,10 @@
       "title": "fix(tool): avoid self-import in otelc.runtime.go for local hooks",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1362",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-14T12:39:37Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-09-28T14:49:33Z",
+      "closedAt": "2026-09-28T14:49:33Z",
       "body": "Description\notelc writes a generated otelc.runtime.go into every package selected on the command line, and each file blank-imports the hook packages of all matched rules. The import list did not depend on which package received the file, so a hook package got a file importing itself:\npackage example",
       "labels": [
         "scope:fix"
@@ -1276,7 +1276,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 8
+      "commentCount": 9
     },
     {
       "id": "I_kwDONpzSS88AAAABO2HleA",
@@ -1342,7 +1342,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 8
+      "commentCount": 9
     },
     {
       "id": "PR_kwDONpzSS88AAAABBSnixw",
