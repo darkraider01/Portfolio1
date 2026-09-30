@@ -1,14 +1,48 @@
 {
-  "last_updated": "2026-09-29T12:23:28.526Z",
+  "last_updated": "2026-09-30T12:08:46.429Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 44,
     "openPRs": 19,
-    "issuesCreated": 27,
+    "issuesCreated": 29,
     "issuesAssigned": 13,
     "reviewsGiven": 31
   },
   "items": [
+    {
+      "id": "I_kwDOBAsbdc8AAAABT-eIYw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "Sharded spawn_blocking queue can leave later shards waiting under load",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/issues/8527",
+      "state": "OPEN",
+      "createdAt": "2026-09-29T19:01:30Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "I've been testing the opt-in sharded spawn_blocking queue from #8067, and noticed that tasks in later shards can wait a lot longer once the blocking pool fills up. Throughput looks about the same, but the wait times don't.\nWhy this seems to happen\nIn normal builds, producers pick one of 16 shards at",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-runtime"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDODS0WD88AAAABT9sUOw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "Proposal: compile-time instrumentation for Rust dependencies",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3766",
+      "state": "OPEN",
+      "createdAt": "2026-09-29T17:52:41Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "I’d like to propose a project to explore compile-time OpenTelemetry instrumentation for Rust dependencies.\nThe project would investigate whether Rust applications can collect spans from dependency code without requiring each dependency to add instrumentation itself. The instrumentation would use the",
+      "labels": [],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDODS0WD88AAAABFffv0w",
       "category": "openPRs",
@@ -84,7 +118,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
@@ -101,7 +135,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABFJXtIw",
@@ -200,7 +234,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOKrbwrc8AAAABE_8sNA",
@@ -274,10 +308,10 @@
       "title": "bug(instrumentation/net/http): informational responses suppress the final status",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1398",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-24T15:13:46Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-29T13:35:49Z",
       "body": "Describe the bug\nThe instrumented HTTP server wraps http.ResponseWriter. Its WriteHeader method treats the first status code as final and ignores later calls.\nGo allows handlers to send informational responses (1xx), such as 103 Early Hints, followed by a final response. With the wrapper, a handler ",
       "labels": [
         "bug"
@@ -437,8 +471,7 @@
       "labels": [
         "C-maintenance",
         "A-tokio",
-        "M-task",
-        "S-waiting-on-review"
+        "M-task"
       ],
       "commentCount": 8
     },
@@ -534,7 +567,7 @@
       "closedAt": null,
       "body": "Part of #3127\nChanges\nAdds an explicit helper function in opentelemetry-sdk to configure the process-global text map propagator from the OTEL_PROPAGATORS environment variable:\nopentelemetry_sdk::propagation::set_global_text_map_propagator_from_env()\nKey details:\n\nRespects the OpenTelemetry specifica",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOCdoc188AAAABD1rHHA",
@@ -1268,15 +1301,15 @@
       "title": "fix(runtime): re-raise the shutdown signal after flushing telemetry",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1283",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-30T09:14:52Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-09-30T11:56:18Z",
       "body": "Description\nhandleShutdownSignal consumed the shutdown signal without re-raising it, so a process that registers no handler of its own needed a second Ctrl+C or SIGTERM to exit.\n\nsignal.Stop(sigCh) deregisters otelc's channel only, so a host application keeps its own handler. Once sigCh is the last ",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 9
+      "commentCount": 11
     },
     {
       "id": "I_kwDONpzSS88AAAABO2HleA",
