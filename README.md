@@ -30,6 +30,9 @@ Data is kept fresh automatically by scheduled GitHub Actions without client-side
   and push timestamps for all linked repositories.
 - **OSS contributions**: `public/data/oss-contributions.json` is refreshed daily by
   [`scripts/fetch-oss-contributions.mjs`](scripts/fetch-oss-contributions.mjs) against the GitHub GraphQL API.
+- **Contribution heatmap**: `public/data/oss-heatmap.json` is refreshed daily by
+  [`scripts/fetch-oss-heatmap.mjs`](scripts/fetch-oss-heatmap.mjs), which pulls GitHub's contribution
+  calendar for the last three calendar years (one GraphQL request per year).
 
 Both run automatically at 06:00 UTC via [`.github/workflows/oss-contributions.yml`](.github/workflows/oss-contributions.yml).
 You can also run them locally at any time:
@@ -37,6 +40,17 @@ You can also run them locally at any time:
 ```bash
 npm run update:projects  # updates src/data/projects.js
 npm run update:oss       # updates public/data/oss-contributions.json
-npm run update:data      # updates both
+npm run update:heatmap   # updates public/data/oss-heatmap.json
+npm run update:data      # updates all three
 ```
+
+## Routes
+
+| Path | Page |
+| --- | --- |
+| `/` | Landing page — hero, about, projects, skills, contributions summary + heatmap, contact |
+| `/oss` | Full OSS journal — every contribution grouped org → repo → PR/issue as a collapsible tree |
+
+`/oss` is a client-side route; [`vercel.json`](vercel.json) rewrites it to `index.html` so the URL
+is shareable and survives a hard refresh.
 
