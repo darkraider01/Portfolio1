@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-10-01T11:09:08.421Z",
+  "last_updated": "2026-10-01T12:42:29.121Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 44,
-    "openPRs": 20,
+    "openPRs": 19,
     "issuesCreated": 30,
     "issuesAssigned": 14,
     "reviewsGiven": 31
@@ -778,21 +778,6 @@
         "A-tokio-stream"
       ],
       "commentCount": 0
-    },
-    {
-      "id": "PR_kwDOOa4Yns8AAAABDWbOjA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "gotracer: support nested and reentrant Go gRPC client invocations ",
-      "repo": "open-telemetry/opentelemetry-ebpf-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/3401",
-      "state": "OPEN",
-      "createdAt": "2026-09-13T17:01:12Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Fixes #3391\nSummary\n\nReplace the single per-goroutine gRPC client slot with a bounded LIFO stack so nested and recursive calls do not overwrite each other.\nCorrelate streaming calls by the raw client stream pointer, including finish-before-publication and duplicate-finish handling.\nPreserve and rest",
-      "labels": [],
-      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABDQTaLQ",
