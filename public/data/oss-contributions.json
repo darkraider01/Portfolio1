@@ -1,14 +1,63 @@
 {
-  "last_updated": "2026-09-30T12:08:46.429Z",
+  "last_updated": "2026-10-01T09:51:02.208Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 44,
-    "openPRs": 19,
-    "issuesCreated": 29,
-    "issuesAssigned": 13,
+    "openPRs": 20,
+    "issuesCreated": 30,
+    "issuesAssigned": 14,
     "reviewsGiven": 31
   },
   "items": [
+    {
+      "id": "I_kwDONpzSS88AAAABUQ1DSw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "Intermittent OpenAI streaming instrumentation build error during make all",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1437",
+      "state": "OPEN",
+      "createdAt": "2026-10-01T00:17:55Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "While running make all to verify #1333, the instrumentation build failed once while compiling instrumentation/github.com/openai/openai-go/internal/streaming.\nThe compiler reported:\ninternal/streaming/streaming.go:230:25: cannot use semconv.ErrorType(err) (value of type string) as \"go.opentelemetry.i",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOAQnScc8AAAABF6MMcw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Suggest inheriting repository fields in explicit workspaces",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/pull/17541",
+      "state": "OPEN",
+      "createdAt": "2026-09-30T14:04:03Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "A workspace member can accidentally set package.repository to a URL for that crate’s page in a file browser. This adds cargo::repository_not_inherited to flag directly set repository fields in explicit workspaces and suggest inheritance where it applies.\nThe lint does not inspect or compare URLs. It",
+      "labels": [
+        "A-documenting-cargo-itself"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOAr8sRM8AAAABF5cqVQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Keep cargo-miri arguments in one place",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5364",
+      "state": "OPEN",
+      "createdAt": "2026-09-30T12:56:25Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "cargo-miri currently reads env::args() each time it checks a flag. This change reads the arguments once, then passes them through the relevant phases and helpers.\nThis prepares the argument handling for the argfile work in #5234 (first step). It doesn’t add argfile support yet; the existing error re",
+      "labels": [
+        "S-waiting-on-review"
+      ],
+      "commentCount": 1
+    },
     {
       "id": "I_kwDOBAsbdc8AAAABT-eIYw",
       "category": "issuesCreated",
@@ -56,7 +105,7 @@
       "closedAt": null,
       "body": "TraceState::from_str currently rejects valid tracestate members when optional spaces or tabs follow a comma. Trim optional whitespace around members and ignore empty members, preserving spaces inside values.\\n\\nAdds parser regression tests and a changelog entry. fixes #3757",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOCaYHzc8AAAABFcjeBQ",
@@ -86,7 +135,7 @@
       "closedAt": null,
       "body": "Issue #828 asks for clearer guidance on how spans and contexts work together in async Rust code.\nThe tracing API docs now explain parent selection, making contexts current while futures run, span lifetimes, and propagation to spawned tasks, with examples. The tracing guide links to the expanded API ",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDODS0WD88AAAABFXRBww",
@@ -215,9 +264,9 @@
       "labels": [
         "A-attributes",
         "T-compiler",
-        "S-waiting-on-author"
+        "S-waiting-on-bors"
       ],
-      "commentCount": 8
+      "commentCount": 13
     },
     {
       "id": "PR_kwDONpzSS88AAAABFAE3hg",
@@ -247,7 +296,7 @@
       "createdAt": "2026-09-24T19:58:39Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Summary\nImplements the initial Rust support for OpenTelemetry Declarative Configuration, tracked in opentelemetry-rust-contrib issue #809.\nThis adds support for the schema v1.2.0 subset needed to configure MeterProvider, periodic readers, exporters, and resource attributes from YAML. It includes the",
+      "body": "Summary\nAdds the first schema-aligned slice of OpenTelemetry declarative configuration for Rust: configuring a MeterProvider from YAML with resource attributes, periodic readers, the console exporter, and registered custom exporters. This is an initial supported subset of schema v1.2.0; unsupported ",
       "labels": [],
       "commentCount": 1
     },
@@ -696,29 +745,6 @@
       "commentCount": 5
     },
     {
-      "id": "PR_kwDOBT6fwc8AAAABDef_Nw",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "civo: fix pool count mismatch validation and decrease error message",
-      "repo": "kubernetes/autoscaler",
-      "url": "https://github.com/kubernetes/autoscaler/pull/10290",
-      "state": "OPEN",
-      "createdAt": "2026-09-14T15:56:54Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "What type of PR is this?\n/kind bug\nWhat this PR does / why we need it:\nFixes a validation and cache desynchronization bug in the Civo cloud provider:\n\n\nFix post-API validation in IncreaseSize:\n\nReplaced a redundant targetSize > n.MaxSize(...) check after the API call with updatedNodePool.Count != ta",
-      "labels": [
-        "cncf-cla: yes",
-        "area/cluster-autoscaler",
-        "size/M",
-        "needs-ok-to-test",
-        "release-note",
-        "kind/bug",
-        "needs-triage"
-      ],
-      "commentCount": 9
-    },
-    {
       "id": "PR_kwDONpzSS88AAAABDcvsYA",
       "category": "reviewsGiven",
       "type": "pr",
@@ -766,7 +792,7 @@
       "closedAt": null,
       "body": "Fixes #3391\nSummary\n\nReplace the single per-goroutine gRPC client slot with a bounded LIFO stack so nested and recursive calls do not overwrite each other.\nCorrelate streaming calls by the raw client stream pointer, including finish-before-publication and duplicate-finish handling.\nPreserve and rest",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABDQTaLQ",
@@ -2278,6 +2304,25 @@
         "scope:fix"
       ],
       "commentCount": 2
+    },
+    {
+      "id": "I_kwDOAr8sRM8AAAABK5vdpw",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "cargo-miri fails when cargo uses argfiles",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/issues/5234",
+      "state": "OPEN",
+      "createdAt": "2026-07-31T05:03:38Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "I just tried upgrading from nightly-2026-07-22 to nightly-2026-07-31 and on Windows specifically one of the crates produced this surprising set of errors:\nerror[E0463]: can't find crate for `libp2p`\n --> crates\\shared\\ab-networking\\src\\protocols\\autonat_wrapper.rs:2:5\n  |\n2 | use libp2p::autonat::{B",
+      "labels": [
+        "C-bug",
+        "A-windows",
+        "E-needs-mcve"
+      ],
+      "commentCount": 43
     },
     {
       "id": "PR_kwDOTd-p_c72VG0T",
