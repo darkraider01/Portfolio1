@@ -6,7 +6,7 @@ export const projects = [
       "Zero-code compile-time OpenTelemetry instrumentation for Rust, reaching third-party dependencies, on stable Rust: no nightly, no compiler forks, no eBPF. Intercepts rustc via RUSTC_WRAPPER and splices native OTel API calls at the byte level, with an extern \"C\" trampoline so dependency crates get instrumented without dragging OTel into every upstream crate's dependency tree. Architecture is frozen behind six ADRs and a normative correctness spec; the cargo-instrument pipeline itself is in active development. My current biggest project.",
     languages: ['Rust'],
     href: 'https://github.com/darkraider01/rust-compile-time-instrumentation-',
-    updatedAt: '2026-09-04T17:06:24Z',
+    updatedAt: '2026-09-15T10:27:15Z',
     featured: true
   },
   {
@@ -45,7 +45,7 @@ export const projects = [
       'A production-oriented CNN-LSTM inference engine for solar panel fault detection, with TensorFlow and ONNX/TensorRT export paths, served through FastAPI and deployable directly to NVIDIA Jetson hardware for on-device inference.',
     languages: ['Python'],
     href: 'https://github.com/darkraider01/solarshield-ai-inference',
-    updatedAt: '2026-08-05T11:16:46Z'
+    updatedAt: '2026-08-24T10:29:31Z'
   },
   {
     name: 'OSS-Maintainer-AI',
@@ -54,7 +54,7 @@ export const projects = [
       'An autonomous, multi-platform co-maintainer agent that unifies GitHub, Slack, Discord, and email into a single triage and response pipeline for open-source maintainers — issue triage, repetitive-question handling, and onboarding friction pulled into one execution stream instead of five inboxes.',
     languages: ['TypeScript'],
     href: 'https://github.com/darkraider01/OSS-Maintainer-AI',
-    updatedAt: '2026-08-13T12:13:21Z'
+    updatedAt: '2026-08-31T02:28:09Z'
   },
   {
     name: 'blockchain-inventory-management',

@@ -21,10 +21,22 @@ npm run dev
 npm run build
 ```
 
-## OSS contributions tracker
+## Data synchronization
 
-`public/data/oss-contributions.json` is refreshed daily by
-[`.github/workflows/oss-contributions.yml`](.github/workflows/oss-contributions.yml),
-which runs [`scripts/fetch-oss-contributions.mjs`](scripts/fetch-oss-contributions.mjs)
-against the GitHub GraphQL API. The frontend reads the committed JSON file at
-runtime — no live GitHub API calls from the browser.
+Data is kept fresh automatically by scheduled GitHub Actions without client-side API calls:
+
+- **Project commit dates**: [`src/data/projects.js`](src/data/projects.js) is refreshed daily by
+  [`scripts/fetch-project-updates.mjs`](scripts/fetch-project-updates.mjs), which pulls the latest commit
+  and push timestamps for all linked repositories.
+- **OSS contributions**: `public/data/oss-contributions.json` is refreshed daily by
+  [`scripts/fetch-oss-contributions.mjs`](scripts/fetch-oss-contributions.mjs) against the GitHub GraphQL API.
+
+Both run automatically at 06:00 UTC via [`.github/workflows/oss-contributions.yml`](.github/workflows/oss-contributions.yml).
+You can also run them locally at any time:
+
+```bash
+npm run update:projects  # updates src/data/projects.js
+npm run update:oss       # updates public/data/oss-contributions.json
+npm run update:data      # updates both
+```
+

@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update:projects": "node scripts/fetch-project-updates.mjs",
+    "update:oss": "node scripts/fetch-oss-contributions.mjs",
+    "update:data": "node scripts/fetch-project-updates.mjs && node scripts/fetch-oss-contributions.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

@@ -1,5 +1,7 @@
 export function timeAgo(isoDate) {
+  if (!isoDate) return '';
   const then = new Date(isoDate).getTime();
+  if (Number.isNaN(then)) return '';
   const seconds = Math.max(0, Math.floor((Date.now() - then) / 1000));
 
   const units = [
