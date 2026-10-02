@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-10-01T12:42:29.121Z",
+  "last_updated": "2026-10-02T12:06:54.711Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 44,
-    "openPRs": 19,
+    "mergedPRs": 46,
+    "openPRs": 17,
     "issuesCreated": 30,
     "issuesAssigned": 14,
     "reviewsGiven": 31
@@ -251,15 +251,15 @@
     },
     {
       "id": "PR_kwDOAAsO6M8AAAABFFv2GQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "move `#[macro_export]` on declarative macro check to `rustc_attr_parsing`",
       "repo": "rust-lang/rust",
       "url": "https://github.com/rust-lang/rust/pull/163314",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-25T09:44:08Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-02T05:00:56Z",
+      "closedAt": "2026-10-02T05:00:56Z",
       "body": "Summary:\nMoves the declarvative mactor #[macro_export] check to attribute parsing in rustc_attr_parsing, which makes target_item available in the SharedContext so that the parser can check for !macro_def.macro_rules. Also removes the old check from  rustc_passes::check_attr.\nTests:\n./x test tests/ui",
       "labels": [
         "A-attributes",
@@ -283,7 +283,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOKrbwrc8AAAABE_8sNA",
@@ -484,7 +484,7 @@
       "closedAt": null,
       "body": "Changes\nQuick repro: extract b3: 4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-d with Propagator::new(). The remote context comes back invalid. With SingleHeader injection it extracts, but isn't sampled, so a parent-based sampler drops the child.\nHandle d in the single-header parser as debug plu",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEkNw9g",
@@ -842,8 +842,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Fixes #3714\nChanges\n\nBaseline retention & eviction: Replaced the raw cached value in PrecomputedSum::reported with BaselineEntry<T> tracking last_value and consecutive missed_count.\n\nIncrements missed_count at the start of each collection cycle.\nResets missed_count to 0 whenever an attribute set has",
-      "labels": [],
-      "commentCount": 3
+      "labels": [
+        "Stale"
+      ],
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABDCeq8Q",
@@ -864,20 +866,20 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABDCAcxw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(tool/internal/setup): handle test flags and delimiters for go test",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1350",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-10T17:35:07Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Description\n\n\nUnify command-line argument parsing into a shared classifier (classifyArgs) across target discovery, build-flag extraction, build-plan handling, and vendoring rewrites.\n\n\nAlign go test argument handling with cmd/go:\n\nKeep package discovery open across recognized Go/test flags, so packa",
+      "mergedAt": "2026-10-02T11:56:17Z",
+      "closedAt": "2026-10-02T11:56:17Z",
+      "body": "Description\nUse one argument classifier for target discovery, build flag extraction, build planning, and vendoring rewrites.\nFor go test, follow Go's package-list boundaries: flags can precede the package list, but a flag after the first package ends that list. A later positional argument starts the",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "I_kwDONpzSS88AAAABQnh5rA",
@@ -886,10 +888,10 @@
       "title": "fix(tool/internal/setup): honor go test -test.* flags and -- delimiter",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1346",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-10T09:03:58Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-02T11:56:18Z",
       "body": "Problem\notelc go test does not follow all of cmd/go's argument-boundary rules during setup.\nsplitBuildTargets recognizes -run TestName, but not the equivalent\n-test.run TestName form. It therefore interprets TestName as a package\ntarget.\nIt also does not recognize the -- delimiter. For go test, Go p",
       "labels": [],
       "commentCount": 3
