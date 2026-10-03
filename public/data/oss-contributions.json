@@ -1,14 +1,68 @@
 {
-  "last_updated": "2026-10-02T12:06:54.711Z",
+  "last_updated": "2026-10-03T11:18:12.149Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 46,
+    "mergedPRs": 48,
     "openPRs": 17,
     "issuesCreated": 30,
     "issuesAssigned": 14,
-    "reviewsGiven": 31
+    "reviewsGiven": 32
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABGa6mPA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Remove obsolete MSRV workarounds",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8582",
+      "state": "OPEN",
+      "createdAt": "2026-10-03T10:26:56Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Replace compatibility helpers with standard library APIs now that the MSRV is Rust 1.85:\n\nUse IoSlice::advance_slices, removing the copied implementation and unsafe transmute.\nUse Pin::as_deref_mut, removing the internal helper.\nUse Arc::new_uninit_slice and assume_init in read_exact_arc.\nPreserving",
+      "labels": [
+        "R-loom-util"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOAAsO6M8AAAABGVQ2yw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Move #[doc(inline)] and #[doc(no_inline)] validation into rustc_attr_parsing",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/pull/163673",
+      "state": "OPEN",
+      "createdAt": "2026-10-02T18:21:30Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #153101\nThis migrates #[doc(inline)] and #[doc(no_inline)] validation from rustc_passes into DocParser in rustc_attr_parsing. It checks for conflicting inlining attributes and non-use targets, and tweaks rustdoc's early abort so lowering errors don't suppress other attribute diagnostics, als",
+      "labels": [
+        "T-rustdoc",
+        "A-attributes",
+        "T-compiler",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 5
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABGUWhJw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "chore: add Copilot code review instructions",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1441",
+      "state": "OPEN",
+      "createdAt": "2026-10-02T16:39:05Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nAdds two path-scoped instruction files for Copilot code review:\n\n.github/instructions/code-review.instructions.md (all files): what to look for, what CI already covers and shouldn't get comments, things to check before making a claim, and one comment per problem.\n.github/instructions/too",
+      "labels": [
+        "scope:chore"
+      ],
+      "commentCount": 2
+    },
     {
       "id": "I_kwDONpzSS88AAAABUQ1DSw",
       "category": "issuesCreated",
@@ -16,13 +70,13 @@
       "title": "Intermittent OpenAI streaming instrumentation build error during make all",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1437",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-10-01T00:17:55Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-03T03:28:03Z",
       "body": "While running make all to verify #1333, the instrumentation build failed once while compiling instrumentation/github.com/openai/openai-go/internal/streaming.\nThe compiler reported:\ninternal/streaming/streaming.go:230:25: cannot use semconv.ErrorType(err) (value of type string) as \"go.opentelemetry.i",
       "labels": [],
-      "commentCount": 0
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOAQnScc8AAAABF6MMcw",
@@ -94,15 +148,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABFffv0w",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix: accept optional whitespace in TraceState",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3761",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-28T12:18:24Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-03T10:13:48Z",
+      "closedAt": "2026-10-03T10:13:48Z",
       "body": "TraceState::from_str currently rejects valid tracestate members when optional spaces or tabs follow a comma. Trim optional whitespace around members and ignore empty members, preserving spaces inside values.\\n\\nAdds parser regression tests and a changelog entry. fixes #3757",
       "labels": [],
       "commentCount": 3
@@ -139,15 +193,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABFXRBww",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "test(proto): add tracing OTLP contract coverage",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3758",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-27T15:40:32Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-03T09:44:24Z",
+      "closedAt": "2026-10-03T09:44:24Z",
       "body": "Extends the existing trace transform tests with deterministic comparisons against expected OTLP protobuf structures. Coverage includes span fields, attributes, events, links, status, trace state and flags, resource and scope metadata, and grouping spans by instrumentation scope.\nRelated to #1322.",
       "labels": [],
       "commentCount": 2
@@ -236,10 +290,10 @@
       "title": "[Bug]: TraceState parser rejects valid whitespace after commas",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3757",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-25T13:54:25Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-03T10:13:49Z",
       "body": "What happened?\nTraceState::from_str rejects a valid tracestate value when optional whitespace follows a comma. For example, parsing rojo=1, congo=2 fails because the leading space remains part of the second key.\nWhat did you expect to happen?\nThe parser should accept optional whitespace around list ",
       "labels": [
         "bug",
@@ -649,7 +703,7 @@
         "performance",
         "ready to merge"
       ],
-      "commentCount": 11
+      "commentCount": 12
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -820,10 +874,10 @@
       "title": "fix(instrumentation/net/http): guard nil request and URL in client AfterRoundTrip",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1354",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-12T07:05:48Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-02T13:20:14Z",
+      "closedAt": "2026-10-02T13:20:14Z",
       "body": "Description\nGuards against nil pointer dereferences in instrumentation/net/http/client's AfterRoundTrip hook when logging debug messages.\nSpecifically:\n\nCheck if res.Request != nil before reading res.Request.Method and res.Request.URL.\nCheck if res.Request.URL != nil before calling res.Request.URL.S",
       "labels": [
         "scope:fix"
@@ -862,7 +916,7 @@
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABDCAcxw",
