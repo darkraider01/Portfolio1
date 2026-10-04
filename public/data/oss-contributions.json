@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-10-03T11:18:12.149Z",
+  "last_updated": "2026-10-04T11:57:46.842Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 48,
     "openPRs": 17,
     "issuesCreated": 30,
-    "issuesAssigned": 14,
+    "issuesAssigned": 16,
     "reviewsGiven": 32
   },
   "items": [
@@ -22,6 +22,10 @@
       "closedAt": null,
       "body": "Replace compatibility helpers with standard library APIs now that the MSRV is Rust 1.85:\n\nUse IoSlice::advance_slices, removing the copied implementation and unsafe transmute.\nUse Pin::as_deref_mut, removing the internal helper.\nUse Arc::new_uninit_slice and assume_init in read_exact_arc.\nPreserving",
       "labels": [
+        "A-tokio-util",
+        "C-maintenance",
+        "A-tokio",
+        "S-waiting-on-review",
         "R-loom-util"
       ],
       "commentCount": 0
@@ -111,6 +115,26 @@
         "S-waiting-on-review"
       ],
       "commentCount": 1
+    },
+    {
+      "id": "I_kwDOAAsO6M8AAAABUIOaEA",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Next trait solver provides confusing error when `.await` is forgotten",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/issues/163536",
+      "state": "OPEN",
+      "createdAt": "2026-09-30T11:33:54Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Code\nasync fn first() -> impl Iterator<Item = ()> {\n    other()\n}\nasync fn other() -> impl Iterator<Item=()> {\n    std::iter::empty()\n}\nCurrent output\nerror[E0271]: type mismatch resolving `first::{opaque#0} == _`\n --> src/main.rs:4:21\n  |\n4 | async fn first() -> impl Iterator<Item = ()> {\n  |      ",
+      "labels": [
+        "A-diagnostics",
+        "T-compiler",
+        "T-types",
+        "WG-trait-system-refactor"
+      ],
+      "commentCount": 3
     },
     {
       "id": "I_kwDOBAsbdc8AAAABT-eIYw",
@@ -329,10 +353,10 @@
       "title": "fix(instrumentation/logrus): trace hook state leaks loggers and can attach twice",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1399",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-24T20:11:57Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-04T07:53:12Z",
+      "closedAt": "2026-10-04T07:53:12Z",
       "body": "What this fixes\nThe logrus instrumentation tracks which loggers already have the trace hook attached using two maps, hookInitMap and fieldInitMap, keyed by the *logrus.Logger pointer. Two problems come from that:\n\nThe map entry, and the logger it points to, never get removed. An app that creates sho",
       "labels": [
         "scope:fix"
@@ -428,10 +452,10 @@
       "title": "bug(instrumentation/grpc): DialContext installs duplicate client stats handlers Description",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1397",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-24T15:12:44Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-04T07:20:10Z",
       "body": "Describe the bug\nWhen gRPC client instrumentation is enabled, calling grpc.DialContext installs two clientStatsHandlers. The instrumentation rules hook both DialContext and NewClient, and gRPC’s DialContext implementation calls NewClient internally. Each hook prepends another grpc.WithStatsHandler(.",
       "labels": [
         "bug"
@@ -2400,6 +2424,23 @@
         "M-sdk"
       ],
       "commentCount": 6
+    },
+    {
+      "id": "I_kwDODS0WD86t9IGD",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Optimize span creation very fast when non-recording",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/2800",
+      "state": "OPEN",
+      "createdAt": "2025-03-13T22:06:49Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Checking if there is a recording span, starting a span when the sampler returns false should be optimized to be extremely fast.\nOpening an issue to track this work. The below PR did have useful discussions on this topic:\n#1089",
+      "labels": [
+        "A-trace"
+      ],
+      "commentCount": 2
     }
   ]
 }
