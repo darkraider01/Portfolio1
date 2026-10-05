@@ -1,14 +1,64 @@
 {
-  "last_updated": "2026-10-04T11:57:46.842Z",
+  "last_updated": "2026-10-05T13:59:06.115Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 48,
-    "openPRs": 17,
+    "mergedPRs": 49,
+    "openPRs": 19,
     "issuesCreated": 30,
     "issuesAssigned": 16,
     "reviewsGiven": 32
   },
   "items": [
+    {
+      "id": "PR_kwDOAAsO6M8AAAABGtHhnA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Detect errors in opaque type bounds when deriving errors in next solver",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/pull/163801",
+      "state": "OPEN",
+      "createdAt": "2026-10-05T12:31:03Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Forgetting .await here makes the next solver complain about an opaque-type mismatch, which doesn’t really tell you what went wrong.\nThe tricky part was tracking down why the diagnostic walker missed the actual trait failure. Opaque-type normalization could fail before its nested goals became visible",
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-review",
+        "T-types",
+        "WG-trait-system-refactor"
+      ],
+      "commentCount": 5
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABGk0RWg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "perf(trace): avoid locking for non-recording context spans",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3775",
+      "state": "OPEN",
+      "createdAt": "2026-10-04T17:25:43Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "This follows up on #3774. SpanRef::is_recording() takes a lock even when the span was non-recording when it entered the context. This caches that initial state so those checks can return early. The context still owns the span and forwards lifecycle calls. Spans that started recording still check the",
+      "labels": [],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABGj0L-g",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "perf(sdk): avoid tracer clones for non-recording spans",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3774",
+      "state": "OPEN",
+      "createdAt": "2026-10-04T14:43:12Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Related to #2800.\naddresses the non-recording span creation part of #2800.\nNon-recording spans currently carry a tracer and span limits even though they don't use them. This moves those fields into the recording state, so dropped spans keep their context without cloning the tracer. Ending a non-reco",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABGa6mPA",
       "category": "openPRs",
@@ -46,9 +96,10 @@
         "T-rustdoc",
         "A-attributes",
         "T-compiler",
-        "S-waiting-on-review"
+        "S-waiting-on-author",
+        "S-waiting-on-perf"
       ],
-      "commentCount": 5
+      "commentCount": 11
     },
     {
       "id": "PR_kwDONpzSS88AAAABGUWhJw",
@@ -202,15 +253,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABFXcD8w",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "docs(trace): explain async context propagation",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3759",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-27T16:11:07Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-05T06:15:52Z",
+      "closedAt": "2026-10-05T06:15:52Z",
       "body": "Issue #828 asks for clearer guidance on how spans and contexts work together in async Rust code.\nThe tracing API docs now explain parent selection, making contexts current while futures run, span lifetimes, and propagation to spawned tasks, with examples. The tracing guide links to the expanded API ",
       "labels": [],
       "commentCount": 3
@@ -245,7 +296,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
@@ -262,7 +313,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABFJXtIw",
@@ -1749,9 +1800,10 @@
       "body": "What happened?\nWhat happened\nA panic inside a single ObservableGauge/ObservableCounter/ObservableUpDownCounter\ncallback permanently and silently disables metrics collection for the entire\nMeterProvider — not just the offending instrument — for the rest of the process's life.\nWhat I expected\nA bug in",
       "labels": [
         "enhancement",
-        "triage:todo"
+        "priority:p3",
+        "triage:accepted"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABApIVSQ",
