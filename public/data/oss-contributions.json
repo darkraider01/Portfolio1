@@ -1,14 +1,61 @@
 {
-  "last_updated": "2026-10-05T13:59:06.115Z",
+  "last_updated": "2026-10-06T13:44:55.065Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 49,
-    "openPRs": 19,
-    "issuesCreated": 30,
+    "mergedPRs": 51,
+    "openPRs": 18,
+    "issuesCreated": 32,
     "issuesAssigned": 16,
     "reviewsGiven": 32
   },
   "items": [
+    {
+      "id": "PR_kwDODS0WD88AAAABG5FiBA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(sdk): log when the periodic metrics reader panics",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3777",
+      "state": "OPEN",
+      "createdAt": "2026-10-06T10:33:42Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "An observable callback panic can stop the periodic reader without explaining why metrics stopped exporting.\nThis logs one error when the worker panics, including during timer-driven collection, and documents the callback panic behavior. Normal shutdown stays quiet. Panics still propagate; this doesn",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDODS0WD88AAAABVVJJIA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "`opentelemetry-appender-tracing` loses field identity for Error-valued tracing fields",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3776",
+      "state": "OPEN",
+      "createdAt": "2026-10-06T09:52:49Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Current behavior\nopentelemetry-appender-tracing currently maps every field that goes through Visit::record_error to exception.message, and ignores the original field name.\nCurrent code:\nfn record_error(\n    &mut self,\n    _field: &tracing_core::Field,\n    value: &(dyn std::error::Error + 'static),\n)",
+      "labels": [
+        "triage:todo"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABVT-GmQ",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "proposal : Add diagnostics for why instrumentation rules are rejected",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1453",
+      "state": "OPEN",
+      "createdAt": "2026-10-06T08:13:04Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "I've been looking at this while working on #1333.\n#1333 helps with the case where a rule does apply, since we can see what it actually changed. But I think there's still a pretty annoying debugging gap for the opposite case:\nwhy didn't this package/function get instrumented?\nA rule might make it thr",
+      "labels": [],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOAAsO6M8AAAABGtHhnA",
       "category": "openPRs",
@@ -82,24 +129,24 @@
     },
     {
       "id": "PR_kwDOAAsO6M8AAAABGVQ2yw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Move #[doc(inline)] and #[doc(no_inline)] validation into rustc_attr_parsing",
       "repo": "rust-lang/rust",
       "url": "https://github.com/rust-lang/rust/pull/163673",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-02T18:21:30Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Part of #153101\nThis migrates #[doc(inline)] and #[doc(no_inline)] validation from rustc_passes into DocParser in rustc_attr_parsing. It checks for conflicting inlining attributes and non-use targets, and tweaks rustdoc's early abort so lowering errors don't suppress other attribute diagnostics, als",
+      "mergedAt": "2026-10-06T01:06:56Z",
+      "closedAt": "2026-10-06T01:06:56Z",
+      "body": "View all comments\n\nPart of #153101\nThis migrates #[doc(inline)] and #[doc(no_inline)] validation from rustc_passes into DocParser in rustc_attr_parsing. It checks for conflicting inlining attributes and non-use targets, and tweaks rustdoc's early abort so lowering errors don't suppress other attribu",
       "labels": [
         "T-rustdoc",
         "A-attributes",
         "T-compiler",
-        "S-waiting-on-author",
-        "S-waiting-on-perf"
+        "S-waiting-on-bors",
+        "A-rustdoc-json"
       ],
-      "commentCount": 11
+      "commentCount": 17
     },
     {
       "id": "PR_kwDONpzSS88AAAABGUWhJw",
@@ -296,7 +343,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
@@ -978,20 +1025,20 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABDCeq8Q",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "refactor(tool): use []string instead of map for module directories",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1351",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-10T18:38:55Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-05T17:09:21Z",
+      "closedAt": "2026-10-05T17:09:21Z",
       "body": "Description\nSwitches module directory handling from map[string]bool to []string across pkgload and setup. FindModuleDirs now returns sorted, deduplicated slices, and setup functions take []string directly to eliminate redundant map-to-slice conversions.\nMotivation\nFollow-up from PR #1262 review disc",
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABDCAcxw",
@@ -1506,18 +1553,18 @@
       "id": "PR_kwDONpzSS88AAAABBYH-KA",
       "category": "reviewsGiven",
       "type": "pr",
-      "title": "fix(tool/ast): handle import alias collisions and enforce strict import matching (#1271)",
+      "title": "fix(tool/ast): enforce strict import matching (#1271)",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1274",
       "state": "OPEN",
       "createdAt": "2026-08-28T19:07:09Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\nFixes #1271.\nThis PR addresses two edge-case issues in tool/internal/ast/typename.go:\n\nImport Alias Collisions: ImportAliasMap previously mapped default package aliases to import paths without checking for collisions. When a source file contained multiple unaliased imports sharing a defa",
+      "body": "Description\nFixes #1271.\nIn parsedTypeName.matches (*dst.SelectorExpr), when the file's imports are\nknown (imports != nil) and ident.Name is not one of them, matching now\nreturns false instead of falling through to a path-tail comparison. The\nfallback stays for imports == nil, which is how hand-buil",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 9
+      "commentCount": 10
     },
     {
       "id": "PR_kwDONpzSS88AAAABBSnixw",
@@ -1643,10 +1690,10 @@
       "title": "Compile-time performance: several redundant subprocess spawns and re-parsing in the setup/toolexec pipeline",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1242",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-25T14:25:36Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-06T08:09:41Z",
       "body": "I went through the otelc setup and toolexec pipeline (tool/internal/{setup,instrument,pkgload,ast}) looking for compile-time performance issues, and found a handful of spots where we're doing more subprocess spawning and re-parsing than we need to. None of these are correctness bugs, the tool works ",
       "labels": [],
       "commentCount": 9
@@ -1803,7 +1850,7 @@
         "priority:p3",
         "triage:accepted"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "PR_kwDONpzSS88AAAABApIVSQ",
@@ -1942,10 +1989,10 @@
       "title": "chore(tool/internal/instrument): leftover panicking HookContextImpl methods after After-hook removal in optimizeTJumps",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1173",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-19T19:59:04Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-06T08:08:47Z",
       "body": "Problem\nWhen a generic function or generic-receiver method is instrumented with only a Before hook (no After), optimizeTJumps deletes the generated After trampoline function — but leaves the four always-panicking HookContextImpl{suffix} methods (GetParam, SetParam, GetReturnVal, SetReturnVal, instal",
       "labels": [],
       "commentCount": 2
