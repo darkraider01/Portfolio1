@@ -1,14 +1,113 @@
 {
-  "last_updated": "2026-10-07T12:54:06.631Z",
+  "last_updated": "2026-10-08T13:02:26.370Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 51,
-    "openPRs": 22,
-    "issuesCreated": 32,
+    "mergedPRs": 52,
+    "openPRs": 25,
+    "issuesCreated": 34,
     "issuesAssigned": 17,
-    "reviewsGiven": 32
+    "reviewsGiven": 33
   },
   "items": [
+    {
+      "id": "PR_kwDOAAsO6M8AAAABHTPvjA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Move check_rustc_must_implement_one_of validation to attribute parser",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/pull/163980",
+      "state": "OPEN",
+      "createdAt": "2026-10-08T09:49:55Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #153101 and #131229.\nMoves the remaining rustc_must_implement_one_of validation from rustc_passes::check_attr into RustcMustImplementOneOfParser::finalize_check using AST trait information available through FinalizeCheckContext::target_item.\nThe duplicate-name validation was already migrated",
+      "labels": [
+        "A-attributes",
+        "T-compiler",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDOALTHTM8AAAABHTFy3Q",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "uucore: detect character encodings for bare locale names",
+      "repo": "uutils/coreutils",
+      "url": "https://github.com/uutils/coreutils/pull/15199",
+      "state": "OPEN",
+      "createdAt": "2026-10-08T09:35:35Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "get_ctype_encoding() assumes locale names include an encoding suffix, so installed names such as en_IN are reported as ASCII. Resolve bare names using native locale data, share the environment lookup, and query nl_langinfo_l without switching the thread locale.\nSplit from #15139 as requested in revi",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDOALTHTM8AAAABVyjzlQ",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "comm: avoid deadlock when both inputs are stdin",
+      "repo": "uutils/coreutils",
+      "url": "https://github.com/uutils/coreutils/issues/15196",
+      "state": "CLOSED",
+      "createdAt": "2026-10-08T06:46:25Z",
+      "mergedAt": null,
+      "closedAt": "2026-10-08T07:25:37Z",
+      "body": "This is one of the remaining GNU 9.12 test failures from #14705 (comm/dash-dash.sh).\nRight now comm - - hangs instead of reading both inputs from stdin.\nI traced it to the stdin handling in comm: each - goes through open_file(), which creates its own long-lived StdinLock. The first lock is still hel",
+      "labels": [
+        "U - comm"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDODS0WD88AAAABVx1xow",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "Add `Tracer::enabled()` API for early span creation checks",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3781",
+      "state": "OPEN",
+      "createdAt": "2026-10-08T05:35:45Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "While working on #3774 and #3775, I noticed that Rust does not currently expose the Tracer.Enabled API defined in the OpenTelemetry tracing specification.\nProblem\nThe Tracer API lets callers create spans and check Span::is_recording() afterward, but it does not provide a tracer-level check before sp",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABHMnCKw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "process: route Unix child stdio through mio::IoSource",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8603",
+      "state": "OPEN",
+      "createdAt": "2026-10-07T20:15:44Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #8042.\nWhen running on platforms that use mio's poll(2) backend (Cygwin, Solaris, or on Linux when forced with --cfg mio_unsupported_force_poll_poll), child process stdio hangs after reading or writing the first chunk.\nThis happens because mio's poll selector strips out event flags on delivery",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOAQnScc8AAAABHL0P9w",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Bypass rustup proxy when RUSTUP_TOOLCHAIN is an absolute path",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/pull/17562",
+      "state": "OPEN",
+      "createdAt": "2026-10-07T18:59:02Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Closes #17496.\nCurrently, Cargo's rustup proxy bypass bails whenever RUSTUP_TOOLCHAIN contains path separators. This defeats the optimization when rust-analyzer invokes Cargo with an absolute sysroot path.\nThis allows the fast path when RUSTUP_TOOLCHAIN is an absolute path. Named toolchains work as ",
+      "labels": [
+        "A-configuration",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABHG3M_w",
       "category": "openPRs",
@@ -26,18 +125,33 @@
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHEReWQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "tests: preserve environment overrides in WASI",
       "repo": "uutils/coreutils",
       "url": "https://github.com/uutils/coreutils/pull/15150",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-07T07:07:35Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-07T21:39:43Z",
+      "closedAt": "2026-10-07T21:39:43Z",
       "body": "The WASI test harness forwards duplicate environment variables when a test overrides a default or sets a variable more than once. This makes overrides behave differently from native commands.\nResolve duplicates before forwarding them to the guest, keeping the last value. A regression test covers bot",
       "labels": [],
-      "commentCount": 0
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABHCiJ0w",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(sdk): update tracestate parsing to properly follow Trace Context Level 2",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3779",
+      "state": "OPEN",
+      "createdAt": "2026-10-07T03:05:13Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #3778\nRelated #2757\nChanges\nReimplements a majority of the tracestate parsing logic, while also separating out trace state parsing logic into a dedicated file. Propagation/extraction has also been adjusted to more closely align with the spec (e.g. don't propagate an empty tracestate header).\nM",
+      "labels": [],
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOALTHTM8AAAABG87vUw",
@@ -82,7 +196,7 @@
       "closedAt": null,
       "body": "An observable callback panic can stop the periodic reader without explaining why metrics stopped exporting.\nThis logs one error when the worker panics, including during timer-driven collection, and documents the callback panic behavior. Normal shutdown stays quiet. Panics still propagate; this doesn",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "I_kwDODS0WD88AAAABVVJJIA",
@@ -906,7 +1020,7 @@
         "performance",
         "ready to merge"
       ],
-      "commentCount": 12
+      "commentCount": 13
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -1271,7 +1385,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABCPbyWA",
