@@ -11,6 +11,7 @@ if (!TOKEN) throw new Error('GH_TOKEN env var is required');
 // -user:USERNAME excludes their own repos: this tracks OSS contributions, not personal projects.
 const CATEGORIES = [
   ['mergedPRs', `is:pr is:merged author:${USERNAME} -user:${USERNAME}`],
+  ['openPRs', `is:pr is:open author:${USERNAME} -user:${USERNAME}`],
   ['issuesCreated', `is:issue author:${USERNAME} -user:${USERNAME}`],
   ['issuesAssigned', `is:issue assignee:${USERNAME} -user:${USERNAME}`],
   ['reviewsGiven', `is:pr reviewed-by:${USERNAME} -author:${USERNAME} -user:${USERNAME}`]
