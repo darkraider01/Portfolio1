@@ -1,14 +1,29 @@
 {
-  "last_updated": "2026-10-08T13:02:26.370Z",
+  "last_updated": "2026-10-09T12:48:59.586Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 52,
-    "openPRs": 25,
+    "mergedPRs": 54,
+    "openPRs": 24,
     "issuesCreated": 34,
-    "issuesAssigned": 17,
+    "issuesAssigned": 18,
     "reviewsGiven": 33
   },
   "items": [
+    {
+      "id": "PR_kwDOALTHTM8AAAABHax8AQ",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "wc: add a UTF-8 character-count benchmark",
+      "repo": "uutils/coreutils",
+      "url": "https://github.com/uutils/coreutils/pull/15202",
+      "state": "MERGED",
+      "createdAt": "2026-10-08T21:08:01Z",
+      "mergedAt": "2026-10-09T09:04:17Z",
+      "closedAt": "2026-10-09T09:04:17Z",
+      "body": "The existing character-count benchmark uses ASCII input. Add a UTF-8 case with two-, three-, and four-byte characters, plus instructions for running it in a UTF-8 locale.\nSplit from #15139 and #15140 as requested in #15140 (comment).",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDOAAsO6M8AAAABHTPvjA",
       "category": "openPRs",
@@ -26,7 +41,7 @@
         "T-compiler",
         "S-waiting-on-review"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHTFy3Q",
@@ -87,7 +102,12 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Fixes #8042.\nWhen running on platforms that use mio's poll(2) backend (Cygwin, Solaris, or on Linux when forced with --cfg mio_unsupported_force_poll_poll), child process stdio hangs after reading or writing the first chunk.\nThis happens because mio's poll selector strips out event flags on delivery",
-      "labels": [],
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-process",
+        "S-waiting-on-review"
+      ],
       "commentCount": 0
     },
     {
@@ -120,8 +140,13 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Adds deterministic Loom coverage for shutdown racing with readiness-future registration and the reserved reader/writer waker slots. Each model verifies that the waiter completes and observes shutdown.\nReplaces the AsyncFd shutdown race tests’ 100-iteration loops with single-run real-Mio smoke tests ",
-      "labels": [],
-      "commentCount": 0
+      "labels": [
+        "C-maintenance",
+        "A-tokio",
+        "M-io",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHEReWQ",
@@ -151,7 +176,27 @@
       "closedAt": null,
       "body": "Fixes #3778\nRelated #2757\nChanges\nReimplements a majority of the tracestate parsing logic, while also separating out trace state parsing logic into a dedicated file. Propagation/extraction has also been adjusted to more closely align with the spec (e.g. don't propagate an empty tracestate header).\nM",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
+    },
+    {
+      "id": "I_kwDOAAsO6M8AAAABVcqD2g",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "[ICE]: `expected leaf, got Value`",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/issues/163903",
+      "state": "OPEN",
+      "createdAt": "2026-10-06T19:34:04Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "auto-reduced (treereduce-rust):\n#![feature(gca_min_const_items)]\n#![feature(gca_macroless_items)]\n#![feature(gca_adts)]\n\nstruct NoDerive(i32);\n\nstruct WrapInline(NoDerive);\nconst WRAP_DIRECT_INLINE: WrapInline = WrapInline(NoDerive(NoDerive));\nfn main() {\n    match WRAP_DIRECT_INLINE {\n        _ => ",
+      "labels": [
+        "I-ICE",
+        "T-compiler",
+        "C-bug",
+        "F-gca_min_const_items"
+      ],
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOALTHTM8AAAABG87vUw",
@@ -166,7 +211,7 @@
       "closedAt": null,
       "body": "In single-byte locales (where MB_CUR_MAX == 1), characters should be counted as bytes for wc -m.\nPreviously, this was inferred by checking if the locale was named \"C\" or \"POSIX\", which does not match GNU semantics on platforms where the C locale resolves to UTF-8, nor does it handle other single-byt",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOALTHTM8AAAABG7q90A",
@@ -185,15 +230,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABG5FiBA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(sdk): log when the periodic metrics reader panics",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3777",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-06T10:33:42Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-08T15:08:16Z",
+      "closedAt": "2026-10-08T15:08:16Z",
       "body": "An observable callback panic can stop the periodic reader without explaining why metrics stopped exporting.\nThis logs one error when the worker panics, including during timer-driven collection, and documents the callback panic behavior. Normal shutdown stays quiet. Panics still propagate; this doesn",
       "labels": [],
       "commentCount": 5
@@ -523,18 +568,18 @@
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
       "category": "openPRs",
       "type": "pr",
-      "title": "fix(instrumentation/linodego): attach error.type attribute for non-HTTP failures",
+      "title": "fix(instrumentation/linodego): record error types on spans and duration metrics",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1405",
       "state": "OPEN",
       "createdAt": "2026-09-26T16:38:08Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\n\nExport semconv.ErrorType in instrumentation/github.com/linode/linodego/v2/semconv delegating to OpenTelemetry semconv.\nAttach semconv.ErrorType(err) to spans in AfterDoRequest and finishSpanWithError when errors do not carry an HTTP status code (e.g., connection errors, timeouts, contex",
+      "body": "Linode request and public-operation spans omit error.type for non-HTTP failures. The operation-duration histogram also omits it for HTTP and non-HTTP failures.\nUse the standard OTel ErrorType helper for non-HTTP errors and pass the operation span’s error type to the duration histogram. HTTP failures",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 7
+      "commentCount": 10
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABFJXtIw",
@@ -1020,7 +1065,7 @@
         "performance",
         "ready to merge"
       ],
-      "commentCount": 13
+      "commentCount": 14
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -1377,10 +1422,10 @@
       "title": "fix(database/sql): link Tx Commit/Rollback spans to the transaction's trace",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1324",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-04T19:46:35Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-08T15:31:36Z",
+      "closedAt": "2026-10-08T15:31:36Z",
       "body": "Description\nbeforeTxCommitInstrumentation and beforeTxRollbackInstrumentation in instrumentation/database/sql/client.go hardcoded context.Background() as the parent context when starting the COMMIT/ROLLBACK span, instead of using the context the transaction was started with. That orphans every commi",
       "labels": [
         "scope:fix"
@@ -2035,10 +2080,10 @@
       "title": "[Bug]: A panicking observable metric callback permanently disables collection (mutex poisoning + PeriodicReader thread death)",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3640",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-23T18:26:23Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-08T15:20:14Z",
       "body": "What happened?\nWhat happened\nA panic inside a single ObservableGauge/ObservableCounter/ObservableUpDownCounter\ncallback permanently and silently disables metrics collection for the entire\nMeterProvider — not just the offending instrument — for the rest of the process's life.\nWhat I expected\nA bug in",
       "labels": [
         "enhancement",
