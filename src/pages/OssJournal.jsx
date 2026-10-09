@@ -9,7 +9,6 @@ import { timeAgo } from '../utils/timeAgo';
 
 const CATEGORY_LABELS = {
   mergedPRs: 'Merged PRs',
-  openPRs: 'Open PRs',
   issuesCreated: 'Issues Raised',
   issuesAssigned: 'Issues Taken',
   reviewsGiven: 'Reviews Given'

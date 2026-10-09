@@ -1,7 +1,7 @@
 // Pure helpers for turning the flat oss-contributions.json item list into the
 // org → repo → contribution hierarchy used by the journal page.
 
-// The five search categories overlap (an issue you opened and were assigned to
+// The search categories overlap (an issue you opened and were assigned to
 // matches both queries), so the same node id can appear more than once. Keep
 // the first occurrence — the fetch script flattens categories in a fixed order,
 // so the first hit is the more specific category.

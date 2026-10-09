@@ -3,46 +3,11 @@
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 52,
-    "openPRs": 25,
     "issuesCreated": 34,
     "issuesAssigned": 17,
     "reviewsGiven": 33
   },
   "items": [
-    {
-      "id": "PR_kwDOAAsO6M8AAAABHTPvjA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Move check_rustc_must_implement_one_of validation to attribute parser",
-      "repo": "rust-lang/rust",
-      "url": "https://github.com/rust-lang/rust/pull/163980",
-      "state": "OPEN",
-      "createdAt": "2026-10-08T09:49:55Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Part of #153101 and #131229.\nMoves the remaining rustc_must_implement_one_of validation from rustc_passes::check_attr into RustcMustImplementOneOfParser::finalize_check using AST trait information available through FinalizeCheckContext::target_item.\nThe duplicate-name validation was already migrated",
-      "labels": [
-        "A-attributes",
-        "T-compiler",
-        "S-waiting-on-review"
-      ],
-      "commentCount": 3
-    },
-    {
-      "id": "PR_kwDOALTHTM8AAAABHTFy3Q",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "uucore: detect character encodings for bare locale names",
-      "repo": "uutils/coreutils",
-      "url": "https://github.com/uutils/coreutils/pull/15199",
-      "state": "OPEN",
-      "createdAt": "2026-10-08T09:35:35Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "get_ctype_encoding() assumes locale names include an encoding suffix, so installed names such as en_IN are reported as ASCII. Resolve bare names using native locale data, share the environment lookup, and query nl_langinfo_l without switching the thread locale.\nSplit from #15139 as requested in revi",
-      "labels": [],
-      "commentCount": 0
-    },
     {
       "id": "I_kwDOALTHTM8AAAABVyjzlQ",
       "category": "issuesCreated",
@@ -72,54 +37,6 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "While working on #3774 and #3775, I noticed that Rust does not currently expose the Tracer.Enabled API defined in the OpenTelemetry tracing specification.\nProblem\nThe Tracer API lets callers create spans and check Span::is_recording() afterward, but it does not provide a tracer-level check before sp",
-      "labels": [],
-      "commentCount": 0
-    },
-    {
-      "id": "PR_kwDOBAsbdc8AAAABHMnCKw",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "process: route Unix child stdio through mio::IoSource",
-      "repo": "tokio-rs/tokio",
-      "url": "https://github.com/tokio-rs/tokio/pull/8603",
-      "state": "OPEN",
-      "createdAt": "2026-10-07T20:15:44Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Fixes #8042.\nWhen running on platforms that use mio's poll(2) backend (Cygwin, Solaris, or on Linux when forced with --cfg mio_unsupported_force_poll_poll), child process stdio hangs after reading or writing the first chunk.\nThis happens because mio's poll selector strips out event flags on delivery",
-      "labels": [],
-      "commentCount": 0
-    },
-    {
-      "id": "PR_kwDOAQnScc8AAAABHL0P9w",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Bypass rustup proxy when RUSTUP_TOOLCHAIN is an absolute path",
-      "repo": "rust-lang/cargo",
-      "url": "https://github.com/rust-lang/cargo/pull/17562",
-      "state": "OPEN",
-      "createdAt": "2026-10-07T18:59:02Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Closes #17496.\nCurrently, Cargo's rustup proxy bypass bails whenever RUSTUP_TOOLCHAIN contains path separators. This defeats the optimization when rust-analyzer invokes Cargo with an absolute sysroot path.\nThis allows the fast path when RUSTUP_TOOLCHAIN is an absolute path. Named toolchains work as ",
-      "labels": [
-        "A-configuration",
-        "S-waiting-on-review"
-      ],
-      "commentCount": 2
-    },
-    {
-      "id": "PR_kwDOBAsbdc8AAAABHG3M_w",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Test ScheduledIo shutdown races with Loom",
-      "repo": "tokio-rs/tokio",
-      "url": "https://github.com/tokio-rs/tokio/pull/8596",
-      "state": "OPEN",
-      "createdAt": "2026-10-07T11:25:28Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Adds deterministic Loom coverage for shutdown racing with readiness-future registration and the reserved reader/writer waker slots. Each model verifies that the waiter completes and observes shutdown.\nReplaces the AsyncFd shutdown race tests’ 100-iteration loops with single-run real-Mio smoke tests ",
       "labels": [],
       "commentCount": 0
     },
@@ -154,51 +71,6 @@
       "commentCount": 3
     },
     {
-      "id": "PR_kwDOALTHTM8AAAABG87vUw",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "wc: count characters as bytes in single-byte locales",
-      "repo": "uutils/coreutils",
-      "url": "https://github.com/uutils/coreutils/pull/15140",
-      "state": "OPEN",
-      "createdAt": "2026-10-06T16:12:01Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "In single-byte locales (where MB_CUR_MAX == 1), characters should be counted as bytes for wc -m.\nPreviously, this was inferred by checking if the locale was named \"C\" or \"POSIX\", which does not match GNU semantics on platforms where the C locale resolves to UTF-8, nor does it handle other single-byt",
-      "labels": [],
-      "commentCount": 2
-    },
-    {
-      "id": "PR_kwDOALTHTM8AAAABG7q90A",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "wc: fix character counts for malformed UTF-8 input",
-      "repo": "uutils/coreutils",
-      "url": "https://github.com/uutils/coreutils/pull/15139",
-      "state": "OPEN",
-      "createdAt": "2026-10-06T14:28:11Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "The fast path for wc -m and wc -cm counts some invalid or incomplete UTF-8 sequences as characters. This validates the input in UTF-8 locales and handles characters split across reads, with regression tests for those cases.\nRelated to #14928",
-      "labels": [],
-      "commentCount": 2
-    },
-    {
-      "id": "PR_kwDODS0WD88AAAABG5FiBA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix(sdk): log when the periodic metrics reader panics",
-      "repo": "open-telemetry/opentelemetry-rust",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3777",
-      "state": "OPEN",
-      "createdAt": "2026-10-06T10:33:42Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "An observable callback panic can stop the periodic reader without explaining why metrics stopped exporting.\nThis logs one error when the worker panics, including during timer-driven collection, and documents the callback panic behavior. Normal shutdown stays quiet. Panics still propagate; this doesn",
-      "labels": [],
-      "commentCount": 5
-    },
-    {
       "id": "I_kwDODS0WD88AAAABVVJJIA",
       "category": "issuesCreated",
       "type": "issue",
@@ -228,77 +100,6 @@
       "closedAt": null,
       "body": "I've been looking at this while working on #1333.\n#1333 helps with the case where a rule does apply, since we can see what it actually changed. But I think there's still a pretty annoying debugging gap for the opposite case:\nwhy didn't this package/function get instrumented?\nA rule might make it thr",
       "labels": [],
-      "commentCount": 0
-    },
-    {
-      "id": "PR_kwDOAAsO6M8AAAABGtHhnA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Detect errors in opaque type bounds when deriving errors in next solver",
-      "repo": "rust-lang/rust",
-      "url": "https://github.com/rust-lang/rust/pull/163801",
-      "state": "OPEN",
-      "createdAt": "2026-10-05T12:31:03Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Forgetting .await here makes the next solver complain about an opaque-type mismatch, which doesn’t really tell you what went wrong.\nThe tricky part was tracking down why the diagnostic walker missed the actual trait failure. Opaque-type normalization could fail before its nested goals became visible",
-      "labels": [
-        "T-compiler",
-        "S-waiting-on-review",
-        "T-types",
-        "WG-trait-system-refactor"
-      ],
-      "commentCount": 5
-    },
-    {
-      "id": "PR_kwDODS0WD88AAAABGk0RWg",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "perf(trace): avoid locking for non-recording context spans",
-      "repo": "open-telemetry/opentelemetry-rust",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3775",
-      "state": "OPEN",
-      "createdAt": "2026-10-04T17:25:43Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "This follows up on #3774. SpanRef::is_recording() takes a lock even when the span was non-recording when it entered the context. This caches that initial state so those checks can return early. The context still owns the span and forwards lifecycle calls. Spans that started recording still check the",
-      "labels": [],
-      "commentCount": 3
-    },
-    {
-      "id": "PR_kwDODS0WD88AAAABGj0L-g",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "perf(sdk): avoid tracer clones for non-recording spans",
-      "repo": "open-telemetry/opentelemetry-rust",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3774",
-      "state": "OPEN",
-      "createdAt": "2026-10-04T14:43:12Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Related to #2800.\naddresses the non-recording span creation part of #2800.\nNon-recording spans currently carry a tracer and span limits even though they don't use them. This moves those fields into the recording state, so dropped spans keep their context without cloning the tracer. Ending a non-reco",
-      "labels": [],
-      "commentCount": 2
-    },
-    {
-      "id": "PR_kwDOBAsbdc8AAAABGa6mPA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Remove obsolete MSRV workarounds",
-      "repo": "tokio-rs/tokio",
-      "url": "https://github.com/tokio-rs/tokio/pull/8582",
-      "state": "OPEN",
-      "createdAt": "2026-10-03T10:26:56Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Replace compatibility helpers with standard library APIs now that the MSRV is Rust 1.85:\n\nUse IoSlice::advance_slices, removing the copied implementation and unsafe transmute.\nUse Pin::as_deref_mut, removing the internal helper.\nUse Arc::new_uninit_slice and assume_init in read_exact_arc.\nPreserving",
-      "labels": [
-        "A-tokio-util",
-        "C-maintenance",
-        "A-tokio",
-        "S-waiting-on-review",
-        "R-loom-util"
-      ],
       "commentCount": 0
     },
     {
@@ -353,40 +154,6 @@
       "body": "While running make all to verify #1333, the instrumentation build failed once while compiling instrumentation/github.com/openai/openai-go/internal/streaming.\nThe compiler reported:\ninternal/streaming/streaming.go:230:25: cannot use semconv.ErrorType(err) (value of type string) as \"go.opentelemetry.i",
       "labels": [],
       "commentCount": 2
-    },
-    {
-      "id": "PR_kwDOAQnScc8AAAABF6MMcw",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Suggest inheriting repository fields in explicit workspaces",
-      "repo": "rust-lang/cargo",
-      "url": "https://github.com/rust-lang/cargo/pull/17541",
-      "state": "OPEN",
-      "createdAt": "2026-09-30T14:04:03Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "A workspace member can accidentally set package.repository to a URL for that crate’s page in a file browser. This adds cargo::repository_not_inherited to flag directly set repository fields in explicit workspaces and suggest inheritance where it applies.\nThe lint does not inspect or compare URLs. It",
-      "labels": [
-        "A-documenting-cargo-itself"
-      ],
-      "commentCount": 0
-    },
-    {
-      "id": "PR_kwDOAr8sRM8AAAABF5cqVQ",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Keep cargo-miri arguments in one place",
-      "repo": "rust-lang/miri",
-      "url": "https://github.com/rust-lang/miri/pull/5364",
-      "state": "OPEN",
-      "createdAt": "2026-09-30T12:56:25Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "cargo-miri currently reads env::args() each time it checks a flag. This change reads the arguments once, then passes them through the relevant phases and helpers.\nThis prepares the argument handling for the argfile work in #5234 (first step). It doesn’t add argfile support yet; the existing error re",
-      "labels": [
-        "S-waiting-on-review"
-      ],
-      "commentCount": 1
     },
     {
       "id": "I_kwDOAAsO6M8AAAABUIOaEA",
@@ -458,21 +225,6 @@
       "commentCount": 3
     },
     {
-      "id": "PR_kwDOCaYHzc8AAAABFcjeBQ",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Let Loom run one execution from fuzzer input",
-      "repo": "tokio-rs/loom",
-      "url": "https://github.com/tokio-rs/loom/pull/427",
-      "state": "OPEN",
-      "createdAt": "2026-09-28T07:12:40Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Loom currently explores executions itself, which makes it awkward to run a particular execution from fuzzer input. This adds Builder::check_with_input , which uses the input bytes to choose scheduling and atomic read outcomes, then runs the model once.\nIf the input runs out, Loom picks the first ava",
-      "labels": [],
-      "commentCount": 0
-    },
-    {
       "id": "PR_kwDODS0WD88AAAABFXcD8w",
       "category": "mergedPRs",
       "type": "pr",
@@ -518,23 +270,6 @@
         "scope:feat"
       ],
       "commentCount": 5
-    },
-    {
-      "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix(instrumentation/linodego): attach error.type attribute for non-HTTP failures",
-      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1405",
-      "state": "OPEN",
-      "createdAt": "2026-09-26T16:38:08Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Description\n\nExport semconv.ErrorType in instrumentation/github.com/linode/linodego/v2/semconv delegating to OpenTelemetry semconv.\nAttach semconv.ErrorType(err) to spans in AfterDoRequest and finishSpanWithError when errors do not carry an HTTP status code (e.g., connection errors, timeouts, contex",
-      "labels": [
-        "scope:fix"
-      ],
-      "commentCount": 7
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABFJXtIw",
@@ -634,41 +369,6 @@
         "scope:fix"
       ],
       "commentCount": 5
-    },
-    {
-      "id": "PR_kwDOKrbwrc8AAAABE_8sNA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "feat(config): add declarative metrics configuration support",
-      "repo": "open-telemetry/opentelemetry-rust-contrib",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust-contrib/pull/811",
-      "state": "OPEN",
-      "createdAt": "2026-09-24T19:58:39Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Summary\nAdds the first schema-aligned slice of OpenTelemetry declarative configuration for Rust: configuring a MeterProvider from YAML with resource attributes, periodic readers, the console exporter, and registered custom exporters. This is an initial supported subset of schema v1.2.0; unsupported ",
-      "labels": [],
-      "commentCount": 1
-    },
-    {
-      "id": "PR_kwDOBAsbdc8AAAABE-Zdfg",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "io: add Loom coverage for deregistration and event delivery",
-      "repo": "tokio-rs/tokio",
-      "url": "https://github.com/tokio-rs/tokio/pull/8505",
-      "state": "OPEN",
-      "createdAt": "2026-09-24T17:10:50Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "This adds focused Loom tests for Tokio’s I/O registration lifetime when deregistration races with delivery of an event the poller has already returned.\nThe tests exercise the production registration set and event dispatch logic without constructing a Mio poller. A CI job runs them on pull requests.\n",
-      "labels": [
-        "C-maintenance",
-        "A-tokio",
-        "M-io",
-        "S-waiting-on-review"
-      ],
-      "commentCount": 0
     },
     {
       "id": "I_kwDOKrbwrc8AAAABTBhXPg",
@@ -930,36 +630,6 @@
       "commentCount": 4
     },
     {
-      "id": "PR_kwDOGj8GuM8AAAABEHQIOA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "docs: propose OpenTelemetry runtime metrics integration",
-      "repo": "tokio-rs/tokio-metrics",
-      "url": "https://github.com/tokio-rs/tokio-metrics/pull/139",
-      "state": "OPEN",
-      "createdAt": "2026-09-18T16:57:59Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Related to #63.\nFollowing the discussion on Discord, I've put together a small design proposal before starting the implementation.\nThe proposed approach uses a caller-provided OpenTelemetry Meter and an interval-driven reporter, starting with stable runtime counters and gauges. SDK and exporter conf",
-      "labels": [],
-      "commentCount": 4
-    },
-    {
-      "id": "PR_kwDOGj8GuM8AAAABEHKYiA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix: fix dev builds and doc tests on Windows",
-      "repo": "tokio-rs/tokio-metrics",
-      "url": "https://github.com/tokio-rs/tokio-metrics/pull/138",
-      "state": "OPEN",
-      "createdAt": "2026-09-18T16:46:14Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Running cargo test --all-features currently fails on Windows because metrics-exporter-prometheus pulls in Unix domain socket dependencies that Tokio doesn't support on Windows, and 5 doc tests try to compile UDS code as well.\nThis PR:\n\nMoves metrics-exporter-prometheus under target.'cfg(unix)'.dev-d",
-      "labels": [],
-      "commentCount": 0
-    },
-    {
       "id": "I_kwDODS0WD88AAAABR1PRFA",
       "category": "issuesCreated",
       "type": "issue",
@@ -975,21 +645,6 @@
       "commentCount": 8
     },
     {
-      "id": "PR_kwDODS0WD88AAAABD9IY4w",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "feat(sdk): add set_global_text_map_propagator_from_env helper",
-      "repo": "open-telemetry/opentelemetry-rust",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3745",
-      "state": "OPEN",
-      "createdAt": "2026-09-17T15:49:26Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Part of #3127\nChanges\nAdds an explicit helper function in opentelemetry-sdk to configure the process-global text map propagator from the OTEL_PROPAGATORS environment variable:\nopentelemetry_sdk::propagation::set_global_text_map_propagator_from_env()\nKey details:\n\nRespects the OpenTelemetry specifica",
-      "labels": [],
-      "commentCount": 3
-    },
-    {
       "id": "PR_kwDOCdoc188AAAABD1rHHA",
       "category": "reviewsGiven",
       "type": "pr",
@@ -1003,24 +658,6 @@
       "body": "Motivation\nWhile exactly one Dispatch is registered, Dispatchers::rebuilder()\nreturns Rebuilder::JustOne, and Rebuilder::for_each resolves it with\ndispatcher::get_default: the current thread's default dispatcher, not\nthe registered one. Those are only the same thing when the one dispatch\nis installe",
       "labels": [],
       "commentCount": 0
-    },
-    {
-      "id": "PR_kwDODS0WD88AAAABDz0anw",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "feat(sdk): simplify finished span ownership",
-      "repo": "open-telemetry/opentelemetry-rust",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3741",
-      "state": "OPEN",
-      "createdAt": "2026-09-16T17:57:28Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Supersedes #3659.\nRelated to #2726.\nChanges\nThis PR retains #3659's clone-avoidance goal while simplifying the completed-span ownership architecture.\n\nChanges SpanProcessor::on_end to receive FinishedSpan<'_> by value.\nReplaces the reusable mutable FinishedSpan state machine (consume, reset, and con",
-      "labels": [
-        "performance",
-        "ready to merge"
-      ],
-      "commentCount": 13
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -1202,23 +839,6 @@
       "commentCount": 4
     },
     {
-      "id": "PR_kwDODS0WD88AAAABDC06sg",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix(metrics): retain delta baseline across missed collection in PrecomputedSum",
-      "repo": "open-telemetry/opentelemetry-rust",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3720",
-      "state": "OPEN",
-      "createdAt": "2026-09-10T19:25:47Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Fixes #3714\nChanges\n\nBaseline retention & eviction: Replaced the raw cached value in PrecomputedSum::reported with BaselineEntry<T> tracking last_value and consecutive missed_count.\n\nIncrements missed_count at the start of each collection cycle.\nResets missed_count to 0 whenever an attribute set has",
-      "labels": [
-        "Stale"
-      ],
-      "commentCount": 4
-    },
-    {
       "id": "PR_kwDONpzSS88AAAABDCeq8Q",
       "category": "mergedPRs",
       "type": "pr",
@@ -1302,23 +922,6 @@
         "needs triage"
       ],
       "commentCount": 1
-    },
-    {
-      "id": "PR_kwDONpzSS88AAAABCtGq2g",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "feat(tool): write instrumentation diff under --debug",
-      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1333",
-      "state": "OPEN",
-      "createdAt": "2026-09-08T16:38:11Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Description\nImplements instrumentation diff reporting under --debug (OTELC_DEBUG=1), allowing users to inspect the exact Go source modifications and additions introduced by otelc into the compiler.\nDiff Categories\nDiff reports cover four distinct categories of source transformations:\n\nModified targe",
-      "labels": [
-        "scope:feat"
-      ],
-      "commentCount": 2
     },
     {
       "id": "I_kwDODS0WD88AAAABQKfaGQ",
@@ -1660,23 +1263,6 @@
         "M-sdk"
       ],
       "commentCount": 3
-    },
-    {
-      "id": "PR_kwDONpzSS88AAAABBfzViA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix(tool/internal/instrument): stop GetParam/GetReturnVal panicking for ordinary params on generic functions",
-      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1284",
-      "state": "OPEN",
-      "createdAt": "2026-08-30T10:35:52Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Description\nFixes #1280.\nrewriteHookContextMethods blanket-panicked all four HookContextImpl accessor methods (GetParam, SetParam, GetReturnVal, SetReturnVal) whenever the target function had a type parameter, even for parameters/return values whose own type has nothing to do with the generic. For e",
-      "labels": [
-        "scope:fix"
-      ],
-      "commentCount": 8
     },
     {
       "id": "PR_kwDONpzSS88AAAABBflppw",
