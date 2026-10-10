@@ -1,14 +1,94 @@
 {
-  "last_updated": "2026-10-09T12:48:59.586Z",
+  "last_updated": "2026-10-10T12:07:03.186Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 54,
-    "openPRs": 24,
-    "issuesCreated": 34,
+    "mergedPRs": 55,
+    "openPRs": 26,
+    "issuesCreated": 35,
     "issuesAssigned": 18,
-    "reviewsGiven": 33
+    "reviewsGiven": 34
   },
   "items": [
+    {
+      "id": "PR_kwDOAAsO6M8AAAABHnVcvA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Avoid ICEs from ill-typed direct constants in MIR",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/pull/164058",
+      "state": "OPEN",
+      "createdAt": "2026-10-09T21:19:11Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #163903.\nAn ill-typed direct constant can already have a well-formedness error, but MIR consumers can still try to evaluate its invalid valtree and ICE.\nThis propagates the existing WF error when building the constant operand, so later MIR consumers see an error constant. Reusing the existing ",
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDOPIIHF88AAAABHmM0yQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Use span end timestamp for OTLP Protobuf ingestion",
+      "repo": "VictoriaMetrics/VictoriaTraces",
+      "url": "https://github.com/VictoriaMetrics/VictoriaTraces/pull/278",
+      "state": "OPEN",
+      "createdAt": "2026-10-09T19:12:35Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What this does\nRight now, spans sent over OTLP Protobuf (HTTP and gRPC) get stored with start_time_unix_nano as _time. In contrast, JSON ingestion uses end_time_unix_nano, which is also what the docs describe as the default _time.\nBecause of the mismatch, the exact same span can appear or disappear ",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDOPIIHF88AAAABWKkjCw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "OTLP/Protobuf uses span start time as _time instead of end time",
+      "repo": "VictoriaMetrics/VictoriaTraces",
+      "url": "https://github.com/VictoriaMetrics/VictoriaTraces/issues/277",
+      "state": "OPEN",
+      "createdAt": "2026-10-09T17:56:50Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Describe the bug\nOTLP/JSON and OTLP/Protobuf ingestion currently assign different _time values to the same span.\nJSON uses the span's end timestamp, while Protobuf uses its start timestamp. This also contradicts the documented behavior, which states that _time defaults to EndTimeUnixNano.\nThis affec",
+      "labels": [
+        "bug"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABHj9dpw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(sdk): add SdkLogRecord::set_attribute and remove_attribute",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3783",
+      "state": "OPEN",
+      "createdAt": "2026-10-09T15:24:04Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #1986\nChanges\nThis PR continues #2103 by @lalitb. That PR was closed because it had no activity. The first commit is #2103, squashed and rebased onto main, with @lalitb as the author. The second commit fixes the review comments from #2103. The later comments clean up the tests a bit to keep th",
+      "labels": [],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDOPIBZrc8AAAABHi9Brg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Keep live tailing logs visible when switching tabs",
+      "repo": "VictoriaMetrics/VictoriaLogs",
+      "url": "https://github.com/VictoriaMetrics/VictoriaLogs/pull/1855",
+      "state": "OPEN",
+      "createdAt": "2026-10-09T13:53:28Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Closes #1842.\nSwitching from Group to Live scrolls to the bottom of the page, including the empty space below the logs. This can leave the logs hidden behind the sticky tab bar, and clicking Resume sends the view back to the same position.\nThis change scrolls based on the log content and leaves the ",
+      "labels": [],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOALTHTM8AAAABHax8AQ",
       "category": "mergedPRs",
@@ -101,14 +181,14 @@
       "createdAt": "2026-10-07T20:15:44Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #8042.\nWhen running on platforms that use mio's poll(2) backend (Cygwin, Solaris, or on Linux when forced with --cfg mio_unsupported_force_poll_poll), child process stdio hangs after reading or writing the first chunk.\nThis happens because mio's poll selector strips out event flags on delivery",
+      "body": "Fixes #8042.\nUnix child stdio currently uses SourceFd, which bypasses Mio’s internal rearming after WouldBlock. This can stall process pipe I/O on poll-based selectors.\nThis switches child stdin to mio::unix::pipe::Sender and stdout/stderr to Receiver , following the suggestion to use Mio’s existing",
       "labels": [
         "C-bug",
         "A-tokio",
         "M-process",
         "S-waiting-on-review"
       ],
-      "commentCount": 0
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOAQnScc8AAAABHL0P9w",
@@ -144,7 +224,8 @@
         "C-maintenance",
         "A-tokio",
         "M-io",
-        "S-waiting-on-review"
+        "S-waiting-on-review",
+        "R-loom-time-driver"
       ],
       "commentCount": 1
     },
@@ -327,21 +408,20 @@
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABGa6mPA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Remove obsolete MSRV workarounds",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8582",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-03T10:26:56Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-10T09:55:30Z",
+      "closedAt": "2026-10-10T09:55:30Z",
       "body": "Replace compatibility helpers with standard library APIs now that the MSRV is Rust 1.85:\n\nUse IoSlice::advance_slices, removing the copied implementation and unsafe transmute.\nUse Pin::as_deref_mut, removing the internal helper.\nUse Arc::new_uninit_slice and assume_init in read_exact_arc.\nPreserving",
       "labels": [
         "A-tokio-util",
         "C-maintenance",
         "A-tokio",
-        "S-waiting-on-review",
         "R-loom-util"
       ],
       "commentCount": 0
@@ -382,7 +462,7 @@
       "labels": [
         "scope:chore"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDONpzSS88AAAABUQ1DSw",
@@ -1065,7 +1145,7 @@
         "performance",
         "ready to merge"
       ],
-      "commentCount": 14
+      "commentCount": 19
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -1796,10 +1876,10 @@
       "title": "fix(tool/ast): enforce strict import matching (#1271)",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1274",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-28T19:07:09Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-09T13:40:44Z",
+      "closedAt": "2026-10-09T13:40:44Z",
       "body": "Description\nFixes #1271.\nIn parsedTypeName.matches (*dst.SelectorExpr), when the file's imports are\nknown (imports != nil) and ident.Name is not one of them, matching now\nreturns false instead of falling through to a path-tail comparison. The\nfallback stays for imports == nil, which is how hand-buil",
       "labels": [
         "scope:fix"
@@ -1921,7 +2001,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "I_kwDONpzSS88AAAABOL7Y1w",
