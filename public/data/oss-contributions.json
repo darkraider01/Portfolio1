@@ -1,14 +1,53 @@
 {
-  "last_updated": "2026-10-10T12:07:03.186Z",
+  "last_updated": "2026-10-11T12:20:50.556Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 55,
-    "openPRs": 26,
-    "issuesCreated": 35,
+    "mergedPRs": 57,
+    "openPRs": 25,
+    "issuesCreated": 36,
     "issuesAssigned": 18,
     "reviewsGiven": 34
   },
   "items": [
+    {
+      "id": "I_kwDOBAsbdc8AAAABWUfiDQ",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "AsyncFd stalls after WouldBlock with Mio’s poll selector",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/issues/8620",
+      "state": "OPEN",
+      "createdAt": "2026-10-10T15:54:54Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Following up on tokio-rs/mio#2025 (comment).\nAsyncFd stops receiving renewed read readiness with Mio’s poll selector after a read returns WouldBlock. The same test passes with Linux’s default epoll backend.\nThe sequence is:\n\nReceive and read the first byte.\nRead again, getting WouldBlock, which clea",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-io"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABHtQcNw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Close Unix child stdin on shutdown",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8619",
+      "state": "OPEN",
+      "createdAt": "2026-10-10T15:08:15Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Follow-up to the shutdown issue noted in #8603:\n#8603 (comment)\nUnix ChildStdin::shutdown() currently succeeds without closing the pipe, so a child waiting for EOF can hang while the stdin handle is still alive.\nThis closes the pipe on shutdown through PollEvented’s existing cleanup. Repeated shutdo",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-process",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOAAsO6M8AAAABHnVcvA",
       "category": "openPRs",
@@ -172,21 +211,20 @@
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABHMnCKw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
-      "title": "process: route Unix child stdio through mio::IoSource",
+      "title": "process: use `mio::unix::pipe` for Unix child stdio",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8603",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-07T20:15:44Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-11T07:43:19Z",
+      "closedAt": "2026-10-11T07:43:19Z",
       "body": "Fixes #8042.\nUnix child stdio currently uses SourceFd, which bypasses Mio’s internal rearming after WouldBlock. This can stall process pipe I/O on poll-based selectors.\nThis switches child stdin to mio::unix::pipe::Sender and stdout/stderr to Receiver , following the suggestion to use Mio’s existing",
       "labels": [
         "C-bug",
         "A-tokio",
-        "M-process",
-        "S-waiting-on-review"
+        "M-process"
       ],
       "commentCount": 2
     },
@@ -210,21 +248,20 @@
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABHG3M_w",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Test ScheduledIo shutdown races with Loom",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8596",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-07T11:25:28Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-10T12:12:48Z",
+      "closedAt": "2026-10-10T12:12:48Z",
       "body": "Adds deterministic Loom coverage for shutdown racing with readiness-future registration and the reserved reader/writer waker slots. Each model verifies that the waiter completes and observes shutdown.\nReplaces the AsyncFd shutdown race tests’ 100-iteration loops with single-run real-Mio smoke tests ",
       "labels": [
         "C-maintenance",
         "A-tokio",
         "M-io",
-        "S-waiting-on-review",
         "R-loom-time-driver"
       ],
       "commentCount": 1
@@ -677,6 +714,7 @@
         "C-enhancement",
         "A-tokio",
         "M-runtime",
+        "M-task",
         "S-waiting-on-review",
         "T-performance",
         "A-benches",
@@ -786,14 +824,16 @@
       "createdAt": "2026-09-24T17:10:50Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "This adds focused Loom tests for Tokio’s I/O registration lifetime when deregistration races with delivery of an event the poller has already returned.\nThe tests exercise the production registration set and event dispatch logic without constructing a Mio poller. A CI job runs them on pull requests.\n",
+      "body": "This adds focused Loom tests for Tokio’s I/O registration lifetime when deregistration races with delivery of an event the poller has already returned. It also covers deferred release after the caller drops its Arc, readiness during deregistration, and waking a readiness waiter.\nThe tests exercise t",
       "labels": [
         "C-maintenance",
         "A-tokio",
         "M-io",
-        "S-waiting-on-review"
+        "M-runtime",
+        "S-waiting-on-review",
+        "R-loom-time-driver"
       ],
-      "commentCount": 0
+      "commentCount": 2
     },
     {
       "id": "I_kwDOKrbwrc8AAAABTBhXPg",
