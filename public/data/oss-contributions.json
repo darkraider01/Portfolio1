@@ -1,14 +1,36 @@
 {
-  "last_updated": "2026-10-12T14:48:06.601Z",
+  "last_updated": "2026-10-13T13:48:56.073Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 58,
+    "mergedPRs": 59,
     "openPRs": 25,
     "issuesCreated": 36,
     "issuesAssigned": 18,
-    "reviewsGiven": 34
+    "reviewsGiven": 35
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABIDYgaA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Add Loom coverage for I/O driver registration lifetime",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8633",
+      "state": "OPEN",
+      "createdAt": "2026-10-12T21:48:52Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "#8505 tests deregistration racing with event delivery, but the model specifies the dispatch-before-release ordering itself. A regression in the driver’s ordering could therefore leave that test passing.\nThis extracts the release, poll, and batch-dispatch sequence into a small private helper shared w",
+      "labels": [
+        "C-maintenance",
+        "A-tokio",
+        "M-io",
+        "M-runtime",
+        "S-waiting-on-review",
+        "R-loom-time-driver"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABH_BDLA",
       "category": "openPRs",
@@ -20,11 +42,31 @@
       "createdAt": "2026-10-12T14:26:14Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Adds a small Loom regression test toward #3018. An allocation racing with driver shutdown must either be included in the shutdown batch or fail with the runtime shutdown error.\nReuses the existing registration test helper and leaves production code unchanged.",
+      "body": "Adds a small Loom regression test toward #3018. An allocation racing with driver shutdown must either be included in the shutdown batch or fail with the runtime shutdown error.\nReuses the existing registration test helper.",
       "labels": [
+        "C-maintenance",
+        "A-tokio",
+        "M-io",
+        "M-runtime",
+        "S-waiting-on-review",
         "R-loom-time-driver"
       ],
       "commentCount": 0
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABH4oO0w",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(metrics): allow configuration of hasher used for metric attributes",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3788",
+      "state": "OPEN",
+      "createdAt": "2026-10-12T02:10:44Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Continuation of: #3388\nAs a part of the work in #3787, profiling/benchmarking results show that a large majority of the time taken on the metrics hot path is spent computing attribute hashes. I also came across the PR above, that has since been closed, which aligned on introducing a builder helper f",
+      "labels": [],
+      "commentCount": 2
     },
     {
       "id": "I_kwDOBAsbdc8AAAABWUfiDQ",
@@ -177,7 +219,7 @@
         "T-compiler",
         "S-waiting-on-review"
       ],
-      "commentCount": 4
+      "commentCount": 6
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHTFy3Q",
@@ -247,19 +289,18 @@
     },
     {
       "id": "PR_kwDOAQnScc8AAAABHL0P9w",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Bypass rustup proxy when RUSTUP_TOOLCHAIN is an absolute path",
       "repo": "rust-lang/cargo",
       "url": "https://github.com/rust-lang/cargo/pull/17562",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-07T18:59:02Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-12T15:55:06Z",
+      "closedAt": "2026-10-12T15:55:06Z",
       "body": "Closes #17496.\nCurrently, Cargo's rustup proxy bypass bails whenever RUSTUP_TOOLCHAIN contains path separators. This defeats the optimization when rust-analyzer invokes Cargo with an absolute sysroot path.\nThis allows the fast path when RUSTUP_TOOLCHAIN is an absolute path. Named toolchains work as ",
       "labels": [
-        "A-configuration",
-        "S-waiting-on-review"
+        "A-configuration"
       ],
       "commentCount": 3
     },
@@ -546,9 +587,10 @@
       "closedAt": null,
       "body": "A workspace member can accidentally set package.repository to a URL for that crate’s page in a file browser. This adds cargo::repository_not_inherited to flag directly set repository fields in explicit workspaces and suggest inheritance where it applies.\nThe lint does not inspect or compare URLs. It",
       "labels": [
-        "A-documenting-cargo-itself"
+        "A-documenting-cargo-itself",
+        "S-waiting-on-review"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABF5cqVQ",
@@ -1062,10 +1104,10 @@
       "title": "Rustup proxy slowdown with Rust-Analyzer",
       "repo": "rust-lang/cargo",
       "url": "https://github.com/rust-lang/cargo/issues/17496",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-21T14:14:30Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-12T15:55:08Z",
       "body": "Problem\nWhen Rust-Analyzer runs cargo, then it goes through the rustup proxy. Then, the rustup proxy checks which rust toolchain needs to be used. It then calls the correct version of cargo or rustc.\nHowever, this rustup proxy comes with a quite a bit of overhead. Luckily cargo implements a fast pat",
       "labels": [
         "C-bug",
@@ -2190,7 +2232,7 @@
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABAuE95w",
@@ -2303,15 +2345,15 @@
       "title": "fix(pkg): preserve trace context in database/sql transactions",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1188",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-20T18:15:18Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-13T12:35:40Z",
       "body": "Description\nThis PR fixes an issue where database spans generated during a transaction (such as START TRANSACTION, INSERT, COMMIT, or ROLLBACK) were orphaned and disconnected from their parent HTTP server trace.\nThe root cause was that tx.Commit() and tx.Rollback() in database/sql do not take a cont",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDONpzSS88AAAABNb5M0Q",
