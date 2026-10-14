@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-13T13:48:56.073Z",
+  "last_updated": "2026-10-14T11:26:25.514Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 59,
@@ -66,7 +66,7 @@
       "closedAt": null,
       "body": "Continuation of: #3388\nAs a part of the work in #3787, profiling/benchmarking results show that a large majority of the time taken on the metrics hot path is spent computing attribute hashes. I also came across the PR above, that has since been closed, which aligned on introducing a builder helper f",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 4
     },
     {
       "id": "I_kwDOBAsbdc8AAAABWUfiDQ",
@@ -1209,8 +1209,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Part of #3127\nChanges\nAdds an explicit helper function in opentelemetry-sdk to configure the process-global text map propagator from the OTEL_PROPAGATORS environment variable:\nopentelemetry_sdk::propagation::set_global_text_map_propagator_from_env()\nKey details:\n\nRespects the OpenTelemetry specifica",
-      "labels": [],
-      "commentCount": 3
+      "labels": [
+        "Stale"
+      ],
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOCdoc188AAAABD1rHHA",
@@ -2099,7 +2101,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "I_kwDONpzSS88AAAABOL7Y1w",
