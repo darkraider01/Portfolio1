@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-14T11:26:25.514Z",
+  "last_updated": "2026-10-15T11:02:48.752Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 59,
@@ -29,7 +29,7 @@
         "S-waiting-on-review",
         "R-loom-time-driver"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABH_BDLA",
@@ -91,21 +91,21 @@
       "id": "PR_kwDOBAsbdc8AAAABHtQcNw",
       "category": "openPRs",
       "type": "pr",
-      "title": "Close Unix child stdin on shutdown",
+      "title": "Close child stdin on shutdown",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8619",
       "state": "OPEN",
       "createdAt": "2026-10-10T15:08:15Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Follow-up to the shutdown issue noted in #8603:\n#8603 (comment)\nUnix ChildStdin::shutdown() currently succeeds without closing the pipe, so a child waiting for EOF can hang while the stdin handle is still alive.\nThis closes the pipe on shutdown through PollEvented’s existing cleanup. Repeated shutdo",
+      "body": "Follow-up to the shutdown issue noted in #8603.\nChildStdin::shutdown() currently succeeds without closing the pipe, so a child waiting for EOF can hang while the stdin handle remains alive.\nThis closes child stdin on shutdown on Unix and Windows. Tests cover EOF delivery, repeated shutdown, and use ",
       "labels": [
         "C-bug",
         "A-tokio",
         "M-process",
         "S-waiting-on-review"
       ],
-      "commentCount": 0
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOAAsO6M8AAAABHnVcvA",
@@ -1209,9 +1209,7 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Part of #3127\nChanges\nAdds an explicit helper function in opentelemetry-sdk to configure the process-global text map propagator from the OTEL_PROPAGATORS environment variable:\nopentelemetry_sdk::propagation::set_global_text_map_propagator_from_env()\nKey details:\n\nRespects the OpenTelemetry specifica",
-      "labels": [
-        "Stale"
-      ],
+      "labels": [],
       "commentCount": 4
     },
     {
