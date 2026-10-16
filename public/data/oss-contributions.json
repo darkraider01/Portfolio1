@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15T11:02:48.752Z",
+  "last_updated": "2026-10-16T10:58:39.228Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 59,
@@ -29,7 +29,7 @@
         "S-waiting-on-review",
         "R-loom-time-driver"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABH_BDLA",
@@ -60,13 +60,13 @@
       "title": "feat(metrics): allow configuration of hasher used for metric attributes",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3788",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-12T02:10:44Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-16T03:43:22Z",
+      "closedAt": "2026-10-16T03:43:22Z",
       "body": "Continuation of: #3388\nAs a part of the work in #3787, profiling/benchmarking results show that a large majority of the time taken on the metrics hot path is spent computing attribute hashes. I also came across the PR above, that has since been closed, which aligned on introducing a builder helper f",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 6
     },
     {
       "id": "I_kwDOBAsbdc8AAAABWUfiDQ",
@@ -170,7 +170,7 @@
       "closedAt": null,
       "body": "Fixes #1986\nChanges\nThis PR continues #2103 by @lalitb. That PR was closed because it had no activity. The first commit is #2103, squashed and rebased onto main, with @lalitb as the author. The second commit fixes the review comments from #2103. The later comments clean up the tests a bit to keep th",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOPIBZrc8AAAABHi9Brg",
