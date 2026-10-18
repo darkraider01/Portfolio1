@@ -1,14 +1,29 @@
 {
-  "last_updated": "2026-10-17T10:20:06.631Z",
+  "last_updated": "2026-10-18T10:36:11.478Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 59,
-    "openPRs": 25,
+    "mergedPRs": 60,
+    "openPRs": 24,
     "issuesCreated": 36,
     "issuesAssigned": 18,
-    "reviewsGiven": 35
+    "reviewsGiven": 37
   },
   "items": [
+    {
+      "id": "PR_kwDODS0WD88AAAABI8B1iA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "test(sdk): cover BatchLogProcessor flush enqueue race",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3799",
+      "state": "OPEN",
+      "createdAt": "2026-10-16T22:00:59Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What\nAdds a deterministic regression test for the enqueue/counter-ordering\nrace in BatchLogProcessor.\nThe test pauses the emitting thread immediately after a successful\nenqueue, calls force_flush(), and checks that the log has been\nexported before allowing the emitter to continue.\nWhy\nThe test passe",
+      "labels": [],
+      "commentCount": 3
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABIDYgaA",
       "category": "openPRs",
@@ -85,7 +100,7 @@
         "A-tokio",
         "M-io"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABHtQcNw",
@@ -123,7 +138,7 @@
         "T-compiler",
         "S-waiting-on-author"
       ],
-      "commentCount": 5
+      "commentCount": 7
     },
     {
       "id": "PR_kwDOPIIHF88AAAABHmM0yQ",
@@ -557,7 +572,7 @@
       "labels": [
         "scope:chore"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "I_kwDONpzSS88AAAABUQ1DSw",
@@ -742,15 +757,15 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(instrumentation/linodego): record error types on spans and duration metrics",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1405",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-26T16:38:08Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-17T10:41:41Z",
+      "closedAt": "2026-10-17T10:41:41Z",
       "body": "Linode request and public-operation spans omit error.type for non-HTTP failures. The operation-duration histogram also omits it for HTTP and non-HTTP failures.\nUse the standard OTel ErrorType helper for non-HTTP errors and pass the operation span’s error type to the duration histogram. HTTP failures",
       "labels": [
         "scope:fix"
@@ -2920,6 +2935,21 @@
       "body": "Closes #3.\nAdds 10 tests to sdks/python/tests/test_sdk.py filling gaps in the existing typed authentication/billing error coverage:\n\nchannel_cap_reached as a 429 reason, alongside the already-tested insufficient_credit / monthly_cap_reached\nDefault-filling on AccountRequiredError / InsufficientCredi",
       "labels": [],
       "commentCount": 2
+    },
+    {
+      "id": "PR_kwDODS0WD87Y9enU",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(otlp): Improved support for OTLP JSON metrics serialization (NaN,Infinity,-Infinity)",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3496",
+      "state": "OPEN",
+      "createdAt": "2026-05-06T23:49:44Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Updates #3442\nChanges\n\nAdded Serialize/Deserialization for NaN,Infinity,-Infinity to the following metrics fields:\n\n\n\n\nSource\nField\nType\n\n\n\n\nHistogramDataPoint\nsum, min, max\nOption<f64>\n\n\nHistogramDataPoint\nexplicit_bounds\nVec<f64>\n\n\nExponentialHistogramDataPoint\nsum, min, max\nOption<f64>\n\n\nExponent",
+      "labels": [],
+      "commentCount": 13
     },
     {
       "id": "I_kwDODS0WD87GEHPF",
