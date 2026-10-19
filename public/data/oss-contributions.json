@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18T10:36:11.478Z",
+  "last_updated": "2026-10-19T12:32:56.531Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 60,
@@ -280,8 +280,15 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "While working on #3774 and #3775, I noticed that Rust does not currently expose the Tracer.Enabled API defined in the OpenTelemetry tracing specification.\nProblem\nThe Tracer API lets callers create spans and check Span::is_recording() afterward, but it does not provide a tracer-level check before sp",
-      "labels": [],
-      "commentCount": 0
+      "labels": [
+        "enhancement",
+        "A-trace",
+        "priority:p2",
+        "triage:accepted",
+        "M-api",
+        "M-sdk"
+      ],
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABHMnCKw",
@@ -361,10 +368,10 @@
       "title": "fix(sdk): update tracestate parsing to properly follow Trace Context Level 2",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3779",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-07T03:05:13Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-19T06:27:07Z",
+      "closedAt": "2026-10-19T06:27:07Z",
       "body": "Fixes #3778\nRelated #2757\nChanges\nReimplements a majority of the tracestate parsing logic, while also separating out trace state parsing logic into a dedicated file. Propagation/extraction has also been adjusted to more closely align with the spec (e.g. don't propagate an empty tracestate header).\nM",
       "labels": [],
       "commentCount": 4
@@ -417,7 +424,7 @@
       "closedAt": null,
       "body": "The fast path for wc -m and wc -cm counts some invalid or incomplete UTF-8 sequences as characters. This validates the input in UTF-8 locales and handles characters split across reads, with regression tests for those cases.\nRelated to #14928",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDODS0WD88AAAABG5FiBA",
@@ -447,9 +454,12 @@
       "closedAt": null,
       "body": "Current behavior\nopentelemetry-appender-tracing currently maps every field that goes through Visit::record_error to exception.message, and ignores the original field name.\nCurrent code:\nfn record_error(\n    &mut self,\n    _field: &tracing_core::Field,\n    value: &(dyn std::error::Error + 'static),\n)",
       "labels": [
-        "triage:todo"
+        "enhancement",
+        "priority:p3",
+        "A-log",
+        "triage:accepted"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "I_kwDONpzSS88AAAABVT-GmQ",
@@ -620,9 +630,9 @@
       "closedAt": null,
       "body": "cargo-miri currently reads env::args() each time it checks a flag. This change reads the arguments once, then passes them through the relevant phases and helpers.\nThis prepares the argument handling for the argfile work in #5234 (first step). It doesn’t add argfile support yet; the existing error re",
       "labels": [
-        "S-waiting-on-review"
+        "S-waiting-on-author"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "I_kwDOAAsO6M8AAAABUIOaEA",
@@ -1072,7 +1082,7 @@
       "closedAt": null,
       "body": "Changes\nQuick repro: extract b3: 4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-d with Propagator::new(). The remote context comes back invalid. With SingleHeader injection it extracts, but isn't sampled, so a parent-based sampler drops the child.\nHandle d in the single-header parser as debug plu",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEkNw9g",
@@ -1091,7 +1101,7 @@
         "M-sync",
         "A-tokio-stream"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEjaCDg",
