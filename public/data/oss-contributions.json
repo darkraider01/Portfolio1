@@ -1,14 +1,50 @@
 {
-  "last_updated": "2026-10-19T12:32:56.531Z",
+  "last_updated": "2026-10-20T11:07:28.314Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 60,
     "openPRs": 24,
     "issuesCreated": 36,
     "issuesAssigned": 18,
-    "reviewsGiven": 37
+    "reviewsGiven": 40
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJeciDg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "time: avoid fractional deadline oversleep",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8679",
+      "state": "OPEN",
+      "createdAt": "2026-10-20T04:09:21Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Flooring current time adds a fractional millisecond to park duration, so a 17 ms tick reached from 0.9 ms completes at 17.9 ms in paused time.\nSubtract precise elapsed duration in both timer schedulers while keeping upward deadline rounding and expired waits.\nVerify 50 paused-clock cases with and wi",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-time",
+        "S-waiting-on-author",
+        "R-loom-time-driver"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABJctEKA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(metrics): add MetricProducer for metrics from outside the SDK",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3802",
+      "state": "OPEN",
+      "createdAt": "2026-10-20T00:03:42Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #2505\nDesign discussion issue (if applicable): #2505\nChanges\nRe-adds MetricProducer to opentelemetry_sdk, behind a new experimental_metrics_producer feature. It was removed in #2105 only to keep the scope of the Metrics SDK stable release small. In #2505, @cijothomas said there are no blockers",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDODS0WD88AAAABI8B1iA",
       "category": "reviewsGiven",
@@ -23,6 +59,21 @@
       "body": "What\nAdds a deterministic regression test for the enqueue/counter-ordering\nrace in BatchLogProcessor.\nThe test pauses the emitting thread immediately after a successful\nenqueue, calls force_flush(), and checks that the log has been\nexported before allowing the emitter to continue.\nWhy\nThe test passe",
       "labels": [],
       "commentCount": 3
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABIQGtUg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fs: wait for in-flight op before reporting write error",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8642",
+      "state": "OPEN",
+      "createdAt": "2026-10-13T19:58:53Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "When a background write fails and a later read or seek is cancelled (for example by select! or a timeout), File keeps the saved write error while that read or seek is still in flight. Waiting for in-flight operations then returns the saved error without actually waiting, so set_len reaches unreachab",
+      "labels": [],
+      "commentCount": 0
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABIDYgaA",
@@ -288,7 +339,7 @@
         "M-api",
         "M-sdk"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABHMnCKw",
@@ -422,9 +473,9 @@
       "createdAt": "2026-10-06T14:28:11Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "The fast path for wc -m and wc -cm counts some invalid or incomplete UTF-8 sequences as characters. This validates the input in UTF-8 locales and handles characters split across reads, with regression tests for those cases.\nRelated to #14928",
+      "body": "The fast path for wc -m and wc -cm can count invalid or incomplete UTF-8 sequences as characters. This adds validation in UTF-8 locales and handles characters split across reads.\nIt also skips complete ASCII blocks before validation to avoid scanning those bytes again. Regression tests cover malform",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDODS0WD88AAAABG5FiBA",
@@ -574,10 +625,10 @@
       "title": "chore: add Copilot code review instructions",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1441",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-02T16:39:05Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-20T09:38:16Z",
+      "closedAt": "2026-10-20T09:38:16Z",
       "body": "Description\nAdds two path-scoped instruction files for Copilot code review:\n\n.github/instructions/code-review.instructions.md (all files): what to look for, what CI already covers and shouldn't get comments, things to check before making a claim, and one comment per problem.\n.github/instructions/too",
       "labels": [
         "scope:chore"
@@ -2959,7 +3010,7 @@
       "closedAt": null,
       "body": "Updates #3442\nChanges\n\nAdded Serialize/Deserialization for NaN,Infinity,-Infinity to the following metrics fields:\n\n\n\n\nSource\nField\nType\n\n\n\n\nHistogramDataPoint\nsum, min, max\nOption<f64>\n\n\nHistogramDataPoint\nexplicit_bounds\nVec<f64>\n\n\nExponentialHistogramDataPoint\nsum, min, max\nOption<f64>\n\n\nExponent",
       "labels": [],
-      "commentCount": 13
+      "commentCount": 14
     },
     {
       "id": "I_kwDODS0WD87GEHPF",
