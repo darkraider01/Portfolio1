@@ -1,14 +1,51 @@
 {
-  "last_updated": "2026-10-20T11:07:28.314Z",
+  "last_updated": "2026-10-21T11:23:39.660Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 60,
     "openPRs": 24,
-    "issuesCreated": 36,
+    "issuesCreated": 37,
     "issuesAssigned": 18,
-    "reviewsGiven": 40
+    "reviewsGiven": 43
   },
   "items": [
+    {
+      "id": "I_kwDODS0WD88AAAABYjpkeQ",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "[Bug]: Histogram exporters always emit a sum, even when it should be absent",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3804",
+      "state": "OPEN",
+      "createdAt": "2026-10-20T13:55:42Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What happened?\nWhile reviewing #3802, I noticed that the SDK currently requires every histogram data point to have a sum, even when the original metrics source doesn't provide one (#3802 discussion).\nThis can lead to incorrect exports when the SDK deliberately does not record a sum. For example, whe",
+      "labels": [
+        "bug",
+        "triage:todo"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJhHMyA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "util: implement FusedStream for Either",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8681",
+      "state": "MERGED",
+      "createdAt": "2026-10-20T09:18:11Z",
+      "mergedAt": "2026-10-21T08:33:33Z",
+      "closedAt": "2026-10-21T08:33:33Z",
+      "body": "What\nImplement FusedStream for tokio_util::either::Either.\nWhy\nEither already implements Stream, but users cannot check when it is terminated.\nImplementation\nForward is_terminated to the active variant. Add coverage for both Left and Right.",
+      "labels": [
+        "C-enhancement",
+        "A-tokio-util",
+        "R-loom-util"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABJeciDg",
       "category": "reviewsGiven",
@@ -46,6 +83,27 @@
       "commentCount": 2
     },
     {
+      "id": "PR_kwDOBAsbdc8AAAABJJo8Xw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "codec: preserve framing state in map_codec",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8656",
+      "state": "OPEN",
+      "createdAt": "2026-10-18T12:23:36Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Framed::map_codec rebuilds its framing state, resetting custom backpressure limits and discarding EOF and error progress. Preserve that state so mapping the codec does not bypass backpressure, interrupt pending closing frames, or skip the None after an error. Continue retrying buffered bytes with th",
+      "labels": [
+        "C-bug",
+        "A-tokio-util",
+        "S-waiting-on-author",
+        "M-codec",
+        "R-loom-util"
+      ],
+      "commentCount": 0
+    },
+    {
       "id": "PR_kwDODS0WD88AAAABI8B1iA",
       "category": "reviewsGiven",
       "type": "pr",
@@ -72,7 +130,13 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "When a background write fails and a later read or seek is cancelled (for example by select! or a timeout), File keeps the saved write error while that read or seek is still in flight. Waiting for in-flight operations then returns the saved error without actually waiting, so set_len reaches unreachab",
-      "labels": [],
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-fs",
+        "I-crash",
+        "S-waiting-on-review"
+      ],
       "commentCount": 0
     },
     {
@@ -946,7 +1010,7 @@
       "closedAt": null,
       "body": "Summary\nAdds the first schema-aligned slice of OpenTelemetry declarative configuration for Rust: configuring a MeterProvider from YAML with resource attributes, periodic readers, the console exporter, and registered custom exporters. This is an initial supported subset of schema v1.2.0; unsupported ",
       "labels": [],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABE-Zdfg",
@@ -1481,7 +1545,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABDPGpTg",
@@ -2781,6 +2845,26 @@
         "scope:fix"
       ],
       "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOBAsbdc7-MC16",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "process: enqueue orphans when spawn setup fails after OS spawn",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8359",
+      "state": "OPEN",
+      "createdAt": "2026-08-12T17:36:00Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nAfter std::process::Command::spawn succeeds, Tokio still has to wrap stdio\n(PollEvented), optionally install a pidfd reaper, and create a SIGCHLD\nlistener. If any of those steps failed, build_child returned Err and\ndropped the StdChild without try_wait and without\nGlobalOrphanQueue::push_",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-process",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 0
     },
     {
       "id": "PR_kwDONpzSS879-p6V",
