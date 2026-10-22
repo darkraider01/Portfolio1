@@ -1,14 +1,166 @@
 {
-  "last_updated": "2026-10-21T11:23:39.660Z",
+  "last_updated": "2026-10-22T11:23:44.051Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 60,
-    "openPRs": 24,
+    "openPRs": 28,
     "issuesCreated": 37,
     "issuesAssigned": 18,
-    "reviewsGiven": 43
+    "reviewsGiven": 48
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKAUAzg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "task: clarify `block_in_place` panics in LocalSet",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8701",
+      "state": "OPEN",
+      "createdAt": "2026-10-22T11:10:02Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "While investigating a shutdown hang in OpenTelemetry, I ran into a confusing panic from block_in_place: it asks for a multithreaded runtime even when it’s already running on one. The call was inside a LocalSet, which also disallows in-place blocking, but the panic message and docs didn’t make that c",
+      "labels": [
+        "R-loom-multi-thread"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABJ_gDFQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "docs(sdk): document the Tokio lifecycle blocking workaround",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3811",
+      "state": "OPEN",
+      "createdAt": "2026-10-22T09:58:53Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Calling force_flush() or shutdown() inside a spawned Tokio task can hang when no worker is available to run the processor.\nThis documents how to use spawn_blocking for these calls and adds a single-worker test verifying that flush and shutdown export the queued spans.",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABJ4T1cQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "test(sdk): cover async runtime flush and shutdown",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3809",
+      "state": "OPEN",
+      "createdAt": "2026-10-21T20:35:16Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Related to #2643.\nThis adds flush and shutdown tests for the async span processor, log processor, and metric reader using both Tokio runtime adapters.\nEach test records telemetry, flushes it, records more, and checks that shutdown exports the remaining data. The exporters spawn a Tokio task and awai",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJ23G_g",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "codec: defer default Framed buffer allocations",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8691",
+      "state": "CLOSED",
+      "createdAt": "2026-10-21T18:32:06Z",
+      "mergedAt": null,
+      "closedAt": "2026-10-22T07:36:08Z",
+      "body": "What\nDefer default framing-buffer allocations until first use.\nWhy\nAn idle Framed currently allocates an 8 KiB read buffer and an 8 KiB write buffer on construction.\nImplementation\nInitialize default buffers without allocations, then reserve the existing 8 KiB capacity on the first read or encode.\nP",
+      "labels": [
+        "C-enhancement",
+        "A-tokio-util",
+        "T-performance",
+        "M-codec",
+        "R-loom-util"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJ2tzVQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "codec: rescan after input buffers shrink",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8690",
+      "state": "OPEN",
+      "createdAt": "2026-10-21T18:20:06Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What\nPrevent LinesCodec and AnyDelimiterCodec from panicking when an input buffer is shortened between decode calls.\nWhy\nThe cached scan offset may exceed the new buffer length. Slicing from that offset panics.\nImplementation\nReset the scan offset when it is past the current scan range. Add regressi",
+      "labels": [
+        "C-bug",
+        "A-tokio-util",
+        "S-waiting-on-review",
+        "M-codec",
+        "R-loom-util"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJyrb3g",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "sync: add `SetOnce::get_mut`",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8686",
+      "state": "OPEN",
+      "createdAt": "2026-10-21T13:08:31Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "SetOnce has no way to access its value mutably short of consuming it\nwith into_inner. OnceCell already solves this with get_mut, so\nadd the same method to SetOnce: check initialized, then hand back\nan unchecked mutable reference, which is sound because the &mut self\nborrow rules out any other refere",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-sync",
+        "S-waiting-on-review",
+        "R-loom-sync"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJyqDBw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "sync: add RwLock::blocking_read_owned and blocking_write_owned",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8684",
+      "state": "OPEN",
+      "createdAt": "2026-10-21T13:06:51Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "RwLock has blocking_read and blocking_write for synchronous callers, and\nread_owned/write_owned for 'static guards backed by an Arc, but no blocking\nvariant of the owned guards. Mutex already fills the same gap with\nblocking_lock_owned, and Semaphore's blocking_acquire family (#8269) set the\nsame pr",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-sync",
+        "S-waiting-on-review",
+        "R-loom-sync"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJyPP-A",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Share runtime helpers across io-uring tests",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8683",
+      "state": "OPEN",
+      "createdAt": "2026-10-21T12:35:14Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "A few io-uring test suites had identical runtime builders and runtime combinations. This moves them into tests/support/io_uring.rs so they can share the setup.\nI’ll keep this in draft until #8655 merges, then rebase and update fs_uring_link.rs to use the shared helpers too.",
+      "labels": [
+        "C-maintenance",
+        "A-tokio",
+        "M-fs",
+        "S-waiting-on-author",
+        "T-io-uring"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "I_kwDODS0WD88AAAABYjpkeQ",
       "category": "issuesCreated",
@@ -23,9 +175,12 @@
       "body": "What happened?\nWhile reviewing #3802, I noticed that the SDK currently requires every histogram data point to have a sum, even when the original metrics source doesn't provide one (#3802 discussion).\nThis can lead to incorrect exports when the SDK deliberately does not record a sum. For example, whe",
       "labels": [
         "bug",
-        "triage:todo"
+        "A-metrics",
+        "priority:p2",
+        "triage:accepted",
+        "M-sdk"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJhHMyA",
@@ -65,7 +220,7 @@
         "S-waiting-on-author",
         "R-loom-time-driver"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDODS0WD88AAAABJctEKA",
@@ -86,20 +241,41 @@
       "id": "PR_kwDOBAsbdc8AAAABJJo8Xw",
       "category": "reviewsGiven",
       "type": "pr",
-      "title": "codec: preserve framing state in map_codec",
+      "title": "codec: preserve framing state when mapping codecs",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8656",
       "state": "OPEN",
       "createdAt": "2026-10-18T12:23:36Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Framed::map_codec rebuilds its framing state, resetting custom backpressure limits and discarding EOF and error progress. Preserve that state so mapping the codec does not bypass backpressure, interrupt pending closing frames, or skip the None after an error. Continue retrying buffered bytes with th",
+      "body": "Framed::map_codec resets custom backpressure limits and discards EOF and error progress when it reconstructs the framing state. Preserve that state, and let replacement codecs in both Framed and FramedRead retry buffered data before EOF while keeping completed EOF handling paused until new input arr",
       "labels": [
         "C-bug",
         "A-tokio-util",
-        "S-waiting-on-author",
+        "S-waiting-on-review",
         "M-codec",
         "R-loom-util"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJJfOxQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fs: implement `hard_link` using io-uring",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8655",
+      "state": "OPEN",
+      "createdAt": "2026-10-18T11:58:38Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Picks up #7846 from @tahmid-23, rebased on master and aligned with rename\nSupersedes #7846",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-fs",
+        "S-waiting-on-review",
+        "T-io-uring"
       ],
       "commentCount": 0
     },
@@ -116,7 +292,7 @@
       "closedAt": null,
       "body": "What\nAdds a deterministic regression test for the enqueue/counter-ordering\nrace in BatchLogProcessor.\nThe test pauses the emitting thread immediately after a successful\nenqueue, calls force_flush(), and checks that the log has been\nexported before allowing the emitter to continue.\nWhy\nThe test passe",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABIQGtUg",
@@ -574,7 +750,7 @@
         "A-log",
         "triage:accepted"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "I_kwDONpzSS88AAAABVT-GmQ",
@@ -1191,13 +1367,13 @@
       "title": "fix(b3): preserve debug sampling on single-header extraction",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3752",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-23T06:08:30Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-22T06:36:49Z",
       "body": "Changes\nQuick repro: extract b3: 4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-d with Propagator::new(). The remote context comes back invalid. With SingleHeader injection it extracts, but isn't sampled, so a parent-based sampler drops the child.\nHandle d in the single-header parser as debug plu",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEkNw9g",
@@ -1520,10 +1696,10 @@
       "title": "fix(tool/internal/instrument): only strip ignore build constraints in add_file rules",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1358",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-12T13:11:25Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-21T13:37:02Z",
+      "closedAt": "2026-10-21T13:37:02Z",
       "body": "Description\nUpdates stripBuildIgnoreTag in tool/internal/instrument/apply_file.go to use constraint.Parse and recursive AST expression tree walking to identify and remove only build constraint directives that contain an ignore tag.\nKey changes:\n\nEvaluates parsed expressions via constraint.Parse and ",
       "labels": [
         "scope:fix"
@@ -1681,7 +1857,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 2
+      "commentCount": 4
     },
     {
       "id": "I_kwDODS0WD88AAAABQKfaGQ",
@@ -2239,7 +2415,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 7
+      "commentCount": 8
     },
     {
       "id": "I_kwDONpzSS88AAAABOL7Y1w",
@@ -2370,9 +2546,10 @@
       "closedAt": null,
       "body": "Description\nThis PR refactors the AST manipulation inside tool/internal/instrument/optimize.go by adding a new removeUnusedHookContextMethods pass. When an After hook is not present, the GetReturnVal, SetReturnVal, and GetReturnValCount methods attached to HookContextImpl are now correctly pruned fr",
       "labels": [
-        "scope:refactor"
+        "scope:refactor",
+        "Stale"
       ],
-      "commentCount": 6
+      "commentCount": 8
     },
     {
       "id": "PR_kwDONpzSS88AAAABAuE95w",
