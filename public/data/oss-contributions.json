@@ -1,27 +1,75 @@
 {
-  "last_updated": "2026-10-22T11:23:44.051Z",
+  "last_updated": "2026-10-23T11:13:37.798Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 60,
-    "openPRs": 28,
+    "mergedPRs": 61,
+    "openPRs": 27,
     "issuesCreated": 37,
-    "issuesAssigned": 18,
-    "reviewsGiven": 48
+    "issuesAssigned": 20,
+    "reviewsGiven": 50
   },
   "items": [
     {
-      "id": "PR_kwDOBAsbdc8AAAABKAUAzg",
+      "id": "I_kwDOAAsO6M8AAAABZOFsrQ",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Unexpected result when optimizing custom MIR with an otherwise branch",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/issues/164765",
+      "state": "OPEN",
+      "createdAt": "2026-10-22T21:06:56Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "I tried this code:\n#![feature(custom_mir, core_intrinsics)]\n#![allow(internal_features, unused_assignments)]\n\nuse std::hint::black_box;\nuse std::intrinsics::mir::*;\n\n#[custom_mir(dialect = \"runtime\")]\nfn foo(q: u64) -> u64 {\n    mir! {\n        let x: u64;\n        {\n            match q {\n            ",
+      "labels": [
+        "T-compiler",
+        "C-bug",
+        "A-mir-opt",
+        "I-prioritize",
+        "I-miscompile"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKFWy6A",
       "category": "openPRs",
+      "type": "pr",
+      "title": "time: remove unreachable auto-advance handling from the alternative timer",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8702",
+      "state": "OPEN",
+      "createdAt": "2026-10-22T17:46:26Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "The alternative timer only runs on multi-thread runtimes, which don’t support pausing time. Current-thread runtimes always use the traditional timer, so the alternative timer’s auto-advance hooks and did_wake tracking are unused.\nThis PR removes that code and simplifies timer maintenance to return t",
+      "labels": [
+        "C-maintenance",
+        "A-tokio",
+        "M-runtime",
+        "M-time",
+        "S-waiting-on-review",
+        "R-loom-time-driver",
+        "R-loom-multi-thread"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKAUAzg",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "task: clarify `block_in_place` panics in LocalSet",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8701",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-22T11:10:02Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-22T12:10:18Z",
+      "closedAt": "2026-10-22T12:10:18Z",
       "body": "While investigating a shutdown hang in OpenTelemetry, I ran into a confusing panic from block_in_place: it asks for a multithreaded runtime even when it’s already running on one. The call was inside a LocalSet, which also disallows in-place blocking, but the panic message and docs didn’t make that c",
       "labels": [
+        "T-docs",
+        "C-maintenance",
+        "A-tokio",
+        "M-task",
         "R-loom-multi-thread"
       ],
       "commentCount": 0
@@ -40,6 +88,48 @@
       "body": "Calling force_flush() or shutdown() inside a spawned Tokio task can hang when no worker is available to run the processor.\nThis documents how to use spawn_blocking for these calls and adds a single-worker test verifying that flush and shutdown export the queued spans.",
       "labels": [],
       "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJ-T0rg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "time: validate automatic clock advance",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8700",
+      "state": "OPEN",
+      "createdAt": "2026-10-22T08:16:44Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "The driver checks that the paused clock can auto-advance, then adds a duration computed from an earlier clock reading, taking the clock lock separately each time. A concurrent resume() makes it panic with \"time is not frozen\", a concurrent spawn_blocking has time moved under it, and a concurrent tim",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-time",
+        "S-waiting-on-review",
+        "R-loom-time-driver"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJ-TyKg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "time: wake driver after manual clock changes",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8699",
+      "state": "OPEN",
+      "createdAt": "2026-10-22T08:16:41Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "While a spawn_blocking task inhibits auto-advance, the driver parks for the timer's remaining time in real time. time::resume() and time::advance() change the clock without waking it, so the change goes unnoticed until that wait times out. Thus, unpark the driver after a successful resume() or advan",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-time",
+        "S-waiting-on-review",
+        "R-loom-time-driver"
+      ],
+      "commentCount": 0
     },
     {
       "id": "PR_kwDODS0WD88AAAABJ4T1cQ",
@@ -105,10 +195,10 @@
       "title": "sync: add `SetOnce::get_mut`",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8686",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-21T13:08:31Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-23T11:09:47Z",
+      "closedAt": "2026-10-23T11:09:47Z",
       "body": "SetOnce has no way to access its value mutably short of consuming it\nwith into_inner. OnceCell already solves this with get_mut, so\nadd the same method to SetOnce: check initialized, then hand back\nan unchecked mutable reference, which is sound because the &mut self\nborrow rules out any other refere",
       "labels": [
         "C-enhancement",
@@ -126,16 +216,15 @@
       "title": "sync: add RwLock::blocking_read_owned and blocking_write_owned",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8684",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-21T13:06:51Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-22T12:33:11Z",
+      "closedAt": "2026-10-22T12:33:11Z",
       "body": "RwLock has blocking_read and blocking_write for synchronous callers, and\nread_owned/write_owned for 'static guards backed by an Arc, but no blocking\nvariant of the owned guards. Mutex already fills the same gap with\nblocking_lock_owned, and Semaphore's blocking_acquire family (#8269) set the\nsame pr",
       "labels": [
         "C-enhancement",
         "A-tokio",
         "M-sync",
-        "S-waiting-on-review",
         "R-loom-sync"
       ],
       "commentCount": 1
@@ -375,6 +464,27 @@
       "commentCount": 6
     },
     {
+      "id": "I_kwDOAQnScc8AAAABWe6CEw",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Inconsistent handling of `crate-type` and `proc-macro = true`",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/issues/17579",
+      "state": "OPEN",
+      "createdAt": "2026-10-11T18:11:27Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Problem\nFound in rust-lang/rust#164086.\nCargo accepts crate-type = [\"lib\"] together with proc-macro = true and compiles an ordinary library while treating it as a proc-macro internally for some logic.\nThe behavior is pretty inconsistent.\nThis became visible after #17410\nA binary using that library n",
+      "labels": [
+        "C-bug",
+        "A-diagnostics",
+        "A-manifest",
+        "S-accepted",
+        "A-crate-types"
+      ],
+      "commentCount": 8
+    },
+    {
       "id": "I_kwDOBAsbdc8AAAABWUfiDQ",
       "category": "issuesCreated",
       "type": "issue",
@@ -476,22 +586,7 @@
       "closedAt": null,
       "body": "Fixes #1986\nChanges\nThis PR continues #2103 by @lalitb. That PR was closed because it had no activity. The first commit is #2103, squashed and rebased onto main, with @lalitb as the author. The second commit fixes the review comments from #2103. The later comments clean up the tests a bit to keep th",
       "labels": [],
-      "commentCount": 6
-    },
-    {
-      "id": "PR_kwDOPIBZrc8AAAABHi9Brg",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Keep live tailing logs visible when switching tabs",
-      "repo": "VictoriaMetrics/VictoriaLogs",
-      "url": "https://github.com/VictoriaMetrics/VictoriaLogs/pull/1855",
-      "state": "OPEN",
-      "createdAt": "2026-10-09T13:53:28Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Closes #1842.\nSwitching from Group to Live scrolls to the bottom of the page, including the empty space below the logs. This can leave the logs hidden behind the sticky tab bar, and clicking Resume sends the view back to the same position.\nThis change scrolls based on the log content and leaves the ",
-      "labels": [],
-      "commentCount": 0
+      "commentCount": 7
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHax8AQ",
@@ -785,7 +880,7 @@
         "T-types",
         "WG-trait-system-refactor"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "PR_kwDODS0WD88AAAABGk0RWg",
@@ -1541,7 +1636,7 @@
       "closedAt": null,
       "body": "Motivation\nWhile exactly one Dispatch is registered, Dispatchers::rebuilder()\nreturns Rebuilder::JustOne, and Rebuilder::for_each resolves it with\ndispatcher::get_default: the current thread's default dispatcher, not\nthe registered one. Those are only the same thing when the one dispatch\nis installe",
       "labels": [],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDODS0WD88AAAABDz0anw",
@@ -1721,7 +1816,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "PR_kwDONpzSS88AAAABDPGpTg",
@@ -2411,11 +2506,11 @@
       "createdAt": "2026-08-26T09:41:51Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Description\nAdds compile-time zero-code instrumentation for the GoFiber web framework (github.com/gofiber/fiber/v2).\n\nAdds AST rule definition otelc.yaml targeting (*Ctx).Next() in github.com/gofiber/fiber/v2.\nImplements BeforeNext and AfterNext context hooks for *fiber.Ctx to enrich HTTP server spa",
+      "body": "Description\nAdds compile-time instrumentation for github.com/gofiber/fiber/v2.\n\notelc.yaml hooks (*App).next, which fiber's router calls once per request, so every request is covered whether or not the app uses middleware.\nrouter_hook.go creates the SERVER span there, since fiber runs on fasthttp an",
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 8
+      "commentCount": 9
     },
     {
       "id": "I_kwDONpzSS88AAAABOL7Y1w",
@@ -2546,8 +2641,7 @@
       "closedAt": null,
       "body": "Description\nThis PR refactors the AST manipulation inside tool/internal/instrument/optimize.go by adding a new removeUnusedHookContextMethods pass. When an After hook is not present, the GetReturnVal, SetReturnVal, and GetReturnValCount methods attached to HookContextImpl are now correctly pruned fr",
       "labels": [
-        "scope:refactor",
-        "Stale"
+        "scope:refactor"
       ],
       "commentCount": 8
     },
