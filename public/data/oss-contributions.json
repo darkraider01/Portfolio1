@@ -1,14 +1,91 @@
 {
-  "last_updated": "2026-10-23T11:13:37.798Z",
+  "last_updated": "2026-10-24T10:32:28.343Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 61,
     "openPRs": 27,
-    "issuesCreated": 37,
+    "issuesCreated": 38,
     "issuesAssigned": 20,
-    "reviewsGiven": 50
+    "reviewsGiven": 55
   },
   "items": [
+    {
+      "id": "I_kwDODS0WD88AAAABZe9hpA",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "[Bug]: Preserve absent histogram sums in Prometheus and stdout exporters",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/issues/3816",
+      "state": "OPEN",
+      "createdAt": "2026-10-23T20:42:52Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "What happened?\nWhat's happening?\nWhile looking through #3813, I noticed that the Prometheus and stdout exporters still use dp.sum() directly.\nWith the new sum_if_recorded() accessor, the SDK can distinguish between a sum that wasn't recorded and one that's actually zero. But these exporters don't us",
+      "labels": [
+        "bug",
+        "triage:todo"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKT93Mg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "sync: add `SetOnce::take`",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8711",
+      "state": "CLOSED",
+      "createdAt": "2026-10-23T17:50:02Z",
+      "mergedAt": null,
+      "closedAt": "2026-10-23T21:49:05Z",
+      "body": "Motivation\nSetOnce has get_mut for exclusive in-place mutation and into_inner for consuming ownership, but lacks take to extract the contained value and leave the cell empty without deallocating or dropping the cell.\nOnceCell already provides this via take(&mut self) -> Option<T> by relying on Defau",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-sync",
+        "R-loom-sync"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKQgZGA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "io: drop replaced wakers outside the I/O driver locks",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8706",
+      "state": "OPEN",
+      "createdAt": "2026-10-23T13:19:03Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "ScheduledIo::poll_readiness and the Readiness future replace the stored waker with Waker::clone_from while the waiter list mutex is held, and ScheduledIo::clear_wakers (run from Registration::drop) drops both slot wakers under the same lock, so a replaced waker's destructor runs with the lock held. ",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-io",
+        "M-net",
+        "I-hang",
+        "S-waiting-on-review",
+        "R-loom-time-driver",
+        "T-io-uring"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABKHzrmA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix(sdk): preserve absent histogram sums in OTLP",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3813",
+      "state": "OPEN",
+      "createdAt": "2026-10-22T21:17:07Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #3804\nChanges\n\nretain whether explicit and exponential histogram sums were recorded without changing the existing sum() behavior\nexpose sum_if_recorded() for exporters\nomit absent histogram sums from OTLP output\ncover both omitted and recorded sum cases\n\nTesting\n\ncargo fmt --all -- --check\nCAR",
+      "labels": [],
+      "commentCount": 3
+    },
     {
       "id": "I_kwDOAAsO6M8AAAABZOFsrQ",
       "category": "issuesAssigned",
@@ -132,6 +209,27 @@
       "commentCount": 0
     },
     {
+      "id": "PR_kwDOBAsbdc8AAAABJ8htvw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "codec: stop discarding when an over-long line ends at eof",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8694",
+      "state": "OPEN",
+      "createdAt": "2026-10-22T05:07:05Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "When LinesCodec or AnyDelimiterCodec exceeds its max length it discards input until the next delimiter, and decode_eof leaves it in that state even though eof ends the line (it already returns an unterminated tail as a final frame and resets next_index). Data decoded after eof, on a resumable source",
+      "labels": [
+        "C-bug",
+        "A-tokio-util",
+        "S-waiting-on-review",
+        "M-codec",
+        "R-loom-util"
+      ],
+      "commentCount": 0
+    },
+    {
       "id": "PR_kwDODS0WD88AAAABJ4T1cQ",
       "category": "openPRs",
       "type": "pr",
@@ -204,7 +302,6 @@
         "C-enhancement",
         "A-tokio",
         "M-sync",
-        "S-waiting-on-review",
         "R-loom-sync"
       ],
       "commentCount": 1
@@ -309,7 +406,7 @@
         "S-waiting-on-author",
         "R-loom-time-driver"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDODS0WD88AAAABJctEKA",
@@ -364,6 +461,29 @@
         "A-tokio",
         "M-fs",
         "S-waiting-on-review",
+        "T-io-uring"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABJItD0w",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "sync: build `io-uring` without the `sync` feature",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8653",
+      "state": "OPEN",
+      "createdAt": "2026-10-18T09:46:17Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Since #7850, the io-uring driver stores its probe in sync::OnceCell, which only exists with the sync feature, so building with rt, fs and io-uring but without sync fails on Linux. Thus, make OnceCell available inside the crate under cfg_io_uring!, the same way fs gets Mutex without sync. Also check ",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-sync",
+        "S-waiting-on-review",
+        "A-ci",
+        "R-loom-sync",
         "T-io-uring"
       ],
       "commentCount": 0
@@ -586,7 +706,7 @@
       "closedAt": null,
       "body": "Fixes #1986\nChanges\nThis PR continues #2103 by @lalitb. That PR was closed because it had no activity. The first commit is #2103, squashed and rebased onto main, with @lalitb as the author. The second commit fixes the review comments from #2103. The later comments clean up the tests a bit to keep th",
       "labels": [],
-      "commentCount": 7
+      "commentCount": 10
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHax8AQ",
@@ -1281,7 +1401,7 @@
       "closedAt": null,
       "body": "Summary\nAdds the first schema-aligned slice of OpenTelemetry declarative configuration for Rust: configuring a MeterProvider from YAML with resource attributes, periodic readers, the console exporter, and registered custom exporters. This is an initial supported subset of schema v1.2.0; unsupported ",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABE-Zdfg",
@@ -1621,7 +1741,7 @@
       "closedAt": null,
       "body": "Part of #3127\nChanges\nAdds an explicit helper function in opentelemetry-sdk to configure the process-global text map propagator from the OTEL_PROPAGATORS environment variable:\nopentelemetry_sdk::propagation::set_global_text_map_propagator_from_env()\nKey details:\n\nRespects the OpenTelemetry specifica",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOCdoc188AAAABD1rHHA",
@@ -2510,7 +2630,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 9
+      "commentCount": 10
     },
     {
       "id": "I_kwDONpzSS88AAAABOL7Y1w",
