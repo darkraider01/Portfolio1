@@ -1,14 +1,125 @@
 {
-  "last_updated": "2026-10-24T10:32:28.343Z",
+  "last_updated": "2026-10-25T10:57:59.438Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 61,
-    "openPRs": 27,
+    "openPRs": 33,
     "issuesCreated": 38,
     "issuesAssigned": 20,
     "reviewsGiven": 55
   },
   "items": [
+    {
+      "id": "PR_kwDONpzSS88AAAABKjhMsg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "refactor(tool/internal/setup): prepare instrumentation rules once per setup",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1553",
+      "state": "OPEN",
+      "createdAt": "2026-10-25T08:58:48Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "I noticed we were loading and indexing the same instrumentation rules on every pass through hook-injected dependencies. This prepares the rule index once during setup and reuses it across matching passes.\nKept it simple: just passing the prepared index around, without a cache or extra synchronizatio",
+      "labels": [
+        "scope:refactor"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKjdOVg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "sync: remove obsolete TODO in mpsc block reclaim",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8722",
+      "state": "OPEN",
+      "createdAt": "2026-10-25T08:48:14Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Combining the loops would add more complexity than it removes, so I'm just dropping the stale TODO.",
+      "labels": [
+        "C-maintenance",
+        "A-tokio",
+        "M-sync",
+        "S-waiting-on-review",
+        "R-loom-sync"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKjX5-A",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fs: fix `io_uring` platform gates and enable read on musl",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8721",
+      "state": "OPEN",
+      "createdAt": "2026-10-25T08:33:59Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "While looking through the io_uring statx gates and noticed a couple of things.\nFirst, fs::read and fs::try_exists were checking for GNU/Android without explicitly requiring Linux. That also matches Windows GNU and Android targets, where the io_uring modules aren't available, so builds with tokio_uns",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-fs",
+        "S-waiting-on-review",
+        "T-io-uring"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOAr8sRM8AAAABKjBjRA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Use `deref_pointer` for TCP FIONBIO",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5484",
+      "state": "OPEN",
+      "createdAt": "2026-10-25T07:33:49Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #5433: replaces deref_pointer_as with deref_pointer, since check_varargs already gives us a *i32",
+      "labels": [
+        "S-waiting-on-review"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOAr8sRM8AAAABKi_Rvg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Use `deref_pointer` in lgamma shims",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5483",
+      "state": "OPEN",
+      "createdAt": "2026-10-25T07:26:44Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #5433.\nSets the lgamma sign pointers to *i32 and replace both deref_pointer_as calls with deref_pointer.",
+      "labels": [
+        "S-waiting-on-review"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOAAsO6M8AAAABKdd6eA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Avoid hoisting uninitialized reads in EarlyOtherwiseBranch",
+      "repo": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust/pull/164864",
+      "state": "OPEN",
+      "createdAt": "2026-10-24T16:07:20Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #164765.\nEarlyOtherwiseBranch can hoist a read onto a path where its operand is uninitialized, causing a miscompilation.\nWhen the parent’s otherwise branch is reachable, this restricts scalar hoisting to unchanged function arguments and their struct/tuple fields. It reuses VisitPlacesWith to r",
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 2
+    },
     {
       "id": "I_kwDODS0WD88AAAABZe9hpA",
       "category": "issuesCreated",
@@ -25,7 +136,7 @@
         "bug",
         "triage:todo"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKT93Mg",
@@ -403,7 +514,7 @@
         "C-bug",
         "A-tokio",
         "M-time",
-        "S-waiting-on-author",
+        "S-waiting-on-review",
         "R-loom-time-driver"
       ],
       "commentCount": 2
@@ -1136,9 +1247,9 @@
       "closedAt": null,
       "body": "cargo-miri currently reads env::args() each time it checks a flag. This change reads the arguments once, then passes them through the relevant phases and helpers.\nThis prepares the argument handling for the argfile work in #5234 (first step). It doesn’t add argfile support yet; the existing error re",
       "labels": [
-        "S-waiting-on-author"
+        "S-waiting-on-review"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDOAAsO6M8AAAABUIOaEA",
