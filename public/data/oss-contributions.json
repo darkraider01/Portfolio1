@@ -1,14 +1,69 @@
 {
-  "last_updated": "2026-10-25T10:57:59.438Z",
+  "last_updated": "2026-10-26T12:30:18.917Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 61,
-    "openPRs": 33,
+    "mergedPRs": 65,
+    "openPRs": 31,
     "issuesCreated": 38,
     "issuesAssigned": 20,
-    "reviewsGiven": 55
+    "reviewsGiven": 59
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKqD9pg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "runtime: drop io_uring ring when reactor registration fails",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8726",
+      "state": "OPEN",
+      "createdAt": "2026-10-26T00:24:01Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nHandle::try_init creates the io_uring ring and then registers its fd with the mio reactor. If that registration fails (for example EMFILE), the error is returned but the ring stays stored.\nThe next call sees uring.is_some(), returns Ok(false), and skips add_uring_source. check_and_init th",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-io",
+        "M-runtime",
+        "S-waiting-on-review",
+        "R-loom-time-driver",
+        "T-io-uring"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOAQnScc8AAAABKmnZhQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Warn about conflicting proc-macro manifest settings",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/pull/17641",
+      "state": "OPEN",
+      "createdAt": "2026-10-25T16:31:21Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "This adds the warning discussed in #17579 for [lib] settings that combine proc-macro = true with a non-proc-macro crate-type. The warning explains that this will become an error and suggests removing one of the settings.\nI’ve kept this on the existing local manifest-warning path, so it doesn’t appea",
+      "labels": [
+        "S-waiting-on-review"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABKld46Q",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "feat(sdk): add standalone ProbabilitySampler",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3817",
+      "state": "OPEN",
+      "createdAt": "2026-10-25T13:53:27Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "This adds a standalone ProbabilitySampler for consistent probability sampling, following the Go implementation in open-telemetry/opentelemetry-go#8123.\nIt uses explicit ot.rv randomness when available, otherwise the trailing 56 bits of the TraceID, and writes the configured threshold to ot.th on sam",
+      "labels": [],
+      "commentCount": 6
+    },
     {
       "id": "PR_kwDONpzSS88AAAABKjhMsg",
       "category": "openPRs",
@@ -24,25 +79,24 @@
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKjdOVg",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "sync: remove obsolete TODO in mpsc block reclaim",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8722",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-25T08:48:14Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-25T12:57:26Z",
+      "closedAt": "2026-10-25T12:57:26Z",
       "body": "Combining the loops would add more complexity than it removes, so I'm just dropping the stale TODO.",
       "labels": [
         "C-maintenance",
         "A-tokio",
         "M-sync",
-        "S-waiting-on-review",
         "R-loom-sync"
       ],
       "commentCount": 0
@@ -58,7 +112,7 @@
       "createdAt": "2026-10-25T08:33:59Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "While looking through the io_uring statx gates and noticed a couple of things.\nFirst, fs::read and fs::try_exists were checking for GNU/Android without explicitly requiring Linux. That also matches Windows GNU and Android targets, where the io_uring modules aren't available, so builds with tokio_uns",
+      "body": "While looking through the io_uring statx gates noticed a couple of things.\nFirst, fs::read and fs::try_exists were checking for GNU/Android without explicitly requiring Linux. That also matches Windows GNU and Android targets, where the io_uring modules aren't available, so builds with tokio_unstabl",
       "labels": [
         "C-bug",
         "A-tokio",
@@ -66,39 +120,56 @@
         "S-waiting-on-review",
         "T-io-uring"
       ],
-      "commentCount": 0
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABKjBjRA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Use `deref_pointer` for TCP FIONBIO",
       "repo": "rust-lang/miri",
       "url": "https://github.com/rust-lang/miri/pull/5484",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-25T07:33:49Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-26T09:38:14Z",
+      "closedAt": "2026-10-26T09:38:14Z",
       "body": "Part of #5433: replaces deref_pointer_as with deref_pointer, since check_varargs already gives us a *i32",
-      "labels": [
-        "S-waiting-on-review"
-      ],
-      "commentCount": 0
+      "labels": [],
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABKi_Rvg",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Use `deref_pointer` in lgamma shims",
       "repo": "rust-lang/miri",
       "url": "https://github.com/rust-lang/miri/pull/5483",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-25T07:26:44Z",
+      "mergedAt": "2026-10-26T09:22:17Z",
+      "closedAt": "2026-10-26T09:22:17Z",
+      "body": "Part of #5433.\nSets the lgamma sign pointers to *i32 and replace both deref_pointer_as calls with deref_pointer.",
+      "labels": [],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKgirHw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "io: only validate appended bytes in `read_line`",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8717",
+      "state": "OPEN",
+      "createdAt": "2026-10-24T23:40:24Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Part of #5433.\nSets the lgamma sign pointers to *i32 and replace both deref_pointer_as calls with deref_pointer.",
+      "body": "read_line appends to the caller's string, but afterwards it runs String::from_utf8 over the whole buffer, including everything that was already in it. That part came from a String, and read_until only ever appends to the buffer, so it's still valid. If you keep reading lines into the same string wit",
       "labels": [
-        "S-waiting-on-review"
+        "C-enhancement",
+        "A-tokio",
+        "M-io",
+        "S-waiting-on-review",
+        "T-performance"
       ],
       "commentCount": 0
     },
@@ -118,7 +189,26 @@
         "T-compiler",
         "S-waiting-on-review"
       ],
-      "commentCount": 2
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKZyIZw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "macros: suppress clippy::redundant_pub_crate in select!",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8712",
+      "state": "MERGED",
+      "createdAt": "2026-10-24T06:21:06Z",
+      "mergedAt": "2026-10-26T08:56:12Z",
+      "closedAt": "2026-10-26T08:56:12Z",
+      "body": "Closes #5616 by allowing clippy::redundant_pub_crate on code generated by select!.\nUpstream Clippy stopped triggering this lint on external macros in newer toolchains, but this attribute prevents errors on older toolchains within MSRV.",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-macros"
+      ],
+      "commentCount": 0
     },
     {
       "id": "I_kwDODS0WD88AAAABZe9hpA",
@@ -136,7 +226,7 @@
         "bug",
         "triage:todo"
       ],
-      "commentCount": 1
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKT93Mg",
@@ -157,6 +247,26 @@
         "R-loom-sync"
       ],
       "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABKQh-mQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "io: add `CopyToBytes::get_pin_mut` and `SinkWriter::get_pin_mut`",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8707",
+      "state": "MERGED",
+      "createdAt": "2026-10-23T13:21:05Z",
+      "mergedAt": "2026-10-26T08:37:57Z",
+      "closedAt": "2026-10-26T08:37:57Z",
+      "body": "What\nAdd get_pin_mut() to SinkWriter and CopyToBytes.\nWhy\nCallers cannot use get_mut() through a pinned adapter when its inner sink is !Unpin.\nImplementation\nProject the pinned inner sink and add a type-checking test using PhantomPinned.",
+      "labels": [
+        "C-enhancement",
+        "A-tokio-util",
+        "M-io",
+        "R-loom-util"
+      ],
+      "commentCount": 0
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKQgZGA",
@@ -195,7 +305,7 @@
       "closedAt": null,
       "body": "Fixes #3804\nChanges\n\nretain whether explicit and exponential histogram sums were recorded without changing the existing sum() behavior\nexpose sum_if_recorded() for exporters\nomit absent histogram sums from OTLP output\ncover both omitted and recorded sum cases\n\nTesting\n\ncargo fmt --all -- --check\nCAR",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "I_kwDOAAsO6M8AAAABZOFsrQ",
@@ -342,18 +452,18 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABJ4T1cQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "test(sdk): cover async runtime flush and shutdown",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3809",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-21T20:35:16Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-26T05:12:48Z",
+      "closedAt": "2026-10-26T05:12:49Z",
       "body": "Related to #2643.\nThis adds flush and shutdown tests for the async span processor, log processor, and metric reader using both Tokio runtime adapters.\nEach test records telemetry, flushes it, records more, and checks that shutdown exports the remaining data. The exporters spawn a Tokio task and awai",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJ23G_g",
@@ -606,10 +716,10 @@
       "title": "test(sdk): cover BatchLogProcessor flush enqueue race",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3799",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-16T22:00:59Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-25T19:53:34Z",
+      "closedAt": "2026-10-25T19:53:34Z",
       "body": "What\nAdds a deterministic regression test for the enqueue/counter-ordering\nrace in BatchLogProcessor.\nThe test pauses the emitting thread immediately after a successful\nenqueue, calls force_flush(), and checks that the log has been\nexported before allowing the emitter to continue.\nWhy\nThe test passe",
       "labels": [],
       "commentCount": 4
@@ -849,9 +959,10 @@
       "labels": [
         "A-attributes",
         "T-compiler",
-        "S-waiting-on-review"
+        "S-waiting-on-review",
+        "S-waiting-on-perf"
       ],
-      "commentCount": 6
+      "commentCount": 16
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHTFy3Q",
@@ -1510,9 +1621,9 @@
       "createdAt": "2026-09-24T19:58:39Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Summary\nAdds the first schema-aligned slice of OpenTelemetry declarative configuration for Rust: configuring a MeterProvider from YAML with resource attributes, periodic readers, the console exporter, and registered custom exporters. This is an initial supported subset of schema v1.2.0; unsupported ",
+      "body": "Summary\nAdds the first supported subset of OpenTelemetry declarative metrics configuration, targeting schema v1.2.0. YAML can configure resource attributes, periodic readers, the built-in console exporter, and registered custom exporters. This work is part of #809.\nThe crate is unreleased. Configura",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABE-Zdfg",
@@ -1885,7 +1996,7 @@
         "performance",
         "ready to merge"
       ],
-      "commentCount": 19
+      "commentCount": 21
     },
     {
       "id": "PR_kwDONpzSS88AAAABDwXhiQ",
@@ -2866,10 +2977,10 @@
       "title": "refactor(tool): remove unused HookContext methods",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1225",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-24T11:25:46Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-26T11:57:23Z",
       "body": "Description\nThis PR refactors the AST manipulation inside tool/internal/instrument/optimize.go by adding a new removeUnusedHookContextMethods pass. When an After hook is not present, the GetReturnVal, SetReturnVal, and GetReturnValCount methods attached to HookContextImpl are now correctly pruned fr",
       "labels": [
         "scope:refactor"
