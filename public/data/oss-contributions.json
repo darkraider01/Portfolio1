@@ -1,14 +1,29 @@
 {
-  "last_updated": "2026-10-26T12:30:18.917Z",
+  "last_updated": "2026-10-27T11:48:03.544Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 65,
-    "openPRs": 31,
+    "mergedPRs": 67,
+    "openPRs": 30,
     "issuesCreated": 38,
     "issuesAssigned": 20,
     "reviewsGiven": 59
   },
   "items": [
+    {
+      "id": "PR_kwDODS0WD88AAAABK-3R_g",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "docs: align experimental feature naming guidance",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3825",
+      "state": "OPEN",
+      "createdAt": "2026-10-27T09:57:44Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "The guide still recommends otel_unstable, while the workspace uses dedicated experimental_ flags. Document experimental_<signal>_<feature_name> using the existing experimental_metrics_custom_reader feature, and show how to gate its implementation and public re-export.\nFollow-up to the review discuss",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABKqD9pg",
       "category": "reviewsGiven",
@@ -62,7 +77,7 @@
       "closedAt": null,
       "body": "This adds a standalone ProbabilitySampler for consistent probability sampling, following the Go implementation in open-telemetry/opentelemetry-go#8123.\nIt uses explicit ot.rv randomness when available, otherwise the trailing 56 bits of the TraceID, and writes the configured threshold to ot.th on sam",
       "labels": [],
-      "commentCount": 6
+      "commentCount": 9
     },
     {
       "id": "PR_kwDONpzSS88AAAABKjhMsg",
@@ -955,14 +970,14 @@
       "createdAt": "2026-10-08T09:49:55Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Part of #153101 and #131229.\nMoves the remaining rustc_must_implement_one_of validation from rustc_passes::check_attr into RustcMustImplementOneOfParser::finalize_check using AST trait information available through FinalizeCheckContext::target_item.\nThe duplicate-name validation was already migrated",
+      "body": "View all comments\n\nPart of #153101 and #131229.\nMoves the remaining rustc_must_implement_one_of validation from rustc_passes::check_attr into RustcMustImplementOneOfParser::finalize_check using AST trait information available through FinalizeCheckContext::target_item.\nThe duplicate-name validation w",
       "labels": [
         "A-attributes",
         "T-compiler",
         "S-waiting-on-review",
-        "S-waiting-on-perf"
+        "perf-regression"
       ],
-      "commentCount": 16
+      "commentCount": 19
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHTFy3Q",
@@ -1982,15 +1997,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABDz0anw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "feat(sdk): simplify finished span ownership",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3741",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-16T17:57:28Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-27T00:55:41Z",
+      "closedAt": "2026-10-27T00:55:41Z",
       "body": "Supersedes #3659.\nRelated to #2726.\nChanges\nThis PR retains #3659's clone-avoidance goal while simplifying the completed-span ownership architecture.\n\nChanges SpanProcessor::on_end to receive FinishedSpan<'_> by value.\nReplaces the reusable mutable FinishedSpan state machine (consume, reset, and con",
       "labels": [
         "performance",
@@ -2281,20 +2296,20 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABCtGq2g",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "feat(tool): write instrumentation diff under --debug",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1333",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-08T16:38:11Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-27T10:27:31Z",
+      "closedAt": "2026-10-27T10:27:31Z",
       "body": "Description\nImplements instrumentation diff reporting under --debug (OTELC_DEBUG=1), allowing users to inspect the exact Go source modifications and additions introduced by otelc into the compiler.\nDiff Categories\nDiff reports cover four distinct categories of source transformations:\n\nModified targe",
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "I_kwDODS0WD88AAAABQKfaGQ",
@@ -3475,7 +3490,7 @@
         "C-bug",
         "A-tokio",
         "M-process",
-        "S-waiting-on-review"
+        "S-waiting-on-author"
       ],
       "commentCount": 0
     },
