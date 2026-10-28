@@ -1,28 +1,65 @@
 {
-  "last_updated": "2026-10-27T11:48:03.544Z",
+  "last_updated": "2026-10-28T12:22:02.852Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 67,
-    "openPRs": 30,
-    "issuesCreated": 38,
+    "mergedPRs": 70,
+    "openPRs": 28,
+    "issuesCreated": 39,
     "issuesAssigned": 20,
     "reviewsGiven": 59
   },
   "items": [
     {
-      "id": "PR_kwDODS0WD88AAAABK-3R_g",
+      "id": "I_kwDOAQnScc8AAAABaZehDg",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "Support Cargo-generated warnings in future-incompatibility reports",
+      "repo": "rust-lang/cargo",
+      "url": "https://github.com/rust-lang/cargo/issues/17650",
+      "state": "OPEN",
+      "createdAt": "2026-10-27T19:47:37Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Summary\nFollowing up on #17641 and the discussion here.\nThe proc-macro manifest warning currently uses ordinary parser diagnostics, so it only warns for local packages and doesn’t appear in cargo report future-incompat.\nIt would be useful to support Cargo-generated future-incompatibility warnings in",
+      "labels": [
+        "A-diagnostics",
+        "C-feature-request",
+        "S-needs-design",
+        "A-future-incompat"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABLEObzw",
       "category": "openPRs",
+      "type": "pr",
+      "title": "fix(tool): register `add_file` source imports in otelc.runtime.go",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1588",
+      "state": "OPEN",
+      "createdAt": "2026-10-27T16:36:36Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "This PR ensures dependencies introduced by add_file instrumentation rules (commonly guarded by //go:build ignore) are discovered during the setup phase and blank-imported into otelc.runtime.go.\nThis tells Go's build planner to include those packages in the action graph early, preventing link failure",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABK-3R_g",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "docs: align experimental feature naming guidance",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3825",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-27T09:57:44Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-28T03:47:29Z",
+      "closedAt": "2026-10-28T03:47:29Z",
       "body": "The guide still recommends otel_unstable, while the workspace uses dedicated experimental_ flags. Document experimental_<signal>_<feature_name> using the existing experimental_metrics_custom_reader feature, and show how to gate its implementation and public re-export.\nFollow-up to the review discuss",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKqD9pg",
@@ -49,20 +86,18 @@
     },
     {
       "id": "PR_kwDOAQnScc8AAAABKmnZhQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Warn about conflicting proc-macro manifest settings",
       "repo": "rust-lang/cargo",
       "url": "https://github.com/rust-lang/cargo/pull/17641",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-25T16:31:21Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-27T14:32:47Z",
+      "closedAt": "2026-10-27T14:32:47Z",
       "body": "This adds the warning discussed in #17579 for [lib] settings that combine proc-macro = true with a non-proc-macro crate-type. The warning explains that this will become an error and suggests removing one of the settings.\nI’ve kept this on the existing local manifest-warning path, so it doesn’t appea",
-      "labels": [
-        "S-waiting-on-review"
-      ],
-      "commentCount": 2
+      "labels": [],
+      "commentCount": 4
     },
     {
       "id": "PR_kwDODS0WD88AAAABKld46Q",
@@ -77,7 +112,7 @@
       "closedAt": null,
       "body": "This adds a standalone ProbabilitySampler for consistent probability sampling, following the Go implementation in open-telemetry/opentelemetry-go#8123.\nIt uses explicit ot.rv randomness when available, otherwise the trailing 56 bits of the TraceID, and writes the configured threshold to ot.th on sam",
       "labels": [],
-      "commentCount": 9
+      "commentCount": 10
     },
     {
       "id": "PR_kwDONpzSS88AAAABKjhMsg",
@@ -442,7 +477,7 @@
         "S-waiting-on-review",
         "R-loom-time-driver"
       ],
-      "commentCount": 0
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJ8htvw",
@@ -1250,9 +1285,9 @@
       "createdAt": "2026-10-04T17:25:43Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "This follows up on #3774. SpanRef::is_recording() takes a lock even when the span was non-recording when it entered the context. This caches that initial state so those checks can return early. The context still owns the span and forwards lifecycle calls. Spans that started recording still check the",
+      "body": "This follows up on #3774.\nSpanRef::is_recording() currently takes a lock even when the span was non-recording when it entered the context. This caches the initial recording state so those checks can return early without acquiring the mutex.\nSpans that started out recording still check their current ",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDODS0WD88AAAABGj0L-g",
@@ -1265,7 +1300,7 @@
       "createdAt": "2026-10-04T14:43:12Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Related to #2800.\naddresses the non-recording span creation part of #2800.\nNon-recording spans currently carry a tracer and span limits even though they don't use them. This moves those fields into the recording state, so dropped spans keep their context without cloning the tracer. Ending a non-reco",
+      "body": "Related to #2800, specifically the non-recording span creation part.\nNon-recording spans don't need the provider, so this avoids cloning the provider Arc when constructing them in SdkTracer. Non-recording spans still keep their instrumentation scope so span.instrumentation_scope() continues to work ",
       "labels": [],
       "commentCount": 2
     },
@@ -2165,10 +2200,10 @@
       "title": "fix(tool/internal/instrument): add_file emits an unparseable package clause in test builds",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1356",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-12T10:55:37Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-27T15:41:20Z",
+      "closedAt": "2026-10-27T15:41:20Z",
       "body": "Description\nTurns out an add_file rule targeting main also lands on the test main that go test\ngenerates. That compile unit shows up with no sources in the build-plan dry run, so setup\nnever calls SetPackageName and the rule set reaches us with PackageName empty.\napplyFileRule wrote that straight in",
       "labels": [
         "scope:fix"
@@ -2654,15 +2689,15 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABBfzViA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(tool/internal/instrument): stop GetParam/GetReturnVal panicking for ordinary params on generic functions",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1284",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-30T10:35:52Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-28T11:49:31Z",
+      "closedAt": "2026-10-28T11:49:31Z",
       "body": "Description\nFixes #1280.\nrewriteHookContextMethods blanket-panicked all four HookContextImpl accessor methods (GetParam, SetParam, GetReturnVal, SetReturnVal) whenever the target function had a type parameter, even for parameters/return values whose own type has nothing to do with the generic. For e",
       "labels": [
         "scope:fix"
@@ -2708,10 +2743,10 @@
       "title": "bug(tool/internal/instrument): ctx.GetParam/GetReturnVal panics when the target function is generic",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1280",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-08-30T08:57:40Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-28T11:49:32Z",
       "body": "Describe the bug\nIf you write a rule that hooks a generic function (one with a type parameter, like func Query[T any](...)), calling ctx.GetParam(), ctx.SetParam(), ctx.GetReturnVal(), or ctx.SetReturnVal() inside your hook panics at runtime, no matter what index you pass. These four methods seem to",
       "labels": [
         "bug"
@@ -2867,7 +2902,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 10
+      "commentCount": 13
     },
     {
       "id": "I_kwDONpzSS88AAAABOL7Y1w",
@@ -3490,9 +3525,9 @@
         "C-bug",
         "A-tokio",
         "M-process",
-        "S-waiting-on-author"
+        "S-waiting-on-review"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDONpzSS879-p6V",
