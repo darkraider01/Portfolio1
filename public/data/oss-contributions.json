@@ -1,14 +1,122 @@
 {
-  "last_updated": "2026-10-28T12:22:02.852Z",
+  "last_updated": "2026-10-29T12:31:20.585Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 70,
+    "mergedPRs": 72,
     "openPRs": 28,
     "issuesCreated": 39,
-    "issuesAssigned": 20,
-    "reviewsGiven": 59
+    "issuesAssigned": 22,
+    "reviewsGiven": 60
   },
   "items": [
+    {
+      "id": "PR_kwDONpzSS88AAAABLgQ8og",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(instrumentation/redis): retain hooks in Client.WithTimeout for go-redis v9.15.1 and later",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1637",
+      "state": "OPEN",
+      "createdAt": "2026-10-29T11:16:36Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "This fixes Redis spans getting dropped when using WithTimeout with go-redis v9.15.1+.\nThe issue starts when baseClient.clone() no longer copies the registered hooks, so the cloned client ends up losing the OTel hook.\nI added a version-gated after-hook for WithTimeout that simply reuses the existing ",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 4
+    },
+    {
+      "id": "PR_kwDOAr8sRM8AAAABLS8mQg",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "Use `deref_pointer` in socket address shims",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5511",
+      "state": "MERGED",
+      "createdAt": "2026-10-28T15:22:46Z",
+      "mergedAt": "2026-10-29T09:58:54Z",
+      "closedAt": "2026-10-29T09:58:54Z",
+      "body": "Part of #5433.\nSets the address and address-info pointers to *libc::sockaddr and **_ in the dispatchers, and replaces both deref_pointer_as calls in socket_address.rs with deref_pointer.",
+      "labels": [],
+      "commentCount": 5
+    },
+    {
+      "id": "PR_kwDOAr8sRM8AAAABLS6DAQ",
+      "category": "mergedPRs",
+      "type": "pr",
+      "title": "Use `deref_pointer` in virtual socket shims",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5510",
+      "state": "MERGED",
+      "createdAt": "2026-10-28T15:19:58Z",
+      "mergedAt": "2026-10-28T19:43:51Z",
+      "closedAt": "2026-10-28T19:43:52Z",
+      "body": "Part of #5433.\nSets the socketpair and pipe buffer pointers to *i32 and replaces the three deref_pointer_as calls in virtual_socket.rs with deref_pointer.",
+      "labels": [],
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABal9r3A",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "bug(instrumentation/redis): (*redis.Client).WithTimeout drops OTel hook in go-redis >= v9.9.0",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1615",
+      "state": "OPEN",
+      "createdAt": "2026-10-28T13:11:42Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nDiscovered while reviewing PR #1584. Affects go-redis >= v9.9.0 (v9.0.0 to v9.8.0 work fine).\nIn go-redis >= v9.9.0, any command executed on a client created via rdb.WithTimeout(...) emits zero spans.\nIn v9.9.0, upstream moved hooksMixin into baseClient. (*Client).WithTimeout(timeout) ca",
+      "labels": [
+        "bug",
+        "scope:fix",
+        "effort:moderate",
+        "instrumentation"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDONpzSS88AAAABal9bwg",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "bug(instrumentation/redis): invalid server.address and missing server.port on Sentinel, Failover, and pre-v9.9 Conn",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1614",
+      "state": "OPEN",
+      "createdAt": "2026-10-28T13:11:27Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nDiscovered while reviewing PR #1584. Affects all go-redis/v9 versions (v9.0.0+).\nPer Redis Semantic Conventions, Redis spans must carry server.address (hostname or IP) and integer server.port. Three client types violate this:\n\nNewSentinelClient & pre-v9.9 Client.Conn(): Both pass client.",
+      "labels": [
+        "bug",
+        "scope:fix",
+        "effort:moderate",
+        "instrumentation"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABLOVeKQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "sync: add broadcast::Sender::is_closed",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8731",
+      "state": "OPEN",
+      "createdAt": "2026-10-28T09:29:04Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Receiver already has is_closed (checks whether all senders are gone). Sender had the async closed() future for the same \"all receivers gone\" condition, but no sync equivalent to pair with it -- every other sync primitive in this module (mpsc, watch, oneshot) exposes a non-blocking is_closed alongsid",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-sync",
+        "S-waiting-on-review",
+        "R-loom-sync"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "I_kwDOAQnScc8AAAABaZehDg",
       "category": "issuesCreated",
@@ -33,14 +141,14 @@
       "id": "PR_kwDONpzSS88AAAABLEObzw",
       "category": "openPRs",
       "type": "pr",
-      "title": "fix(tool): register `add_file` source imports in otelc.runtime.go",
+      "title": "fix(tool): discover add_file source imports during setup",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1588",
       "state": "OPEN",
       "createdAt": "2026-10-27T16:36:36Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "This PR ensures dependencies introduced by add_file instrumentation rules (commonly guarded by //go:build ignore) are discovered during the setup phase and blank-imported into otelc.runtime.go.\nThis tells Go's build planner to include those packages in the action graph early, preventing link failure",
+      "body": "Resolves #1032\nWhen an instrumentation rule uses add_file, the injected source file often imports other packages. Because those files sit behind //go:build ignore, normal package loading during setup misses those imports, so any rules targeting those dependencies never get matched.\nWhat this does:\n\n",
       "labels": [
         "scope:fix"
       ],
@@ -78,7 +186,7 @@
         "A-tokio",
         "M-io",
         "M-runtime",
-        "S-waiting-on-review",
+        "S-waiting-on-author",
         "R-loom-time-driver",
         "T-io-uring"
       ],
@@ -239,7 +347,7 @@
         "T-compiler",
         "S-waiting-on-review"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKZyIZw",
@@ -274,9 +382,12 @@
       "body": "What happened?\nWhat's happening?\nWhile looking through #3813, I noticed that the Prometheus and stdout exporters still use dp.sum() directly.\nWith the new sum_if_recorded() accessor, the SDK can distinguish between a sum that wasn't recorded and one that's actually zero. But these exporters don't us",
       "labels": [
         "bug",
-        "triage:todo"
+        "A-metrics",
+        "priority:p2",
+        "triage:accepted",
+        "M-exporter-prometheus"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKT93Mg",
@@ -995,26 +1106,6 @@
       "commentCount": 2
     },
     {
-      "id": "PR_kwDOAAsO6M8AAAABHTPvjA",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "Move check_rustc_must_implement_one_of validation to attribute parser",
-      "repo": "rust-lang/rust",
-      "url": "https://github.com/rust-lang/rust/pull/163980",
-      "state": "OPEN",
-      "createdAt": "2026-10-08T09:49:55Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "View all comments\n\nPart of #153101 and #131229.\nMoves the remaining rustc_must_implement_one_of validation from rustc_passes::check_attr into RustcMustImplementOneOfParser::finalize_check using AST trait information available through FinalizeCheckContext::target_item.\nThe duplicate-name validation w",
-      "labels": [
-        "A-attributes",
-        "T-compiler",
-        "S-waiting-on-review",
-        "perf-regression"
-      ],
-      "commentCount": 19
-    },
-    {
       "id": "PR_kwDOALTHTM8AAAABHTFy3Q",
       "category": "openPRs",
       "type": "pr",
@@ -1251,7 +1342,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "I've been looking at this while working on #1333.\n#1333 helps with the case where a rule does apply, since we can see what it actually changed. But I think there's still a pretty annoying debugging gap for the opposite case:\nwhy didn't this package/function get instrumented?\nA rule might make it thr",
-      "labels": [],
+      "labels": [
+        "scope:feat",
+        "effort:moderate"
+      ],
       "commentCount": 0
     },
     {
@@ -1286,7 +1380,9 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "This follows up on #3774.\nSpanRef::is_recording() currently takes a lock even when the span was non-recording when it entered the context. This caches the initial recording state so those checks can return early without acquiring the mutex.\nSpans that started out recording still check their current ",
-      "labels": [],
+      "labels": [
+        "performance"
+      ],
       "commentCount": 4
     },
     {
@@ -2555,7 +2651,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Is your feature request related to a problem? Please describe.\nRight now the only way to see what otelc will inject into a file is to run a real build and dig through the toolexec temp/build output afterward. There's no way to check upfront whether a given file will be instrumented, or what would ac",
-      "labels": [],
+      "labels": [
+        "scope:feat",
+        "effort:high"
+      ],
       "commentCount": 5
     },
     {
@@ -2751,7 +2850,7 @@
       "labels": [
         "bug"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDONpzSS88AAAABBfV0Hg",
@@ -2894,15 +2993,15 @@
       "title": "feat(instrumentation): add compile-time instrumentation for gofiber/fiber/v2 (#1248)",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1250",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-26T09:41:51Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-28T17:18:23Z",
+      "closedAt": "2026-10-28T17:18:23Z",
       "body": "Description\nAdds compile-time instrumentation for github.com/gofiber/fiber/v2.\n\notelc.yaml hooks (*App).next, which fiber's router calls once per request, so every request is covered whether or not the app uses middleware.\nrouter_hook.go creates the SERVER span there, since fiber runs on fasthttp an",
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 13
+      "commentCount": 14
     },
     {
       "id": "I_kwDONpzSS88AAAABOL7Y1w",
