@@ -1,30 +1,90 @@
 {
-  "last_updated": "2026-10-29T12:31:20.585Z",
+  "last_updated": "2026-10-30T12:22:59.818Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 72,
-    "openPRs": 28,
+    "mergedPRs": 75,
+    "openPRs": 27,
     "issuesCreated": 39,
     "issuesAssigned": 22,
-    "reviewsGiven": 60
+    "reviewsGiven": 61
   },
   "items": [
     {
-      "id": "PR_kwDONpzSS88AAAABLgQ8og",
+      "id": "PR_kwDONpzSS88AAAABLwgdrg",
       "category": "openPRs",
+      "type": "pr",
+      "title": "fix(redis): correct Sentinel and Conn span endpoints",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1653",
+      "state": "OPEN",
+      "createdAt": "2026-10-30T12:03:49Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Sentinel and pre-v9.9 Conn spans were reporting the Redis client’s string representation instead of the server address and port. This uses the client options to populate those attributes.\nFailover spans now omit the endpoint attributes rather than report FailoverClient as the address. The hook can’t",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABLkV-9w",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "examples: handle more than 16 headers in tinyhttp",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8739",
+      "state": "OPEN",
+      "createdAt": "2026-10-29T15:53:51Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "tinyhttp currently rejects requests with more than 16 headers, even when they’re otherwise valid. The parser still uses stack storage for small requests, but grows the header buffer when needed, up to 1024 headers.\nThis also removes the old byte-offset tracking and unsafe string conversion, since we",
+      "labels": [
+        "C-maintenance",
+        "S-waiting-on-review",
+        "A-examples"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABLgQ8og",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(instrumentation/redis): retain hooks in Client.WithTimeout for go-redis v9.15.1 and later",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1637",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-29T11:16:36Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-30T09:24:53Z",
+      "closedAt": "2026-10-30T09:24:54Z",
       "body": "This fixes Redis spans getting dropped when using WithTimeout with go-redis v9.15.1+.\nThe issue starts when baseClient.clone() no longer copies the registered hooks, so the cloned client ends up losing the OTel hook.\nI added a version-gated after-hook for WithTimeout that simply reuses the existing ",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 4
+      "commentCount": 7
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABLYhLVw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "rt: release I/O driver resources on runtime shutdown",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8735",
+      "state": "OPEN",
+      "createdAt": "2026-10-28T22:43:53Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #8703\nAs suggested in the issue, this closes the driver's fds at shutdown instead of adding a weak handle. RuntimeMetrics stays readable after the runtime is dropped, as before.\nIf something still holds a Handle after the runtime is dropped (for example a RuntimeMetrics), the I/O driver's fds ",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-io",
+        "M-runtime",
+        "S-waiting-on-review",
+        "R-loom-time-driver",
+        "R-loom-current-thread",
+        "R-loom-multi-thread"
+      ],
+      "commentCount": 0
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABLS8mQg",
@@ -63,10 +123,10 @@
       "title": "bug(instrumentation/redis): (*redis.Client).WithTimeout drops OTel hook in go-redis >= v9.9.0",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1615",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-10-28T13:11:42Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-10-30T09:24:55Z",
       "body": "Description\nDiscovered while reviewing PR #1584. Affects go-redis >= v9.9.0 (v9.0.0 to v9.8.0 work fine).\nIn go-redis >= v9.9.0, any command executed on a client created via rdb.WithTimeout(...) emits zero spans.\nIn v9.9.0, upstream moved hooksMixin into baseClient. (*Client).WithTimeout(timeout) ca",
       "labels": [
         "bug",
@@ -115,7 +175,7 @@
         "S-waiting-on-review",
         "R-loom-sync"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "I_kwDOAQnScc8AAAABaZehDg",
@@ -139,20 +199,20 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABLEObzw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(tool): discover add_file source imports during setup",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1588",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-27T16:36:36Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-30T07:27:57Z",
+      "closedAt": "2026-10-30T07:27:57Z",
       "body": "Resolves #1032\nWhen an instrumentation rule uses add_file, the injected source file often imports other packages. Because those files sit behind //go:build ignore, normal package loading during setup misses those imports, so any rules targeting those dependencies never get matched.\nWhat this does:\n\n",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDODS0WD88AAAABK-3R_g",
@@ -186,7 +246,7 @@
         "A-tokio",
         "M-io",
         "M-runtime",
-        "S-waiting-on-author",
+        "S-waiting-on-review",
         "R-loom-time-driver",
         "T-io-uring"
       ],
@@ -209,15 +269,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABKld46Q",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "feat(sdk): add standalone ProbabilitySampler",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3817",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-25T13:53:27Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-30T04:40:36Z",
+      "closedAt": "2026-10-30T04:40:36Z",
       "body": "This adds a standalone ProbabilitySampler for consistent probability sampling, following the Go implementation in open-telemetry/opentelemetry-go#8123.\nIt uses explicit ot.rv randomness when available, otherwise the trailing 56 bits of the TraceID, and writes the configured threshold to ot.th on sam",
       "labels": [],
       "commentCount": 10
@@ -347,7 +407,7 @@
         "T-compiler",
         "S-waiting-on-review"
       ],
-      "commentCount": 4
+      "commentCount": 11
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKZyIZw",
@@ -1383,7 +1443,7 @@
       "labels": [
         "performance"
       ],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDODS0WD88AAAABGj0L-g",
@@ -1397,8 +1457,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Related to #2800, specifically the non-recording span creation part.\nNon-recording spans don't need the provider, so this avoids cloning the provider Arc when constructing them in SdkTracer. Non-recording spans still keep their instrumentation scope so span.instrumentation_scope() continues to work ",
-      "labels": [],
-      "commentCount": 2
+      "labels": [
+        "performance"
+      ],
+      "commentCount": 8
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABGa6mPA",
@@ -2032,7 +2094,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEJTBCw",
@@ -2207,10 +2269,10 @@
       "title": "feat(instrumentation/echo): add labstack/echo/v4 route enrichment",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1367",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-16T04:47:22Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-29T18:06:36Z",
+      "closedAt": "2026-10-29T18:06:36Z",
       "body": "Description\nThis PR adds compile-time instrumentation for github.com/labstack/echo/v4. The hook does not start a span. It enriches the existing net/http SERVER span.\nAfter (*Router).Find, the hook sets http.route from Context.Path(). Then the hook renames the span to METHOD {template}.\nThe hook reco",
       "labels": [
         "scope:feat"
@@ -2304,7 +2366,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 5
+      "commentCount": 4
     },
     {
       "id": "PR_kwDONpzSS88AAAABDPGpTg",
