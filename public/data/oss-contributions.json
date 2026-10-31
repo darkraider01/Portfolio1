@@ -1,30 +1,72 @@
 {
-  "last_updated": "2026-10-30T12:22:59.818Z",
+  "last_updated": "2026-10-31T11:53:22.349Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 75,
-    "openPRs": 27,
+    "mergedPRs": 76,
+    "openPRs": 26,
     "issuesCreated": 39,
     "issuesAssigned": 22,
-    "reviewsGiven": 61
+    "reviewsGiven": 63
   },
   "items": [
     {
+      "id": "PR_kwDOBAsbdc8AAAABL41SuA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "rt: use condvar for timed parking on modern wasi targets",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8747",
+      "state": "OPEN",
+      "createdAt": "2026-10-31T00:16:29Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nOn wasm32-wasip3 (and modern WASI targets with component-model threading), threads exist and run cooperatively without requiring target_feature=\"atomics\".\nPreviously, Inner::park_timeout in tokio/src/runtime/park.rs assumed that any WebAssembly target without atomics was strictly single-t",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-runtime",
+        "S-waiting-on-review",
+        "T-wasm"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABL4SlPg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "docs(net): note `connect`/`accept` do not enable `TCP_NODELAY`",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8746",
+      "state": "OPEN",
+      "createdAt": "2026-10-30T23:06:00Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Nagle's algorithm remains enabled by default, which is a common latency pitfall for both TcpStream::connect and TcpListener::accept.",
+      "labels": [
+        "T-docs",
+        "C-maintenance",
+        "A-tokio",
+        "M-net",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 0
+    },
+    {
       "id": "PR_kwDONpzSS88AAAABLwgdrg",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(redis): correct Sentinel and Conn span endpoints",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1653",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-30T12:03:49Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-10-30T21:21:18Z",
+      "closedAt": "2026-10-30T21:21:18Z",
       "body": "Sentinel and pre-v9.9 Conn spans were reporting the Redis client’s string representation instead of the server address and port. This uses the client options to populate those attributes.\nFailover spans now omit the endpoint attributes rather than report FailoverClient as the address. The hook can’t",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 1
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABLkV-9w",
@@ -246,7 +288,7 @@
         "A-tokio",
         "M-io",
         "M-runtime",
-        "S-waiting-on-review",
+        "S-waiting-on-author",
         "R-loom-time-driver",
         "T-io-uring"
       ],
@@ -863,7 +905,7 @@
       "closedAt": null,
       "body": "Fixes #2505\nDesign discussion issue (if applicable): #2505\nChanges\nRe-adds MetricProducer to opentelemetry_sdk, behind a new experimental_metrics_producer feature. It was removed in #2105 only to keep the scope of the Metrics SDK stable release small. In #2505, @cijothomas said there are no blockers",
       "labels": [],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJJo8Xw",
@@ -1460,7 +1502,7 @@
       "labels": [
         "performance"
       ],
-      "commentCount": 8
+      "commentCount": 9
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABGa6mPA",
@@ -2094,7 +2136,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 7
+      "commentCount": 8
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEJTBCw",
