@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01T12:52:19.910Z",
+  "last_updated": "2026-11-02T15:04:55.756Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 76,
@@ -115,7 +115,7 @@
       "createdAt": "2026-10-28T22:43:53Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #8703\nAs suggested in the issue, this closes the driver's fds at shutdown instead of adding a weak handle. RuntimeMetrics stays readable after the runtime is dropped, as before.\nIf something still holds a Handle after the runtime is dropped (for example a RuntimeMetrics), the I/O driver's fds ",
+      "body": "Fixes #8703\nCloses the I/O driver's fds at shutdown, as Darksonn suggested in the issue, instead of adding a weak handle.\n\nmulti_thread takes the driver out of the parker and drops it at the end of shutdown (current_thread already drops it with the runtime).\nThe registry and waker sit in a RwLock<Op",
       "labels": [
         "C-bug",
         "A-tokio",
@@ -970,7 +970,7 @@
         "R-loom-sync",
         "T-io-uring"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDODS0WD88AAAABI8B1iA",
@@ -1143,7 +1143,7 @@
         "T-compiler",
         "S-waiting-on-author"
       ],
-      "commentCount": 7
+      "commentCount": 8
     },
     {
       "id": "PR_kwDOPIIHF88AAAABHmM0yQ",
