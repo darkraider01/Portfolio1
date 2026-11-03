@@ -1,14 +1,34 @@
 {
-  "last_updated": "2026-11-02T15:04:55.756Z",
+  "last_updated": "2026-11-03T13:49:57.834Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 76,
     "openPRs": 26,
     "issuesCreated": 39,
     "issuesAssigned": 22,
-    "reviewsGiven": 63
+    "reviewsGiven": 64
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABMde9ng",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "util: fix `spawn_pinned` source location for console",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8753",
+      "state": "OPEN",
+      "createdAt": "2026-11-03T03:01:49Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "LocalPoolHandle::spawn_pinned is missing #[track_caller], so tokio-console reports the location of its task inside tokio-util instead of at the caller (#5038). This adds the attribute, which spawn_pinned_by_idx already has, plus a regression test that needs --cfg tokio_unstable (RUSTFLAGS=\"--cfg tok",
+      "labels": [
+        "A-tokio-util",
+        "S-waiting-on-review",
+        "A-ci",
+        "R-loom-util"
+      ],
+      "commentCount": 1
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABL41SuA",
       "category": "reviewsGiven",
@@ -28,7 +48,7 @@
         "S-waiting-on-review",
         "T-wasm"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABL4SlPg",
@@ -339,7 +359,7 @@
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKjdOVg",
@@ -1608,7 +1628,7 @@
       "closedAt": null,
       "body": "cargo-miri currently reads env::args() each time it checks a flag. This change reads the arguments once, then passes them through the relevant phases and helpers.\nThis prepares the argument handling for the argfile work in #5234 (first step). It doesn’t add argfile support yet; the existing error re",
       "labels": [
-        "S-waiting-on-review"
+        "S-waiting-on-author"
       ],
       "commentCount": 3
     },
