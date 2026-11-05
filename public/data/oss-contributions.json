@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-11-04T13:57:31.923Z",
+  "last_updated": "2026-11-05T14:17:16.530Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 77,
-    "openPRs": 24,
+    "mergedPRs": 78,
+    "openPRs": 23,
     "issuesCreated": 39,
     "issuesAssigned": 22,
     "reviewsGiven": 62
@@ -341,7 +341,7 @@
       "labels": [
         "scope:refactor"
       ],
-      "commentCount": 3
+      "commentCount": 6
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKjdOVg",
@@ -1556,20 +1556,18 @@
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABF5cqVQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Keep cargo-miri arguments in one place",
       "repo": "rust-lang/miri",
       "url": "https://github.com/rust-lang/miri/pull/5364",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-30T12:56:25Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-04T16:25:50Z",
+      "closedAt": "2026-11-04T16:25:50Z",
       "body": "cargo-miri currently reads env::args() each time it checks a flag. This change reads the arguments once, then passes them through the relevant phases and helpers.\nThis prepares the argument handling for the argfile work in #5234 (first step). It doesn’t add argfile support yet; the existing error re",
-      "labels": [
-        "S-waiting-on-review"
-      ],
-      "commentCount": 3
+      "labels": [],
+      "commentCount": 5
     },
     {
       "id": "I_kwDOAAsO6M8AAAABUIOaEA",
@@ -2095,7 +2093,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 11
+      "commentCount": 12
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEJTBCw",
