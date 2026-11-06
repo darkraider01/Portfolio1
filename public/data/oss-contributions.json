@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-11-05T14:17:16.530Z",
+  "last_updated": "2026-11-06T13:55:49.362Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 78,
     "openPRs": 23,
     "issuesCreated": 39,
     "issuesAssigned": 22,
-    "reviewsGiven": 62
+    "reviewsGiven": 63
   },
   "items": [
     {
@@ -31,6 +31,21 @@
         "R-loom-util"
       ],
       "commentCount": 1
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABMQ9ROA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(appender-tracing): add support for valuable fields",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3854",
+      "state": "OPEN",
+      "createdAt": "2026-11-02T09:32:43Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #2819\nChanges\nAdds a valuable feature to opentelemetry-appender-tracing. With it enabled (and --cfg tracing_unstable), fields recorded via valuable end up as proper Map/ListAny attributes instead of a Debug string. Works for event fields and span attributes.\n#[derive(Valuable)]\nstruct User { i",
+      "labels": [],
+      "commentCount": 6
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABL4SlPg",
@@ -1062,7 +1077,8 @@
       "labels": [
         "C-bug",
         "A-tokio",
-        "M-io"
+        "M-io",
+        "I-hang"
       ],
       "commentCount": 3
     },
@@ -1444,7 +1460,7 @@
       "labels": [
         "performance"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "PR_kwDODS0WD88AAAABGj0L-g",
