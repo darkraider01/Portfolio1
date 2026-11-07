@@ -1,14 +1,46 @@
 {
-  "last_updated": "2026-11-06T13:55:49.362Z",
+  "last_updated": "2026-11-07T12:40:00.368Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 78,
-    "openPRs": 23,
+    "openPRs": 25,
     "issuesCreated": 39,
     "issuesAssigned": 22,
     "reviewsGiven": 63
   },
   "items": [
+    {
+      "id": "PR_kwDODS0WD88AAAABNggzrA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "perf(sdk): consolidate tracer and recording span ownership into single Arc",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3859",
+      "state": "OPEN",
+      "createdAt": "2026-11-07T12:10:17Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Eelated #3838\nThis is my attempt at Option 1 from #3838, combining the two Arcs so recording spans don't have to update two separate reference counts every time they're created or dropped.\nThe main change is that SdkTracer now holds a single Arc<SdkTracerInner> containing the scope and provider, and",
+      "labels": [],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOAr8sRM8AAAABNgMvyA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Rename evaluation context bindings in x86 intrinsics",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5577",
+      "state": "OPEN",
+      "createdAt": "2026-11-07T11:25:13Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #5569.\nRenames this to ecx for evaluation context bindings in these x86\nintrinsic files:\n\nbmi.rs\ngfni.rs\nsha.rs\nsse3.rs\nssse3.rs\n\nThis is a naming-only change.",
+      "labels": [
+        "S-waiting-on-review"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABMde9ng",
       "category": "reviewsGiven",
@@ -565,7 +597,7 @@
       "closedAt": null,
       "body": "Fixes #3804\nChanges\n\nretain whether explicit and exponential histogram sums were recorded without changing the existing sum() behavior\nexpose sum_if_recorded() for exporters\nomit absent histogram sums from OTLP output\ncover both omitted and recorded sum cases\n\nTesting\n\ncargo fmt --all -- --check\nCAR",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 6
     },
     {
       "id": "I_kwDOAAsO6M8AAAABZOFsrQ",
