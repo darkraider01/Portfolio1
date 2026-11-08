@@ -1,14 +1,48 @@
 {
-  "last_updated": "2026-11-07T12:40:00.368Z",
+  "last_updated": "2026-11-08T12:57:13.322Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 78,
-    "openPRs": 25,
+    "mergedPRs": 79,
+    "openPRs": 26,
     "issuesCreated": 39,
     "issuesAssigned": 22,
-    "reviewsGiven": 63
+    "reviewsGiven": 66
   },
   "items": [
+    {
+      "id": "PR_kwDOAr8sRM8AAAABNljKgg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Rename evaluation context bindings in Unix shims",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5589",
+      "state": "OPEN",
+      "createdAt": "2026-11-07T23:17:43Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #5569.\nRenames this to ecx for evaluation context bindings in:\n\nsrc/shims/unix/env.rs\nsrc/shims/unix/fd.rs\nsrc/shims/unix/freebsd/sync.rs\nsrc/shims/unix/macos/sync.rs\nsrc/shims/unix/mem.rs\n\nThis is a naming-only change.",
+      "labels": [
+        "S-waiting-on-review"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOAr8sRM8AAAABNjUngA",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Expand incoming argfiles in cargo-miri",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5587",
+      "state": "OPEN",
+      "createdAt": "2026-11-07T18:00:28Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #5234.\nThis is the second step of the proposed plan. It expands incoming argfiles before cargo-miri inspects compiler and rustdoc arguments, allowing those arguments to be preserved for the later Miri invocation after Cargo removes its temporary argfile.\nOne case I'm unsure about is literal ",
+      "labels": [
+        "S-waiting-on-review"
+      ],
+      "commentCount": 1
+    },
     {
       "id": "PR_kwDODS0WD88AAAABNggzrA",
       "category": "openPRs",
@@ -20,25 +54,23 @@
       "createdAt": "2026-11-07T12:10:17Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Eelated #3838\nThis is my attempt at Option 1 from #3838, combining the two Arcs so recording spans don't have to update two separate reference counts every time they're created or dropped.\nThe main change is that SdkTracer now holds a single Arc<SdkTracerInner> containing the scope and provider, and",
+      "body": "Reelated #3838\nThis is my attempt at Option 1 from #3838, combining the two Arcs so recording spans don't have to update two separate reference counts every time they're created or dropped.\nThe main change is that SdkTracer now holds a single Arc<SdkTracerInner> containing the scope and provider, an",
       "labels": [],
       "commentCount": 2
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABNgMvyA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Rename evaluation context bindings in x86 intrinsics",
       "repo": "rust-lang/miri",
       "url": "https://github.com/rust-lang/miri/pull/5577",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-11-07T11:25:13Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-07T16:48:21Z",
+      "closedAt": "2026-11-07T16:48:21Z",
       "body": "Part of #5569.\nRenames this to ecx for evaluation context bindings in these x86\nintrinsic files:\n\nbmi.rs\ngfni.rs\nsha.rs\nsse3.rs\nssse3.rs\n\nThis is a naming-only change.",
-      "labels": [
-        "S-waiting-on-review"
-      ],
+      "labels": [],
       "commentCount": 0
     },
     {
@@ -80,6 +112,25 @@
       "commentCount": 6
     },
     {
+      "id": "PR_kwDOBAsbdc8AAAABMGXp1w",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fs: wait for in-flight writes in `File::metadata`",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8751",
+      "state": "MERGED",
+      "createdAt": "2026-11-01T11:35:44Z",
+      "mergedAt": "2026-11-08T10:40:48Z",
+      "closedAt": "2026-11-08T10:40:49Z",
+      "body": "File::write returns once the data is handed to a blocking task, and File::metadata queries the file right away without waiting for that task. So write_all followed by metadata can report the old length, as in the example from #7378. Thus, wait for in-flight operations first, like try_clone, sync_all",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-fs"
+      ],
+      "commentCount": 1
+    },
+    {
       "id": "PR_kwDOBAsbdc8AAAABL4SlPg",
       "category": "reviewsGiven",
       "type": "pr",
@@ -99,6 +150,25 @@
         "S-waiting-on-review"
       ],
       "commentCount": 0
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABLzkKYw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "stream: ignore the lower size hint when collecting into `Result`",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8744",
+      "state": "MERGED",
+      "createdAt": "2026-10-30T16:00:07Z",
+      "mergedAt": "2026-11-08T11:21:16Z",
+      "closedAt": "2026-11-08T11:21:16Z",
+      "body": "Collecting into a Result preallocates the inner collection using the lower bound of the stream's size hint, but it stops at the first error. A stream with a large lower bound panics with \"capacity overflow\" even though only a few items are collected, for example:\nlet res: Result<Vec<u32>, &str> = st",
+      "labels": [
+        "C-bug",
+        "M-stream",
+        "A-tokio-stream"
+      ],
+      "commentCount": 2
     },
     {
       "id": "PR_kwDONpzSS88AAAABLwgdrg",
@@ -269,6 +339,26 @@
       "commentCount": 1
     },
     {
+      "id": "PR_kwDOBAsbdc8AAAABLOUiSg",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "net: add TcpListener::take_error",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8730",
+      "state": "OPEN",
+      "createdAt": "2026-10-28T09:27:46Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Every other socket-ish type already has this: TcpStream, TcpSocket, UdpSocket, UnixStream, UnixDatagram, and even UnixListener all expose take_error, returning the SO_ERROR socket option. TcpListener was the one outlier -- mio's underlying TcpListener already exposes take_error unconditionally (same",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-net",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 0
+    },
+    {
       "id": "I_kwDOAQnScc8AAAABaZehDg",
       "category": "issuesCreated",
       "type": "issue",
@@ -327,21 +417,20 @@
       "title": "runtime: drop io_uring ring when reactor registration fails",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8726",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-26T00:24:01Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T05:21:46Z",
+      "closedAt": "2026-11-08T05:21:46Z",
       "body": "Motivation\nHandle::try_init creates the io_uring ring and then registers its fd with the mio reactor. If that registration fails, the error is returned but the ring stays stored.\nThe next call sees uring.is_some() and skips registration. check_and_init then caches the probe. Later file operations tr",
       "labels": [
         "C-bug",
         "A-tokio",
         "M-io",
         "M-runtime",
-        "S-waiting-on-review",
         "R-loom-time-driver",
         "T-io-uring"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOAQnScc8AAAABKmnZhQ",
@@ -480,7 +569,7 @@
         "S-waiting-on-review",
         "T-performance"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOAAsO6M8AAAABKdd6eA",
@@ -567,10 +656,10 @@
       "title": "io: drop replaced wakers outside the I/O driver locks",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8706",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-23T13:19:03Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T12:39:06Z",
+      "closedAt": "2026-11-08T12:39:06Z",
       "body": "ScheduledIo::poll_readiness and the Readiness future replace the stored waker with Waker::clone_from while the waiter list mutex is held, and ScheduledIo::clear_wakers (run from Registration::drop) drops both slot wakers under the same lock, so a replaced waker's destructor runs with the lock held. ",
       "labels": [
         "C-bug",
@@ -578,7 +667,6 @@
         "M-io",
         "M-net",
         "I-hang",
-        "S-waiting-on-review",
         "R-loom-time-driver",
         "T-io-uring"
       ],
@@ -716,10 +804,10 @@
         "C-bug",
         "A-tokio",
         "M-time",
-        "S-waiting-on-review",
+        "S-waiting-on-author",
         "R-loom-time-driver"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJ8htvw",
@@ -782,22 +870,23 @@
       "id": "PR_kwDOBAsbdc8AAAABJ2tzVQ",
       "category": "reviewsGiven",
       "type": "pr",
-      "title": "codec: rescan after input buffers shrink",
+      "title": "docs(codec): clarify read buffer mutation requirements",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8690",
       "state": "OPEN",
       "createdAt": "2026-10-21T18:20:06Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "What\nPrevent LinesCodec and AnyDelimiterCodec from panicking when an input buffer is shortened between decode calls.\nWhy\nThe cached scan offset may exceed the new buffer length. Slicing from that offset panics.\nImplementation\nReset the scan offset when it is past the current scan range. Add regressi",
+      "body": "What\nDocument that Framed::read_buffer_mut() and FramedRead::read_buffer_mut() should only be used to append data.\nWhy\nDecoders may cache scan offsets. Removing or changing buffered bytes can cause missed frame boundaries or panics.\nImplementation\nAdd a warning to both methods' docs. No decoder beha",
       "labels": [
-        "C-bug",
+        "T-docs",
         "A-tokio-util",
+        "C-maintenance",
         "S-waiting-on-review",
         "M-codec",
         "R-loom-util"
       ],
-      "commentCount": 2
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJyrb3g",
@@ -968,7 +1057,7 @@
       "createdAt": "2026-10-18T11:58:38Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Picks up #7846 from @tahmid-23, rebased on master and aligned with rename\nSupersedes #7846",
+      "body": "Picks up #7846 from @tahmid-23, rebased on master and aligned with rename\nCloses: #7846",
       "labels": [
         "C-enhancement",
         "A-tokio",
@@ -1033,7 +1122,7 @@
         "A-tokio",
         "M-fs",
         "I-crash",
-        "S-waiting-on-review"
+        "S-waiting-on-author"
       ],
       "commentCount": 0
     },
@@ -1746,7 +1835,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 5
+      "commentCount": 7
     },
     {
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
