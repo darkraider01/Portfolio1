@@ -1,29 +1,44 @@
 {
-  "last_updated": "2026-11-08T12:57:13.322Z",
+  "last_updated": "2026-11-09T15:35:52.458Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 79,
-    "openPRs": 26,
+    "mergedPRs": 83,
+    "openPRs": 23,
     "issuesCreated": 39,
     "issuesAssigned": 22,
     "reviewsGiven": 66
   },
   "items": [
     {
-      "id": "PR_kwDOAr8sRM8AAAABNljKgg",
+      "id": "PR_kwDOAr8sRM8AAAABNzeMhw",
       "category": "openPRs",
+      "type": "pr",
+      "title": "Rename evaluation context bindings in shims",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5603",
+      "state": "OPEN",
+      "createdAt": "2026-11-09T09:03:15Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #5569.\nRenames this to ecx for evaluation context bindings in:\n\nsrc/shims/env.rs\nsrc/shims/files.rs\nsrc/shims/math.rs\nsrc/shims/native_lib/mod.rs\nsrc/shims/readiness.rs",
+      "labels": [
+        "S-waiting-on-review"
+      ],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDOAr8sRM8AAAABNljKgg",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Rename evaluation context bindings in Unix shims",
       "repo": "rust-lang/miri",
       "url": "https://github.com/rust-lang/miri/pull/5589",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-11-07T23:17:43Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T13:07:49Z",
+      "closedAt": "2026-11-08T13:07:49Z",
       "body": "Part of #5569.\nRenames this to ecx for evaluation context bindings in:\n\nsrc/shims/unix/env.rs\nsrc/shims/unix/fd.rs\nsrc/shims/unix/freebsd/sync.rs\nsrc/shims/unix/macos/sync.rs\nsrc/shims/unix/mem.rs\n\nThis is a naming-only change.",
-      "labels": [
-        "S-waiting-on-review"
-      ],
+      "labels": [],
       "commentCount": 2
     },
     {
@@ -80,16 +95,15 @@
       "title": "util: fix `spawn_pinned` source location for console",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8753",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-11-03T03:01:49Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T18:39:21Z",
+      "closedAt": "2026-11-08T18:39:21Z",
       "body": "LocalPoolHandle::spawn_pinned is missing #[track_caller], so tokio-console reports the location of its task inside tokio-util instead of at the caller (#5038). This adds the attribute, which spawn_pinned_by_idx already has, plus a regression test that needs --cfg tokio_unstable (RUSTFLAGS=\"--cfg tok",
       "labels": [
         "C-bug",
         "A-tokio-util",
         "M-task",
-        "S-waiting-on-review",
         "A-ci",
         "M-tracing",
         "R-loom-util"
@@ -240,12 +254,12 @@
         "A-tokio",
         "M-io",
         "M-runtime",
-        "S-waiting-on-review",
+        "S-waiting-on-author",
         "R-loom-time-driver",
         "R-loom-current-thread",
         "R-loom-multi-thread"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABLS8mQg",
@@ -345,16 +359,15 @@
       "title": "net: add TcpListener::take_error",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8730",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-28T09:27:46Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-09T12:34:00Z",
+      "closedAt": "2026-11-09T12:34:00Z",
       "body": "Every other socket-ish type already has this: TcpStream, TcpSocket, UdpSocket, UnixStream, UnixDatagram, and even UnixListener all expose take_error, returning the SO_ERROR socket option. TcpListener was the one outlier -- mio's underlying TcpListener already exposes take_error unconditionally (same",
       "labels": [
         "C-enhancement",
         "A-tokio",
-        "M-net",
-        "S-waiting-on-review"
+        "M-net"
       ],
       "commentCount": 0
     },
@@ -464,15 +477,15 @@
     },
     {
       "id": "PR_kwDONpzSS88AAAABKjhMsg",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "refactor(tool/internal/setup): prepare instrumentation rules once per setup",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1553",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-25T08:58:48Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-09T12:37:35Z",
+      "closedAt": "2026-11-09T12:37:35Z",
       "body": "I noticed we were loading and indexing the same instrumentation rules on every pass through hook-injected dependencies. This prepares the rule index once during setup and reuses it across matching passes.\nKept it simple: just passing the prepared index around, without a cache or extra synchronizatio",
       "labels": [
         "scope:refactor"
@@ -557,16 +570,15 @@
       "title": "io: only validate appended bytes in `read_line`",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8717",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-24T23:40:24Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T17:56:10Z",
+      "closedAt": "2026-11-08T17:56:10Z",
       "body": "read_line appends to the caller's string, but afterwards it runs String::from_utf8 over the whole buffer, including everything that was already in it. That part came from a String, and read_until only ever appends to the buffer, so it's still valid. If you keep reading lines into the same string wit",
       "labels": [
         "C-enhancement",
         "A-tokio",
         "M-io",
-        "S-waiting-on-review",
         "T-performance"
       ],
       "commentCount": 1
@@ -710,22 +722,21 @@
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKFWy6A",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "time: remove unreachable auto-advance handling from the alternative timer",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8702",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-22T17:46:26Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T13:24:23Z",
+      "closedAt": "2026-11-08T13:24:23Z",
       "body": "The alternative timer only runs on multi-thread runtimes, which don’t support pausing time. Current-thread runtimes always use the traditional timer, so the alternative timer’s auto-advance hooks and did_wake tracking are unused.\nThis PR removes that code and simplifies timer maintenance to return t",
       "labels": [
         "C-maintenance",
         "A-tokio",
         "M-runtime",
         "M-time",
-        "S-waiting-on-review",
         "R-loom-time-driver",
         "R-loom-multi-thread"
       ],
@@ -873,16 +884,15 @@
       "title": "docs(codec): clarify read buffer mutation requirements",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8690",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-21T18:20:06Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T17:58:41Z",
+      "closedAt": "2026-11-08T17:58:41Z",
       "body": "What\nDocument that Framed::read_buffer_mut() and FramedRead::read_buffer_mut() should only be used to append data.\nWhy\nDecoders may cache scan offsets. Removing or changing buffered bytes can cause missed frame boundaries or panics.\nImplementation\nAdd a warning to both methods' docs. No decoder beha",
       "labels": [
         "T-docs",
         "A-tokio-util",
         "C-maintenance",
-        "S-waiting-on-review",
         "M-codec",
         "R-loom-util"
       ],
@@ -1205,23 +1215,22 @@
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABHtQcNw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Close child stdin on shutdown",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8619",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-10T15:08:15Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T18:16:30Z",
+      "closedAt": "2026-11-08T18:16:30Z",
       "body": "Follow-up to the shutdown issue noted in #8603.\nChildStdin::shutdown() currently succeeds without closing the pipe, so a child waiting for EOF can hang while the stdin handle remains alive.\nThis closes child stdin on shutdown on Unix and Windows. Tests cover EOF delivery, repeated shutdown, and use ",
       "labels": [
         "C-bug",
         "A-tokio",
-        "M-process",
-        "S-waiting-on-review"
+        "M-process"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOAAsO6M8AAAABHnVcvA",
@@ -1491,7 +1500,7 @@
       "closedAt": null,
       "body": "The fast path for wc -m and wc -cm can count invalid or incomplete UTF-8 sequences as characters. This adds validation in UTF-8 locales and handles characters split across reads.\nIt also skips complete ASCII blocks before validation to avoid scanning those bytes again. Regression tests cover malform",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "PR_kwDODS0WD88AAAABG5FiBA",
@@ -1733,10 +1742,10 @@
       "title": "Sharded spawn_blocking queue can leave later shards waiting under load",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/issues/8527",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-29T19:01:30Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-09T11:50:50Z",
       "body": "I've been testing the opt-in sharded spawn_blocking queue from #8067, and noticed that tasks in later shards can wait a lot longer once the blocking pool fills up. Throughput looks about the same, but the wait times don't.\nWhy this seems to happen\nIn normal builds, producers pick one of 16 shards at",
       "labels": [
         "C-bug",
@@ -2870,7 +2879,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 7
+      "commentCount": 8
     },
     {
       "id": "PR_kwDONpzSS88AAAABBtWw3Q",
@@ -3813,16 +3822,15 @@
       "title": "process: enqueue orphans when spawn setup fails after OS spawn",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8359",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-08-12T17:36:00Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-08T17:56:07Z",
+      "closedAt": "2026-11-08T17:56:07Z",
       "body": "Motivation\nAfter std::process::Command::spawn succeeds, Tokio still has to wrap stdio\n(PollEvented), optionally install a pidfd reaper, and create a SIGCHLD\nlistener. If any of those steps failed, build_child returned Err and\ndropped the StdChild without try_wait and without\nGlobalOrphanQueue::push_",
       "labels": [
         "C-bug",
         "A-tokio",
-        "M-process",
-        "S-waiting-on-review"
+        "M-process"
       ],
       "commentCount": 1
     },
