@@ -1,30 +1,64 @@
 {
-  "last_updated": "2026-11-09T15:35:52.458Z",
+  "last_updated": "2026-11-10T14:32:02.628Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 83,
-    "openPRs": 23,
+    "mergedPRs": 85,
+    "openPRs": 20,
     "issuesCreated": 39,
     "issuesAssigned": 22,
-    "reviewsGiven": 66
+    "reviewsGiven": 68
   },
   "items": [
     {
+      "id": "PR_kwDODS0WD88AAAABN9fsXw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "fix: read the browser clock on wasm64",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3862",
+      "state": "OPEN",
+      "createdAt": "2026-11-09T21:57:49Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Changes\nOn wasm64 the code falls back to SystemTime::now(), which panics in the browser with \"time not implemented on this platform\". It now uses the browser clock on every wasm target, and the js-sys dependency follows.\nopentelemetry-http gets the same treatment, so its blocking and native HTTP cli",
+      "labels": [],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABN4QkXw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "sync: don't hold a mutex permit while yielding for coop budget",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8773",
+      "state": "OPEN",
+      "createdAt": "2026-11-09T15:26:26Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #8772.\nA task driving a FuturesUnordered of futures that lock the same mutex, while locking it itself between polls, deadlocks on 1.54.x once the coop budget runs out: lock() takes the permit and then yields for budget, and the permit ends up stranded on a future that never gets polled again.\n",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-sync",
+        "S-waiting-on-review",
+        "R-loom-sync"
+      ],
+      "commentCount": 3
+    },
+    {
       "id": "PR_kwDOAr8sRM8AAAABNzeMhw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Rename evaluation context bindings in shims",
       "repo": "rust-lang/miri",
       "url": "https://github.com/rust-lang/miri/pull/5603",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-11-09T09:03:15Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-09T22:24:34Z",
+      "closedAt": "2026-11-09T22:24:34Z",
       "body": "Part of #5569.\nRenames this to ecx for evaluation context bindings in:\n\nsrc/shims/env.rs\nsrc/shims/files.rs\nsrc/shims/math.rs\nsrc/shims/native_lib/mod.rs\nsrc/shims/readiness.rs",
-      "labels": [
-        "S-waiting-on-review"
-      ],
-      "commentCount": 1
+      "labels": [],
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABNljKgg",
@@ -775,8 +809,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Calling force_flush() or shutdown() inside a spawned Tokio task can hang when no worker is available to run the processor.\nThis documents how to use spawn_blocking for these calls and adds a single-worker test verifying that flush and shutdown export the queued spans.",
-      "labels": [],
-      "commentCount": 2
+      "labels": [
+        "Stale"
+      ],
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJ-T0rg",
@@ -815,10 +851,10 @@
         "C-bug",
         "A-tokio",
         "M-time",
-        "S-waiting-on-author",
+        "S-waiting-on-review",
         "R-loom-time-driver"
       ],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJ8htvw",
@@ -1033,7 +1069,7 @@
       "closedAt": null,
       "body": "Fixes #2505\nDesign discussion issue (if applicable): #2505\nChanges\nRe-adds MetricProducer to opentelemetry_sdk, behind a new experimental_metrics_producer feature. It was removed in #2105 only to keep the scope of the Metrics SDK stable release small. In #2505, @cijothomas said there are no blockers",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJJo8Xw",
@@ -1594,15 +1630,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABGj0L-g",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "perf(sdk): avoid tracer clones for non-recording spans",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3774",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-04T14:43:12Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-10T10:51:34Z",
+      "closedAt": "2026-11-10T10:51:34Z",
       "body": "Related to #2800, specifically the non-recording span creation part.\nNon-recording spans don't need the provider, so this avoids cloning the provider Arc when constructing them in SdkTracer. Non-recording spans still keep their instrumentation scope so span.instrumentation_scope() continues to work ",
       "labels": [
         "performance"
@@ -1844,7 +1880,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 7
+      "commentCount": 8
     },
     {
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
@@ -2315,8 +2351,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Part of #3127\nChanges\nAdds an explicit helper function in opentelemetry-sdk to configure the process-global text map propagator from the OTEL_PROPAGATORS environment variable:\nopentelemetry_sdk::propagation::set_global_text_map_propagator_from_env()\nKey details:\n\nRespects the OpenTelemetry specifica",
-      "labels": [],
-      "commentCount": 5
+      "labels": [
+        "Stale"
+      ],
+      "commentCount": 6
     },
     {
       "id": "PR_kwDOCdoc188AAAABD1rHHA",
@@ -2527,23 +2565,6 @@
       "body": "Description\nGuards against nil pointer dereferences in instrumentation/net/http/client's AfterRoundTrip hook when logging debug messages.\nSpecifically:\n\nCheck if res.Request != nil before reading res.Request.Method and res.Request.URL.\nCheck if res.Request.URL != nil before calling res.Request.URL.S",
       "labels": [
         "scope:fix"
-      ],
-      "commentCount": 4
-    },
-    {
-      "id": "PR_kwDODS0WD88AAAABDC06sg",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix(metrics): retain delta baseline across missed collection in PrecomputedSum",
-      "repo": "open-telemetry/opentelemetry-rust",
-      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3720",
-      "state": "OPEN",
-      "createdAt": "2026-09-10T19:25:47Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Fixes #3714\nChanges\n\nBaseline retention & eviction: Replaced the raw cached value in PrecomputedSum::reported with BaselineEntry<T> tracking last_value and consecutive missed_count.\n\nIncrements missed_count at the start of each collection cycle.\nResets missed_count to 0 whenever an attribute set has",
-      "labels": [
-        "Stale"
       ],
       "commentCount": 4
     },
@@ -2862,7 +2883,7 @@
         "scope:feat",
         "effort:high"
       ],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "PR_kwDONpzSS88AAAABBvQJJA",
