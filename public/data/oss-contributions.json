@@ -1,14 +1,34 @@
 {
-  "last_updated": "2026-11-10T14:32:02.628Z",
+  "last_updated": "2026-11-11T13:46:43.260Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 85,
     "openPRs": 20,
     "issuesCreated": 39,
     "issuesAssigned": 22,
-    "reviewsGiven": 68
+    "reviewsGiven": 69
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABN-8cpA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "tokio-test: return shared scripted I/O errors",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8774",
+      "state": "OPEN",
+      "createdAt": "2026-11-10T00:12:56Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Keeping an io::Builder alive, cloning it, or building sibling mocks makes scripted read/write errors panic because extraction assumes sole Arc ownership. Return the original error when uniquely owned; otherwise reconstruct OS/kind errors or retain custom errors through Arc<io::Error>. This preserves",
+      "labels": [
+        "C-bug",
+        "A-tokio-test",
+        "M-io",
+        "S-waiting-on-review"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDODS0WD88AAAABN9fsXw",
       "category": "reviewsGiven",
@@ -20,7 +40,7 @@
       "createdAt": "2026-11-09T21:57:49Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Changes\nOn wasm64 the code falls back to SystemTime::now(), which panics in the browser with \"time not implemented on this platform\". It now uses the browser clock on every wasm target, and the js-sys dependency follows.\nopentelemetry-http gets the same treatment, so its blocking and native HTTP cli",
+      "body": "Changes\nOn wasm64 the code falls back to SystemTime::now(), which panics in the browser with \"time not implemented on this platform\". It now uses the browser clock on every wasm target, and the js-sys dependency follows.\nwasm32 and native builds behave exactly as before.\nTesting\nwasm64 is a tier 3 t",
       "labels": [],
       "commentCount": 3
     },
@@ -31,19 +51,18 @@
       "title": "sync: don't hold a mutex permit while yielding for coop budget",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8773",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-11-09T15:26:26Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-10T16:41:21Z",
       "body": "Fixes #8772.\nA task driving a FuturesUnordered of futures that lock the same mutex, while locking it itself between polls, deadlocks on 1.54.x once the coop budget runs out: lock() takes the permit and then yields for budget, and the permit ends up stranded on a future that never gets polled again.\n",
       "labels": [
         "C-bug",
         "A-tokio",
         "M-sync",
-        "S-waiting-on-review",
         "R-loom-sync"
       ],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABNzeMhw",
@@ -809,9 +828,7 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Calling force_flush() or shutdown() inside a spawned Tokio task can hang when no worker is available to run the processor.\nThis documents how to use spawn_blocking for these calls and adds a single-worker test verifying that flush and shutdown export the queued spans.",
-      "labels": [
-        "Stale"
-      ],
+      "labels": [],
       "commentCount": 4
     },
     {
@@ -1168,7 +1185,7 @@
         "A-tokio",
         "M-fs",
         "I-crash",
-        "S-waiting-on-author"
+        "S-waiting-on-review"
       ],
       "commentCount": 0
     },
@@ -1580,10 +1597,10 @@
       "title": "proposal : Add diagnostics for why instrumentation rules are rejected",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1453",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-10-06T08:13:04Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-11T10:36:38Z",
       "body": "I've been looking at this while working on #1333.\n#1333 helps with the case where a rule does apply, since we can see what it actually changed. But I think there's still a pretty annoying debugging gap for the opposite case:\nwhy didn't this package/function get instrumented?\nA rule might make it thr",
       "labels": [
         "scope:feat",
@@ -2264,18 +2281,18 @@
       "id": "PR_kwDONpzSS88AAAABETXJaw",
       "category": "reviewsGiven",
       "type": "pr",
-      "title": "fix(tool): keep published rules compatible with released otelc",
+      "title": "fix(instrumentation): require otelc v1.2.0 in published rule files",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1381",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-09-20T11:15:48Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Fixes #1368\nSummary\nPublished instrumentation rule files must remain readable by the currently\nsupported released otelc versions. #1270 added a top-level version: key to\nall 30 published rule files under instrumentation/, but released otelc\nv1.0.1/v1.1.0 parse rule files as map[string]map[string]any",
+      "mergedAt": "2026-11-11T12:08:46Z",
+      "closedAt": "2026-11-11T12:08:46Z",
+      "body": "Fixes #1368\nSummary\n#1270 added a top-level version: \"v1.0.0\" key to the published rule files under instrumentation/. Released otelc v1.0.1/v1.1.0 parse every top-level key as a rule, so they reject that key:\nyaml: unmarshal errors: line 1: cannot unmarshal !!str v1.0.0 into map[string]interface {}\n",
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 12
+      "commentCount": 14
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABEJTBCw",
@@ -2351,9 +2368,7 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Part of #3127\nChanges\nAdds an explicit helper function in opentelemetry-sdk to configure the process-global text map propagator from the OTEL_PROPAGATORS environment variable:\nopentelemetry_sdk::propagation::set_global_text_map_propagator_from_env()\nKey details:\n\nRespects the OpenTelemetry specifica",
-      "labels": [
-        "Stale"
-      ],
+      "labels": [],
       "commentCount": 6
     },
     {
