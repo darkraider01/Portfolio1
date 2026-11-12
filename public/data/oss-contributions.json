@@ -1,14 +1,120 @@
 {
-  "last_updated": "2026-11-11T13:46:43.260Z",
+  "last_updated": "2026-11-12T14:50:14.696Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 85,
-    "openPRs": 20,
+    "openPRs": 23,
     "issuesCreated": 39,
-    "issuesAssigned": 22,
-    "reviewsGiven": 69
+    "issuesAssigned": 23,
+    "reviewsGiven": 71
   },
   "items": [
+    {
+      "id": "PR_kwDONpzSS88AAAABOpbWIQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(tool): resolve compiler and linker archives for Go 1.28 and newer",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1773",
+      "state": "OPEN",
+      "createdAt": "2026-11-12T13:05:57Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #1740\nProblem\nStarting with Go 1.28, go list -export no longer produces compiler object archives (golang/go#79427). Instead, it outputs tools-format export data (x/tools), which cmd/compile and cmd/link reject when resolving rule-added imports via -importcfg.\nChanges\n\nArchive resolution (archi",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABOljnPQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "tokio-util: reject zero-length frames that make no progress with num_skip(0)",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8781",
+      "state": "OPEN",
+      "createdAt": "2026-11-12T08:09:21Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "With .num_skip(0) and a zero-length frame, LengthDelimitedCodec returns an empty frame without consuming any input — decode_head advances 0 bytes and decode_data(0) splits 0 bytes, so the same head is read again on every call. Under Framed this spins a worker thread at 100% CPU; a remote peer only n",
+      "labels": [
+        "C-bug",
+        "A-tokio-util",
+        "I-hang",
+        "S-waiting-on-review",
+        "M-codec",
+        "R-loom-util"
+      ],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABOeh3dQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(otlp): isolate meter providers in metrics integration tests",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3865",
+      "state": "OPEN",
+      "createdAt": "2026-11-11T20:42:54Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixs a race where concurrent metrics tests could replace the global meter provider, causing a test to record metrics through a different provider than the one it shuts down.\nEach test now creates its counter from its own provider.\nThis addresses the failure in this CI job.",
+      "labels": [],
+      "commentCount": 1
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABObceVQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "feat(pkg/runtime): option to suppress parentless client spans and excluded server paths",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1770",
+      "state": "OPEN",
+      "createdAt": "2026-11-11T16:44:41Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Closes #1711\nThis PR adds an optional sampler to avoid creating unnecessary traces from background operations and health-check requests.\nIt adds two configuration options:\n\nOTEL_GO_DROP_ROOT_CLIENT_PRODUCER=true to drop CLIENT and PRODUCER spans that have no parent.\nOTEL_GO_EXCLUDED_SERVER_PATHS=/he",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDOAr8sRM8AAAABeSyXXA",
+      "category": "issuesAssigned",
+      "type": "issue",
+      "title": "Test the interactions of O_APPEND and seek + write/read/pwrite/pread",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/issues/5615",
+      "state": "OPEN",
+      "createdAt": "2026-11-11T11:58:19Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Apparently that interaction is far from obvious: does it use an explicitly set file cursor position or always write at the end? The docs seem to say that the file cursor position should be entirely ignored. What about reads? What about pwrite? There, apparently the position should matter, but we imp",
+      "labels": [
+        "C-bug",
+        "A-shims",
+        "E-good-first-issue",
+        "A-files"
+      ],
+      "commentCount": 3
+    },
+    {
+      "id": "PR_kwDODS0WD88AAAABOTXPwQ",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "feat(otlp): expose gRPC message size limits",
+      "repo": "open-telemetry/opentelemetry-rust",
+      "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3864",
+      "state": "OPEN",
+      "createdAt": "2026-11-11T06:15:22Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Fixes #1285\nChanges\nOTLP's generated tonic clients support message size limits, but exporter users cannot configure them. Add with_max_encoding_message_size and with_max_decoding_message_size to WithTonicConfig for trace, metric, and log exporters, including exporters built with a custom channel.\nBo",
+      "labels": [],
+      "commentCount": 2
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABN-8cpA",
       "category": "reviewsGiven",
@@ -122,7 +228,7 @@
       "createdAt": "2026-11-07T12:10:17Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Reelated #3838\nThis is my attempt at Option 1 from #3838, combining the two Arcs so recording spans don't have to update two separate reference counts every time they're created or dropped.\nThe main change is that SdkTracer now holds a single Arc<SdkTracerInner> containing the scope and provider, an",
+      "body": "Related to #3838. The base includes #3774.\nRecording spans currently clone separate scope and provider Arcs. This change puts the scope and provider in a single Arc<SdkTracerInner>, so recording spans update one reference count when they are created and dropped.\nNon-recording spans use a detached sc",
       "labels": [],
       "commentCount": 2
     },
@@ -371,10 +477,10 @@
       "title": "bug(instrumentation/redis): invalid server.address and missing server.port on Sentinel, Failover, and pre-v9.9 Conn",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/1614",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-10-28T13:11:27Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-11T16:07:45Z",
       "body": "Description\nDiscovered while reviewing PR #1584. Affects all go-redis/v9 versions (v9.0.0+).\nPer Redis Semantic Conventions, Redis spans must carry server.address (hostname or IP) and integer server.port. Three client types violate this:\n\nNewSentinelClient & pre-v9.9 Client.Conn(): Both pass client.",
       "labels": [
         "bug",
@@ -382,7 +488,7 @@
         "effort:moderate",
         "instrumentation"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABLOVeKQ",
@@ -652,7 +758,7 @@
         "T-compiler",
         "S-waiting-on-review"
       ],
-      "commentCount": 11
+      "commentCount": 12
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKZyIZw",
@@ -1063,7 +1169,7 @@
       "createdAt": "2026-10-20T04:09:21Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Flooring current time adds a fractional millisecond to park duration, so a 17 ms tick reached from 0.9 ms completes at 17.9 ms in paused time.\nSubtract precise elapsed duration in both timer schedulers while keeping upward deadline rounding and expired waits.\nVerify 50 paused-clock cases with and wi",
+      "body": "Flooring current time adds a fractional millisecond to park duration, so a 17 ms tick reached from 0.9 ms completes at 17.9 ms in paused time.\nSubtract precise elapsed duration in both timer schedulers while keeping upward deadline rounding and expired waits.\nVerify paused-clock cases with and witho",
       "labels": [
         "C-bug",
         "A-tokio",
@@ -1643,7 +1749,7 @@
       "labels": [
         "performance"
       ],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "PR_kwDODS0WD88AAAABGj0L-g",
@@ -4098,7 +4204,7 @@
       "closedAt": null,
       "body": "Updates #3442\nChanges\n\nAdded Serialize/Deserialization for NaN,Infinity,-Infinity to the following metrics fields:\n\n\n\n\nSource\nField\nType\n\n\n\n\nHistogramDataPoint\nsum, min, max\nOption<f64>\n\n\nHistogramDataPoint\nexplicit_bounds\nVec<f64>\n\n\nExponentialHistogramDataPoint\nsum, min, max\nOption<f64>\n\n\nExponent",
       "labels": [],
-      "commentCount": 14
+      "commentCount": 16
     },
     {
       "id": "I_kwDODS0WD87GEHPF",
