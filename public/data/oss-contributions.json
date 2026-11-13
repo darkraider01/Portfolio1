@@ -1,30 +1,86 @@
 {
-  "last_updated": "2026-11-12T14:50:14.696Z",
+  "last_updated": "2026-11-13T14:11:28.762Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 85,
-    "openPRs": 23,
-    "issuesCreated": 39,
+    "openPRs": 24,
+    "issuesCreated": 40,
     "issuesAssigned": 23,
-    "reviewsGiven": 71
+    "reviewsGiven": 72
   },
   "items": [
     {
-      "id": "PR_kwDONpzSS88AAAABOpbWIQ",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix(tool): resolve compiler and linker archives for Go 1.28 and newer",
-      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1773",
+      "id": "I_kwDOBAsbdc8AAAABe8Pucw",
+      "category": "issuesCreated",
+      "type": "issue",
+      "title": "Batched UDP I/O using sendmmsg and recvmmsg",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/issues/8788",
       "state": "OPEN",
-      "createdAt": "2026-11-12T13:05:57Z",
+      "createdAt": "2026-11-13T12:37:36Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #1740\nProblem\nStarting with Go 1.28, go list -export no longer produces compiler object archives (golang/go#79427). Instead, it outputs tools-format export data (x/tools), which cmd/compile and cmd/link reject when resolving rule-added imports via -importcfg.\nChanges\n\nArchive resolution (archi",
+      "body": "I've been experimenting with Linux UDP batching on top of Tokio, mainly to see how much overhead we could avoid by sending and receiving multiple datagrams in a single syscall instead of processing them individually.\nI've got a working prototype now, along with some benchmarks comparing regular Toki",
+      "labels": [],
+      "commentCount": 0
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABO3N5Zg",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(tool): resolve rule-added import archives on Go 1.28",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1776",
+      "state": "OPEN",
+      "createdAt": "2026-11-13T08:18:18Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Summary\nFixes rule-added import archive resolution on Go 1.28, where go list -export no longer provides compiler-compatible archives.\n\nUses Go build probes to resolve compiler and linker archives.\nHandles internal packages and transitive dependencies.\nCaches resolved archives and cleans up temporary",
       "labels": [
         "scope:fix"
       ],
       "commentCount": 2
+    },
+    {
+      "id": "PR_kwDONpzSS88AAAABO3Nf3w",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "fix(tool): improve nested import handling",
+      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1775",
+      "state": "OPEN",
+      "createdAt": "2026-11-13T08:17:43Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Summary\nImproves nested import handling by resolving rule-added imports in batches instead of individually.\n\nBatches missing import resolution and skips duplicate or already-resolved imports.\nPreserves cycle detection and nesting-depth limits without counting sibling imports as separate levels.\nMerg",
+      "labels": [
+        "scope:fix"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABOt7AVA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "rt: wait out transient EAGAIN in the I/O driver and the blocking pool",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8784",
+      "state": "OPEN",
+      "createdAt": "2026-11-12T18:04:40Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nOn a host that is briefly short of memory or processes, two runtime paths treat a passing condition as fatal. With panic = \"abort\", the whole process goes down.\n\nDriver::turn panics on any epoll_wait error except EINTR. We hit this in production: a long-running service under pid and memor",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-io",
+        "M-runtime",
+        "S-waiting-on-review",
+        "M-blocking",
+        "R-loom-time-driver",
+        "R-loom-blocking"
+      ],
+      "commentCount": 0
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABOljnPQ",
@@ -282,7 +338,7 @@
       "closedAt": null,
       "body": "Fixes #2819\nChanges\nAdds a valuable feature to opentelemetry-appender-tracing. With it enabled (and --cfg tracing_unstable), fields recorded via valuable end up as proper Map/ListAny attributes instead of a Debug string. Works for event fields and span attributes.\n#[derive(Valuable)]\nstruct User { i",
       "labels": [],
-      "commentCount": 6
+      "commentCount": 7
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABMGXp1w",
@@ -753,12 +809,12 @@
       "createdAt": "2026-10-24T16:07:20Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Fixes #164765.\nEarlyOtherwiseBranch can hoist a read onto a path where its operand is uninitialized, causing a miscompilation.\nWhen the parent’s otherwise branch is reachable, this restricts scalar hoisting to unchanged function arguments and their struct/tuple fields. It reuses VisitPlacesWith to r",
+      "body": "View all comments\n\nFixes #164765.\nEarlyOtherwiseBranch can hoist a read onto a path where its operand is uninitialized, causing a miscompilation.\nWhen the parent’s otherwise branch is reachable, this restricts scalar hoisting to unchanged function arguments and their struct/tuple fields. It reuses V",
       "labels": [
         "T-compiler",
-        "S-waiting-on-review"
+        "S-waiting-on-bors"
       ],
-      "commentCount": 12
+      "commentCount": 18
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABKZyIZw",
