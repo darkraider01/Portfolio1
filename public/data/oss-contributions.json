@@ -1,14 +1,39 @@
 {
-  "last_updated": "2026-11-13T14:11:28.762Z",
+  "last_updated": "2026-11-14T13:11:13.525Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 85,
+    "mergedPRs": 86,
     "openPRs": 24,
     "issuesCreated": 40,
     "issuesAssigned": 23,
-    "reviewsGiven": 72
+    "reviewsGiven": 68
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABO8aG6w",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "rt: track blocking pool queue latency",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8789",
+      "state": "OPEN",
+      "createdAt": "2026-11-13T15:05:17Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Adds opt-in tracking for how long spawn_blocking tasks wait before a worker picks them up. It keeps track of the total queue latency and observation count for both the locked and sharded queues.\nInternal scheduler workers are excluded. Cancelled tasks are counted if a worker picks them up, while tas",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-runtime",
+        "S-waiting-on-review",
+        "M-blocking",
+        "A-benches",
+        "M-metrics",
+        "R-loom-multi-thread",
+        "R-loom-blocking"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "I_kwDOBAsbdc8AAAABe8Pucw",
       "category": "issuesCreated",
@@ -21,8 +46,13 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "I've been experimenting with Linux UDP batching on top of Tokio, mainly to see how much overhead we could avoid by sending and receiving multiple datagrams in a single syscall instead of processing them individually.\nI've got a working prototype now, along with some benchmarks comparing regular Toki",
-      "labels": [],
-      "commentCount": 0
+      "labels": [
+        "A-tokio",
+        "M-net",
+        "C-feature-request",
+        "T-performance"
+      ],
+      "commentCount": 1
     },
     {
       "id": "PR_kwDONpzSS88AAAABO3N5Zg",
@@ -39,7 +69,7 @@
       "labels": [
         "scope:fix"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABO3Nf3w",
@@ -98,11 +128,11 @@
         "C-bug",
         "A-tokio-util",
         "I-hang",
-        "S-waiting-on-review",
+        "S-waiting-on-author",
         "M-codec",
         "R-loom-util"
       ],
-      "commentCount": 0
+      "commentCount": 1
     },
     {
       "id": "PR_kwDODS0WD88AAAABOeh3dQ",
@@ -800,15 +830,15 @@
     },
     {
       "id": "PR_kwDOAAsO6M8AAAABKdd6eA",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Avoid hoisting uninitialized reads in EarlyOtherwiseBranch",
       "repo": "rust-lang/rust",
       "url": "https://github.com/rust-lang/rust/pull/164864",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-10-24T16:07:20Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-13T16:18:01Z",
+      "closedAt": "2026-11-13T16:18:01Z",
       "body": "View all comments\n\nFixes #164765.\nEarlyOtherwiseBranch can hoist a read onto a path where its operand is uninitialized, causing a miscompilation.\nWhen the parent’s otherwise branch is reachable, this restricts scalar hoisting to unchanged function arguments and their struct/tuple fields. It reuses V",
       "labels": [
         "T-compiler",
@@ -857,26 +887,6 @@
       "commentCount": 4
     },
     {
-      "id": "PR_kwDOBAsbdc8AAAABKQh-mQ",
-      "category": "reviewsGiven",
-      "type": "pr",
-      "title": "io: add `CopyToBytes::get_pin_mut` and `SinkWriter::get_pin_mut`",
-      "repo": "tokio-rs/tokio",
-      "url": "https://github.com/tokio-rs/tokio/pull/8707",
-      "state": "MERGED",
-      "createdAt": "2026-10-23T13:21:05Z",
-      "mergedAt": "2026-10-26T08:37:57Z",
-      "closedAt": "2026-10-26T08:37:57Z",
-      "body": "What\nAdd get_pin_mut() to SinkWriter and CopyToBytes.\nWhy\nCallers cannot use get_mut() through a pinned adapter when its inner sink is !Unpin.\nImplementation\nProject the pinned inner sink and add a type-checking test using PhantomPinned.",
-      "labels": [
-        "C-enhancement",
-        "A-tokio-util",
-        "M-io",
-        "R-loom-util"
-      ],
-      "commentCount": 0
-    },
-    {
       "id": "PR_kwDOBAsbdc8AAAABKQgZGA",
       "category": "reviewsGiven",
       "type": "pr",
@@ -921,10 +931,10 @@
       "title": "Unexpected result when optimizing custom MIR with an otherwise branch",
       "repo": "rust-lang/rust",
       "url": "https://github.com/rust-lang/rust/issues/164765",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-10-22T21:06:56Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-13T16:17:55Z",
       "body": "I tried this code:\n#![feature(custom_mir, core_intrinsics)]\n#![allow(internal_features, unused_assignments)]\n\nuse std::hint::black_box;\nuse std::intrinsics::mir::*;\n\n#[custom_mir(dialect = \"runtime\")]\nfn foo(q: u64) -> u64 {\n    mir! {\n        let x: u64;\n        {\n            match q {\n            ",
       "labels": [
         "T-compiler",
@@ -1072,48 +1082,6 @@
       "commentCount": 3
     },
     {
-      "id": "PR_kwDOBAsbdc8AAAABJ23G_g",
-      "category": "reviewsGiven",
-      "type": "pr",
-      "title": "codec: defer default Framed buffer allocations",
-      "repo": "tokio-rs/tokio",
-      "url": "https://github.com/tokio-rs/tokio/pull/8691",
-      "state": "CLOSED",
-      "createdAt": "2026-10-21T18:32:06Z",
-      "mergedAt": null,
-      "closedAt": "2026-10-22T07:36:08Z",
-      "body": "What\nDefer default framing-buffer allocations until first use.\nWhy\nAn idle Framed currently allocates an 8 KiB read buffer and an 8 KiB write buffer on construction.\nImplementation\nInitialize default buffers without allocations, then reserve the existing 8 KiB capacity on the first read or encode.\nP",
-      "labels": [
-        "C-enhancement",
-        "A-tokio-util",
-        "T-performance",
-        "M-codec",
-        "R-loom-util"
-      ],
-      "commentCount": 1
-    },
-    {
-      "id": "PR_kwDOBAsbdc8AAAABJ2tzVQ",
-      "category": "reviewsGiven",
-      "type": "pr",
-      "title": "docs(codec): clarify read buffer mutation requirements",
-      "repo": "tokio-rs/tokio",
-      "url": "https://github.com/tokio-rs/tokio/pull/8690",
-      "state": "MERGED",
-      "createdAt": "2026-10-21T18:20:06Z",
-      "mergedAt": "2026-11-08T17:58:41Z",
-      "closedAt": "2026-11-08T17:58:41Z",
-      "body": "What\nDocument that Framed::read_buffer_mut() and FramedRead::read_buffer_mut() should only be used to append data.\nWhy\nDecoders may cache scan offsets. Removing or changing buffered bytes can cause missed frame boundaries or panics.\nImplementation\nAdd a warning to both methods' docs. No decoder beha",
-      "labels": [
-        "T-docs",
-        "A-tokio-util",
-        "C-maintenance",
-        "M-codec",
-        "R-loom-util"
-      ],
-      "commentCount": 4
-    },
-    {
       "id": "PR_kwDOBAsbdc8AAAABJyrb3g",
       "category": "reviewsGiven",
       "type": "pr",
@@ -1194,25 +1162,6 @@
         "M-sdk"
       ],
       "commentCount": 1
-    },
-    {
-      "id": "PR_kwDOBAsbdc8AAAABJhHMyA",
-      "category": "reviewsGiven",
-      "type": "pr",
-      "title": "util: implement FusedStream for Either",
-      "repo": "tokio-rs/tokio",
-      "url": "https://github.com/tokio-rs/tokio/pull/8681",
-      "state": "MERGED",
-      "createdAt": "2026-10-20T09:18:11Z",
-      "mergedAt": "2026-10-21T08:33:33Z",
-      "closedAt": "2026-10-21T08:33:33Z",
-      "body": "What\nImplement FusedStream for tokio_util::either::Either.\nWhy\nEither already implements Stream, but users cannot check when it is terminated.\nImplementation\nForward is_terminated to the active variant. Add coverage for both Left and Right.",
-      "labels": [
-        "C-enhancement",
-        "A-tokio-util",
-        "R-loom-util"
-      ],
-      "commentCount": 0
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJeciDg",
