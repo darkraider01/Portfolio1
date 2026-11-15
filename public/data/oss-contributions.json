@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-11-14T13:11:13.525Z",
+  "last_updated": "2026-11-15T13:39:15.237Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 86,
-    "openPRs": 24,
+    "openPRs": 22,
     "issuesCreated": 40,
     "issuesAssigned": 23,
-    "reviewsGiven": 68
+    "reviewsGiven": 69
   },
   "items": [
     {
@@ -55,40 +55,6 @@
       "commentCount": 1
     },
     {
-      "id": "PR_kwDONpzSS88AAAABO3N5Zg",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix(tool): resolve rule-added import archives on Go 1.28",
-      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1776",
-      "state": "OPEN",
-      "createdAt": "2026-11-13T08:18:18Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Summary\nFixes rule-added import archive resolution on Go 1.28, where go list -export no longer provides compiler-compatible archives.\n\nUses Go build probes to resolve compiler and linker archives.\nHandles internal packages and transitive dependencies.\nCaches resolved archives and cleans up temporary",
-      "labels": [
-        "scope:fix"
-      ],
-      "commentCount": 3
-    },
-    {
-      "id": "PR_kwDONpzSS88AAAABO3Nf3w",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "fix(tool): improve nested import handling",
-      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1775",
-      "state": "OPEN",
-      "createdAt": "2026-11-13T08:17:43Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Summary\nImproves nested import handling by resolving rule-added imports in batches instead of individually.\n\nBatches missing import resolution and skips duplicate or already-resolved imports.\nPreserves cycle detection and nesting-depth limits without counting sibling imports as separate levels.\nMerg",
-      "labels": [
-        "scope:fix"
-      ],
-      "commentCount": 2
-    },
-    {
       "id": "PR_kwDOBAsbdc8AAAABOt7AVA",
       "category": "reviewsGiven",
       "type": "pr",
@@ -113,6 +79,30 @@
       "commentCount": 0
     },
     {
+      "id": "PR_kwDOBAsbdc8AAAABOqbR7g",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "io: consume budget when `async_io` retries after `WouldBlock`",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8782",
+      "state": "OPEN",
+      "createdAt": "2026-11-12T14:14:36Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nUnixDatagram::recv on a socket that was shut down for reading never returns to the runtime: after sock.shutdown(Shutdown::Read), timeout(Duration::from_millis(200), sock.recv(&mut buf)).await never fires and the task spins at 100% CPU (on a current-thread runtime nothing else runs either)",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-io",
+        "M-runtime",
+        "I-hang",
+        "S-waiting-on-review",
+        "M-coop",
+        "R-loom-time-driver"
+      ],
+      "commentCount": 1
+    },
+    {
       "id": "PR_kwDOBAsbdc8AAAABOljnPQ",
       "category": "reviewsGiven",
       "type": "pr",
@@ -128,7 +118,7 @@
         "C-bug",
         "A-tokio-util",
         "I-hang",
-        "S-waiting-on-author",
+        "S-waiting-on-review",
         "M-codec",
         "R-loom-util"
       ],
@@ -1458,8 +1448,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Fixes #1986\nChanges\nThis PR continues #2103 by @lalitb. That PR was closed because it had no activity. The first commit is #2103, squashed and rebased onto main, with @lalitb as the author. The second commit fixes the review comments from #2103. The later comments clean up the tests a bit to keep th",
-      "labels": [],
-      "commentCount": 10
+      "labels": [
+        "Stale"
+      ],
+      "commentCount": 11
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHax8AQ",
