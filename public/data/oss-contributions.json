@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15T13:39:15.237Z",
+  "last_updated": "2026-11-16T15:11:29.387Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 86,
@@ -1656,7 +1656,7 @@
       "closedAt": null,
       "body": "The fast path for wc -m and wc -cm can count invalid or incomplete UTF-8 sequences as characters. This adds validation in UTF-8 locales and handles characters split across reads.\nIt also skips complete ASCII blocks before validation to avoid scanning those bytes again. Regression tests cover malform",
       "labels": [],
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "PR_kwDODS0WD88AAAABG5FiBA",
