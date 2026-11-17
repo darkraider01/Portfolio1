@@ -1,14 +1,31 @@
 {
-  "last_updated": "2026-11-16T15:11:29.387Z",
+  "last_updated": "2026-11-17T15:40:34.911Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 86,
-    "openPRs": 22,
+    "openPRs": 23,
     "issuesCreated": 40,
     "issuesAssigned": 23,
     "reviewsGiven": 69
   },
   "items": [
+    {
+      "id": "PR_kwDOAr8sRM8AAAABPlpMfw",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "Test append mode with seek and reads",
+      "repo": "rust-lang/miri",
+      "url": "https://github.com/rust-lang/miri/pull/5635",
+      "state": "OPEN",
+      "createdAt": "2026-11-16T16:43:53Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Part of #5615",
+      "labels": [
+        "S-waiting-on-author"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABO8aG6w",
       "category": "openPRs",
@@ -137,7 +154,7 @@
       "closedAt": null,
       "body": "Fixs a race where concurrent metrics tests could replace the global meter provider, causing a test to record metrics through a different provider than the one it shuts down.\nEach test now creates its counter from its own provider.\nThis addresses the failure in this CI job.",
       "labels": [],
-      "commentCount": 1
+      "commentCount": 3
     },
     {
       "id": "PR_kwDONpzSS88AAAABObceVQ",
@@ -154,7 +171,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDOAr8sRM8AAAABeSyXXA",
@@ -1448,10 +1465,8 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Fixes #1986\nChanges\nThis PR continues #2103 by @lalitb. That PR was closed because it had no activity. The first commit is #2103, squashed and rebased onto main, with @lalitb as the author. The second commit fixes the review comments from #2103. The later comments clean up the tests a bit to keep th",
-      "labels": [
-        "Stale"
-      ],
-      "commentCount": 11
+      "labels": [],
+      "commentCount": 12
     },
     {
       "id": "PR_kwDOALTHTM8AAAABHax8AQ",
@@ -1615,10 +1630,10 @@
       "title": "[ICE]: `expected leaf, got Value`",
       "repo": "rust-lang/rust",
       "url": "https://github.com/rust-lang/rust/issues/163903",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-10-06T19:34:04Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-16T18:32:41Z",
       "body": "auto-reduced (treereduce-rust):\n#![feature(gca_min_const_items)]\n#![feature(gca_macroless_items)]\n#![feature(gca_adts)]\n\nstruct NoDerive(i32);\n\nstruct WrapInline(NoDerive);\nconst WRAP_DIRECT_INLINE: WrapInline = WrapInline(NoDerive(NoDerive));\nfn main() {\n    match WRAP_DIRECT_INLINE {\n        _ => ",
       "labels": [
         "I-ICE",
@@ -2000,7 +2015,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 8
+      "commentCount": 10
     },
     {
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
