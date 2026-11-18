@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-11-17T15:40:34.911Z",
+  "last_updated": "2026-11-18T15:19:33.802Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 86,
-    "openPRs": 23,
+    "mergedPRs": 87,
+    "openPRs": 22,
     "issuesCreated": 40,
     "issuesAssigned": 23,
     "reviewsGiven": 69
@@ -143,15 +143,15 @@
     },
     {
       "id": "PR_kwDODS0WD88AAAABOeh3dQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "fix(otlp): isolate meter providers in metrics integration tests",
       "repo": "open-telemetry/opentelemetry-rust",
       "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/3865",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-11-11T20:42:54Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-18T04:15:45Z",
+      "closedAt": "2026-11-18T04:15:45Z",
       "body": "Fixs a race where concurrent metrics tests could replace the global meter provider, causing a test to record metrics through a different provider than the one it shuts down.\nEach test now creates its counter from its own provider.\nThis addresses the failure in this CI job.",
       "labels": [],
       "commentCount": 3
@@ -241,7 +241,7 @@
       "closedAt": null,
       "body": "Changes\nOn wasm64 the code falls back to SystemTime::now(), which panics in the browser with \"time not implemented on this platform\". It now uses the browser clock on every wasm target, and the js-sys dependency follows.\nwasm32 and native builds behave exactly as before.\nTesting\nwasm64 is a tier 3 t",
       "labels": [],
-      "commentCount": 3
+      "commentCount": 6
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABN4QkXw",
