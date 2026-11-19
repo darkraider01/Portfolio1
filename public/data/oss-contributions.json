@@ -1,14 +1,57 @@
 {
-  "last_updated": "2026-11-18T15:19:33.802Z",
+  "last_updated": "2026-11-19T15:26:21.359Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 87,
     "openPRs": 22,
     "issuesCreated": 40,
     "issuesAssigned": 23,
-    "reviewsGiven": 69
+    "reviewsGiven": 71
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABQBywGA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "sync: drop values published after mpsc receiver drop",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8804",
+      "state": "OPEN",
+      "createdAt": "2026-11-18T05:38:12Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nA value can be published after Receiver has been dropped when a send races\nwith receiver teardown, including sends through an already acquired Permit or\nOwnedPermit. The receiver has already drained the queue, so the value can stay\nalive until the last channel handle is dropped.\nThis matt",
+      "labels": [
+        "C-bug",
+        "A-tokio",
+        "M-sync",
+        "S-waiting-on-review",
+        "R-loom-sync"
+      ],
+      "commentCount": 2
+    },
+    {
+      "id": "PR_kwDOBAsbdc8AAAABP9GGBw",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "sync: shard broadcast waiter lists to reduce contention",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8803",
+      "state": "OPEN",
+      "createdAt": "2026-11-17T21:53:25Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nIn tokio::sync::broadcast, Shared::tail previously used a single Mutex<Tail> guarding both the ring buffer cursor/subscriber count and the intrusive LinkedList<Waiter> of parked receivers. Under high receiver concurrency, receivers polling recv(), parking on empty slots, or dropping Recv ",
+      "labels": [
+        "C-enhancement",
+        "A-tokio",
+        "M-sync",
+        "S-waiting-on-review",
+        "T-performance",
+        "R-loom-sync"
+      ],
+      "commentCount": 1
+    },
     {
       "id": "PR_kwDOAr8sRM8AAAABPlpMfw",
       "category": "openPRs",
@@ -123,19 +166,18 @@
       "id": "PR_kwDOBAsbdc8AAAABOljnPQ",
       "category": "reviewsGiven",
       "type": "pr",
-      "title": "tokio-util: reject zero-length frames that make no progress with num_skip(0)",
+      "title": "codec: reject frames shorter than their length field in `LengthDelimitedCodec`",
       "repo": "tokio-rs/tokio",
       "url": "https://github.com/tokio-rs/tokio/pull/8781",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-11-12T08:09:21Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-19T12:03:00Z",
+      "closedAt": "2026-11-19T12:03:00Z",
       "body": "With .num_skip(0) and a zero-length frame, LengthDelimitedCodec returns an empty frame without consuming any input — decode_head advances 0 bytes and decode_data(0) splits 0 bytes, so the same head is read again on every call. Under Framed this spins a worker thread at 100% CPU; a remote peer only n",
       "labels": [
         "C-bug",
         "A-tokio-util",
         "I-hang",
-        "S-waiting-on-review",
         "M-codec",
         "R-loom-util"
       ],
@@ -171,7 +213,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 3
+      "commentCount": 5
     },
     {
       "id": "I_kwDOAr8sRM8AAAABeSyXXA",
@@ -2015,7 +2057,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 10
+      "commentCount": 11
     },
     {
       "id": "PR_kwDONpzSS88AAAABFQ8dpQ",
@@ -3033,7 +3075,7 @@
       "labels": [
         "scope:feat"
       ],
-      "commentCount": 8
+      "commentCount": 9
     },
     {
       "id": "PR_kwDONpzSS88AAAABBtWw3Q",
@@ -3561,7 +3603,7 @@
       "createdAt": "2026-08-22T09:19:17Z",
       "mergedAt": null,
       "closedAt": "2026-09-25T09:30:33Z",
-      "body": "Describe the bug\nbuildWithToolexec builds the -toolexec flag by just string-concatenating otelc's own executable path with no quoting:\n// tool/internal/setup/setup.go:541-545\nexecPath, err := os.Executable()\ninsert := \"-toolexec=\" + execPath + \" toolexec\"\nIf execPath has a space in it, go's own -too",
+      "body": "Describe the bug\nbuildWithToolexec builds the -toolexec flag by just string-concatenating otelc's own executable path with no quoting:\n// tool/internal/setup/setup.go:541-545\nexecPath, err := os.Executable()\ninsert := \"-toolexec=\" + execPath + \" toolexec\"\n\nIf execPath has a space in it, go's own -to",
       "labels": [
         "bug"
       ],
