@@ -1,14 +1,31 @@
 {
-  "last_updated": "2026-11-19T15:26:21.359Z",
+  "last_updated": "2026-11-20T15:03:25.079Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 87,
-    "openPRs": 22,
+    "mergedPRs": 88,
+    "openPRs": 21,
     "issuesCreated": 40,
     "issuesAssigned": 23,
     "reviewsGiven": 71
   },
   "items": [
+    {
+      "id": "PR_kwDOUFGAQc8AAAABQeigiQ",
+      "category": "openPRs",
+      "type": "pr",
+      "title": "feat(runtime): filter unwanted root spans",
+      "repo": "open-telemetry/opentelemetry-go-compile-contrib",
+      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/pull/51",
+      "state": "OPEN",
+      "createdAt": "2026-11-19T18:33:29Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Description\nAdd opt-in root span filtering to the injected runtime:\n\nOTELC_DROP_ROOT_CLIENT_PRODUCER=true drops parentless client and producer spans.\nOTELC_EXCLUDED_SERVER_PATHS=/healthz,/readyz drops root server spans whose initial url.path exactly matches a listed path.\n\nLocal descendants of dropp",
+      "labels": [
+        "scope:feat"
+      ],
+      "commentCount": 1
+    },
     {
       "id": "PR_kwDOBAsbdc8AAAABQBywGA",
       "category": "reviewsGiven",
@@ -54,20 +71,18 @@
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABPlpMfw",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "Test append mode with seek and reads",
       "repo": "rust-lang/miri",
       "url": "https://github.com/rust-lang/miri/pull/5635",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-11-16T16:43:53Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Part of #5615",
-      "labels": [
-        "S-waiting-on-author"
-      ],
-      "commentCount": 0
+      "mergedAt": "2026-11-19T21:32:59Z",
+      "closedAt": "2026-11-19T21:32:59Z",
+      "body": "Fixes #5615",
+      "labels": [],
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABO8aG6w",
@@ -199,33 +214,16 @@
       "commentCount": 3
     },
     {
-      "id": "PR_kwDONpzSS88AAAABObceVQ",
-      "category": "openPRs",
-      "type": "pr",
-      "title": "feat(pkg/runtime): option to suppress parentless client spans and excluded server paths",
-      "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
-      "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1770",
-      "state": "OPEN",
-      "createdAt": "2026-11-11T16:44:41Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "body": "Closes #1711\nThis PR adds an optional sampler to avoid creating unnecessary traces from background operations and health-check requests.\nIt adds two configuration options:\n\nOTEL_GO_DROP_ROOT_CLIENT_PRODUCER=true to drop CLIENT and PRODUCER spans that have no parent.\nOTEL_GO_EXCLUDED_SERVER_PATHS=/he",
-      "labels": [
-        "scope:feat"
-      ],
-      "commentCount": 5
-    },
-    {
       "id": "I_kwDOAr8sRM8AAAABeSyXXA",
       "category": "issuesAssigned",
       "type": "issue",
       "title": "Test the interactions of O_APPEND and seek + write/read/pwrite/pread",
       "repo": "rust-lang/miri",
       "url": "https://github.com/rust-lang/miri/issues/5615",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-11-11T11:58:19Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-19T21:33:01Z",
       "body": "Apparently that interaction is far from obvious: does it use an explicitly set file cursor position or always write at the end? The docs seem to say that the file cursor position should be entirely ignored. What about reads? What about pwrite? There, apparently the position should matter, but we imp",
       "labels": [
         "C-bug",
@@ -1050,7 +1048,7 @@
       "closedAt": null,
       "body": "Calling force_flush() or shutdown() inside a spawned Tokio task can hang when no worker is available to run the processor.\nThis documents how to use spawn_blocking for these calls and adds a single-worker test verifying that flush and shutdown export the queued spans.",
       "labels": [],
-      "commentCount": 4
+      "commentCount": 7
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABJ-T0rg",
@@ -3300,7 +3298,7 @@
       "createdAt": "2026-08-28T03:49:45Z",
       "mergedAt": "2026-09-03T22:57:37Z",
       "closedAt": "2026-09-03T22:57:37Z",
-      "body": "Description\nAdds support for declaring the minimum required otelc version in each rule file using a reserved top-level key:\nversion: \"v1.0.0\"\nThis PR:\n\nAdds a shared parser for separating file-level version metadata from rule entries.\nValidates that minimum versions are released semantic versions.\nR",
+      "body": "Description\nAdds support for declaring the minimum required otelc version in each rule file using a reserved top-level key:\nversion: \"v1.0.0\"\n\nThis PR:\n\nAdds a shared parser for separating file-level version metadata from rule entries.\nValidates that minimum versions are released semantic versions.\n",
       "labels": [
         "scope:feat"
       ],
@@ -3603,7 +3601,7 @@
       "createdAt": "2026-08-22T09:19:17Z",
       "mergedAt": null,
       "closedAt": "2026-09-25T09:30:33Z",
-      "body": "Describe the bug\nbuildWithToolexec builds the -toolexec flag by just string-concatenating otelc's own executable path with no quoting:\n// tool/internal/setup/setup.go:541-545\nexecPath, err := os.Executable()\ninsert := \"-toolexec=\" + execPath + \" toolexec\"\n\nIf execPath has a space in it, go's own -to",
+      "body": "Describe the bug\nbuildWithToolexec builds the -toolexec flag by just string-concatenating otelc's own executable path with no quoting:\n// tool/internal/setup/setup.go:541-545\nexecPath, err := os.Executable()\ninsert := \"-toolexec=\" + execPath + \" toolexec\"\nIf execPath has a space in it, go's own -too",
       "labels": [
         "bug"
       ],
