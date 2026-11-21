@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20T15:03:25.079Z",
+  "last_updated": "2026-11-21T14:24:17.622Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 88,
@@ -3298,7 +3298,7 @@
       "createdAt": "2026-08-28T03:49:45Z",
       "mergedAt": "2026-09-03T22:57:37Z",
       "closedAt": "2026-09-03T22:57:37Z",
-      "body": "Description\nAdds support for declaring the minimum required otelc version in each rule file using a reserved top-level key:\nversion: \"v1.0.0\"\n\nThis PR:\n\nAdds a shared parser for separating file-level version metadata from rule entries.\nValidates that minimum versions are released semantic versions.\n",
+      "body": "Description\nAdds support for declaring the minimum required otelc version in each rule file using a reserved top-level key:\nversion: \"v1.0.0\"\nThis PR:\n\nAdds a shared parser for separating file-level version metadata from rule entries.\nValidates that minimum versions are released semantic versions.\nR",
       "labels": [
         "scope:feat"
       ],
