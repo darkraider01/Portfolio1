@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-21T14:24:17.622Z",
+  "last_updated": "2026-11-22T14:17:09.131Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 88,
@@ -987,7 +987,6 @@
         "T-compiler",
         "C-bug",
         "A-mir-opt",
-        "I-prioritize",
         "I-miscompile"
       ],
       "commentCount": 2
@@ -2186,8 +2185,10 @@
       "mergedAt": null,
       "closedAt": null,
       "body": "Summary\nAdds the first supported subset of OpenTelemetry declarative metrics configuration, targeting schema v1.2.0. YAML can configure resource attributes, periodic readers, the built-in console exporter, and registered custom exporters. This work is part of #809.\nThe crate is unreleased. Configura",
-      "labels": [],
-      "commentCount": 4
+      "labels": [
+        "Stale"
+      ],
+      "commentCount": 5
     },
     {
       "id": "PR_kwDOBAsbdc8AAAABE-Zdfg",
