@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-23T17:39:33.794Z",
+  "last_updated": "2026-11-24T17:11:08.878Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 88,
@@ -2046,10 +2046,10 @@
       "title": "feat(instrumentation/mux): add gorilla/mux route enrichment",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1408",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-26T19:43:25Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-24T09:45:59Z",
       "body": "Description\nThe hook runs after (*mux.Router).Match. It sets the existing net/http server span name to METHOD /template and sets http.route. It does not create a span.\nIt does not set the route when MatchErr is set. A custom NotFoundHandler or MethodNotAllowedHandler still leaves MatchErr set. As a ",
       "labels": [
         "scope:feat"
@@ -3066,10 +3066,10 @@
       "title": "feat(instrumentation): adds zerolog hook injecting trace & span ids",
       "repo": "open-telemetry/opentelemetry-go-compile-instrumentation",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/pull/1296",
-      "state": "OPEN",
+      "state": "CLOSED",
       "createdAt": "2026-09-01T11:29:54Z",
       "mergedAt": null,
-      "closedAt": null,
+      "closedAt": "2026-11-24T09:46:04Z",
       "body": "Description\nAdd compile-time instrumentation for zerolog package to automatically inject trace_id and span_id into log output when an active span exists in GLS.\nMotivation\nFixes #\n\nChecklist\n\n PR title follows conventional commits format\n Code formatted: make format\n Linters pass: make lint\n Tests p",
       "labels": [
         "scope:feat"
