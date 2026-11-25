@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-11-24T17:11:08.878Z",
+  "last_updated": "2026-11-25T16:56:38.950Z",
   "username": "darkraider01",
   "summary": {
-    "mergedPRs": 88,
-    "openPRs": 21,
+    "mergedPRs": 89,
+    "openPRs": 20,
     "issuesCreated": 40,
     "issuesAssigned": 23,
     "reviewsGiven": 71
@@ -11,15 +11,15 @@
   "items": [
     {
       "id": "PR_kwDOUFGAQc8AAAABQeigiQ",
-      "category": "openPRs",
+      "category": "mergedPRs",
       "type": "pr",
       "title": "feat(runtime): filter unwanted root spans",
       "repo": "open-telemetry/opentelemetry-go-compile-contrib",
       "url": "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/pull/51",
-      "state": "OPEN",
+      "state": "MERGED",
       "createdAt": "2026-11-19T18:33:29Z",
-      "mergedAt": null,
-      "closedAt": null,
+      "mergedAt": "2026-11-24T17:18:08Z",
+      "closedAt": "2026-11-24T17:18:09Z",
       "body": "Description\nAdd opt-in root span filtering to the injected runtime:\n\nOTELC_DROP_ROOT_CLIENT_PRODUCER=true drops parentless client and producer spans.\nOTELC_EXCLUDED_SERVER_PATHS=/healthz,/readyz drops root server spans whose initial url.path exactly matches a listed path.\n\nLocal descendants of dropp",
       "labels": [
         "scope:feat"
@@ -58,16 +58,15 @@
       "createdAt": "2026-11-17T21:53:25Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "Motivation\nIn tokio::sync::broadcast, Shared::tail previously used a single Mutex<Tail> guarding both the ring buffer cursor/subscriber count and the intrusive LinkedList<Waiter> of parked receivers. Under high receiver concurrency, receivers polling recv(), parking on empty slots, or dropping Recv ",
+      "body": "Motivation\ntokio::sync::broadcast previously serialized all Sender and Receiver operations—including read-only methods (len, is_empty, receiver_count), concurrent receivers parking on empty slots, and Sender::send waking parked tasks—behind a single Mutex<Tail>. Under high receiver counts, receivers",
       "labels": [
         "C-enhancement",
         "A-tokio",
         "M-sync",
         "S-waiting-on-review",
-        "T-performance",
-        "R-loom-sync"
+        "T-performance"
       ],
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "PR_kwDOAr8sRM8AAAABPlpMfw",
