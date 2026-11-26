@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-25T16:56:38.950Z",
+  "last_updated": "2026-11-26T16:35:08.876Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 89,
@@ -1080,13 +1080,12 @@
       "createdAt": "2026-10-22T08:16:41Z",
       "mergedAt": null,
       "closedAt": null,
-      "body": "While a spawn_blocking task inhibits auto-advance, the driver parks for the timer's remaining time in real time. time::resume() and time::advance() change the clock without waking it, so the change goes unnoticed until that wait times out. Thus, unpark the driver after a successful resume() or advan",
+      "body": "Summary\nWhile a spawn_blocking task inhibits auto-advance, the driver parks for the timer's remaining time in real time. time::advance() changes the clock without waking it, so the timer fires only when that real timeout expires. Thus, wake the driver after advance() and resume() through unpark_time",
       "labels": [
         "C-bug",
         "A-tokio",
         "M-time",
-        "S-waiting-on-review",
-        "R-loom-time-driver"
+        "S-waiting-on-review"
       ],
       "commentCount": 4
     },
@@ -1227,7 +1226,7 @@
         "S-waiting-on-review",
         "R-loom-time-driver"
       ],
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "PR_kwDODS0WD88AAAABJctEKA",
