@@ -1,14 +1,36 @@
 {
-  "last_updated": "2026-11-26T16:35:08.876Z",
+  "last_updated": "2026-11-27T16:20:54.870Z",
   "username": "darkraider01",
   "summary": {
     "mergedPRs": 89,
     "openPRs": 20,
     "issuesCreated": 40,
     "issuesAssigned": 23,
-    "reviewsGiven": 71
+    "reviewsGiven": 72
   },
   "items": [
+    {
+      "id": "PR_kwDOBAsbdc8AAAABSVKFXA",
+      "category": "reviewsGiven",
+      "type": "pr",
+      "title": "compat: bound the bytes zeroed per futures-to-tokio read",
+      "repo": "tokio-rs/tokio",
+      "url": "https://github.com/tokio-rs/tokio/pull/8837",
+      "state": "OPEN",
+      "createdAt": "2026-11-27T10:31:32Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "body": "Motivation\nCompat::poll_read (futures-io → tokio) calls ReadBuf::initialize_unfilled(), which zeroes the entire unfilled region before handing it to the inner futures_io::AsyncRead.\npoll_read_buf builds a fresh ReadBuf::uninit over the whole spare capacity of the BufMut on every call, and BytesMut d",
+      "labels": [
+        "C-enhancement",
+        "A-tokio-util",
+        "S-waiting-on-review",
+        "T-performance",
+        "M-compat",
+        "R-loom-util"
+      ],
+      "commentCount": 0
+    },
     {
       "id": "PR_kwDOUFGAQc8AAAABQeigiQ",
       "category": "mergedPRs",
